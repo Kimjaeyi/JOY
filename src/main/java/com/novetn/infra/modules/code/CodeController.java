@@ -14,7 +14,7 @@ public class CodeController {
 	@Autowired
 	CodeServiceImpl service;
 	
-
+ 
 	@RequestMapping(value = "codeList")
 	public String codeList(Model model) throws Exception {
 

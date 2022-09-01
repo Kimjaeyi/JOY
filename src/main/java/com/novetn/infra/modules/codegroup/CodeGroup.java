@@ -1,7 +1,7 @@
 package com.novetn.infra.modules.codegroup;
 
 public class CodeGroup {
-
+ 
 	private Integer seq;
 	private String name_ko;
 	private String name_eng;

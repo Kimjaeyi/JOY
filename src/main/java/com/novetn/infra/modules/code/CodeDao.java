@@ -14,7 +14,7 @@ public class CodeDao {
 	@Inject
 	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
-	
+	 
 	private static String namespace = "com.novetn.infra.modules.code.CodeMapper";
 	
 	public List<Code> selectList(){ return sqlSession.selectList(namespace + ".selectList", ""); }

@@ -1,5 +1,5 @@
 package com.novetn.infra.modules.codegroup;
-
+ 
 import java.util.List;
 
 public interface CodeGroupService {

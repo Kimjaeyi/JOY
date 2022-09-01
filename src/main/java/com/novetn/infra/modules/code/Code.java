@@ -9,7 +9,7 @@ public class Code {
 	private String anotherCode;
 	private String cdname_ko;
 	private String name_eng;
-	private Integer order;
+	private Integer order; 
 	private Integer useNY;
 	private Integer delNY;
 	
