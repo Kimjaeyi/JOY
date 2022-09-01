@@ -6,14 +6,12 @@
 
 <mapper namespace="com.novetn.infra.modules.codegroup.CodeGroupMapper">
 
-    <resultMap id="resultMapObj" type="com.novetn.infra.modules.code.CodeGroup"></resultMap>
+    <resultMap id="resultMapObj" type="com.novetn.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
 			a.*
-		FROM infrCodeGroup a
-		WHERE 1=1
-			AND ifcgDelNy = 0
+		FROM CodeGroup a
 	</select>
 
 </mapper>
