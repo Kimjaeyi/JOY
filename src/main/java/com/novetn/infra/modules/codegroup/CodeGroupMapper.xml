@@ -10,8 +10,14 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		SELECT
-			a.*
+			a.seq
+			, a.name_ko
+			, a.name_eng
+			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
+			, a.useNY
+			, a.delNY
 		FROM CodeGroup a
+		
 	</select>
 
 </mapper>
