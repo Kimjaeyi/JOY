@@ -197,19 +197,23 @@
 								<div class="col-2">
 									<input type="date" class="form-control">
 								</div>
-								<div class="col-2">
-									<select class="form-select" id="inputGroupSelect2">
-										<option selected>선택</option>
-										<option value="1">코드그룹 코드</option>
-										<option value="2">코드그룹 이름(한글)</option>
-										<option value="3">코드그룹 이름(영어)</option>
-									 </select>
-								</div>
-								<div class="col-3">
-									<input class="form-control" type="search" id="search_input" placeholder="검색어 입력">
-								</div>
-								<div class="col-1">
-									<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
+								<div class="col-6">
+									<form method="post" action="/codeGroup/codeGroupList">
+										<div class="col-4">
+											<select class="form-select" id="inputGroupSelect2">
+												<option value="" <c:if test="${empty vo.shOption}">selected</c:if>selected>선택</option>
+												<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+												<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
+												<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영어)</option>
+											 </select>
+										</div>
+										<div class="col-6">
+											<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
+										</div>
+										<div class="col-2">
+											<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						</div>

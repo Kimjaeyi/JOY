@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.novetn.infra.modules.member.MemberMapper">
+
+    <resultMap id="resultMapObj" type="com.novetn.infra.modules.member.Member"></resultMap>
+	
+	<sql id = "selectCommon">
+		from member
+		WHERE 1=1
+			<if test="delNY != null and !dleNY.equals('')">AND delNY = #{delNY}</if>
+			<choose>
+				<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND email LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND phone LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</sql>
+	
+	<select id="selectList" resultMap="resultMapObj">
+<!-- 		
+		SELECT
+			a.seq
+			, a.name_ko
+			, a.name_eng
+			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
+			, a.useNY
+			, a.delNY
+		FROM CodeGroup a
+ -->
+ 		SELECT
+			a.seq
+			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.membership = b.codeNum) AS membership
+			, a.name
+			, a.dob
+			, a.email
+			, a.phone
+			, a.regDate
+			, a.delNY
+		FROM member a
+		WHERE 1=1
+			AND name LIKE CONCAT('%',#{shValue},'%')
+		 
+		
+		
+	</select>
+
+</mapper>

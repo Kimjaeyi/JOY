@@ -1,5 +1,5 @@
-package com.novetn.infra.modules.codegroup;
- 
+package com.novetn.infra.modules.member;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,23 +8,23 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value = "/codeGroup/")
-public class CodeGroupController {
-	
+@RequestMapping(value = "/member/")
+public class MemberController {
+
 	@Autowired
-	CodeGroupServiceImpl service;
+	MemberServiceImpl service;
 	
 
-	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+	@RequestMapping(value = "memberList")
+	public String memberList(Model model, MemberVo vo) throws Exception {
 
 		System.out.println("vo.getShValue() : " + vo.getShValue());
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		
-		List<CodeGroup> list = service.selectList(vo);
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
-		return "infra/codegroup/xdmin/codeGroupList";
+		return "infra/member/xdmin/memberList";
 	}
 	
 }

@@ -8,8 +8,19 @@
 
     <resultMap id="resultMapObj" type="com.novetn.infra.modules.codegroup.CodeGroup"></resultMap>
 	
+	<sql id = "selectCommon">
+		from CodeGroup
+		WHERE 1=1
+			<if test="delNY != null and !dleNY.equals('')">AND delNY = #{delNY}</if>
+			<choose>
+				<when test="shOption == 1">AND seq = #{shValue}</when>
+				<when test="shOption == 2">AND name_ko LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND name_eng LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
+	</sql>
+	
 	<select id="selectList" resultMap="resultMapObj">
-<!-- 		
+		
 		SELECT
 			a.seq
 			, a.name_ko
@@ -18,9 +29,9 @@
 			, a.useNY
 			, a.delNY
 		FROM CodeGroup a
- -->
- 		SELECT *
- 		FROM codeGroup2	
+		WHERE 1=1
+			AND delNY = 0
+			AND name_ko LIKE CONCAT('%',#{shValue},'%')
 		
 	</select>
 
