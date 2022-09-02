@@ -258,8 +258,18 @@
 						<td><c:out value="${list.order }"/></td>
 						<td></td>
 						<td></td>
-						<td><c:out value="${list.useNY }"/></td>
-						<td><c:out value="${list.delNY }"/></td>
+						<td>
+							<c:choose>
+								<c:when test="${list.useNY eq 0 }">N</c:when>
+								<c:otherwise>Y</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${list.delNY eq 0 }">N</c:when>
+								<c:otherwise>Y</c:otherwise>
+							</c:choose>
+						</td>
 					</tr>
 					</c:forEach>
 				</tbody>

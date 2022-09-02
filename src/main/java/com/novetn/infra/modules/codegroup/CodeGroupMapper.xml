@@ -9,6 +9,7 @@
     <resultMap id="resultMapObj" type="com.novetn.infra.modules.codegroup.CodeGroup"></resultMap>
 	
 	<select id="selectList" resultMap="resultMapObj">
+<!-- 		
 		SELECT
 			a.seq
 			, a.name_ko
@@ -17,6 +18,9 @@
 			, a.useNY
 			, a.delNY
 		FROM CodeGroup a
+ -->
+ 		SELECT *
+ 		FROM codeGroup2	
 		
 	</select>
 

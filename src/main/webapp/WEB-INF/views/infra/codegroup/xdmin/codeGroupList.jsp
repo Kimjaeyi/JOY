@@ -236,20 +236,37 @@
 							</tr>
 						</thead>
 						<tbody class="table-group-divider">
-						<c:forEach items="${list}" var="list" varStatus="status">
-							<tr data-tr_value = "<c:out value="${list.seq }"/>">
-								<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-								<td scope="row"><c:out value="${list.seq }"/></td>
-								<td><c:out value="${list.seq }"/></td>
-								<td><c:out value="${list.name_ko }"/></td>
-								<td><c:out value="${list.name_eng }"/></td>
-								<td><c:out value="${list.codeamount }"/></td>
-								<td></td>
-								<td></td>
-								<td><c:out value="${list.useNY }"/></td>
-								<td><c:out value="${list.delNY }"/></td>
-							</tr>
-						</c:forEach>
+							<c:choose>
+								<c:when test="${fn:length(list) eq 0}">
+									<td class="text-center" colspan="10">There is no data!</td>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${list}" var="list" varStatus="status">
+										<tr data-tr_value = "<c:out value="${list.seq }"/>">
+											<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+											<td scope="row"><c:out value="${list.seq }"/></td>
+											<td><c:out value="${list.seq }"/></td>
+											<td><c:out value="${list.name_ko }"/></td>
+											<td><c:out value="${list.name_eng }"/></td>
+											<td><c:out value="${list.codeamount }"/></td>
+											<td></td>
+											<td></td>
+											<td>
+												<c:choose>
+													<c:when test="${list.useNY eq 0 }">N</c:when>
+													<c:otherwise>Y</c:otherwise>
+												</c:choose>
+											</td>
+											<td>
+												<c:choose>
+													<c:when test="${list.delNY eq 0 }">N</c:when>
+													<c:otherwise>Y</c:otherwise>
+												</c:choose>
+											</td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
 					</table>
 					<br><br>
