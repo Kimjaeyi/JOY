@@ -39,7 +39,7 @@
 			text-decoration: none;
 	}
 	a:visited {
-			color:black;
+			color:gray;
 			text-decoration: none;
 	}
 	a:hover {
@@ -164,371 +164,132 @@
 		</a>
 		<br><hr><br>
 		<div class="member">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<li class="nav-item" role="presentation">
-					<button class="nav-link active" id="codegrouptab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">코드그룹 관리</button>
+			<ul class="nav nav-tabs" id="myTab">
+				<li class="nav-item">
+					<a class="nav-link active" id="codegrouptab" aria-current="page" href="#">코드그룹 관리</a>
 				</li>
-				<li class="nav-item" role="presentation">
-					<button class="nav-link" id="codetab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">코드 관리</button>
+				<li class="nav-item">
+					<a class="nav-link" id="codetab" href="CodeList.html">코드 관리</button>
 				</li>
 			</ul>
-			<div class="tab-content" id="myTabContent">
-				<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-					<br>
-					<div class="searchhead">
-						<div class="row">
-							<div class="col-1">
-								<h5><b>검색분류</b></h5>
-							</div>
-							<div class="row justify-content-end">
-								<div class="col-2">
-									<select class="form-select" id="inputGroupSelect3">
-										<option selected>날짜선택</option>
-										<option value="1">등록일</option>
-										<option value="2">수정일</option>
-									</select>
-								</div>
-								<div class="col-2">
-									<input type="date" class="form-control">
-								</div>
-								<div class="col-1" style="max-width: 30px">
-									<font>~</font>
-								</div>
-								<div class="col-2">
-									<input type="date" class="form-control">
+			<br>
+			<div class="searchhead">
+				<div class="row">
+					<div class="col-1">
+						<h5><b>검색분류</b></h5>
+					</div>
+					<div class="row justify-content-end">
+						<div class="col-2">
+							<select class="form-select" id="inputGroupSelect3">
+								<option selected>날짜선택</option>
+								<option value="1">등록일</option>
+								<option value="2">수정일</option>
+							</select>
+						</div>
+						<div class="col-2">
+							<input type="date" class="form-control">
+						</div>
+						<div class="col-1" style="max-width: 30px">
+							<font>~</font>
+						</div>
+						<div class="col-2">
+							<input type="date" class="form-control">
+						</div>
+						<div class="col-6">
+							<form method="post" action="/codeGroup/codeGroupList">
+								<div class="col-4">
+									<select class="form-select" id="inputGroupSelect2">
+										<option value="" <c:if test="${empty vo.shOption}">selected</c:if>selected>선택</option>
+										<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+										<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
+										<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영어)</option>
+									 </select>
 								</div>
 								<div class="col-6">
-									<form method="post" action="/codeGroup/codeGroupList">
-										<div class="col-4">
-											<select class="form-select" id="inputGroupSelect2">
-												<option value="" <c:if test="${empty vo.shOption}">selected</c:if>selected>선택</option>
-												<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
-												<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
-												<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영어)</option>
-											 </select>
-										</div>
-										<div class="col-6">
-											<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
-										</div>
-										<div class="col-2">
-											<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
-										</div>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<h4>코드그룹관리</h4>
-					<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-					<a href="CodeGroupForm.html">
-					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
-					</a>
-					<br><br>
-					<table class="table table-light table-striped table-hover">
-						<thead>
-							<tr>
-								<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
-								<th scope="col">번호</th>
-								<th scope="col">코드그룹 코드</th>
-								<th scope="col">코드그룹 이름(한글)</th>
-								<th scope="col">코드그룹 이름(영문)</th>
-								<th scope="col">코드개수</th>
-								<th scope="col">등록일</th>
-								<th scope="col">수정일</th>
-								<th scope="col">사용</th>
-								<th scope="col">삭제</th>
-							</tr>
-						</thead>
-						<tbody class="table-group-divider">
-							<c:choose>
-								<c:when test="${fn:length(list) eq 0}">
-									<td class="text-center" colspan="10">There is no data!</td>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${list}" var="list" varStatus="status">
-										<tr data-tr_value = "<c:out value="${list.seq }"/>">
-											<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-											<td scope="row"><c:out value="${list.seq }"/></td>
-											<td><c:out value="${list.seq }"/></td>
-											<td><c:out value="${list.name_ko }"/></td>
-											<td><c:out value="${list.name_eng }"/></td>
-											<td><c:out value="${list.codeamount }"/></td>
-											<td></td>
-											<td></td>
-											<td>
-												<c:choose>
-													<c:when test="${list.useNY eq 0 }">N</c:when>
-													<c:otherwise>Y</c:otherwise>
-												</c:choose>
-											</td>
-											<td>
-												<c:choose>
-													<c:when test="${list.delNY eq 0 }">N</c:when>
-													<c:otherwise>Y</c:otherwise>
-												</c:choose>
-											</td>
-										</tr>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-						</tbody>
-					</table>
-					<br><br>
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-								</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
-					<br><br>
-				</div>
-				<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-					<br>
-					<div class="searchhead">
-						<div class="row">
-							<div class="col-1">
-								<h5><b>검색분류</b></h5>
-							</div>
-							<div class="row justify-content-end">
-								<div class="col-2">
-									<select class="form-select" id="inputGroupSelect1">
-										<option selected>사용여부</option>
-										<option value="1">Y</option>
-										<option value="2">N</option>
-									 </select>
+									<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
 								</div>
 								<div class="col-2">
-									<select class="form-select" id="inputGroupSelect3">
-										<option selected>날짜선택</option>
-										<option value="1">등록일</option>
-										<option value="2">수정일</option>
-									</select>
-								</div>
-								<div class="col-2">
-									<input type="date" class="form-control">
-								</div>
-								<div class="col-1" style="max-width: 30px">
-									<font>~</font>
-								</div>
-								<div class="col-2">
-									<input type="date" class="form-control">
-								</div>
-								<div class="col-2">
-									<select class="form-select" id="inputGroupSelect2">
-										<option selected>선택</option>
-										<option value="1">코드그룹 코드</option>
-										<option value="2">코드그룹 이름</option>
-										<option value="3">코드이름(한글)</option>
-										<option value="4">코드이름(영문)</option>
-									 </select>
-								</div>
-								<div class="col-3">
-									<input class="form-control" type="search" id="search_input" placeholder="검색어 입력">
-								</div>
-								<div class="col-1">
 									<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
-					<h4>코드관리</h4>
-					<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-					<a href="CodeForm.html">
-					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
-					</a>
-					<br><br>
-					<table class="table table-light table-striped table-hover">
-						<thead>
-							<tr>
-								<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
-								<th scope="col">번호</th>
-								<th scope="col">코드그룹 코드</th>
-								<th scope="col">코드그룹 이름(한글)</th>
-								<th scope="col">코드</th>
-								<th scope="col">대체코드</th>
-								<th scope="col">코드 이름(한글)</th>
-								<th scope="col">코드 이름(영문)</th>
-								<th scope="col">사용</th>
-								<th scope="col">순서</th>
-								<th scope="col">등록일</th>
-								<th scope="col">수정일</th>
-							</tr>
-						</thead>
-						<tbody class="table-group-divider">
-							<tr data-tr_value = "1">
-								<td><input class="form-check-input" type="checkbox" name="check" value="1"></td>
-								<td scope="row">1</td>
-								<td>1</td>
-								<td>통신사</td>
-								<td>1</td>
-								<td></td>
-								<td></td>
-								<td>SKT</td>
-								<td>Y</td>
-								<td>1</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_vsalue = "2">
-								<td><input class="form-check-input" type="checkbox" name="check" value="2"></td>
-								<td scope="row">2</td>
-								<td>1</td>
-								<td>통신사</td>
-								<td>2</td>
-								<td></td>
-								<td></td>
-								<td>ST</td>
-								<td>Y</td>
-								<td>2</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "3">
-								<td><input class="form-check-input" type="checkbox" name="check" value="3"></td>
-								<td scope="row">3</td>
-								<td>1</td>
-								<td>통신사</td>
-								<td>3</td>
-								<td></td>
-								<td></td>
-								<td>LG</td>
-								<td>Y</td>
-								<td>3</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "4">
-								<td><input class="form-check-input" type="checkbox" name="check" value="4"></td>
-								<td scope="row">4</td>
-								<td>2</td>
-								<td>이메일도메인</td>
-								<td>4</td>
-								<td></td>
-								<td></td>
-								<td>@naver.com</td>
-								<td>Y</td>
-								<td>1</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "5">
-								<td><input class="form-check-input" type="checkbox" name="check" value="5"></td>
-								<td scope="row">5</td>
-								<td>2</td>
-								<td>이메일도메인</td>
-								<td>5</td>
-								<td></td>
-								<td></td>
-								<td>@gmail.com</td>
-								<td>Y</td>
-								<td>2</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "6">
-								<td><input class="form-check-input" type="checkbox" name="check" value="6"></td>
-								<td scope="row">6</td>
-								<td>2</td>
-								<td>이메일도메인</td>
-								<td>6</td>
-								<td></td>
-								<td></td>
-								<td>@hanmail.net</td>
-								<td>Y</td>
-								<td>3</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "7">
-								<td><input class="form-check-input" type="checkbox" name="check" value="7"></td>
-								<td scope="row">7</td>
-								<td>2</td>
-								<td>이메일도메인</td>
-								<td>7</td>
-								<td></td>
-								<td></td>
-								<td>@daum.com</td>
-								<td>Y</td>
-								<td>4</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "8">
-								<td><input class="form-check-input" type="checkbox" name="check" value="8"></td>
-								<td scope="row">8</td>
-								<td>2</td>
-								<td>이메일도메인</td>
-								<td>8</td>
-								<td></td>
-								<td></td>
-								<td>@nate.com</td>
-								<td>Y</td>
-								<td>5</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "9">
-								<td><input class="form-check-input" type="checkbox" name="check" value="9"></td>
-								<td scope="row">9</td>
-								<td>2</td>
-								<td>이메일도메인</td>
-								<td>9</td>
-								<td></td>
-								<td></td>
-								<td>@coocha.com</td>
-								<td>Y</td>
-								<td>6</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-							<tr data-tr_value = "10">
-								<td><input class="form-check-input" type="checkbox" name="check" value="10"></td>
-								<td scope="row">10</td>
-								<td>3</td>
-								<td>배송비</td>
-								<td>10</td>
-								<td></td>
-								<td>무료</td>
-								<td></td>
-								<td>Y</td>
-								<td>1</td>
-								<td>2012-04-12</td>
-								<td>2012-04-12</td>
-							</tr>
-						</tbody>
-					</table>
-					<br><br>
-					<nav aria-label="Page navigation example">
-						<ul class="pagination">
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-								</a>
-							</li>
-							<li class="page-item active"><a class="page-link" href="#">1</a></li>
-							<li class="page-item"><a class="page-link" href="#">2</a></li>
-							<li class="page-item"><a class="page-link" href="#">3</a></li>
-							<li class="page-item">
-								<a class="page-link" href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
-					<br><br>
 				</div>
-			</div>			
+			</div>
+			<h4>코드그룹관리</h4>
+			<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
+			<a href="CodeGroupForm.html">
+			<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
+			</a>
+			<br><br>
+			<table class="table table-light table-striped table-hover">
+				<thead>
+					<tr>
+						<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
+						<th scope="col">번호</th>
+						<th scope="col">코드그룹 코드</th>
+						<th scope="col">코드그룹 이름(한글)</th>
+						<th scope="col">코드그룹 이름(영문)</th>
+						<th scope="col">코드개수</th>
+						<th scope="col">등록일</th>
+						<th scope="col">수정일</th>
+						<th scope="col">사용</th>
+						<th scope="col">삭제</th>
+					</tr>
+				</thead>
+				<tbody class="table-group-divider">
+					<c:choose>
+						<c:when test="${fn:length(list) eq 0}">
+							<td class="text-center" colspan="10">There is no data!</td>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="list" varStatus="status">
+								<tr data-tr_value = "<c:out value="${list.seq }"/>">
+									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+									<td scope="row"><c:out value="${list.seq }"/></td>
+									<td><c:out value="${list.seq }"/></td>
+									<td><c:out value="${list.name_ko }"/></td>
+									<td><c:out value="${list.name_eng }"/></td>
+									<td><c:out value="${list.codeamount }"/></td>
+									<td></td>
+									<td></td>
+									<td>
+										<c:choose>
+											<c:when test="${list.useNY eq 0 }">N</c:when>
+											<c:otherwise>Y</c:otherwise>
+										</c:choose>
+									</td>
+									<td>
+										<c:choose>
+											<c:when test="${list.delNY eq 0 }">N</c:when>
+											<c:otherwise>Y</c:otherwise>
+										</c:choose>
+									</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+			<br><br>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						</a>
+					</li>
+					<li class="page-item active"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item">
+						<a class="page-link" href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+			<br><br>
 		</div>
 	</div>
 

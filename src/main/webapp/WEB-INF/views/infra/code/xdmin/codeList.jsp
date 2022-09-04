@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head> 
-	<title>Code Group List</title>
+	<title>Code List</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,7 +39,7 @@
 			text-decoration: none;
 	}
 	a:visited {
-			color:black;
+			color:gray;
 			text-decoration: none;
 	}
 	a:hover {
@@ -165,11 +165,11 @@
 		<br><hr><br>
 		<div class="member">
 			<ul class="nav nav-tabs" id="myTab">
-				<li class="nav-item" role="presentation">
-					<a class="nav-link" id="codegrouptab" aria-current="page" href="#">코드그룹 관리</button>
+				<li class="nav-item">
+					<a class="nav-link" id="codegrouptab" href="CodeGroupList.html">코드그룹 관리</a>
 				</li>
-				<li class="nav-item" role="presentation">
-					<a class="nav-link active" id="codetab" aria-current="page" href="#">코드 관리</button>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="#" id="codetab">코드 관리</a>
 				</li>
 			</ul>
 			<br>

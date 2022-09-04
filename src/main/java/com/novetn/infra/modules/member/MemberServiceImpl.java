@@ -12,9 +12,9 @@ public class MemberServiceImpl implements MemberService {
 	MemberDao dao;
 	
 	@Override
-	public List<Member> selectList(MemberVo vo) throws Exception {
+	public List<Member> selectList() throws Exception {
 
-		List<Member> list = dao.selectList(vo);
+		List<Member> list = dao.selectList();
 		return list;
 	}
 	

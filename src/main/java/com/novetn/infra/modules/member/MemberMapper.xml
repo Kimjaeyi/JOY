@@ -7,7 +7,7 @@
 <mapper namespace="com.novetn.infra.modules.member.MemberMapper">
 
     <resultMap id="resultMapObj" type="com.novetn.infra.modules.member.Member"></resultMap>
-	
+<!-- 	
 	<sql id = "selectCommon">
 		from member
 		WHERE 1=1
@@ -18,7 +18,7 @@
 				<when test="shOption == 3">AND phone LIKE CONCAT('%',#{shValue},'%')</when>
 			</choose>
 	</sql>
-	
+ -->	
 	<select id="selectList" resultMap="resultMapObj">
 <!-- 		
 		SELECT
@@ -40,8 +40,6 @@
 			, a.regDate
 			, a.delNY
 		FROM member a
-		WHERE 1=1
-			AND name LIKE CONCAT('%',#{shValue},'%')
 		 
 		
 		

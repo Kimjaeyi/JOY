@@ -11,7 +11,7 @@
 	<sql id = "selectCommon">
 		from CodeGroup
 		WHERE 1=1
-			<if test="delNY != null and !dleNY.equals('')">AND delNY = #{delNY}</if>
+			<if test="delNY != null and !delNY.equals('')">AND delNY = #{delNY}</if>
 			<choose>
 				<when test="shOption == 1">AND seq = #{shValue}</when>
 				<when test="shOption == 2">AND name_ko LIKE CONCAT('%',#{shValue},'%')</when>

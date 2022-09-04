@@ -218,14 +218,14 @@
 									<form method="post" action="/codeGroup/codeGroupList">
 										<div class="col-4">
 											<select class="form-select" id="inputGroupSelect2">
-												<option value="" <c:if test="${empty vo.shOption}">selected</c:if>selected>선택</option>
-												<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
-												<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>이메일</option>
-												<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>연락처</option>
+												<option selected>선택</option>
+												<option value="1">이름</option>
+												<option value="2">이메일</option>
+												<option value="3">연락처</option>
 											 </select>
 										</div>
 										<div class="col-6">
-											<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
+											<input class="form-control" type="search" id="search_input" placeholder="검색어 입력">
 										</div>
 										<div class="col-2">
 											<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
@@ -256,11 +256,13 @@
 							</tr>
 						</thead>
 						<tbody class="table-group-divider">
+<%-- 						
 							<c:choose>
 								<c:when test="${fn:length(list) eq 0}">
 									<td class="text-center" colspan="10">There is no data!</td>
 								</c:when>
 								<c:otherwise>
+ --%>								
 									<c:forEach items="${list}" var="list" varStatus="status">
 										<tr data-tr_value = "<c:out value="${list.seq }"/>">
 											<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
@@ -280,8 +282,10 @@
 											</td>
 										</tr>
 									</c:forEach>
+<%-- 									
 								</c:otherwise>
 							</c:choose>
+ --%>							
 						</tbody>
 					</table>
 					<br><br>
