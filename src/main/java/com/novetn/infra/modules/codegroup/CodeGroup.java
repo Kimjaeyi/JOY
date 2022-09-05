@@ -6,6 +6,8 @@ public class CodeGroup {
 	private String name_ko;
 	private String name_eng;
 	private Integer codeamount;
+	private String regDate;
+	private String modDate;
 	private Integer useNY;
 	private Integer delNY;
 	
@@ -33,6 +35,18 @@ public class CodeGroup {
 	public void setCodeamount(Integer codeamount) {
 		this.codeamount = codeamount;
 	}
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	public String getModDate() {
+		return modDate;
+	}
+	public void setModDate(String modDate) {
+		this.modDate = modDate;
+	}
 	public Integer getUseNY() {
 		return useNY;
 	}
@@ -45,6 +59,7 @@ public class CodeGroup {
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
+
 	
 	
 }

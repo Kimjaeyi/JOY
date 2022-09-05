@@ -24,7 +24,26 @@
 
 <style type="text/css">
 
-	@import url('css/font.css');
+	@font-face {
+    font-family: 'GilbeotRainbow';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+	}
+	
+	@font-face {
+	    font-family: 'MICEGothic Bold';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+	    font-weight: 700;
+	    font-style: normal;
+	}
+	
+	@font-face {
+	    font-family: 'MICEGothic';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
+	    font-weight: 400;
+	    font-style: normal;
+	}
 	
 	h1 {
 		font-family: 'GilbeotRainbow';
@@ -166,10 +185,10 @@
 		<div class="member">
 			<ul class="nav nav-tabs" id="myTab">
 				<li class="nav-item">
-					<a class="nav-link" id="codegrouptab" href="CodeGroupList.html">코드그룹 관리</a>
+					<button class="nav-link" id="codegrouptab">코드그룹 관리</button>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" aria-current="page" href="#" id="codetab">코드 관리</a>
+					<button class="nav-link active" aria-current="page" id="codetab">코드 관리</button>
 				</li>
 			</ul>
 			<br>
@@ -180,14 +199,14 @@
 					</div>
 					<div class="row justify-content-end">
 						<div class="col-2">
-							<select class="form-select" id="inputGroupSelect1">
+							<select class="form-select">
 								<option selected>사용여부</option>
 								<option value="1">Y</option>
 								<option value="2">N</option>
 							 </select>
 						</div>
 						<div class="col-2">
-							<select class="form-select" id="inputGroupSelect3">
+							<select class="form-select">
 								<option selected>날짜선택</option>
 								<option value="1">등록일</option>
 								<option value="2">수정일</option>

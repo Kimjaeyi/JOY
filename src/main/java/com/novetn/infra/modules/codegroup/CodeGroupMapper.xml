@@ -8,17 +8,6 @@
 
     <resultMap id="resultMapObj" type="com.novetn.infra.modules.codegroup.CodeGroup"></resultMap>
 	
-	<sql id = "selectCommon">
-		from CodeGroup
-		WHERE 1=1
-			<if test="delNY != null and !delNY.equals('')">AND delNY = #{delNY}</if>
-			<choose>
-				<when test="shOption == 1">AND seq = #{shValue}</when>
-				<when test="shOption == 2">AND name_ko LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND name_eng LIKE CONCAT('%',#{shValue},'%')</when>
-			</choose>
-	</sql>
-	
 	<select id="selectList" resultMap="resultMapObj">
 		
 		SELECT
@@ -26,13 +15,24 @@
 			, a.name_ko
 			, a.name_eng
 			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
-			, a.useNY
+			, a.regDate
+			, a.modDate
 			, a.delNY
 		FROM CodeGroup a
 		WHERE 1=1
-			AND delNY = 0
-			AND name_ko LIKE CONCAT('%',#{shValue},'%')
 		
+		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
+		<choose>
+			<when test="shOptionDate == 1">AND a.regDate BETWEEN #{shstartDate} AND #{shendDate}</when>
+			<when test="shOptionDate == 2">AND a.modDate BETWEEN #{shstartDate} AND #{shendDate}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND a.seq = #{shValue}</when>
+			<when test="shOption == 2">AND a.name_ko LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+			
 	</select>
 
 </mapper>

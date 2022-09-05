@@ -24,7 +24,26 @@
 
 <style type="text/css">
 
-	@import url('css/font.css');
+	@font-face {
+	    font-family: 'GilbeotRainbow';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+	@font-face {
+	    font-family: 'MICEGothic Bold';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
+	    font-weight: 700;
+	    font-style: normal;
+	}
+	
+	@font-face {
+	    font-family: 'MICEGothic';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
+	    font-weight: 400;
+	    font-style: normal;
+	}
 	
 	h1 {
 		font-family: 'GilbeotRainbow';
@@ -192,9 +211,9 @@
 									<select class="form-select" id="inputGroupSelect1">
 										<option selected>구분</option>
 										<option value="1">MANAGER</option>
-										<option value="2">VVIP</option>
+										<option value="2">일반</option>
 										<option value="3">VIP</option>
-										<option value="4">일반</option>
+										<option value="4">VVIP</option>
 									 </select>
 								</div>
 								<div class="col-2">
@@ -267,7 +286,6 @@
 										<tr data-tr_value = "<c:out value="${list.seq }"/>">
 											<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 											<td scope="row"><c:out value="${list.seq }"/></td>
-											<td><c:out value="${list.seq }"/></td>
 											<td><c:out value="${list.membership }"/></td>
 											<td><c:out value="${list.name }"/></td>
 											<td><c:out value="${list.dob }"/></td>

@@ -7,47 +7,24 @@
 <%@ page session="false" %>
 <html> 
 <head>
-	<title>Code Group List</title>
+	<title>Item List</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap extra CSS -->    
     <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
+    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
     <!-- user css -->
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-<style type="text/css">
-
-	@font-face {
-    font-family: 'GilbeotRainbow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-	}
 	
-	@font-face {
-	    font-family: 'MICEGothic Bold';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-	    font-weight: 700;
-	    font-style: normal;
-	}
-	
-	@font-face {
-	    font-family: 'MICEGothic';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
-	    font-weight: 400;
-	    font-style: normal;
-	}
+	<style type="text/css">
+
+	@import url('css/font.css');
 	
 	h1 {
 		font-family: 'GilbeotRainbow';
@@ -100,7 +77,7 @@
 		padding: 20px;
 	}
 	
-	.aaa {
+	.member {
 		margin: 2% 15%;
 	}
 	
@@ -186,67 +163,60 @@
 			<h1 style="margin: 30px 0 0 10%">coocha</h1>
 		</a>
 		<br><hr><br>
-		<div class="aaa">
+		<div class="member">
 			<ul class="nav nav-tabs" id="myTab">
 				<li class="nav-item">
-					<button class="nav-link active" id="codegrouptab" aria-current="page">코드그룹 관리</button>
+					<a class="nav-link active" aria-current="page" href="itemList.html">상품 관리</a>
 				</li>
 				<li class="nav-item">
-					<button class="nav-link" id="codetab">코드 관리</button>
+					<a class="nav-link">상품 정보</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link">상품 수정</a>
 				</li>
 			</ul>
 			<br>
 			<div class="searchhead">
-				<form method="post" action="/codeGroup/codeGroupList">
-					<div class="row">
-						<div class="col-1">
-							<h5><b>검색분류</b></h5>
+				<div class="row">
+					<div class="col-1">
+						<h5><b>검색분류</b></h5>
+					</div>
+					<div class="row justify-content-end">
+						<div class="col-2">
+							<select class="form-select" id="inputGroupSelect1">
+								<option selected>사용여부</option>
+								<option value="1">Y</option>
+								<option value="2">N</option>
+							 </select>
 						</div>
-						<div class="row justify-content-end">
-							<div class="col-2">
-								<select class="form-select" name="shDelNy">
-									<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
-									<option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
-									<option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
-								</select>
-							</div>
-							<div class="col-2">
-								<select class="form-select" name="shOptionDate">
-									<option value="">날짜선택</option>
-									<option value="1">등록일</option>
-									<option value="2">수정일</option>
-								</select>
-							</div>
-							<div class="col-3" style="max-width: 150px">
-								<input type="text" id="shstartDate" name="shstartDate" class="form-control shDate" value="${vo.shstartDate}" placeholder="시작일" autocomplete="off">
-							</div>
-							<div class="col-1" style="max-width: 30px">
-								<font>~</font>
-							</div>
-							<div class="col-3" style="max-width: 150px">
-								<input type="text" id="shendDate" name="shendDate" class="form-control shDate" value="${vo.shendDate}" placeholder="종료일" autocomplete="off">
-							</div>
-							<div class="col-2">
-								<select class="form-select" name="shOption" id="selectfield">
-									<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
-									<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
-									<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름(한글)</option>
-									<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드그룹 이름(영어)</option>
-								 </select>
-							</div>
-							<div class="col-3">
-								<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
-							</div>
-							<div class="col-1">
-								<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
-							</div>
+						<div class="col-2">
+							<select class="form-select" id="inputGroupSelect3">
+								<option selected>날짜선택</option>
+								<option value="1">등록일</option>
+								<option value="2">수정일</option>
+							</select>
+						</div>
+						<div class="col-2">
+							<input type="date" class="form-control">
+						</div>
+						<div class="col-1" style="max-width: 30px">
+							<font>~</font>
+						</div>
+						<div class="col-2">
+							<input type="date" class="form-control">
+						</div>
+						<div class="col-3">
+							<input class="form-control" type="search" id="search_input" placeholder="상품 검색">
+						</div>
+						<div class="col-1">
+							<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
 						</div>
 					</div>
-				</form>
+				</div>
 			</div>
-			<h4>코드그룹관리</h4>
+			<h4>상품관리</h4>
 			<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-			<a href="CodeGroupForm.html">
+			<a href="itemForm.html">
 			<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
 			</a>
 			<br><br>
@@ -255,41 +225,39 @@
 					<tr>
 						<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
 						<th scope="col">번호</th>
-						<th scope="col">코드그룹 코드</th>
-						<th scope="col">코드그룹 이름(한글)</th>
-						<th scope="col">코드그룹 이름(영문)</th>
-						<th scope="col">코드개수</th>
+						<th scope="col">상품 이름</th>
+						<th scope="col">상품 가격</th>
+						<th scope="col">재고</th>
 						<th scope="col">등록일</th>
 						<th scope="col">수정일</th>
+						<th scope="col">사용</th>
 						<th scope="col">삭제</th>
 					</tr>
 				</thead>
 				<tbody class="table-group-divider">
-					<c:choose>
-						<c:when test="${fn:length(list) eq 0 }">
-							<td class="text-center" colspan="10">There is no data!</td>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${list}" var="list" varStatus="status">
-								<tr data-tr_value = "<c:out value="${list.seq }"/>">
-									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-									<td scope="row"><c:out value="${list.seq }"/></td>
-									<td><c:out value="${list.seq }"/></td>
-									<td><c:out value="${list.name_ko }"/></td>
-									<td><c:out value="${list.name_eng }"/></td>
-									<td><c:out value="${list.codeamount }"/></td>
-									<td><c:out value="${list.regDate }"/></td>
-									<td><c:out value="${list.modDate }"/></td>
-									<td>
-										<c:choose>
-											<c:when test="${list.delNY eq 0 }">N</c:when>
-											<c:otherwise>Y</c:otherwise>
-										</c:choose>
-									</td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
+					<c:forEach items="${list}" var="list" varStatus="status">
+					<tr data-tr_value = "<c:out value="${list.seq }"/>">
+						<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+						<td scope="row"><c:out value="${list.seq }"/></td>
+						<td><c:out value="${list.title }"/></td>
+						<td><c:out value="${list.price }"/></td>
+						<td><c:out value="${list.stock }"/></td>
+						<td><c:out value="${list.regDate }"/></td>
+						<td><c:out value="${list.modDate }"/></td>
+						<td>
+							<c:choose>
+								<c:when test="${list.useNY eq 0 }">N</c:when>
+								<c:otherwise>Y</c:otherwise>
+							</c:choose>
+						</td>
+						<td>
+							<c:choose>
+								<c:when test="${list.delNY eq 0 }">N</c:when>
+								<c:otherwise>Y</c:otherwise>
+							</c:choose>
+						</td>
+					</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 			<br><br>
@@ -341,25 +309,6 @@ $(document).ready(function() {
             return false;
         }
     });
-});
-
-$(document).ready(function() {
-	$("input.shDate").datepicker();
-});
-
-$.datepicker.setDefaults({
-	dateFormat : 'yy-mm-dd',
-	prevText : '이전 달',
-	nextText : '다음 달',
-	monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-			'9월', '10월', '11월', '12월' ],
-	monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-			'9월', '10월', '11월', '12월' ],
-	dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-	dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-	dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-	showMonthAfterYear : true,
-	yearSuffix : '년'
 });
 /* 	
 	button = document.querySelector('button');

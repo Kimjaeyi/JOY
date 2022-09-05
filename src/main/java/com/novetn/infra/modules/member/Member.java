@@ -5,7 +5,7 @@ import java.util.Date;
 public class Member {
 
 	private Integer seq;
-	private Integer membership;
+	private String membership;
 	private String name;
 	private String dob;
 	private String email;
@@ -19,10 +19,10 @@ public class Member {
 	public void setSeq(Integer seq) {
 		this.seq = seq;
 	}
-	public Integer getMembership() {
+	public String getMembership() {
 		return membership;
 	}
-	public void setMembership(Integer membership) {
+	public void setMembership(String membership) {
 		this.membership = membership;
 	}
 	public String getName() {
@@ -61,6 +61,8 @@ public class Member {
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
+	
+
 	
 	
 }

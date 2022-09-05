@@ -2,13 +2,17 @@ package com.novetn.infra.modules.codegroup;
 
 public class CodeGroupVo {
 
-	private Integer shOption;
+	private String shOption;
 	private String shValue;
+	private Integer shDelNy;
+	private String shstartDate;
+	private String shendDate;
+	private Integer shOptionDate;
 	
-	public Integer getShOption() {
+	public String getShOption() {
 		return shOption;
 	}
-	public void setShOption(Integer shOption) {
+	public void setShOption(String shOption) {
 		this.shOption = shOption;
 	}
 	public String getShValue() {
@@ -17,5 +21,31 @@ public class CodeGroupVo {
 	public void setShValue(String shValue) {
 		this.shValue = shValue;
 	}
+	public Integer getShDelNy() {
+		return shDelNy;
+	}
+	public void setShDelNy(Integer shDelNy) {
+		this.shDelNy = shDelNy;
+	}
+	public String getShstartDate() {
+		return shstartDate;
+	}
+	public void setShstartDate(String shstartDate) {
+		this.shstartDate = shstartDate;
+	}
+	public String getShendDate() {
+		return shendDate;
+	}
+	public void setShendDate(String shendDate) {
+		this.shendDate = shendDate;
+	}
+	public Integer getShOptionDate() {
+		return shOptionDate;
+	}
+	public void setShOptionDate(Integer shOptionDate) {
+		this.shOptionDate = shOptionDate;
+	}
+	
+	
 	
 }
