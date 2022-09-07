@@ -2,7 +2,7 @@ package com.novetn.infra.modules.code;
 
 public class Code {
 
-	private Integer seq;
+	private String seq;
 	private Integer codeGroup_seq;
 	private String name_ko;
 	private Integer codeNum;
@@ -13,11 +13,17 @@ public class Code {
 	private Integer useNY;
 	private Integer delNY;
 	
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public String getName_ko() {
+		return name_ko;
+	}
+	public void setName_ko(String name_ko) {
+		this.name_ko = name_ko;
 	}
 	public Integer getCodeGroup_seq() {
 		return codeGroup_seq;

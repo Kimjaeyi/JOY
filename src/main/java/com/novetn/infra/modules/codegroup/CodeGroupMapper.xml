@@ -12,6 +12,7 @@
 		
 		SELECT
 			a.seq
+			, a.codeNum
 			, a.name_ko
 			, a.name_eng
 			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
@@ -28,11 +29,34 @@
 		</choose>
 		
 		<choose>
-			<when test="shOption == 1">AND a.seq = #{shValue}</when>
+			<when test="shOption == 1">AND a.codeNum LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND a.name_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 			
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO CodeGroup (
+			codeNum
+			, name_ko
+			, name_eng
+			, regDate
+			, useNY
+			, delNY
+		)
+		VALUES (
+			#{codeNum}
+			,#{name_ko}
+			,#{name_eng}
+			, now()
+			,1
+			,0
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		
+	</insert>
 
 </mapper>

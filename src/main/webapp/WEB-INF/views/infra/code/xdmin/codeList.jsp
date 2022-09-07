@@ -21,6 +21,10 @@
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <style type="text/css">
 
@@ -96,7 +100,7 @@
 		padding: 20px;
 	}
 	
-	.member {
+	.aaa {
 		margin: 2% 15%;
 	}
 	
@@ -182,7 +186,7 @@
 			<h1 style="margin: 30px 0 0 10%">coocha</h1>
 		</a>
 		<br><hr><br>
-		<div class="member">
+		<div class="aaa">
 			<ul class="nav nav-tabs" id="myTab">
 				<li class="nav-item">
 					<button class="nav-link" id="codegrouptab">코드그룹 관리</button>
@@ -192,57 +196,59 @@
 				</li>
 			</ul>
 			<br>
-			<div class="searchhead">
-				<div class="row">
-					<div class="col-1">
-						<h5><b>검색분류</b></h5>
-					</div>
-					<div class="row justify-content-end">
-						<div class="col-2">
-							<select class="form-select">
-								<option selected>사용여부</option>
-								<option value="1">Y</option>
-								<option value="2">N</option>
-							 </select>
-						</div>
-						<div class="col-2">
-							<select class="form-select">
-								<option selected>날짜선택</option>
-								<option value="1">등록일</option>
-								<option value="2">수정일</option>
-							</select>
-						</div>
-						<div class="col-2">
-							<input type="date" class="form-control">
-						</div>
-						<div class="col-1" style="max-width: 30px">
-							<font>~</font>
-						</div>
-						<div class="col-2">
-							<input type="date" class="form-control">
-						</div>
-						<div class="col-2">
-							<select class="form-select" id="inputGroupSelect2">
-								<option selected>선택</option>
-								<option value="1">코드그룹 코드</option>
-								<option value="2">코드그룹 이름</option>
-								<option value="3">코드이름(한글)</option>
-								<option value="4">코드이름(영문)</option>
-							 </select>
-						</div>
-						<div class="col-3">
-							<input class="form-control" type="search" id="search_input" placeholder="검색어 입력">
-						</div>
+			<form method="post" action="/code/codeList">
+				<div class="searchhead">
+					<div class="row">
 						<div class="col-1">
-							<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
+							<h5><b>검색분류</b></h5>
+						</div>
+						<div class="row justify-content-end">
+							<div class="col-2">
+								<select class="form-select" name="shDelNy">
+									<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
+									<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
+									<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
+								</select>
+							</div>
+							<div class="col-2">
+								<select class="form-select" name="shOptionDate">
+									<option value="">날짜선택</option>
+									<option value="1">등록일</option>
+									<option value="2">수정일</option>
+								</select>
+							</div>
+							<div class="col-3" style="max-width: 150px">
+								<input type="text" id="shstartDate" name="shstartDate" class="form-control shDate" value="${vo.shstartDate}" placeholder="시작일" autocomplete="off">
+							</div>
+							<div class="col-1" style="max-width: 30px">
+								<font>~</font>
+							</div>
+							<div class="col-3" style="max-width: 150px">
+								<input type="text" id="shendDate" name="shendDate" class="form-control shDate" value="${vo.shendDate}" placeholder="종료일" autocomplete="off">
+							</div>
+							<div class="col-2">
+								<select class="form-select" name="shOption" id="selectfield">
+									<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
+									<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+									<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
+									<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드이름(한글)</option>
+									<option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>코드이름(영문)</option>
+								 </select>
+							</div>
+							<div class="col-3">
+								<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
+							</div>
+							<div class="col-1">
+								<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 			<h4>코드관리</h4>
 			<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-			<a href="CodeForm.html">
-			<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
+			<a href="codeForm">
+				<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
 			</a>
 			<br><br>
 			<table class="table table-light table-striped table-hover">
@@ -264,33 +270,40 @@
 					</tr>
 				</thead>
 				<tbody class="table-group-divider">
-				<c:forEach items="${list}" var="list" varStatus="status">
-					<tr data-tr_value = "<c:out value="${list.seq }"/>">
-						<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-						<td scope="row"><c:out value="${list.seq }"/></td>
-						<td><c:out value="${list.codeGroup_seq }"/></td>
-						<td><c:out value="${list.name_ko }"/></td>
-						<td><c:out value="${list.codeNum }"/></td>
-						<td><c:out value="${list.anotherCode }"/></td>
-						<td><c:out value="${list.cdname_ko }"/></td>
-						<td><c:out value="${list.name_eng }"/></td>
-						<td><c:out value="${list.order }"/></td>
-						<td></td>
-						<td></td>
-						<td>
-							<c:choose>
-								<c:when test="${list.useNY eq 0 }">N</c:when>
-								<c:otherwise>Y</c:otherwise>
-							</c:choose>
-						</td>
-						<td>
-							<c:choose>
-								<c:when test="${list.delNY eq 0 }">N</c:when>
-								<c:otherwise>Y</c:otherwise>
-							</c:choose>
-						</td>
-					</tr>
-					</c:forEach>
+				<c:choose>
+						<c:when test="${fn:length(list) eq 0 }">
+							<td class="text-center" colspan="10">There is no data!</td>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="list" varStatus="status">
+								<tr data-tr_value = "<c:out value="${list.seq }"/>">
+									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+									<td scope="row"><c:out value="${list.seq }"/></td>
+									<td><c:out value="${list.codeGroup_seq }"/></td>
+									<td><c:out value="${list.name_ko }"/></td>
+									<td><c:out value="${list.codeNum }"/></td>
+									<td><c:out value="${list.anotherCode }"/></td>
+									<td><c:out value="${list.cdname_ko }"/></td>
+									<td><c:out value="${list.name_eng }"/></td>
+									<td><c:out value="${list.order }"/></td>
+									<td></td>
+									<td></td>
+									<td>
+										<c:choose>
+											<c:when test="${list.useNY eq 0 }">N</c:when>
+											<c:otherwise>Y</c:otherwise>
+										</c:choose>
+									</td>
+									<td>
+										<c:choose>
+											<c:when test="${list.delNY eq 0 }">N</c:when>
+											<c:otherwise>Y</c:otherwise>
+										</c:choose>
+									</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 				</tbody>
 			</table>
 			<br><br>
@@ -343,36 +356,25 @@ $(document).ready(function() {
         }
     });
 });
-/* 	
-	button = document.querySelector('button');
-	input = document.getElementById('search_btn')
 
-	// 클릭,엔터키 이벤트 
-	input.focus()
-	input.addEventListener('keydown',function(e){
-	    if(e.key === "Enter"){
-	      Filter();
-	    }
-	})
-	button.addEventListener('click',Filter);
+$(document).ready(function() {
+	$("input.shDate").datepicker();
+});
 
-	function Filter(){
-	    var search_btn , item , name
-	    
-	    search_btn = document.getElementById('search_btn').value.toUpperCase();
-	    item = document.getElementsByClassName('one_quarter')
-	    
-	  //indexOf()를 활용한 검색기능 구현
-	  for(i=0;i<item.length;i++){
-	      name = item[i].getElementsByClassName("name");
-	      if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
-	        item[i].style.display = "inline-block";
-	      }else{
-	        item[i].style.display = "none";
-	      }
-	    }
-	}	
- */	
+$.datepicker.setDefaults({
+	dateFormat : 'yy-mm-dd',
+	prevText : '이전 달',
+	nextText : '다음 달',
+	monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+			'9월', '10월', '11월', '12월' ],
+	monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+			'9월', '10월', '11월', '12월' ],
+	dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+	dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+	dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+	showMonthAfterYear : true,
+	yearSuffix : '년'
+});
 </script>
 <!-- end -->
 

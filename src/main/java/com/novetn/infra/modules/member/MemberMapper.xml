@@ -32,7 +32,7 @@
  -->
  		SELECT
 			a.seq
-			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.membership = b.codeNum) AS membership
+			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership
 			, a.name
 			, a.dob
 			, a.email
@@ -40,9 +40,43 @@
 			, a.regDate
 			, a.delNY
 		FROM member a
+		WHERE 1=1
 		 
+		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
+		<if test="shOptionMem != null and !shOptionMem.equals('')">AND a.grade = #{shOptionMem}</if>
+		<choose>
+			<when test="shOptionDate == 1">AND a.dob BETWEEN #{shstartDate} AND #{shendDate}</when>
+			<when test="shOptionDate == 2">AND a.regDate BETWEEN #{shstartDate} AND #{shendDate}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND a.name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND a.email LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND a.phone LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
 		
 		
 	</select>
+	
+	<insert id="insert">
+		INSERT INTO member (
+			name
+			, dob
+			, membership
+			, regDate
+			, delNY
+		)
+		VALUES (
+			#{name}
+			,#{dob}
+			,#{membership}
+			, now()
+			,0
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		
+	</insert>
 
 </mapper>

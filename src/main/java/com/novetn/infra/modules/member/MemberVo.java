@@ -1,10 +1,11 @@
-package com.novetn.infra.modules.code;
+package com.novetn.infra.modules.member;
 
-public class CodeVo {
+public class MemberVo {
 
 	private String shOption;
 	private String shValue;
 	private Integer shDelNy;
+	private Integer shOptionMem;
 	private String shstartDate;
 	private String shendDate;
 	private Integer shOptionDate;
@@ -27,6 +28,12 @@ public class CodeVo {
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
 	}
+	public Integer getShOptionMem() {
+		return shOptionMem;
+	}
+	public void setShOptionMem(Integer shOptionMem) {
+		this.shOptionMem = shOptionMem;
+	}
 	public String getShstartDate() {
 		return shstartDate;
 	}
@@ -45,6 +52,7 @@ public class CodeVo {
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
 	}
+	
 	
 	
 }

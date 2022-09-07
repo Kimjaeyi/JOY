@@ -19,7 +19,16 @@ public class MemberDao {
 	
 	private static String namespace = "com.novetn.infra.modules.member.MemberMapper";
 	
-	public List<Member> selectList(){ return sqlSession.selectList(namespace + ".selectList"); }
+	public List<Member> selectList(MemberVo vo) { 
+		List<Member> list = sqlSession.selectList("com.novetn.infra.modules.member.MemberMapper.selectList", vo);
+		return list; 
+	}
+	
+	public int insert(Member dto) {
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result: " + result);
+		return result;
+	}
 	
 }
 

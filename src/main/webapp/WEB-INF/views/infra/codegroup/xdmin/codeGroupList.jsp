@@ -22,9 +22,9 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <style type="text/css">
 
@@ -189,7 +189,7 @@
 		<div class="aaa">
 			<ul class="nav nav-tabs" id="myTab">
 				<li class="nav-item">
-					<button class="nav-link active" id="codegrouptab" aria-current="page">코드그룹 관리</button>
+					<button class="nav-link active" id="codegrouptab">코드그룹 관리</button>
 				</li>
 				<li class="nav-item">
 					<button class="nav-link" id="codetab">코드 관리</button>
@@ -205,9 +205,9 @@
 						<div class="row justify-content-end">
 							<div class="col-2">
 								<select class="form-select" name="shDelNy">
-									<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
-									<option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
-									<option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+									<option value="" <c:if test="${empty vo.shDelNy }"></c:if>>삭제여부</option>
+									<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
+									<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
 								</select>
 							</div>
 							<div class="col-2">
@@ -246,8 +246,8 @@
 			</div>
 			<h4>코드그룹관리</h4>
 			<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-			<a href="CodeGroupForm.html">
-			<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
+			<a href="codeGroupForm">
+				<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
 			</a>
 			<br><br>
 			<table class="table table-light table-striped table-hover">
@@ -274,7 +274,7 @@
 								<tr data-tr_value = "<c:out value="${list.seq }"/>">
 									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 									<td scope="row"><c:out value="${list.seq }"/></td>
-									<td><c:out value="${list.seq }"/></td>
+									<td><c:out value="${list.codeNum }"/></td>
 									<td><c:out value="${list.name_ko }"/></td>
 									<td><c:out value="${list.name_eng }"/></td>
 									<td><c:out value="${list.codeamount }"/></td>
@@ -361,36 +361,6 @@ $.datepicker.setDefaults({
 	showMonthAfterYear : true,
 	yearSuffix : '년'
 });
-/* 	
-	button = document.querySelector('button');
-	input = document.getElementById('search_btn')
-
-	// 클릭,엔터키 이벤트 
-	input.focus()
-	input.addEventListener('keydown',function(e){
-	    if(e.key === "Enter"){
-	      Filter();
-	    }
-	})
-	button.addEventListener('click',Filter);
-
-	function Filter(){
-	    var search_btn , item , name
-	    
-	    search_btn = document.getElementById('search_btn').value.toUpperCase();
-	    item = document.getElementsByClassName('one_quarter')
-	    
-	  //indexOf()를 활용한 검색기능 구현
-	  for(i=0;i<item.length;i++){
-	      name = item[i].getElementsByClassName("name");
-	      if(name[0].innerHTML.toUpperCase().indexOf(value) > -1){
-	        item[i].style.display = "inline-block";
-	      }else{
-	        item[i].style.display = "none";
-	      }
-	    }
-	}	
- */	
 </script>
 <!-- end -->
 

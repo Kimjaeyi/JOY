@@ -2,7 +2,8 @@ package com.novetn.infra.modules.codegroup;
 
 public class CodeGroup {
  
-	private Integer seq;
+	private String seq;
+	private Integer codeNum;
 	private String name_ko;
 	private String name_eng;
 	private Integer codeamount;
@@ -11,11 +12,17 @@ public class CodeGroup {
 	private Integer useNY;
 	private Integer delNY;
 	
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public Integer getCodeNum() {
+		return codeNum;
+	}
+	public void setCodeNum(Integer codeNum) {
+		this.codeNum = codeNum;
 	}
 	public String getName_ko() {
 		return name_ko;
@@ -59,7 +66,5 @@ public class CodeGroup {
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
-
-	
 	
 }

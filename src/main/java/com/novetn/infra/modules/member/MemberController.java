@@ -16,12 +16,35 @@ public class MemberController {
 	
 
 	@RequestMapping(value = "memberList")
-	public String memberList(Model model) throws Exception {
+	public String memberList(Model model, MemberVo vo) throws Exception {
 
-		List<Member> list = service.selectList();
+		System.out.println("vo.getShValue() : " + vo.getShValue());
+		System.out.println("vo.getShOption() : " + vo.getShOption());
+		System.out.println("vo.getShDelNy() : " + vo.getShDelNy());
+		System.out.println(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
+		System.out.println(vo.getShstartDate() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShstartDate());
+		System.out.println(vo.getShendDate() == null ? UtilDateTime.nowString() : vo.getShendDate());
+		
+		List<Member> list = service.selectList(vo);
 		model.addAttribute("list", list);
 		
 		return "infra/member/xdmin/memberList";
+	}
+	
+	@RequestMapping(value = "memberForm")
+	public String memberForm(Model model) throws Exception {
+		
+		return "infra/member/xdmin/memberForm";
+		
+	}
+	
+	@RequestMapping(value = "memberInst")
+	public String memberInst(Member dto) throws Exception {
+		
+		int result = service.insert(dto);
+		System.out.println("controller result: " + result);
+		
+		return "redirect:/member/memberList";
 	}
 	
 }

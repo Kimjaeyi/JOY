@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Member {
 
-	private Integer seq;
+	private String seq;
 	private String membership;
 	private String name;
 	private String dob;
@@ -13,10 +13,10 @@ public class Member {
 	private Date regDate;
 	private Integer delNY;
 	
-	public Integer getSeq() {
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
 	public String getMembership() {
