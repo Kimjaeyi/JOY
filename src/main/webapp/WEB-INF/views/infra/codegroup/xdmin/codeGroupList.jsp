@@ -275,7 +275,9 @@
 									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 									<td scope="row"><c:out value="${list.seq }"/></td>
 									<td><c:out value="${list.codeNum }"/></td>
-									<td><c:out value="${list.name_ko }"/></td>
+									<td>
+										<a href="/codeGroup/codeGroupView?name_ko=<c:out value="${list.name_ko }"/>"><c:out value="${list.name_ko }"/></a>
+									</td>
 									<td><c:out value="${list.name_eng }"/></td>
 									<td><c:out value="${list.codeamount }"/></td>
 									<td><c:out value="${list.regDate }"/></td>

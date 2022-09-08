@@ -103,10 +103,10 @@
 				<div class="row">
 					<div class="col">
 						<h6>코드그룹 코드</h6>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="codeNum" name="codeNum">
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="codeNum" name="codeNum" value="<c:out value="${item.codeNum }"/>">
 						<br>
 						<h6>코드그룹 이름(한글)</h6>
-						<input class="form-control" type="text" placeholder="한글, 숫자" id="name_ko" name="name_ko">
+						<input class="form-control" type="text" value="<c:out value="${item.name_ko }"/>" placeholder="한글, 숫자" id="name_ko" name="name_ko">
 						<br>
 						<h6>설명</h6>
 						<textarea class="form-control" rows="3"></textarea>
@@ -117,7 +117,7 @@
 						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" name="codeGroup_seq">
 						<br>
 						<h6>코드 이름(영문)</h6>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="name_eng" name="name_eng">
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="name_eng" name="name_eng" value="<c:out value="${item.name_eng }"/>">
 						<br>
 						<h6>순서</h6>
 						<input class="form-control" type="text"  placeholder="숫자">
@@ -172,7 +172,7 @@
 					<button type="button" class="btn btn-dark"><i class="fa-solid fa-list"></i></button>
 				</a>
 				<a href="/codeGroup/codeGroupList">
-					<button type="button" class="btn btn-outline-dark" onClick="test();" style="float: right"><i class="fa-solid fa-circle-check"></i></button>
+					<button type="button" class="btn btn-outline-dark" style="float: right"><i class="fa-solid fa-circle-check"></i></button>
 				</a>
 			</form>
 <%-- 			
@@ -187,7 +187,7 @@
 	</div>
 	
 	<script>
-	
+/* 	
 	function test() {
 		alert("테스트 중");
 		
@@ -216,7 +216,7 @@
 		
 		document.getElementById("groupForm").submit();
 	}
-	
+ */	
 	
 	
 	$(function(){

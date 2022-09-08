@@ -58,5 +58,20 @@
 		</selectKey>
 		
 	</insert>
+	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			, a.codeNum
+			, a.name_ko
+			, a.name_eng
+			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
+			, a.regDate
+			, a.modDate
+			, a.delNY
+		FROM CodeGroup a
+		WHERE 1=1
+			AND a.name_ko = #{name_ko}
+	</select>
 
 </mapper>

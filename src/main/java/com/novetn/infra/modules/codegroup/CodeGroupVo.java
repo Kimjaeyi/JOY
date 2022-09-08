@@ -9,6 +9,10 @@ public class CodeGroupVo {
 	private String shendDate;
 	private Integer shOptionDate;
 	
+	private String name_ko;
+	private String name_eng;
+	private Integer codeNum;
+	
 	public String getShOption() {
 		return shOption;
 	}
@@ -44,6 +48,24 @@ public class CodeGroupVo {
 	}
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
+	}
+	public String getName_ko() {
+		return name_ko;
+	}
+	public void setName_ko(String name_ko) {
+		this.name_ko = name_ko;
+	}
+	public String getName_eng() {
+		return name_eng;
+	}
+	public void setName_eng(String name_eng) {
+		this.name_eng = name_eng;
+	}
+	public Integer getCodeNum() {
+		return codeNum;
+	}
+	public void setCodeNum(Integer codeNum) {
+		this.codeNum = codeNum;
 	}
 	
 	

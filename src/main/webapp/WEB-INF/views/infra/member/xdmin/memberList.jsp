@@ -70,6 +70,10 @@
 			text-decoration: none;
 	}
 	
+	form {
+		margin: 0 10%;	
+	}
+	
 	.searchhead{
 		font-family: 'MICEGothic';
 		padding: 15px;
@@ -83,7 +87,14 @@
 	}
 	
 	#search_btn {
-		margin: 0 0 0 15px;
+		margin: 0 0 0 5px;
+	}
+	
+	#viewsel {
+		font-family: 'MICEGothic';
+		width: 70px; 
+		height: 40px; 
+		float: right;
 	}
 	
 	input {
@@ -94,6 +105,7 @@
 		text-align : center;
 		font-family: 'MICEGothic';
 		vertical-align: middle;
+		height: 40px;
 	}
 	
 	.row {
@@ -112,6 +124,8 @@
 	#regbtn, #delbtn {
 		font-family: 'MICEGothic Bold';
 		float: right;
+		width: 54px;
+		height: 40px;
 	}
 	
 	#reset_btn, #search_btn {
@@ -207,10 +221,10 @@
 			<form method="post" action="/member/memberList">
 				<div class="searchhead">
 					<div class="row">
-						<div class="col-1">
+						<div class="col-2">
 							<h5><b>검색분류</b></h5>
 						</div>
-						<div class="row justify-content-end">
+						<div class="row justify-content-center">
 							<div class="col-2">
 								<select class="form-select" name="shOptionMem">
 									<option value="" <c:if test="${empty vo.shOptionMem}"></c:if>>구분</option>
@@ -237,7 +251,7 @@
 								<input type="text" id="shendDate" name="shendDate" class="form-control shDate" value="${vo.shendDate}" placeholder="종료일" autocomplete="off">
 							</div>
 						</div>
-						<div class="row justify-content-end">
+						<div class="row justify-content-center">
 							<div class="col-2">
 								<select class="form-select" name="shDelNy">
 									<option value="" <c:if test="${empty vo.shDelNy }"></c:if>>탈퇴여부</option>
@@ -257,7 +271,7 @@
 								<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
 							</div>
 							<div class="col-1" style="max-width: 55px">
-								<button class="btn btn-outline-secondary" type="button" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
+								<button class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
 							</div>
 							<div class="col-1" style="max-width: 55px">
 								<button class="btn btn-outline-secondary" type="submit" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -267,11 +281,12 @@
 				</div>
 			</form>
 			<h4>회원관리</h4>
-			<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i><i class="fa-solid fa-user"></i></button>
-			<a href="memberForm">
-				<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i><i class="fa-regular fa-user"></i></button>
-			</a>
-			<br><br>
+			<select class="form-select" id="viewsel">
+				<option selected>10</option>
+				<option value="1">15</option>
+				<option value="2">30</option>
+			</select>
+			<br><br><br>
 			<table class="table table-light table-striped table-hover">
 				<thead>
 					<tr>
@@ -332,6 +347,10 @@
 					</li>
 				</ul>
 			</nav>
+			<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i><i class="fa-solid fa-user"></i></button>
+			<a href="memberForm">
+				<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i><i class="fa-regular fa-user"></i></button>
+			</a>
 			<br><br>
 		</div>
 	</div>
