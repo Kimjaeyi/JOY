@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
+	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022091023"/>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -28,35 +29,6 @@
 
 <style type="text/css">
 
-	@font-face {
-    font-family: 'GilbeotRainbow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-	}
-	
-	@font-face {
-	    font-family: 'MICEGothic Bold';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-	    font-weight: 700;
-	    font-style: normal;
-	}
-	
-	@font-face {
-	    font-family: 'MICEGothic';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
-	    font-weight: 400;
-	    font-style: normal;
-	}
-	
-	h1 {
-		font-family: 'GilbeotRainbow';
-	}
-	
-	h4, #myTab {
-		font-family: 'MICEGothic Bold';
-	}
-	
 	a:link {
 			color:black;
 			text-decoration: none;
@@ -82,8 +54,9 @@
 		max-width: 140px;
 	}
 	
-	#search_btn {
-		margin: 0 0 0 15px;
+	.btn-outline-secondary {
+		width: 35px;
+		height: 35px;
 	}
 	
 	input {
@@ -110,13 +83,9 @@
 	}
 	
 	#regbtn, #delbtn {
-		font-family: 'MICEGothic Bold';
 		float: right;
-	}
-	
-	.bbb table {
-		--bs-table-accent-bg: rgba(0, 0, 0, 0.05);
-		--bs-table-striped-bg: #ffffff;
+		width: 35px;
+		height: 35px;
 	}
 	
 	.nav-tabs {
@@ -130,28 +99,6 @@
 	
 	.nav-link {
 		color : gray;
-	}
-	
-	.bbb {
-		margin: 5% 10%;
-	}
-	
-	.bbb td {
-		text-align: left;
-		padding: 15px;
-	}
-	
-	.ccc {
-		margin: 5% 10%;
-	}
-	
-	.ccc th {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-	
-	.ccc td {
-		text-align: left;
-		padding: 15px;
 	}
 	
 	.pagination {
@@ -181,15 +128,57 @@
 <body>
 
 <!-- start -->
+	<div class="header" style="left: 0px;">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="/"><span class="blind">COOCHA</span></a>
+                <span class="title-category">카테고리</span>
+            </h1>
+
+            <div class="search">
+                <div class="search-input"><input type="search" class="input"></div>
+            </div>
+
+            <div class="hamburger">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+
+            <ul class="gnb login">
+				<li>
+					<a href="javascript:;" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
+					<div class="area-my-page area-gnb-layer">
+					    <div class="title">MY PAGE</div>
+					    <ul>
+					        <li><div id="likeTab">내가 좋아요 한 상품</div></li>
+					        <li><a href="javascript:void(0);" id="viewTab">내가 본 상품</a></li>
+					        <li><a href="https://member.coocha.co.kr/member/join/myinfo.do">내 정보 수정</a></li>
+					        <li class="logout"><a href="javascript:fn_logout('');">로그아웃</a></li>
+					    </ul>
+					</div>
+				</li>
+				<li><div class="btn-like"><span class="blind">좋아요</span></div></li>
+				<li>
+				    <div class="btn-sc btn-layer-open"><span class="blind">더보기</span></div>
+				    <div class="area-servic-center area-gnb-layer">
+				        <div class="title">고객센터</div>
+				        <ul>
+				            <li>공지사항</li>
+				            <li>FAQ</li>
+				            <li>1:1 문의</li>
+				        </ul>
+				    </div>
+				</li>
+			</ul>
+        </div>
+    </div>
+    <br><br>
 	<div class="abc">
-		<a href="../user/item/Mainpage.html">
-			<h1 style="margin: 30px 0 0 10%">coocha</h1>
-		</a>
-		<br><hr><br>
 		<div class="aaa">
 			<ul class="nav nav-tabs" id="myTab">
 				<li class="nav-item">
-					<button class="nav-link active" id="codegrouptab">코드그룹 관리</button>
+					<button class="nav-link active" id="codegrouptab"><b>코드그룹 관리</b></button>
 				</li>
 				<li class="nav-item">
 					<button class="nav-link" id="codetab">코드 관리</button>
@@ -237,8 +226,11 @@
 							<div class="col-3">
 								<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
 							</div>
-							<div class="col-1">
-								<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
+							<div class="col-1" style="max-width: 55px">
+								<button class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
+							</div>
+							<div class="col-1" style="max-width: 55px">
+								<button class="btn btn-outline-secondary" type="submit" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 							</div>
 						</div>
 					</div>

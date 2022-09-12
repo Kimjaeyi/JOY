@@ -151,7 +151,7 @@
 <!-- start -->
 	<div class="abc">
 		<br><br>
-		<a href="../item/Mainpage.html">
+		<a href="../home.jsp">
 			<h1>coocha</h1>
 		</a>
 		<br><br><br>
