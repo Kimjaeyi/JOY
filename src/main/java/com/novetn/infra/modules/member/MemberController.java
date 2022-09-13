@@ -47,4 +47,32 @@ public class MemberController {
 		return "redirect:/member/memberList";
 	}
 	
+	@RequestMapping(value = "login")
+	public String login() throws Exception {
+		
+		return "infra/member/user/login";
+		
+	}
+	
+	@RequestMapping(value = "findID")
+	public String findID() throws Exception {
+		
+		return "infra/member/user/findID";
+		
+	}
+	
+	@RequestMapping(value = "findPW")
+	public String findPW() throws Exception {
+		
+		return "infra/member/user/findPW";
+		
+	}
+	
+	@RequestMapping(value = "memberRegForm")
+	public String memberRegForm() throws Exception {
+		
+		return "infra/member/user/memberRegForm";
+		
+	}
+	
 }

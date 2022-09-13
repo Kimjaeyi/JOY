@@ -16,6 +16,8 @@
     <!-- jquery ui CSS -->    
     <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
     <!-- user css -->
+    <link rel="stylesheet" href="/assets/css/coocha-member.min.css?ver=202209131027">
+	<link rel="stylesheet" href="/assets/css/sub.css?ver=202209131027">
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
@@ -23,11 +25,12 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
+	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
 <style type="text/css">
-
+	
 	@font-face {
     font-family: 'GilbeotRainbow';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
@@ -39,13 +42,6 @@
 	    font-family: 'MICEGothic Bold';
 	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
 	    font-weight: 700;
-	    font-style: normal;
-	}
-	
-	@font-face {
-	    font-family: 'MICEGothic';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
-	    font-weight: 400;
 	    font-style: normal;
 	}
 	
@@ -61,24 +57,24 @@
 	
 	h2 {
 		text-align : center;
-		color : white;
+		color: white;
 	}
 	
 	a:link {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:visited {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:hover {
-			color:blueviolet;
-			text-decoration: none;
+		color:blueviolet;
+		text-decoration: none;
 	}
 	
 	body {
-		background-image: url("../image/logbg.jpg");
+		background-image: url("../resources/image/logbg.jpg");
 		background-repeat: no-repeat;
 		background-size : cover;
 		width : 100%;
@@ -143,17 +139,15 @@
 		color : white;
 		font-weight : bold;
 	}
-
 </style>
 	
 <body>
 
 <!-- start -->
+
 	<div class="abc">
 		<br><br>
-		<a href="../home.jsp">
-			<h1>coocha</h1>
-		</a>
+		<a href="../home"><h1>coocha</h1></a>
 		<br><br><br>
 		<div class="aaa">
 			<div class="container">
@@ -167,9 +161,9 @@
 						<input type="password" class="form-control" id="inputpwd" value="12345" placeholder="비밀번호">
 					</div>
 				</div>
-					<br><br>
+				<br><br>
 				<div class="row justify-content-center">
-					<a href="../item/Mainpage.html">
+					<a href="../home">
 					<button class="btn1" type="button"><b>로그인</b></button></a>
 				</div>
 			</div>
@@ -180,31 +174,34 @@
 				<div class="row justify-content-center">
 					<div class="col-1">
 						<a href="https://nid.naver.com/nidlogin.login?oauth_token=fnc77UPYrVvzZmFqE6&consumer_key=LY2kzz66QOIl_rYOcwEE&logintp=oauth2&nurl=https%3A%2F%2Fnid.naver.com%2Foauth2.0%2Fauthorize%3Fresponse_type%3Dtoken%26state%3Dc2cf4fff-4b41-4c46-8978-38fad9d416c3%26client_id%3DLY2kzz66QOIl_rYOcwEE%26redirect_uri%3Dhttps%253A%252F%252Fmember.coocha.co.kr%252Fmember%252Flogin%252Fsnscallback.do%26locale%3Dko_KR%26inapp_view%3D%26oauth_os%3D&locale=ko_KR&inapp_view=&svctype=">
-						<img src="../image/naver.png" style="width:40px;"></a>
+						<img src="../resources/image/naver.png" style="width:40px;"></a>
 					</div>
 					<div class="col-1">
 						<a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fproxy%3DeasyXDM_Kakao_1umprdwc0zu_provider%26ka%3Dsdk%252F1.43.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FWin32%2520origin%252Fhttps%25253A%25252F%25252Fmember.coocha.co.kr%26origin%3Dhttps%253A%252F%252Fmember.coocha.co.kr%26response_type%3Dcode%26redirect_uri%3Dkakaojs%26state%3Dv9t01oe252pj5m55naeq%26client_id%3De080e5f8a171c5bd650ef6d2efe60fd3&talk_login=hidden">
-						<img src="../image/kakao.png" style="width:40px;"></a>
+						<img src="../resources/image/kakao.png" style="width:40px;"></a>
 					</div>
 					<div class="col-1">
-						<img src="../image/google.png" style="width:40px;">
+						<img src="../resources/image/google.png" style="width:40px;">
 					</div>
 					<div class="col-1">
-						<img src="../image/facebook.png" style="width:40px;">
+						<img src="../resources/image/facebook.png" style="width:40px;">
 					</div>
 				</div>
 			</div>
 			<br><br>
 			<div class="box">
 				<br>
-				<a href="./findId.html"><p>아이디 찾기 &nbsp;｜</p></a>
-				<a href="./findPwd.html"><p>비밀번호 찾기 &nbsp;｜</p></a>
-				<a href="./RegForm.html"><p>회원가입</p></a>
+				<a href="findID"><p>아이디 찾기 &nbsp;｜</p></a>
+				<a href="findPW"><p>비밀번호 찾기 &nbsp;｜</p></a>
+				<a href="memberRegForm"><p>회원가입</p></a>
 			</div>
 			<br><br><br>
 		</div>
+ 		
 	</div>
-	
+
+
+
 
 <!-- end -->
 

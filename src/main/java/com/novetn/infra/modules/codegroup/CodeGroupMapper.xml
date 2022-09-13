@@ -38,20 +38,24 @@
 	
 	<insert id="insert">
 		INSERT INTO CodeGroup (
-			codeNum
+			seq
+			, codeNum
 			, name_ko
 			, name_eng
+			, codeamount
 			, regDate
-			, useNY
+			, modDate
 			, delNY
 		)
 		VALUES (
-			#{codeNum}
-			,#{name_ko}
-			,#{name_eng}
+			, #{seq}
+			, #{codeNum}
+			, #{name_ko}
+			, #{name_eng}
+			, #{codeamount}
+			, #{regDate}
 			, now()
-			,1
-			,0
+			, 0
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
@@ -71,7 +75,33 @@
 			, a.delNY
 		FROM CodeGroup a
 		WHERE 1=1
-			AND a.name_ko = #{name_ko}
+			AND seq = #{seq}
 	</select>
 
+	<update id="update">
+		UPDATE CodeGroup
+		SET
+			seq = #{seq}
+			, codeNum = #{codeNum}
+			, name_ko = #{name_ko}
+			, name_eng = #{name_eng}
+			, modDate = now()
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE CodeGroup
+		SET
+			delNY = 0
+		WHERE 
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM CodeGroup
+		WHERE
+			seq = #{seq}
+	</delete>
+	
 </mapper>

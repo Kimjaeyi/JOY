@@ -23,9 +23,7 @@ public class CodeGroupDao {
 	}
 	
 	public int insert(CodeGroup dto) {
-		int result = sqlSession.insert(namespace + ".insert", dto);
-		System.out.println("dao result: " + result);
-		return result;
+		return sqlSession.insert(namespace + ".insert", dto);
 	}
 	
 	public CodeGroup selectOne(CodeGroupVo vo) {
@@ -33,5 +31,21 @@ public class CodeGroupDao {
 		System.out.println("dao result: " + result);
 		return result;
 	}
+	
+	public int update(CodeGroup dto) {
+		return sqlSession.update(namespace + ".update", dto);
+	}
+	
+	public int uelete(CodeGroup dto) {
+		return sqlSession.update(namespace + ".uelete", dto);
+	}
+	
+	public int delete(CodeGroupVo vo) {
+		return sqlSession.delete(namespace + ".delete", vo);
+	}
+	
+//	public List<CodeGroup> selectListWithoutPaging() {
+//		return sqlSession.selectList(namespace + ".selectListWithoutPaging", "");
+//	}
 	
 }

@@ -8,10 +8,10 @@ public class CodeGroupVo {
 	private String shstartDate;
 	private String shendDate;
 	private Integer shOptionDate;
-	
 	private String name_ko;
 	private String name_eng;
 	private Integer codeNum;
+	private String seq;
 	
 	public String getShOption() {
 		return shOption;
@@ -66,6 +66,12 @@ public class CodeGroupVo {
 	}
 	public void setCodeNum(Integer codeNum) {
 		this.codeNum = codeNum;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
 	}
 	
 	

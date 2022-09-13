@@ -71,9 +71,9 @@
 
 				<!-- 로그인 전 -->
 				<ul class="gnb">
-					<li><a href="../infra/member/user/login.jsp" class="btn-login">로그인</a></li>
-					<li><a href="javascript:void(0);" class="btn-like"><span class="blind">좋아요</span></a></li>
-					<li><a href="javascript:void(0);" class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
+					<li><a href="/member/login" class="btn-login">로그인</a></li>
+					<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
+					<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
 						<div class="area-servic-center area-gnb-layer">
 							<div class="title">고객센터</div>
 							<ul>
@@ -492,9 +492,7 @@
 			<div class="inner">
 				<div class="contents">
 					<p class="text">
-						<a class="main-banner-link"
-							href="/search/searchDealList?keyword=%EB%B0%80%ED%82%A4%ED%8A%B8"
-							data-scid="402001" data-keyword="밀키트">‘밀키트’로 홈캉스 즐기기!</a>
+						<a class="main-banner-link" href="/search/searchDealList?keyword=%EB%B0%80%ED%82%A4%ED%8A%B8" data-scid="402001" data-keyword="밀키트">‘밀키트’로 홈캉스 즐기기!</a>
 					</p>
 					<div class="search">
 						<input type="search" class="input search-keyword">
