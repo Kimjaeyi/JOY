@@ -48,7 +48,7 @@
 			, delNY
 		)
 		VALUES (
-			, #{seq}
+			#{seq}
 			, #{codeNum}
 			, #{name_ko}
 			, #{name_eng}
@@ -93,7 +93,7 @@
 	<update id="uelete">
 		UPDATE CodeGroup
 		SET
-			delNY = 0
+			delNY = 1
 		WHERE 
 			seq = #{seq}
 	</update>

@@ -8,6 +8,7 @@ public class CodeVo {
 	private String shstartDate;
 	private String shendDate;
 	private Integer shOptionDate;
+	private String seq;
 	
 	public String getShOption() {
 		return shOption;
@@ -44,6 +45,12 @@ public class CodeVo {
 	}
 	public void setShOptionDate(Integer shOptionDate) {
 		this.shOptionDate = shOptionDate;
+	}
+	public String getSeq() {
+		return seq;
+	}
+	public void setSeq(String seq) {
+		this.seq = seq;
 	}
 	
 	

@@ -17,14 +17,11 @@ public class CodeGroupController {
 	CodeGroupServiceImpl service;
 
 	@RequestMapping(value = "codeGroupList")
-	public String codeGroupList(Model model, CodeGroupVo vo) throws Exception {
+	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 
 		System.out.println("vo.getShValue() : " + vo.getShValue());
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		System.out.println("vo.getShDelNy() : " + vo.getShDelNy());
-		System.out.println(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-		System.out.println(vo.getShstartDate() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShstartDate());
-		System.out.println(vo.getShendDate() == null ? UtilDateTime.nowString() : vo.getShendDate());
 		
 		List<CodeGroup> list = service.selectList(vo);
 		model.addAttribute("list", list);

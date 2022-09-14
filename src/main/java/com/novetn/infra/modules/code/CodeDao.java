@@ -28,4 +28,26 @@ public class CodeDao {
 		return result;
 	}
 	
+	public int update(Code dto) {
+		return sqlSession.update(namespace + ".update", dto);
+	}
+	
+	public int uelete(Code dto) {
+		return sqlSession.update(namespace + ".uelete", dto);
+	}
+	
+	public int delete(CodeVo vo) {
+		return sqlSession.delete(namespace + ".delete", vo);
+	}
+	
+	public Code selectOne(CodeVo vo) {
+		Code result = sqlSession.selectOne(namespace + ".selectOne", vo);
+		System.out.println("dao result: " + result);
+		return result;
+	}
+	
+//	public List<Code> selectListWithoutPaging() {
+//		return sqlSession.selectList(namespace + ".selectListWithoutPaging", "");
+//	}
+	
 }

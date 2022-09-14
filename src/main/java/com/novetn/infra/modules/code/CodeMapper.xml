@@ -43,27 +43,73 @@
 	
 	<insert id="insert">
 		INSERT INTO Code (
-			codeGroup_seq
+			seq
+			, codeGroup_seq
 			, codeNum
 			, cdname_ko
 			, name_eng
 			, regDate
+			, modDate
 			, useNY
 			, delNY
 		)
 		VALUES (
-			#{codeGroup_seq}
-			,#{codeNum}
-			,#{cdname_ko}
-			,#{name_eng}
-			,now()
-			,1
-			,0
+			#{seq}
+			, #{codeGroup_seq}
+			, #{codeNum}
+			, #{cdname_ko}
+			, #{name_eng}
+			, #{regDate}
+			, now()
+			, 1
+			, 0
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 		
 	</insert>
+ 	
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			seq
+			, codeGroup_seq
+			, codeNum
+			, cdname_ko
+			, name_eng
+			, a.regDate
+			, a.modDate
+			, a.delNY
+		FROM Code
+		WHERE 1=1
+			AND seq = #{seq}
+	</select>
+
+	<update id="update">
+		UPDATE Code
+		SET
+			seq = #{seq}
+			, codeGroup_seq = #{codeGroup_seq}
+			, codeNum = #{codeNum}
+			, cdname_ko = #{cdname_ko}
+			, name_eng = #{name_eng}
+			, modDate = now()
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE Code
+		SET
+			delNY = 1
+		WHERE 
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM Code
+		WHERE
+			seq = #{seq}
+	</delete>
 
 </mapper>

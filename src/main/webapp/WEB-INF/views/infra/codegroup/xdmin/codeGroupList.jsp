@@ -268,7 +268,7 @@
 									<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
 								</div>
 								<div class="col-1" style="max-width: 55px">
-									<button class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
+									<button type="button" class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
 								</div>
 								<div class="col-1" style="max-width: 55px">
 									<button class="btn btn-outline-secondary" type="submit" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -350,51 +350,67 @@
 
 <script>
 
-$(document).ready(function() {
-	$("#allcheck").click(function() {
-		if($("#allcheck").is(":checked")) $("input[name=check]").prop("checked", true);
-		else $("input[name=check]").prop("checked", false);
-	});
-
-	$("input[name=check]").click(function() {
-		var total = $("input[name=check]").length;
-		var checked = $("input[name=check]:checked").length;
-
-		if(total != checked) $("#allcheck").prop("checked", false);
-		else $("#allcheck").prop("checked", true); 
+	$(document).ready(function() {
+		$("#allcheck").click(function() {
+			if($("#allcheck").is(":checked")) $("input[name=check]").prop("checked", true);
+			else $("input[name=check]").prop("checked", false);
+		});
+	
+		$("input[name=check]").click(function() {
+			var total = $("input[name=check]").length;
+			var checked = $("input[name=check]:checked").length;
+	
+			if(total != checked) $("#allcheck").prop("checked", false);
+			else $("#allcheck").prop("checked", true); 
+		});
+		
+		$('#delbtn').click(function(){
+	        if(confirm("삭제하시겠습니까?")){
+	            $("input[name=check]:checked").each(function(){
+	                var tr_value =$(this).val();
+	                var tr=$("tr[data-tr_value='"+tr_value+"']");
+	                tr.remove();
+	            });
+	        } else {
+	            return false;
+	        }
+	    });
 	});
 	
-	$('#delbtn').click(function(){
-        if(confirm("삭제하시겠습니까?")){
-            $("input[name=check]:checked").each(function(){
-                var tr_value =$(this).val();
-                var tr=$("tr[data-tr_value='"+tr_value+"']");
-                tr.remove();
-            });
-        }else{
-            return false;
-        }
-    });
-});
-
-$(document).ready(function() {
-	$("input.shDate").datepicker();
-});
-
-$.datepicker.setDefaults({
-	dateFormat : 'yy-mm-dd',
-	prevText : '이전 달',
-	nextText : '다음 달',
-	monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-			'9월', '10월', '11월', '12월' ],
-	monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-			'9월', '10월', '11월', '12월' ],
-	dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-	dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-	dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-	showMonthAfterYear : true,
-	yearSuffix : '년'
-});
+	var goUrlList = "/codeGroup/codeGroupList"; 			/* #-> */
+	var goUrlInst = "/codeGroup/codeGroupInst"; 			/* #-> */
+	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
+	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
+	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	
+	
+	$("#search_btn").on("click", function(){
+		if(validationList() == false) return false;
+		form.attr("action", goUrlList).submit();
+	});
+	
+	$("#reset_btn").on("click", function(){
+		$(location).attr("href", goUrlList);
+	});
+	
+	$(document).ready(function() {
+		$("input.shDate").datepicker();
+	});
+	
+	$.datepicker.setDefaults({
+		dateFormat : 'yy-mm-dd',
+		prevText : '이전 달',
+		nextText : '다음 달',
+		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+		showMonthAfterYear : true,
+		yearSuffix : '년'
+	});
 </script>
 <!-- end -->
 

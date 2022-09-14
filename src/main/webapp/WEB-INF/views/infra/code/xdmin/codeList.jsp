@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
+	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022091023"/>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -28,41 +29,12 @@
 
 <style type="text/css">
 
-	@font-face {
-    font-family: 'GilbeotRainbow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-	}
-	
-	@font-face {
-	    font-family: 'MICEGothic Bold';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-	    font-weight: 700;
-	    font-style: normal;
-	}
-	
-	@font-face {
-	    font-family: 'MICEGothic';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
-	    font-weight: 400;
-	    font-style: normal;
-	}
-	
-	h1 {
-		font-family: 'GilbeotRainbow';
-	}
-	
-	h4, #myTab {
-		font-family: 'MICEGothic Bold';
-	}
-	
 	a:link {
 			color:black;
 			text-decoration: none;
 	}
 	a:visited {
-			color:gray;
+			color: none;
 			text-decoration: none;
 	}
 	a:hover {
@@ -71,7 +43,6 @@
 	}
 	
 	.searchhead{
-		font-family: 'MICEGothic';
 		padding: 15px;
 		margin: 10px 0 5% 0;
 		border-radius: 6px;
@@ -82,25 +53,34 @@
 		max-width: 140px;
 	}
 	
-	#search_btn {
-		margin: 0 0 0 15px;
+	.btn-outline-secondary {
+		width: 35px;
+		height: 35px;
 	}
 	
 	input {
 		font-size: small;
 	}
 	
+	table {
+		margin: 5% 0;
+	}
+	
 	th, td {
 		text-align : center;
-		font-family: 'MICEGothic';
 		vertical-align: middle;
+		height: 35px;
+	}
+	
+	th {
+		font-weight: bold;
 	}
 	
 	.row {
 		padding: 20px;
 	}
 	
-	.aaa {
+	.abc {
 		margin: 2% 15%;
 	}
 	
@@ -110,13 +90,9 @@
 	}
 	
 	#regbtn, #delbtn {
-		font-family: 'MICEGothic Bold';
 		float: right;
-	}
-	
-	.bbb table {
-		--bs-table-accent-bg: rgba(0, 0, 0, 0.05);
-		--bs-table-striped-bg: #ffffff;
+		width: 35px;
+		height: 33px;
 	}
 	
 	.nav-tabs {
@@ -126,32 +102,15 @@
 	
 	.nav {
 		--bs-nav-link-hover-color: #9154f3;
+		width: 333px;
 	}
 	
 	.nav-link {
 		color : gray;
 	}
 	
-	.bbb {
-		margin: 5% 10%;
-	}
-	
-	.bbb td {
-		text-align: left;
-		padding: 15px;
-	}
-	
-	.ccc {
-		margin: 5% 10%;
-	}
-	
-	.ccc th {
-		background-color: rgba(0, 0, 0, 0.05);
-	}
-	
-	.ccc td {
-		text-align: left;
-		padding: 15px;
+	#lefttab.nav-link.active {
+		color: #6900EF;
 	}
 	
 	.pagination {
@@ -161,6 +120,11 @@
 		--bs-pagination-focus-color: #6900EF;
 		--bs-pagination-active-bg: #6900EF;
     	--bs-pagination-active-border-color: #6900EF;
+    	margin: 3% 0;
+	}
+	
+	.page-link {
+		height: 30px;
 	}
 	
 	#modbtn {
@@ -173,7 +137,19 @@
 		width: 140px;
 		height: 60px;
 		font-size: 20px;
-		font-family: 'MICEGothic Bold';
+	}
+	
+	.flex-column {
+		width: 200px;
+		height: 100vh;
+		margin: 3% 0 0 0;
+	} 
+	
+	#lefttab {
+		height: 100px;
+		font-size: 1.4rem;
+		font-weight: bold;
+		vertical-align: middle;
 	}
 	
 </style>
@@ -181,132 +157,192 @@
 <body>
 
 <!-- start -->
-	<div class="abc">
-		<a href="../user/item/Mainpage.html">
-			<h1 style="margin: 30px 0 0 10%">coocha</h1>
-		</a>
-		<br><hr><br>
-		<div class="aaa">
-			<ul class="nav nav-tabs" id="myTab">
-				<li class="nav-item">
-					<button class="nav-link" id="codegrouptab">코드그룹 관리</button>
+	<div class="header" style="left: 0px">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="/"><span class="blind">COOCHA</span></a>
+                <span class="title-category">카테고리</span>
+            </h1>
+
+            <div class="search">
+                <div class="search-input"><input type="search" class="input"></div>
+            </div>
+
+            <div class="hamburger">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+
+            <ul class="gnb login">
+				<li>
+					<a href="javascript:;" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
+					<div class="area-my-page area-gnb-layer">
+					    <div class="title">MY PAGE</div>
+					    <ul>
+					        <li><div id="likeTab">내가 좋아요 한 상품</div></li>
+					        <li><a href="javascript:void(0);" id="viewTab">내가 본 상품</a></li>
+					        <li><a href="https://member.coocha.co.kr/member/join/myinfo.do">내 정보 수정</a></li>
+					        <li class="logout"><a href="javascript:fn_logout('');">로그아웃</a></li>
+					    </ul>
+					</div>
 				</li>
-				<li class="nav-item">
-					<button class="nav-link active" aria-current="page" id="codetab">코드 관리</button>
+				<li><div class="btn-like"><span class="blind">좋아요</span></div></li>
+				<li>
+				    <div class="btn-sc btn-layer-open"><span class="blind">더보기</span></div>
+				    <div class="area-servic-center area-gnb-layer">
+				        <div class="title">고객센터</div>
+				        <ul>
+				            <li>공지사항</li>
+				            <li>FAQ</li>
+				            <li>1:1 문의</li>
+				        </ul>
+				    </div>
 				</li>
 			</ul>
-			<br>
-			<form method="post" action="/code/codeList">
+        </div>
+    </div>
+    <br><br>
+	<div class="abc">
+		<div class="row">
+			<div class="col-3">
+	    		<nav class="nav flex-column">
+					<a class="nav-link" id="lefttab">코드그룹 관리</a>
+					<a class="nav-link active" href="#" aria-current="page" id="lefttab">코드 관리</a>
+					<a class="nav-link" href="#" id="lefttab">회원 관리</a>
+					<a class="nav-link" href="#" id="lefttab">상품 관리</a>
+				</nav>
+	    	</div>
+    		<div class="col-9">
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="nav-item">
+						<button class="nav-link active" id="listtab"><b>코드 목록</b></button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" id="regtab">코드 등록</button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" id="modtab">코드 수정</button>
+					</li>
+				</ul>
+				<br>
 				<div class="searchhead">
-					<div class="row">
-						<div class="col-1">
-							<h5><b>검색분류</b></h5>
-						</div>
-						<div class="row justify-content-end">
-							<div class="col-2">
-								<select class="form-select" name="shDelNy">
-									<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
-									<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
-									<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
-								</select>
-							</div>
-							<div class="col-2">
-								<select class="form-select" name="shOptionDate">
-									<option value="">날짜선택</option>
-									<option value="1">등록일</option>
-									<option value="2">수정일</option>
-								</select>
-							</div>
-							<div class="col-3" style="max-width: 150px">
-								<input type="text" id="shstartDate" name="shstartDate" class="form-control shDate" value="${vo.shstartDate}" placeholder="시작일" autocomplete="off">
-							</div>
-							<div class="col-1" style="max-width: 30px">
-								<font>~</font>
-							</div>
-							<div class="col-3" style="max-width: 150px">
-								<input type="text" id="shendDate" name="shendDate" class="form-control shDate" value="${vo.shendDate}" placeholder="종료일" autocomplete="off">
-							</div>
-							<div class="col-2">
-								<select class="form-select" name="shOption" id="selectfield">
-									<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
-									<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
-									<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
-									<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드이름(한글)</option>
-									<option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>코드이름(영문)</option>
-								 </select>
-							</div>
-							<div class="col-3">
-								<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
-							</div>
+					<form method="post" action="/code/codeList">
+						<div class="row">
 							<div class="col-1">
-								<button class="btn btn-outline-secondary" type="submit" id="search_btn">조회</button>
+								<h5><b>검색분류</b></h5>
+							</div>
+							<div class="row justify-content-end">
+								<div class="col-2">
+									<select class="form-select" name="shDelNy">
+										<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
+										<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
+										<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
+									</select>
+								</div>
+								<div class="col-2">
+									<select class="form-select" name="shOptionDate">
+										<option value="">날짜선택</option>
+										<option value="1">등록일</option>
+										<option value="2">수정일</option>
+									</select>
+								</div>
+								<div class="col-3" style="max-width: 150px">
+									<input type="text" id="shstartDate" name="shstartDate" class="form-control shDate" value="${vo.shstartDate}" placeholder="시작일" autocomplete="off">
+								</div>
+								<div class="col-1" style="max-width: 30px">
+									<font>~</font>
+								</div>
+								<div class="col-3" style="max-width: 150px">
+									<input type="text" id="shendDate" name="shendDate" class="form-control shDate" value="${vo.shendDate}" placeholder="종료일" autocomplete="off">
+								</div>
+							</div>
+							<div class="row justify-content-end">
+								<div class="col-2">
+									<select class="form-select" name="shOption" id="selectfield">
+										<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
+										<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+										<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
+										<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드이름(한글)</option>
+										<option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>코드이름(영문)</option>
+									 </select>
+								</div>
+								<div class="col-3">
+									<input class="form-control" type="search" id="search_input" name="shValue" value="<c:out value="${vo.shValue }"/>" placeholder="검색어 입력">
+								</div>
+								<div class="col-1" style="max-width: 55px">
+									<button type="button" class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
+								</div>
+								<div class="col-1" style="max-width: 55px">
+									<button class="btn btn-outline-secondary" type="submit" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+								</div>
 							</div>
 						</div>
-					</div>
+					</form>
 				</div>
-			</form>
-			<h4>코드관리</h4>
-			<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-			<a href="codeForm">
-				<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
-			</a>
-			<br><br>
-			<table class="table table-light table-striped table-hover">
-				<thead>
-					<tr>
-						<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
-						<th scope="col">번호</th>
-						<th scope="col">코드그룹 코드</th>
-						<th scope="col">코드그룹 이름(한글)</th>
-						<th scope="col">코드</th>
-						<th scope="col">대체코드</th>
-						<th scope="col">코드 이름(한글)</th>
-						<th scope="col">코드 이름(영문)</th>
-						<th scope="col">순서</th>
-						<th scope="col">등록일</th>
-						<th scope="col">수정일</th>
-						<th scope="col">사용</th>
-						<th scope="col">삭제</th>
-					</tr>
-				</thead>
-				<tbody class="table-group-divider">
-				<c:choose>
-						<c:when test="${fn:length(list) eq 0 }">
-							<td class="text-center" colspan="10">There is no data!</td>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${list}" var="list" varStatus="status">
-								<tr data-tr_value = "<c:out value="${list.seq }"/>">
-									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-									<td scope="row"><c:out value="${list.seq }"/></td>
-									<td><c:out value="${list.codeGroup_seq }"/></td>
-									<td><c:out value="${list.name_ko }"/></td>
-									<td><c:out value="${list.codeNum }"/></td>
-									<td><c:out value="${list.anotherCode }"/></td>
-									<td><c:out value="${list.cdname_ko }"/></td>
-									<td><c:out value="${list.name_eng }"/></td>
-									<td><c:out value="${list.order }"/></td>
-									<td></td>
-									<td></td>
-									<td>
-										<c:choose>
-											<c:when test="${list.useNY eq 0 }">N</c:when>
-											<c:otherwise>Y</c:otherwise>
-										</c:choose>
-									</td>
-									<td>
-										<c:choose>
-											<c:when test="${list.delNY eq 0 }">N</c:when>
-											<c:otherwise>Y</c:otherwise>
-										</c:choose>
-									</td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-				</tbody>
-			</table>
-			<br><br>
+				<font style="font-size: 20px"><b>코드관리</b></font>
+				<br>
+				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
+				<a href="codeForm">
+					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
+				</a>
+				<table class="table table-light table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
+							<th scope="col">번호</th>
+							<th scope="col">코드그룹 코드</th>
+							<th scope="col">코드그룹 이름(한글)</th>
+							<th scope="col">코드</th>
+							<th scope="col">대체코드</th>
+							<th scope="col">코드 이름(한글)</th>
+							<th scope="col">코드 이름(영문)</th>
+							<th scope="col">순서</th>
+							<th scope="col">등록일</th>
+							<th scope="col">수정일</th>
+							<th scope="col">사용</th>
+							<th scope="col">삭제</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider">
+					<c:choose>
+							<c:when test="${fn:length(list) eq 0 }">
+								<td class="text-center" colspan="10">There is no data!</td>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${list}" var="list" varStatus="status">
+									<tr data-tr_value = "<c:out value="${list.seq }"/>">
+										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+										<td scope="row"><c:out value="${list.seq }"/></td>
+										<td><c:out value="${list.codeGroup_seq }"/></td>
+										<td><c:out value="${list.name_ko }"/></td>
+										<td><c:out value="${list.codeNum }"/></td>
+										<td><c:out value="${list.anotherCode }"/></td>
+										<td><c:out value="${list.cdname_ko }"/></td>
+										<td><c:out value="${list.name_eng }"/></td>
+										<td><c:out value="${list.order }"/></td>
+										<td></td>
+										<td></td>
+										<td>
+											<c:choose>
+												<c:when test="${list.useNY eq 0 }">N</c:when>
+												<c:otherwise>Y</c:otherwise>
+											</c:choose>
+										</td>
+										<td>
+											<c:choose>
+												<c:when test="${list.delNY eq 0 }">N</c:when>
+												<c:otherwise>Y</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
+				<br><br>
+			</div>
 			<nav aria-label="Page navigation example">
 				<ul class="pagination">
 					<li class="page-item">
@@ -324,57 +360,73 @@
 					</li>
 				</ul>
 			</nav>
-			<br><br>
+			<br><br><br>
 		</div>
 	</div>
-
+	
 <script>
 
-$(document).ready(function() {
-	$("#allcheck").click(function() {
-		if($("#allcheck").is(":checked")) $("input[name=check]").prop("checked", true);
-		else $("input[name=check]").prop("checked", false);
-	});
-
-	$("input[name=check]").click(function() {
-		var total = $("input[name=check]").length;
-		var checked = $("input[name=check]:checked").length;
-
-		if(total != checked) $("#allcheck").prop("checked", false);
-		else $("#allcheck").prop("checked", true); 
+	$(document).ready(function() {
+		$("#allcheck").click(function() {
+			if($("#allcheck").is(":checked")) $("input[name=check]").prop("checked", true);
+			else $("input[name=check]").prop("checked", false);
+		});
+	
+		$("input[name=check]").click(function() {
+			var total = $("input[name=check]").length;
+			var checked = $("input[name=check]:checked").length;
+	
+			if(total != checked) $("#allcheck").prop("checked", false);
+			else $("#allcheck").prop("checked", true); 
+		});
+		
+		$('#delbtn').click(function(){
+	        if(confirm("삭제하시겠습니까?")){
+	            $("input[name=check]:checked").each(function(){
+	                var tr_value =$(this).val();
+	                var tr=$("tr[data-tr_value='"+tr_value+"']");
+	                tr.remove();
+	            });
+	        } else {
+	            return false;
+	        }
+	    });
 	});
 	
-	$('#delbtn').click(function(){
-        if(confirm("삭제하시겠습니까?")){
-            $("input[name=check]:checked").each(function(){
-                var tr_value =$(this).val();
-                var tr=$("tr[data-tr_value='"+tr_value+"']");
-                tr.remove();
-            });
-        }else{
-            return false;
-        }
-    });
-});
-
-$(document).ready(function() {
-	$("input.shDate").datepicker();
-});
-
-$.datepicker.setDefaults({
-	dateFormat : 'yy-mm-dd',
-	prevText : '이전 달',
-	nextText : '다음 달',
-	monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-			'9월', '10월', '11월', '12월' ],
-	monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
-			'9월', '10월', '11월', '12월' ],
-	dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
-	dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
-	dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
-	showMonthAfterYear : true,
-	yearSuffix : '년'
-});
+	var goUrlList = "/code/codeList"; 			/* #-> */
+	var goUrlInst = "/code/codeInst"; 			/* #-> */
+	var goUrlUpdt = "/code/codeUpdt";				/* #-> */
+	var goUrlUele = "/code/codeUele";				/* #-> */
+	var goUrlDele = "/code/codeDele";				/* #-> */
+	
+	
+	$("#search_btn").on("click", function(){
+		if(validationList() == false) return false;
+		form.attr("action", goUrlList).submit();
+	});
+	
+	$("#reset_btn").on("click", function(){
+		$(location).attr("href", goUrlList);
+	});
+	
+	$(document).ready(function() {
+		$("input.shDate").datepicker();
+	});
+	
+	$.datepicker.setDefaults({
+		dateFormat : 'yy-mm-dd',
+		prevText : '이전 달',
+		nextText : '다음 달',
+		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+		showMonthAfterYear : true,
+		yearSuffix : '년'
+	});
 </script>
 <!-- end -->
 
