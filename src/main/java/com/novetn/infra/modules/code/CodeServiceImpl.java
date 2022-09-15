@@ -45,5 +45,10 @@ public class CodeServiceImpl implements CodeService {
 		System.out.println("service result : " + result);
 		return result;
 	}
+
+	@Override
+	public int selectOneCount(CodeVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
 	
 }

@@ -207,9 +207,9 @@
 		<div class="row">
 			<div class="col-3">
 	    		<nav class="nav flex-column">
-					<a class="nav-link active" aria-current="page" href="#" id="lefttab">코드그룹 관리</a>
-					<a class="nav-link" href="#" id="lefttab">코드 관리</a>
-					<a class="nav-link" href="#" id="lefttab">회원 관리</a>
+					<a class="nav-link active" aria-current="page" href="codeGroupList" id="lefttab">코드그룹 관리</a>
+					<a class="nav-link" href="../code/codeList" id="lefttab">코드 관리</a>
+					<a class="nav-link" href="../member/memberList" id="lefttab">회원 관리</a>
 					<a class="nav-link" href="#" id="lefttab">상품 관리</a>
 				</nav>
 	    	</div>
@@ -307,7 +307,7 @@
 									<tr data-tr_value = "<c:out value="${list.seq }"/>">
 										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 										<td scope="row"><c:out value="${list.seq }"/></td>
-										<td><c:out value="${list.codeNum }"/></td>
+										<td><c:out value="${list.codegroupNum }"/></td>
 										<td><a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>"><c:out value="${list.name_ko }"/></a></td>
 										<td><c:out value="${list.name_eng }"/></td>
 										<td><c:out value="${list.codeamount }"/></td>

@@ -97,16 +97,13 @@
 		border-radius: 0.375rem;
 	}
 	
-	
 </style>
 
 <body>
 
 <!-- start -->
 	<div class="abc">
-		<a href="../home">
-			<h1>coocha</h1>
-		</a>
+		<a href="../home"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
 			<form method="post" name="form" method="/codeGroup/codeGroupInst">
@@ -116,7 +113,7 @@
 					<div class="col">
 						<h6>코드그룹 코드</h6>
 						<br>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="codeNum" name="codeNum" value="<c:out value="${item.codeNum }"/>">
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="codegroupNum" name="codegroupNum" value="<c:out value="${item.codegroupNum }"/>">
 						<br><br>
 						<h6>코드그룹 이름(한글)</h6>
 						<br>
@@ -211,7 +208,7 @@
 			</form>
 <%-- 			
 			<c:forEach items="${list}" var="list" varStatus="status">
-				<c:out value="${list.codeNum }"/>
+				<c:out value="${list.codegroupNum }"/>
 				<c:out value="${list.name_ko }"/>
 				<c:out value="${list.name_eng }"/>
 				<br>
@@ -224,13 +221,13 @@
 	function test() {
 		alert("테스트 중");
 		
-		alert(document.getElementById('codeNum').value);
+		alert(document.getElementById('codegroupNum').value);
 		alert(document.getElementById('name_eng').value);
 		alert(document.getElementById('name_ko').value);
 		
-		if(document.getElementById("codeNum").value == '' || document.getElementById("codeNum").value == null) {
+		if(document.getElementById("codegroupNum").value == '' || document.getElementById("codegroupNum").value == null) {
 			alert("이름을 입력해주세요");
-			document.getElementById("codeNum").value="";
+			document.getElementById("codegroupNum").value="";
 			return false;
 		}
 		

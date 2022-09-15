@@ -10,36 +10,36 @@
 	
 	<select id="selectList" resultMap="resultMapObj">
 		
-		SELECT
-			a.seq
-			, a.codeNum
-			, a.name_ko
-			, a.name_eng
-			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
-			, a.regDate
-			, a.modDate
-			, a.delNY
-		FROM CodeGroup a
-		WHERE 1=1
-		
-		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
-		<choose>
-			<when test="shOptionDate == 1">AND a.regDate BETWEEN #{shstartDate} AND #{shendDate}</when>
-			<when test="shOptionDate == 2">AND a.modDate BETWEEN #{shstartDate} AND #{shendDate}</when>
-		</choose>
-		
-		<choose>
-			<when test="shOption == 1">AND a.codeNum LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND a.name_ko LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
-		</choose>
+			SELECT
+				a.seq
+				, a.codegroupNum
+				, a.name_ko
+				, a.name_eng
+				, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
+				, a.regDate
+				, a.modDate
+				, a.delNY
+			FROM CodeGroup a
+			WHERE 1=1
+			
+			<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
+			<choose>
+				<when test="shOptionDate == 1">AND a.regDate BETWEEN #{shstartDate} AND #{shendDate}</when>
+				<when test="shOptionDate == 2">AND a.modDate BETWEEN #{shstartDate} AND #{shendDate}</when>
+			</choose>
+			
+			<choose>
+				<when test="shOption == 1">AND a.codegroupNum LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 2">AND a.name_ko LIKE CONCAT('%',#{shValue},'%')</when>
+				<when test="shOption == 3">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
+			</choose>
 			
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO CodeGroup (
 			seq
-			, codeNum
+			, codegroupNum
 			, name_ko
 			, name_eng
 			, codeamount
@@ -49,7 +49,7 @@
 		)
 		VALUES (
 			#{seq}
-			, #{codeNum}
+			, #{codegroupNum}
 			, #{name_ko}
 			, #{name_eng}
 			, #{codeamount}
@@ -66,7 +66,7 @@
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			a.seq
-			, a.codeNum
+			, a.codegroupNum
 			, a.name_ko
 			, a.name_eng
 			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
@@ -82,7 +82,7 @@
 		UPDATE CodeGroup
 		SET
 			seq = #{seq}
-			, codeNum = #{codeNum}
+			, codegroupNum = #{codegroupNum}
 			, name_ko = #{name_ko}
 			, name_eng = #{name_eng}
 			, modDate = now()

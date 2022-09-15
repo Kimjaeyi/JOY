@@ -89,6 +89,12 @@
 	    border-color: #6900EF;
 	}
 	
+	#viewsel {
+		width: 70px; 
+		height: 40px; 
+		float: right;
+	}
+	
 	#regbtn, #delbtn {
 		float: right;
 		width: 35px;
@@ -207,9 +213,9 @@
 		<div class="row">
 			<div class="col-3">
 	    		<nav class="nav flex-column">
-					<a class="nav-link" id="lefttab">코드그룹 관리</a>
-					<a class="nav-link active" href="#" aria-current="page" id="lefttab">코드 관리</a>
-					<a class="nav-link" href="#" id="lefttab">회원 관리</a>
+					<a class="nav-link" href="../codeGroup/codeGroupList" id="lefttab">코드그룹 관리</a>
+					<a class="nav-link active" href="codeList" aria-current="page" id="lefttab">코드 관리</a>
+					<a class="nav-link" href="../member/memberList" id="lefttab">회원 관리</a>
 					<a class="nav-link" href="#" id="lefttab">상품 관리</a>
 				</nav>
 	    	</div>
@@ -227,7 +233,12 @@
 				</ul>
 				<br>
 				<div class="searchhead">
-					<form method="post" action="/code/codeList">
+					<form method="post" name="formList" action="/code/codeList">
+						<input type="hidden" name="mainKey">
+						<input type="hidden" name="thisPage" vlaue="<c:out value="${vo.thisPage}" default="1"/>">
+						<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+						<input type="hidden" name="checkboxSeqArray">
+					
 						<div class="row">
 							<div class="col-1">
 								<h5><b>검색분류</b></h5>
@@ -261,7 +272,7 @@
 								<div class="col-2">
 									<select class="form-select" name="shOption" id="selectfield">
 										<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
-										<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드그룹 코드</option>
+										<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>코드</option>
 										<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>코드그룹 이름</option>
 										<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>코드이름(한글)</option>
 										<option value="4" <c:if test="${vo.shOption eq 4}">selected</c:if>>코드이름(영문)</option>
@@ -282,25 +293,24 @@
 				</div>
 				<font style="font-size: 20px"><b>코드관리</b></font>
 				<br>
-				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-				<a href="codeForm">
-					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
-				</a>
+				<select class="form-select" id="viewsel">
+					<option selected>10</option>
+					<option value="1">15</option>
+					<option value="2">30</option>
+				</select>
+				<br>
 				<table class="table table-light table-striped table-hover">
 					<thead>
 						<tr>
 							<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
 							<th scope="col">번호</th>
-							<th scope="col">코드그룹 코드</th>
 							<th scope="col">코드그룹 이름(한글)</th>
 							<th scope="col">코드</th>
-							<th scope="col">대체코드</th>
 							<th scope="col">코드 이름(한글)</th>
 							<th scope="col">코드 이름(영문)</th>
 							<th scope="col">순서</th>
 							<th scope="col">등록일</th>
 							<th scope="col">수정일</th>
-							<th scope="col">사용</th>
 							<th scope="col">삭제</th>
 						</tr>
 					</thead>
@@ -314,21 +324,13 @@
 									<tr data-tr_value = "<c:out value="${list.seq }"/>">
 										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 										<td scope="row"><c:out value="${list.seq }"/></td>
-										<td><c:out value="${list.codeGroup_seq }"/></td>
-										<td><c:out value="${list.name_ko }"/></td>
+										<td><a href="/code/codeForm?seq=<c:out value="${list.seq }"/>"><c:out value="${list.name_ko }"/></td>
 										<td><c:out value="${list.codeNum }"/></td>
-										<td><c:out value="${list.anotherCode }"/></td>
 										<td><c:out value="${list.cdname_ko }"/></td>
 										<td><c:out value="${list.name_eng }"/></td>
 										<td><c:out value="${list.order }"/></td>
-										<td></td>
-										<td></td>
-										<td>
-											<c:choose>
-												<c:when test="${list.useNY eq 0 }">N</c:when>
-												<c:otherwise>Y</c:otherwise>
-											</c:choose>
-										</td>
+										<td><c:out value="${list.regDate }"/></td>
+										<td><c:out value="${list.modDate }"/></td>
 										<td>
 											<c:choose>
 												<c:when test="${list.delNY eq 0 }">N</c:when>
@@ -341,26 +343,14 @@
 						</c:choose>
 					</tbody>
 				</table>
-				<br><br>
+				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
+				<a href="codeForm">
+					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
+				</a>
+				<!-- pagination s -->
+				<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
+				<!-- pagination e -->
 			</div>
-			<nav aria-label="Page navigation example">
-				<ul class="pagination">
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li class="page-item active"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
-			<br><br><br>
 		</div>
 	</div>
 	
@@ -399,6 +389,23 @@
 	var goUrlUele = "/code/codeUele";				/* #-> */
 	var goUrlDele = "/code/codeDele";				/* #-> */
 	
+	var excelUri = "/code/excelDownload";
+	
+	var mainKey = $("input:hidden[name=mainKey]");
+	
+	var form = $("form[name=formList]");
+	
+	var checkboxSeqArray = [];
+	
+	goForm = function(keyValue) {
+		mainKey.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
 	
 	$("#search_btn").on("click", function(){
 		if(validationList() == false) return false;

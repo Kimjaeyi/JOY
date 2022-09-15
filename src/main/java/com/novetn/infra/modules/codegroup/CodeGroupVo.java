@@ -10,7 +10,7 @@ public class CodeGroupVo {
 	private Integer shOptionDate;
 	private String name_ko;
 	private String name_eng;
-	private Integer codeNum;
+	private Integer codegroupNum;
 	private String seq;
 	
 	public String getShOption() {
@@ -61,11 +61,11 @@ public class CodeGroupVo {
 	public void setName_eng(String name_eng) {
 		this.name_eng = name_eng;
 	}
-	public Integer getCodeNum() {
-		return codeNum;
+	public Integer getcodegroupNum() {
+		return codegroupNum;
 	}
-	public void setCodeNum(Integer codeNum) {
-		this.codeNum = codeNum;
+	public void setcodegroupNum(Integer codegroupNum) {
+		this.codegroupNum = codegroupNum;
 	}
 	public String getSeq() {
 		return seq;

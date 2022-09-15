@@ -3,15 +3,17 @@ package com.novetn.infra.modules.code;
 public class Code {
 
 	private String seq;
-	private Integer codeGroup_seq;
+	private String codeGroup_seq;
+	private Integer codegroupNum;
 	private String name_ko;
 	private Integer codeNum;
 	private String anotherCode;
 	private String cdname_ko;
 	private String name_eng;
 	private Integer order; 
-	private Integer useNY;
 	private Integer delNY;
+	private String regDate;
+	private String modDate;
 	
 	public String getSeq() {
 		return seq;
@@ -19,22 +21,22 @@ public class Code {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
+	public String getCodeGroup_seq() {
+		return codeGroup_seq;
+	}
+	public void setCodeGroup_seq(String codeGroup_seq) {
+		this.codeGroup_seq = codeGroup_seq;
+	}
+	public Integer getCodegroupNum() {
+		return codegroupNum;
+	}
+	public void setCodegroupNum(Integer codegroupNum) {
+		this.codegroupNum = codegroupNum;
+	}
 	public String getName_ko() {
 		return name_ko;
 	}
 	public void setName_ko(String name_ko) {
-		this.name_ko = name_ko;
-	}
-	public Integer getCodeGroup_seq() {
-		return codeGroup_seq;
-	}
-	public void setCodeGroup_seq(Integer codeGroup_seq) {
-		this.codeGroup_seq = codeGroup_seq;
-	}
-	public String getname_ko() {
-		return name_ko;
-	}
-	public void setCodeGroupname_ko(String name_ko) {
 		this.name_ko = name_ko;
 	}
 	public Integer getCodeNum() {
@@ -67,21 +69,24 @@ public class Code {
 	public void setOrder(Integer order) {
 		this.order = order;
 	}
-	public Integer getUseNY() {
-		return useNY;
-	}
-	public void setUseNY(Integer useNY) {
-		this.useNY = useNY;
-	}
 	public Integer getDelNY() {
 		return delNY;
 	}
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
-	
-
-	
+	public String getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(String regDate) {
+		this.regDate = regDate;
+	}
+	public String getModDate() {
+		return modDate;
+	}
+	public void setModDate(String modDate) {
+		this.modDate = modDate;
+	}
 	
 	
 }

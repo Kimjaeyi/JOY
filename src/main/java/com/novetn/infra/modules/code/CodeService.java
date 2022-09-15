@@ -10,5 +10,6 @@ public interface CodeService {
 	public int uelete(Code dto) throws Exception;
 	public int delete(CodeVo vo) throws Exception;
 	public Code selectOne(CodeVo vo) throws Exception;
+	public int selectOneCount(CodeVo vo) throws Exception;
 }
   

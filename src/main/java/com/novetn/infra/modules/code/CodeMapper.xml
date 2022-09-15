@@ -8,23 +8,10 @@
  
     <resultMap id="resultMapObj" type="com.novetn.infra.modules.code.Code"></resultMap>
 	
-	<select id="selectList" resultMap="resultMapObj">
-		SELECT
-			a.seq
-		    ,a.codeGroup_seq
-		    ,b.name_ko
-		    ,a.codeNum
-		    ,a.anotherCode
-		    ,a.cdname_ko
-		    ,a.name_eng
-		    ,a.order
-		    ,a.regDate
-		    ,a.modDate
-		    ,a.useNY
-		    ,a.delNY
+	<sql id = "selectCommon">
 		FROM Code a
 		inner join CodeGroup b on b.seq = a.codeGroup_seq
-			WHERE 1=1
+		WHERE 1=1
 			
 		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
 		<choose>
@@ -33,17 +20,41 @@
 		</choose>
 		
 		<choose>
-			<when test="shOption == 1">AND a.codeGroup_seq = #{shValue}</when>
+			<when test="shOption == 1">AND a.codeNum = #{shValue}</when>
 			<when test="shOption == 2">AND b.name_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND a.cdname_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
-		
+	</sql>
+
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+	
+			SELECT
+				a.seq
+			    ,b.codegroupNum
+			    ,b.name_ko
+			    ,a.codeNum
+			    ,a.anotherCode
+			    ,a.cdname_ko
+			    ,a.name_eng
+			    ,a.order
+			    ,a.regDate
+			    ,a.modDate
+			    ,a.delNY
+		<include refid="selectCommon" />	
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO Code (
 			seq
+			, codegroupNum
 			, codeGroup_seq
 			, codeNum
 			, cdname_ko
@@ -55,6 +66,7 @@
 		)
 		VALUES (
 			#{seq}
+			, codegroupNum
 			, #{codeGroup_seq}
 			, #{codeNum}
 			, #{cdname_ko}
@@ -77,9 +89,9 @@
 			, codeNum
 			, cdname_ko
 			, name_eng
-			, a.regDate
-			, a.modDate
-			, a.delNY
+			, regDate
+			, modDate
+			, delNY
 		FROM Code
 		WHERE 1=1
 			AND seq = #{seq}

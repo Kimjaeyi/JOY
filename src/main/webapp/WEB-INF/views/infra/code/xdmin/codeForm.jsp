@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html> 
 <head>
-	<title>Code Form</title>
+	<title>코드 등록</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,12 +19,21 @@
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
+	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022091023"/>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	<script>
+	const myModal = document.getElementById('myModal')
+	const myInput = document.getElementById('myInput')
+
+	myModal.addEventListener('shown.bs.modal', () => {
+	  myInput.focus()
+	})
+	</script>
 	
 	<style type="text/css">
 
@@ -35,22 +44,15 @@
     font-style: normal;
 	}
 	
-	@font-face {
-	    font-family: 'MICEGothic Bold';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-	    font-weight: 700;
-	    font-style: normal;
-	}
-	
-	@font-face {
-	    font-family: 'MICEGothic';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
-	    font-weight: 400;
-	    font-style: normal;
-	}
-	
 	h1 {
 		font-family: 'GilbeotRainbow';
+		margin: 30px 0 0 10%;
+		font-size: 40px;
+		color: #6900EF;
+	}
+	
+	h6 {
+		font-weight: bold;
 	}
 	
 	a:link {
@@ -66,17 +68,21 @@
 			text-decoration: none;
 	}
 	
-	h4, h6 {
-		font-family: 'MICEGothic Bold';
+	input.form-control {
+		border: 1px solid #ced4da;
+		border-radius: 0.375rem;
 	}
 	
 	input, select {
-		font-family: 'MICEGothic';
 		height: 50px;
 	}
 	
 	.aaa {
 		margin: 2% 15%;
+	}
+	
+	.col {
+		margin: 5% 0;
 	}
 	
 	button {
@@ -85,6 +91,16 @@
 		display: inline;
 	}
 	
+	#submitbtn {
+		background-color: #6900EF; 
+		color: white; 
+		border-radius: 0.375rem;
+	}
+	
+	.ccc {
+		display: inline;
+		margin: 0 0 5% 0;
+	}
 	
 </style>
 
@@ -92,28 +108,50 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="../user/item/Mainpage.html">
-			<h1 style="margin: 30px 0 0 10%">coocha</h1>
-		</a>
+		<a href="../home"><h1>coocha</h1></a>
 		<br><hr><br>
-		<form method="post" action="/code/codeInst">
-			<div class="aaa">
-				<h4>코드 관리</h4>
-				<br><br>
+		<div class="aaa">
+			<form method="post" name="form" action="/code/codeInst">
+				<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
+				<font style="font-size: 20px"><b>코드 관리</b></font>
 				<div class="row">
 					<div class="col">
 						<h6>코드그룹 코드</h6>
-						<input class="form-control" type="text" disabled readonly/>
 						<br>
+						<input class="form-control" type="text" value="<c:out value="${item.codegroupNum }"/>" disabled readonly/>
+						<br><br>
 						<h6>코드 이름(한글)</h6>
-						<input class="form-control" type="text" name="cdname_ko">
 						<br>
+						<input class="form-control" type="text" name="cdname_ko" value="<c:out value="${item.cdname_ko }"/>">
+						<br><br>
 						<h6>코드</h6>
-						<input class="form-control" type="text" name="codeNum">
 						<br>
+						<input class="form-control" type="text" name="codeNum" value="<c:out value="${item.codeNum }"/>">
+						<br><br>
+						<h6>사용여부</h6>
+						<br>
+						<select class="form-select">
+							<option selected>선택하세요</option>
+							<option value="1">Y</option>
+							<option value="2">N</option>
+						</select>
+						<br><br>
+						<h6>예비1(varchar type)</h6>
+						<br>
+						<input class="form-control" type="text">
+						<br><br>
+						<h6>예비1(int type)</h6>
+						<br>
+						<input class="form-control" type="text">
+						<br><br>
+						<h6>설명</h6>
+						<br>
+						<textarea class="form-control" rows="3"></textarea>
+						<br><br>
 					</div>
 					<div class="col">
 						<h6>코드그룹 이름</h6>
+						<br>
 						<select class="form-select" name="codeGroup_seq">
 							<option selected>::선택::</option>
 							<option value="1">등급</option>
@@ -128,74 +166,65 @@
 							<option value="10">진행상황</option>
 							<option value="11">문의종류</option>
 						</select>
-						<br>
+						<br><br>
 						<h6>코드 이름(영문)</h6>
-						<input class="form-control" type="text" name="name_eng">
 						<br>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<h6>설명</h6>
-						<textarea class="form-control" rows="3"></textarea>
-						<br>
-					</div>
-					<div class="col">
+						<input class="form-control" type="text" name="name_eng" value="<c:out value="${item.name_eng }"/>">
+						<br><br>
 						<h6>순서</h6>
+						<br>
 						<input class="form-control" type="text" name="order">
-						<br>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<h6>사용여부</h6>
-						<select class="form-select">
-							<option selected>선택하세요</option>
-							<option value="1">Y</option>
-							<option value="2">N</option>
-						</select>
-						<br>
-						<h6>예비1(varchar type)</h6>
-						<input class="form-control" type="text">
-						<br>
-						<h6>예비3(varchar type)</h6>
-						<input class="form-control" type="text">
-						<br>
-					</div>
-					<div class="col">
+						<br><br>
 						<h6>삭제여부</h6>
+						<br>
 						<select class="form-select">
 							<option selected>선택하세요</option>
 							<option value="1">Y</option>
 							<option value="2">N</option>
 						</select>
-						<br>
+						<br><br>
 						<h6>예비2(varchar type)</h6>
-						<input class="form-control" type="text">
 						<br>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<h6>예비1(int type)</h6>
 						<input class="form-control" type="text">
-						<br>
-						<h6>예비3(int type)</h6>
-						<input class="form-control" type="text">
-						<br>
-					</div>
-					<div class="col">
+						<br><br>
 						<h6>예비2(int type)</h6>
+						<br>
 						<input class="form-control" type="text">
+						<br><br>
 					</div>
 				</div>
-				<br><br>
-				<a href="/code/codeList">
-					<button type="button" class="btn btn-outline-dark"><i class="fa-solid fa-list"></i></button>
-				</a>
-				<button type="submit" class="btn btn-outline-dark" style="float: right"><i class="fa-solid fa-circle-check"></i></button>
-			</div>
-		</form>
+				<div class="ccc">
+					<a href="codeList">
+						<button type="button" class="btn btn-outline-dark">
+							<i class="fa-solid fa-list"></i>
+						</button>
+					</a>
+					<button type="button" id="submitbtn" class="btn btn-outline-dark" style="float: right">
+						<i class="fa-solid fa-circle-check"></i>
+					</button>
+					<button type="button" class="btn btn-outline-warning" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						<i class="fa-duotone fa-file-xmark"></i>
+					</button>
+				</div>
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">내용 취소</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<a href="/codeGroup/codeGroupList">
+									<button type="button" id="submitbtn">삭제</button>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
 	</div>
 	
 	<script>
@@ -210,10 +239,36 @@
 	    }
 	})
 	
+	var goUrlList = "/code/codeList";
+	var goUrlInst = "/code/codeInst";
+	var goUrlUpdt = "/code/codeUpdt";
+	var goUrlUele = "/code/codeUele";
+	var goUrlDele = "/code/codeDele";
+	
+	var seq = $("input:hidden[name=seq]");
+	
+	var form = $("form[name=form]");
+	var formVo = $("form[name=formVo]");
+	
+	$("#submitbtn").on("click", function(){
+
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   		// if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   		// if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	});
+	
 	</script>
 	<!-- end -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>
 </html>

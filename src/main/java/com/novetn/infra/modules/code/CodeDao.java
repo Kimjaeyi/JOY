@@ -46,6 +46,10 @@ public class CodeDao {
 		return result;
 	}
 	
+	public int selectOneCount(CodeVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	
 //	public List<Code> selectListWithoutPaging() {
 //		return sqlSession.selectList(namespace + ".selectListWithoutPaging", "");
 //	}
