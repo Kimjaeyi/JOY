@@ -30,19 +30,19 @@
 <style type="text/css">
 
 	a:link {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:visited {
-			color: none;
-			text-decoration: none;
+		color: none;
+		text-decoration: none;
 	}
 	a:hover {
-			color:mediumpurple;
-			text-decoration: none;
+		color:mediumpurple;
+		text-decoration: none;
 	}
 	
-	.searchhead{
+	.searchhead {
 		padding: 15px;
 		margin: 10px 0 5% 0;
 		border-radius: 6px;
@@ -108,7 +108,7 @@
 	
 	.nav {
 		--bs-nav-link-hover-color: #9154f3;
-		width: 333px;
+		width: 255px;
 	}
 	
 	.nav-link {
@@ -233,9 +233,9 @@
 				</ul>
 				<br>
 				<div class="searchhead">
-					<form method="post" name="formList" action="/code/codeList">
-						<input type="hidden" name="mainKey">
-						<input type="hidden" name="thisPage" vlaue="<c:out value="${vo.thisPage}" default="1"/>">
+					<form method="post" name="formList">
+						<input type="hidden" name="seq">
+						<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 						<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 						<input type="hidden" name="checkboxSeqArray">
 					
@@ -246,7 +246,7 @@
 							<div class="row justify-content-end">
 								<div class="col-2">
 									<select class="form-select" name="shDelNy">
-										<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
+										<option value="" <c:if test="${empty vo.shDelNy }"></c:if>>삭제여부</option>
 										<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
 										<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
 									</select>
@@ -285,7 +285,7 @@
 									<button type="button" class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
 								</div>
 								<div class="col-1" style="max-width: 55px">
-									<button class="btn btn-outline-secondary" type="submit" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+									<button class="btn btn-outline-secondary" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 								</div>
 							</div>
 						</div>
@@ -324,7 +324,7 @@
 									<tr data-tr_value = "<c:out value="${list.seq }"/>">
 										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 										<td scope="row"><c:out value="${list.seq }"/></td>
-										<td><a href="/code/codeForm?seq=<c:out value="${list.seq }"/>"><c:out value="${list.name_ko }"/></td>
+										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name_ko }"/></a></td>
 										<td><c:out value="${list.codeNum }"/></td>
 										<td><c:out value="${list.cdname_ko }"/></td>
 										<td><c:out value="${list.name_eng }"/></td>
@@ -388,6 +388,7 @@
 	var goUrlUpdt = "/code/codeUpdt";				/* #-> */
 	var goUrlUele = "/code/codeUele";				/* #-> */
 	var goUrlDele = "/code/codeDele";				/* #-> */
+	var goUrlForm = "/code/codeForm";
 	
 	var excelUri = "/code/excelDownload";
 	
@@ -395,17 +396,9 @@
 	
 	var form = $("form[name=formList]");
 	
+	var seq = $("input:hidden[name=seq]");
+	
 	var checkboxSeqArray = [];
-	
-	goForm = function(keyValue) {
-		mainKey.val(keyValue);
-		form.attr("action", goUrlForm).submit();
-	}
-	
-	goList = function(thisPage) {
-		$("input:hidden[name=thisPage]").val(thisPage);
-		form.attr("action", goUrlList).submit();
-	}
 	
 	$("#search_btn").on("click", function(){
 		if(validationList() == false) return false;
@@ -419,6 +412,16 @@
 	$(document).ready(function() {
 		$("input.shDate").datepicker();
 	});
+	
+	goForm = function(keyValue) {
+		seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
 	
 	$.datepicker.setDefaults({
 		dateFormat : 'yy-mm-dd',

@@ -4,7 +4,7 @@ public class Code {
 
 	private String seq;
 	private String codeGroup_seq;
-	private Integer codegroupNum;
+	private Integer groupNum;
 	private String name_ko;
 	private Integer codeNum;
 	private String anotherCode;
@@ -27,11 +27,11 @@ public class Code {
 	public void setCodeGroup_seq(String codeGroup_seq) {
 		this.codeGroup_seq = codeGroup_seq;
 	}
-	public Integer getCodegroupNum() {
-		return codegroupNum;
+	public Integer getgroupNum() {
+		return groupNum;
 	}
-	public void setCodegroupNum(Integer codegroupNum) {
-		this.codegroupNum = codegroupNum;
+	public void setCodegroupNum(Integer groupNum) {
+		this.groupNum = groupNum;
 	}
 	public String getName_ko() {
 		return name_ko;

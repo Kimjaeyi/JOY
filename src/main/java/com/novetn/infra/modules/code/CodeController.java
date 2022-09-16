@@ -11,12 +11,18 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/code/")
+
 public class CodeController {
 	
 	@Autowired
 	CodeServiceImpl service;
 	
-	public void setSearchAndPaging(CodeVo vo ) throws Exception {
+	public void setSearchAndPaging(CodeVo vo) throws Exception {
+		
+//		vo.setShOptionDate(vo.getShOptionDate() == null ? 2 : vo.getShOptionDate());
+//		vo.setShstartDate(vo.getShstartDate() == null || vo.getShstartDate() == "2021-08-31" ? null : vo.getShstartDate());
+//		vo.setShendDate(vo.getShendDate() == null || vo.getShendDate() == "now()" ? null : vo.getShendDate());
+		
 		vo.setParamsPaging(service.selectOneCount(vo));
 	}
 	
@@ -40,19 +46,37 @@ public class CodeController {
 	@RequestMapping(value = "codeForm")
 	public String codeForm(@ModelAttribute("vo") CodeVo vo, Model model) throws Exception {
 		
+//		if (vo.getMainKey().equals("0") || vo.getMainKey().equals("")) {
+//			// insert
+//		} else {
+//			Code item = service.selectOne(vo);
+//			model.addAttribute("item", item);
+//		}
+		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
 		Code result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		
 		return "infra/code/xdmin/codeForm";
 	}
 	
 	@RequestMapping(value = "codeInst")
-	public String codeInst(Code dto) throws Exception {
+	public String codeInst(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		service.insert(dto);
 		
-		return "redirect:/code/codeList";
+		vo.setSeq(dto.getSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+//		if (Constants.INSERT_AFTER_TYPE == 1) {
+//			return "redirect:/code/codeForm";
+//		} else {
+//			return "redirect:/code/codeList";
+//		}
+//		System.out.println("controller result: " + result);
+		
+		return "redirect:/code/codeForm";
 	}
 	
 	@SuppressWarnings(value = { "all" })
@@ -63,7 +87,7 @@ public class CodeController {
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/code/codeList";
+		return "redirect:/code/codeForm";
 	}
 	
 	@RequestMapping(value = "codeUele")

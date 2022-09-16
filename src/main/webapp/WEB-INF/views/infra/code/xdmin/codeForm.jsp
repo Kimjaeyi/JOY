@@ -85,13 +85,32 @@
 		margin: 5% 0;
 	}
 	
+	.nav-tabs {
+		--bs-nav-tabs-link-active-color: #6900EF;
+		--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
+	}
+	
+	.nav {
+		--bs-nav-link-hover-color: #9154f3;
+		width: 255px;
+	}
+	
+	.nav-link {
+		color : gray;
+	}
+	
+	.nav-item button {
+		width: 85px;
+		height: 30px;
+	}
+	
 	button {
 		width: 50px;
 		height: 50px;
 		display: inline;
 	}
 	
-	#submitbtn {
+	#delbtn {
 		background-color: #6900EF; 
 		color: white; 
 		border-radius: 0.375rem;
@@ -108,17 +127,30 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="../home"><h1>coocha</h1></a>
+		<a href="/"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
-			<form method="post" name="form" action="/code/codeInst">
-				<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
-				<font style="font-size: 20px"><b>코드 등록</b></font>
+			<!-- <form method="post" name="form" action="/code/codeInst"> -->
+				<form id="form" name="form" method="post">
+				<!-- *Vo.jsp s -->
+				<%@include file="codeVo.jsp"%>		<!-- #-> -->
+				<!-- *Vo.jsp e -->
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="nav-item">
+						<button class="nav-link" id="listtab">코드 목록</button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link active" id="regtab"><b>코드 등록</b></button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" id="modtab">코드 수정</button>
+					</li>
+				</ul>
 				<div class="row">
 					<div class="col">
 						<h6>코드그룹 코드</h6>
 						<br>
-						<input class="form-control" type="text" value="<c:out value="${item.codegroupNum }"/>" disabled readonly/>
+						<input class="form-control" type="text" disabled readonly/>
 						<br><br>
 						<h6>코드 이름(한글)</h6>
 						<br>
@@ -194,12 +226,10 @@
 					</div>
 				</div>
 				<div class="ccc">
-					<a href="codeList">
-						<button type="button" class="btn btn-outline-dark">
-							<i class="fa-solid fa-list"></i>
-						</button>
-					</a>
-					<button type="button" id="submitbtn" class="btn btn-outline-dark" style="float: right">
+					<button type="button" id="listbtn" class="btn btn-outline-dark">
+						<i class="fa-solid fa-list"></i>
+					</button>
+					<button type="button" id="savebtn" class="btn btn-outline-dark" style="float: right">
 						<i class="fa-solid fa-circle-check"></i>
 					</button>
 					<button type="button" class="btn btn-outline-warning" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -216,13 +246,16 @@
 							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<a href="/code/codeList">
-									<button type="button" id="submitbtn">삭제</button>
-								</a>
+								<button type="button" id="delbtn">삭제</button>
 							</div>
 						</div>
 					</div>
 				</div>
+			</form>
+			<form name="formVo" id="formVo" method="post">
+			<!-- *Vo.jsp s -->
+			<%@include file="codeVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
 			</form>
 		</div>
 	</div>
@@ -235,24 +268,33 @@
 	var goUrlUele = "/code/codeUele";
 	var goUrlDele = "/code/codeDele";
 	
-	var seq = $("input:hidden[name=seq]");
-	
+	var seq = $("input:hidden[name=seq]"); 
+
 	var form = $("form[name=form]");
 	var formVo = $("form[name=formVo]");
-	
-	$("#submitbtn").on("click", function(){
 
+	$("#savebtn").on("click", function(){
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
-	   		// if (validationInst() == false) return false;
+	   		//if (validationInst() == false) return false;
 	   		form.attr("action", goUrlInst).submit();
 	   	} else {
 	   		// update
 	   		/* keyName.val(atob(keyName.val())); */
-	   		// if (validationUpdt() == false) return false;
+	   		//if (validationUpdt() == false) return false;
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
+	}); 
+	$("#listbtn").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
 	});
+	
+	$("#delbtn").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	});
+	
+	</script>
+	<script>
 	
 	</script>
 	<!-- end -->

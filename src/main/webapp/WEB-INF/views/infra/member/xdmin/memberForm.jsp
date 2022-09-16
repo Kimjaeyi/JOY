@@ -38,14 +38,17 @@
 	<style type="text/css">
 
 	@font-face {
-    font-family: 'GilbeotRainbow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	    font-family: 'GilbeotRainbow';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
 	}
 	
 	h1 {
 		font-family: 'GilbeotRainbow';
+		margin: 30px 0 0 10%;
+		font-size: 40px;
+		color: #6900EF;
 	}
 	
 	h6 {
@@ -74,8 +77,9 @@
 		height: 50px;
 	}
 	
-	.form-check-label {
-		font-family: 'MICEGothic';
+	.form-check-input:checked {
+	    background-color: #6900EF;
+	    border-color: #6900EF;
 	}
 	
 	.aaa {
@@ -133,6 +137,25 @@
 						<br>
 						<input class="form-control" type="text" name="email" id="email" value="<c:out value="${item.email }"/>">
 						<br><br>
+						<h6>사용여부</h6>
+						<br>
+						<select class="form-select">
+							<option selected>선택하세요</option>
+							<option value="1">Y</option>
+							<option value="2">N</option>
+						</select>
+						<br><br>
+						<h6>성별</h6>
+						<br>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="gender" id="gender1" value="남자">
+							<label class="form-check-label" for="inlineRadio1">남자</label>
+						</div>
+						<div class="form-check form-check-inline">
+							<input class="form-check-input" type="radio" name="gender" id="gender2" value="여자">
+							<label class="form-check-label" for="inlineRadio2">여자</label>
+						</div>
+						<br><br>
 					</div>
 					<div class="col">
 						<h6>회원등급</h6>
@@ -144,7 +167,7 @@
 							<option value="3">VIP</option>
 							<option value="4">VVIP</option>
 						</select>
-						<br><br><br>
+						<br><br>
 						<h6>비밀번호</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="8~20자리 영문 대/소문자, 숫자, 특수문자 2가지 이상 사용" name="pwd" id="pwd">
@@ -163,20 +186,6 @@
 						<br>
 						<input class="form-control" type="text" name="address" id="address">
 						<br><br>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<h6>사용여부</h6>
-						<br>
-						<select class="form-select">
-							<option selected>선택하세요</option>
-							<option value="1">Y</option>
-							<option value="2">N</option>
-						</select>
-						<br><br><br>
-					</div>
-					<div class="col">
 						<h6>삭제여부</h6>
 						<br>
 						<select class="form-select">
@@ -184,25 +193,7 @@
 							<option value="1">Y</option>
 							<option value="2">N</option>
 						</select>
-						<br><br><br>
-					</div>
-				</div>
-				<br>
-				<div class="row">
-					<div class="col">
-						<h6>성별</h6>
-						<br>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="gender" id="gender1" value="남자">
-							<label class="form-check-label" for="inlineRadio1">남자</label>
-						</div>
-						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="gender" id="gender2" value="여자">
-							<label class="form-check-label" for="inlineRadio2">여자</label>
-						</div>
 						<br><br>
-					</div>
-					<div class="col">
 						<h6>개인정보 유효기간</h6>
 						<br>
 						<div class="form-check form-check-inline">

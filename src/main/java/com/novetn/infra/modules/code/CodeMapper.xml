@@ -20,7 +20,7 @@
 		</choose>
 		
 		<choose>
-			<when test="shOption == 1">AND a.codeNum = #{shValue}</when>
+			<when test="shOption == 1">AND a.codeNum LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 2">AND b.name_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND a.cdname_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
@@ -29,13 +29,10 @@
 
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
-	
 			SELECT
 				a.seq
-			    ,b.codegroupNum
 			    ,b.name_ko
 			    ,a.codeNum
-			    ,a.anotherCode
 			    ,a.cdname_ko
 			    ,a.name_eng
 			    ,a.order
@@ -53,9 +50,7 @@
 	
 	<insert id="insert">
 		INSERT INTO Code (
-			seq
-			, codegroupNum
-			, codeGroup_seq
+			codeGroup_seq
 			, codeNum
 			, cdname_ko
 			, name_eng
@@ -65,9 +60,7 @@
 			, delNY
 		)
 		VALUES (
-			#{seq}
-			, codegroupNum
-			, #{codeGroup_seq}
+			#{codeGroup_seq}
 			, #{codeNum}
 			, #{cdname_ko}
 			, #{name_eng}
@@ -84,8 +77,7 @@
  	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			seq
-			, codeGroup_seq
+			codeGroup_seq
 			, codeNum
 			, cdname_ko
 			, name_eng
@@ -100,8 +92,7 @@
 	<update id="update">
 		UPDATE Code
 		SET
-			seq = #{seq}
-			, codeGroup_seq = #{codeGroup_seq}
+			codeGroup_seq = #{codeGroup_seq}
 			, codeNum = #{codeNum}
 			, cdname_ko = #{cdname_ko}
 			, name_eng = #{name_eng}

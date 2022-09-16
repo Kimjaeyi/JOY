@@ -89,6 +89,12 @@
 	    border-color: #6900EF;
 	}
 	
+	#viewsel {
+		width: 70px; 
+		height: 40px; 
+		float: right;
+	}
+	
 	#regbtn, #delbtn {
 		float: right;
 		width: 35px;

@@ -30,19 +30,19 @@
 <style type="text/css">
 
 	a:link {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:visited {
-			color: none;
-			text-decoration: none;
+		color: none;
+		text-decoration: none;
 	}
 	a:hover {
-			color:mediumpurple;
-			text-decoration: none;
+		color:mediumpurple;
+		text-decoration: none;
 	}
 	
-	.searchhead{
+	.searchhead {
 		padding: 15px;
 		margin: 10px 0 5% 0;
 		border-radius: 6px;
@@ -72,6 +72,10 @@
 		height: 35px;
 	}
 	
+	th {
+		font-weight: bold;
+	}
+	
 	.row {
 		padding: 20px;
 	}
@@ -93,8 +97,8 @@
 	
 	#regbtn, #delbtn {
 		float: right;
-		width: 35px;
-		height: 33px;
+		width: 53px;
+		height: 40px;
 	}
 	
 	.nav-tabs {
@@ -104,6 +108,7 @@
 	
 	.nav {
 		--bs-nav-link-hover-color: #9154f3;
+		width: 280px;
 	}
 	
 	.nav-link {
@@ -211,7 +216,7 @@
 					<a class="nav-link" href="../codeGroup/codeGroupList" id="lefttab">코드그룹 관리</a>
 					<a class="nav-link" href="../code/codeList" id="lefttab">코드 관리</a>
 					<a class="nav-link active" href="memberList" aria-current="page" id="lefttab">회원 관리</a>
-					<a class="nav-link" href="../item/itemList" id="lefttab">상품 관리</a>
+					<a class="nav-link" href="#" id="lefttab">상품 관리</a>
 				</nav>
 	    	</div>
     		<div class="col-9">

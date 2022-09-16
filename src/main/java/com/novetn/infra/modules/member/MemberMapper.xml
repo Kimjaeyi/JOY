@@ -27,6 +27,7 @@
 	</sql>
 
 	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
 <!-- 		
 		SELECT
 			a.seq
@@ -85,20 +86,20 @@
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
 			seq
-			, membership
+			, grade
 			, name
 			, dob
 			, email
 			, phone
 			, regDate
 			, delNY
-		FROM Member
+		FROM member
 		WHERE 1=1
 			AND seq = #{seq}
 	</select>
 	
 	<update id="update">
-		UPDATE Member
+		UPDATE member
 		SET
 			seq = #{seq}
 			, name = #{name}
@@ -112,7 +113,7 @@
 	</update>
 	
 	<update id="uelete">
-		UPDATE Member
+		UPDATE member
 		SET
 			delNY = 1
 		WHERE 
@@ -120,7 +121,7 @@
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM Member
+		DELETE FROM member
 		WHERE
 			seq = #{seq}
 	</delete>

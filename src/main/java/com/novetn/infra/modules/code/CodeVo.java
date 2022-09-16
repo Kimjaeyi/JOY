@@ -27,6 +27,7 @@ public class CodeVo {
 	private Integer RNUM;
 
 	private int startRnumForMysql = 0;	
+	private String mainKey;
 	
 	public String getShOption() {
 		return shOption;
@@ -136,6 +137,12 @@ public class CodeVo {
 	public void setStartRnumForMysql(int startRnumForMysql) {
 		this.startRnumForMysql = startRnumForMysql;
 	}
+	public String getMainKey() {
+		return mainKey;
+	}
+	public void setMainKey(String mainKey) {
+		this.mainKey = mainKey;
+	}
 	
 	public void setParamsPaging(int totalRows) {
 		
@@ -186,6 +193,5 @@ public class CodeVo {
 //		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 		
 	}
-	
 	
 }
