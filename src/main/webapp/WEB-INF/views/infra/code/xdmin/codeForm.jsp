@@ -27,12 +27,12 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script>
-	const myModal = document.getElementById('myModal')
-	const myInput = document.getElementById('myInput')
-
-	myModal.addEventListener('shown.bs.modal', () => {
-	  myInput.focus()
-	})
+		const myModal = document.getElementById('myModal')
+		const myInput = document.getElementById('myInput')
+		
+		myModal.addEventListener('shown.bs.modal', () => {
+			myInput.focus()
+		})
 	</script>
 	
 	<style type="text/css">
@@ -113,7 +113,7 @@
 		<div class="aaa">
 			<form method="post" name="form" action="/code/codeInst">
 				<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
-				<font style="font-size: 20px"><b>코드 관리</b></font>
+				<font style="font-size: 20px"><b>코드 등록</b></font>
 				<div class="row">
 					<div class="col">
 						<h6>코드그룹 코드</h6>
@@ -216,7 +216,7 @@
 							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<a href="/codeGroup/codeGroupList">
+								<a href="/code/codeList">
 									<button type="button" id="submitbtn">삭제</button>
 								</a>
 							</div>
@@ -228,16 +228,6 @@
 	</div>
 	
 	<script>
-	
-	$(function(){
-	    if (location.hash == "#codegrouptab"){
-	        $('.nav-tabs').find('li').eq(0).addClass('active').siblings().removeClass();
-	        $('.tab-content').find('#codegrouptab').addClass('active in').siblings().removeClass('active in');
-	    } else if(location.hash == "#codetab"){
-	        $('.nav-tabs').find('li').eq(1).addClass('active').siblings().removeClass();
-	        $('.tab-content').find('#codetab').addClass('active in').siblings().removeClass('active in');
-	    }
-	})
 	
 	var goUrlList = "/code/codeList";
 	var goUrlInst = "/code/codeInst";

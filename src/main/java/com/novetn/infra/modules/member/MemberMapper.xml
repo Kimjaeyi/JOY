@@ -7,18 +7,25 @@
 <mapper namespace="com.novetn.infra.modules.member.MemberMapper">
 
     <resultMap id="resultMapObj" type="com.novetn.infra.modules.member.Member"></resultMap>
-<!-- 	
+	
 	<sql id = "selectCommon">
-		from member
+		FROM member a
 		WHERE 1=1
-			<if test="delNY != null and !dleNY.equals('')">AND delNY = #{delNY}</if>
-			<choose>
-				<when test="shOption == 1">AND name LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 2">AND email LIKE CONCAT('%',#{shValue},'%')</when>
-				<when test="shOption == 3">AND phone LIKE CONCAT('%',#{shValue},'%')</when>
-			</choose>
+		 
+		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
+		<if test="shOptionMem != null and !shOptionMem.equals('')">AND a.grade = #{shOptionMem}</if>
+		<choose>
+			<when test="shOptionDate == 1">AND a.dob BETWEEN #{shstartDate} AND #{shendDate}</when>
+			<when test="shOptionDate == 2">AND a.regDate BETWEEN #{shstartDate} AND #{shendDate}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND a.name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND a.email LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND a.phone LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
 	</sql>
- -->	
+
 	<select id="selectList" resultMap="resultMapObj">
 <!-- 		
 		SELECT
@@ -39,44 +46,83 @@
 			, a.phone
 			, a.regDate
 			, a.delNY
-		FROM member a
-		WHERE 1=1
-		 
-		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
-		<if test="shOptionMem != null and !shOptionMem.equals('')">AND a.grade = #{shOptionMem}</if>
-		<choose>
-			<when test="shOptionDate == 1">AND a.dob BETWEEN #{shstartDate} AND #{shendDate}</when>
-			<when test="shOptionDate == 2">AND a.regDate BETWEEN #{shstartDate} AND #{shendDate}</when>
-		</choose>
-		
-		<choose>
-			<when test="shOption == 1">AND a.name LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND a.email LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND a.phone LIKE CONCAT('%',#{shValue},'%')</when>
-		</choose>
-		
-		
+		<include refid="selectCommon" />	
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
 	</select>
 	
 	<insert id="insert">
 		INSERT INTO member (
-			name
+			seq
+			, name
 			, dob
 			, membership
+			, email
+			, phone
 			, regDate
 			, delNY
 		)
 		VALUES (
-			#{name}
-			,#{dob}
-			,#{membership}
+			#{seq}
+			, #{name}
+			, #{dob}
+			, #{membership}
+			, #{email}
+			, #{phone}
 			, now()
-			,0
+			, 0
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
 		</selectKey>
 		
 	</insert>
+
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			seq
+			, membership
+			, name
+			, dob
+			, email
+			, phone
+			, regDate
+			, delNY
+		FROM Member
+		WHERE 1=1
+			AND seq = #{seq}
+	</select>
+	
+	<update id="update">
+		UPDATE Member
+		SET
+			seq = #{seq}
+			, name = #{name}
+			, dob = #{dob}
+			, membership = #{membership}
+			, email = #{email}
+			, phone = #{phone}
+			, regDate = #{regDate}
+		WHERE
+			seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE Member
+		SET
+			delNY = 1
+		WHERE 
+			seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM Member
+		WHERE
+			seq = #{seq}
+	</delete>
 
 </mapper>

@@ -1,7 +1,5 @@
 package com.novetn.infra.modules.member;
 
-import java.util.Date;
-
 public class Member {
 
 	private String seq;
@@ -10,7 +8,7 @@ public class Member {
 	private String dob;
 	private String email;
 	private String phone;
-	private Date regDate;
+	private String regDate;
 	private Integer delNY;
 	
 	public String getSeq() {
@@ -49,10 +47,10 @@ public class Member {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public Date getRegDate() {
+	public String getRegDate() {
 		return regDate;
 	}
-	public void setRegDate(Date regDate) {
+	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
 	public Integer getDelNY() {
@@ -61,8 +59,5 @@ public class Member {
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
-	
-
-	
 	
 }
