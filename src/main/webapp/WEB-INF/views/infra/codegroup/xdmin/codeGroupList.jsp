@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html> 
 <head>
-	<title>Code Group List</title>
+	<title>코드그룹 목록</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -233,7 +233,12 @@
 				</ul>
 				<br>
 				<div class="searchhead">
-					<form method="post" action="/codeGroup/codeGroupList">
+					<form method="post" name="formList">
+						<input type="hidden" name="seq">
+						<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+						<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
+						<input type="hidden" name="checkboxSeqArray">
+						
 						<div class="row">
 							<div class="col-1">
 								<h5><b>검색분류</b></h5>
@@ -241,9 +246,9 @@
 							<div class="row justify-content-end">
 								<div class="col-2">
 									<select class="form-select" name="shDelNy">
-										<option value="" <c:if test="${empty vo.shDelNy }"></c:if>>삭제여부</option>
-										<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
-										<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
+										<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
+										<option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+										<option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
 									</select>
 								</div>
 								<div class="col-2">
@@ -262,6 +267,8 @@
 								<div class="col-3" style="max-width: 150px">
 									<input type="text" id="shendDate" name="shendDate" class="form-control shDate" value="${vo.shendDate}" placeholder="종료일" autocomplete="off">
 								</div>
+							</div>
+							<div class="row justify-content-end">
 								<div class="col-2">
 									<select class="form-select" name="shOption" id="selectfield">
 										<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
@@ -277,7 +284,7 @@
 									<button type="button" class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
 								</div>
 								<div class="col-1" style="max-width: 55px">
-									<button class="btn btn-outline-secondary" type="submit" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+									<button class="btn btn-outline-secondary" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 								</div>
 							</div>
 						</div>
@@ -285,10 +292,12 @@
 				</div>
 				<font style="font-size: 20px"><b>코드그룹관리</b></font>
 				<br>
-				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
-				<a href="codeGroupForm">
-					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
-				</a>
+				<select class="form-select" id="viewsel">
+					<option selected>10</option>
+					<option value="1">15</option>
+					<option value="2">30</option>
+				</select>
+				<br>
 				<table class="table table-light table-striped table-hover">
 					<thead>
 						<tr>
@@ -314,7 +323,7 @@
 										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 										<td scope="row"><c:out value="${list.seq }"/></td>
 										<td><c:out value="${list.codegroupNum }"/></td>
-										<td><a href="/codeGroup/codeGroupForm?seq=<c:out value="${list.seq }"/>"><c:out value="${list.name_ko }"/></a></td>
+										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name_ko }"/></a></td>
 										<td><c:out value="${list.name_eng }"/></td>
 										<td><c:out value="${list.codeamount }"/></td>
 										<td><c:out value="${list.regDate }"/></td>
@@ -331,26 +340,14 @@
 						</c:choose>
 					</tbody>
 				</table>
-				<br><br>
+				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
+				<a href="codeGroupForm">
+					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
+				</a>
+				<!-- pagination s -->
+				<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
+				<!-- pagination e -->
 			</div>
-			<nav aria-label="Page navigation example">
-				<ul class="pagination">
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-						</a>
-					</li>
-					<li class="page-item active"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-						</a>
-					</li>
-				</ul>
-			</nav>
-			<br><br><br>
 		</div>
 	</div>
 
@@ -388,7 +385,17 @@
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";				/* #-> */
 	var goUrlUele = "/codeGroup/codeGroupUele";				/* #-> */
 	var goUrlDele = "/codeGroup/codeGroupDele";				/* #-> */
+	var goUrlForm = "/codeGroup/codeGroupForm";
 	
+	var excelUri = "/codeGroup/excelDownload";
+	
+	var mainKey = $("input:hidden[name=mainKey]");
+	
+	var form = $("form[name=formList]");
+	
+	var seq = $("input:hidden[name=seq]");
+	
+	var checkboxSeqArray = [];
 	
 	$("#search_btn").on("click", function(){
 		if(validationList() == false) return false;
@@ -402,6 +409,16 @@
 	$(document).ready(function() {
 		$("input.shDate").datepicker();
 	});
+	
+	goForm = function(keyValue) {
+		seq.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
 	
 	$.datepicker.setDefaults({
 		dateFormat : 'yy-mm-dd',

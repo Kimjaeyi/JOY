@@ -38,10 +38,10 @@
 	<style type="text/css">
 
 	@font-face {
-    font-family: 'GilbeotRainbow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	    font-family: 'GilbeotRainbow';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
 	}
 	
 	h1 {
@@ -292,9 +292,6 @@
 	$("#delbtn").on("click", function(){
 		formVo.attr("action", goUrlList).submit();
 	});
-	
-	</script>
-	<script>
 	
 	</script>
 	<!-- end -->

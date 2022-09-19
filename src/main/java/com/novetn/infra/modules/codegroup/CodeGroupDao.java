@@ -23,7 +23,9 @@ public class CodeGroupDao {
 	}
 	
 	public int insert(CodeGroup dto) {
-		return sqlSession.insert(namespace + ".insert", dto);
+		int result = sqlSession.insert(namespace + ".insert", dto);
+		System.out.println("dao result: " + result);
+		return result;
 	}
 	
 	public int update(CodeGroup dto) {
@@ -42,6 +44,10 @@ public class CodeGroupDao {
 		CodeGroup result = sqlSession.selectOne(namespace + ".selectOne", vo);
 		System.out.println("dao result: " + result);
 		return result;
+	}
+	
+	public int selectOneCount(CodeGroupVo vo) {
+		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
 //	public List<CodeGroup> selectListWithoutPaging() {

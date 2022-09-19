@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html> 
 <head>
-	<title>Member List</title>
+	<title>회원 목록</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -232,8 +232,8 @@
 					</li>
 				</ul>
 				<br>
-				<form method="post" name="formList" action="/member/memberList">
-					<input type="hidden" name="mainKey">
+				<form method="post" name="formList">
+					<input type="hidden" name="seq">
 					<input type="hidden" name="thisPage" vlaue="<c:out value="${vo.thisPage}" default="1"/>">
 					<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 					<input type="hidden" name="checkboxSeqArray">
@@ -246,11 +246,11 @@
 							<div class="row justify-content-center">
 								<div class="col-2">
 									<select class="form-select" name="shOptionMem">
-										<option value="" <c:if test="${empty vo.shOptionMem}"></c:if>>구분</option>
-										<option value="1" <c:if test="${vo.shOptionMem eq 1}"></c:if>>MANAGER</option>
-										<option value="2" <c:if test="${vo.shOptionMem eq 2}"></c:if>>일반</option>
-										<option value="3" <c:if test="${vo.shOptionMem eq 3}"></c:if>>VIP</option>
-										<option value="4" <c:if test="${vo.shOptionMem eq 4}"></c:if>>VVIP</option>
+										<option value="" <c:if test="${empty vo.shOptionMem}">selected</c:if>>구분</option>
+										<option value="1" <c:if test="${vo.shOptionMem eq 1}">selected</c:if>>MANAGER</option>
+										<option value="2" <c:if test="${vo.shOptionMem eq 2}">selected</c:if>>일반</option>
+										<option value="3" <c:if test="${vo.shOptionMem eq 3}">selected</c:if>>VIP</option>
+										<option value="4" <c:if test="${vo.shOptionMem eq 4}">selected</c:if>>VVIP</option>
 									 </select>
 								</div>
 								<div class="col-2">
@@ -273,9 +273,9 @@
 							<div class="row justify-content-center">
 								<div class="col-2">
 									<select class="form-select" name="shDelNy">
-										<option value="" <c:if test="${empty vo.shDelNy }"></c:if>>탈퇴여부</option>
-										<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
-										<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
+										<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>탈퇴여부</option>
+										<option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
+										<option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
 									 </select>
 								</div>
 								<div class="col-2">
@@ -332,7 +332,7 @@
 										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 										<td scope="row"><c:out value="${list.seq }"/></td>
 										<td><c:out value="${list.membership }"/></td>
-										<td><a href="/member/memberForm?seq=<c:out value="${list.seq }"/>"><c:out value="${list.name }"/></td>
+										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></td>
 										<td><c:out value="${list.dob }"/></td>
 										<td><c:out value="${list.email }"/></td>
 										<td><c:out value="${list.phone }"/></td>
@@ -394,6 +394,7 @@
 	var goUrlUpdt = "/member/memberUpdt";				/* #-> */
 	var goUrlUele = "/member/memberUele";				/* #-> */
 	var goUrlDele = "/member/memberDele";				/* #-> */
+	var goUrlForm = "/member/memberForm";
 	
 	var excelUri = "/member/excelDownload";
 	
@@ -401,17 +402,9 @@
 	
 	var form = $("form[name=formList]");
 	
+	var seq = $("input:hidden[name=seq]");
+	
 	var checkboxSeqArray = [];
-	
-	goForm = function(keyValue) {
-		mainKey.val(keyValue);
-		form.attr("action", goUrlForm).submit();
-	}
-	
-	goList = function(thisPage) {
-		$("input:hidden[name=thisPage]").val(thisPage);
-		form.attr("action", goUrlList).submit();
-	}
 	
 	$("#search_btn").on("click", function(){
 		if(validationList() == false) return false;
@@ -425,6 +418,16 @@
 	$(document).ready(function() {
 		$("input.shDate").datepicker();
 	});
+	
+	goForm = function(keyValue) {
+		mainKey.val(keyValue);
+		form.attr("action", goUrlForm).submit();
+	}
+	
+	goList = function(thisPage) {
+		$("input:hidden[name=thisPage]").val(thisPage);
+		form.attr("action", goUrlList).submit();
+	}
 	
 	$.datepicker.setDefaults({
 		dateFormat : 'yy-mm-dd',

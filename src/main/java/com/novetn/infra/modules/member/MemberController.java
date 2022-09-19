@@ -18,6 +18,7 @@ public class MemberController {
 	
 	public void setSearchAndPaging(MemberVo vo) throws Exception {
 		vo.setParamsPaging(service.selectOneCount(vo));
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 	}
 	
 	@RequestMapping(value = "memberList")
@@ -43,16 +44,20 @@ public class MemberController {
 		System.out.println("vo.getSeq(): " + vo.getSeq());
 		Member result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		
 		return "infra/member/xdmin/memberForm";
 	}
 	
 	@RequestMapping(value = "memberInst")
-	public String memberInst(Member dto) throws Exception {
+	public String memberInst(Member vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		service.insert(dto);
 		
-		return "redirect:/member/memberList";
+		vo.setSeq(dto.getSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberForm";
 	}
 	
 	@SuppressWarnings(value = { "all" })
@@ -63,7 +68,7 @@ public class MemberController {
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberList";
+		return "redirect:/member/memberForm";
 	}
 	
 	@RequestMapping(value = "memberUele")

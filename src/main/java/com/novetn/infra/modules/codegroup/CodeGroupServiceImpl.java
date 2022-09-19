@@ -51,6 +51,10 @@ public class CodeGroupServiceImpl implements CodeGroupService {
 		return result;
 	}
 	
+	@Override
+	public int selectOneCount(CodeGroupVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
 	
 //	@Override
 //	public List<CodeGroup> selectListWithoutPaging() throws Exception {

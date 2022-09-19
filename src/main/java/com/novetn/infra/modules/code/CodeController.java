@@ -24,6 +24,7 @@ public class CodeController {
 //		vo.setShendDate(vo.getShendDate() == null || vo.getShendDate() == "now()" ? null : vo.getShendDate());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
 	}
 	
 	@RequestMapping(value = "codeList")

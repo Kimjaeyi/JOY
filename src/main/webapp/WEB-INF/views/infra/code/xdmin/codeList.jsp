@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html>
 <head> 
-	<title>Code List</title>
+	<title>코드 목록</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -246,9 +246,9 @@
 							<div class="row justify-content-end">
 								<div class="col-2">
 									<select class="form-select" name="shDelNy">
-										<option value="" <c:if test="${empty vo.shDelNy }"></c:if>>삭제여부</option>
-										<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
-										<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
+										<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
+										<option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+										<option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
 									</select>
 								</div>
 								<div class="col-2">

@@ -27,12 +27,12 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 	<script>
-	const myModal = document.getElementById('myModal')
-	const myInput = document.getElementById('myInput')
-
-	myModal.addEventListener('shown.bs.modal', () => {
-	  myInput.focus()
-	})
+		const myModal = document.getElementById('myModal')
+		const myInput = document.getElementById('myInput')
+	
+		myModal.addEventListener('shown.bs.modal', () => {
+		  myInput.focus()
+		})
 	</script>
 	
 	<style type="text/css">
@@ -85,16 +85,40 @@
 		margin: 5% 0;
 	}
 	
+	.nav-tabs {
+		--bs-nav-tabs-link-active-color: #6900EF;
+		--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
+	}
+	
+	.nav {
+		--bs-nav-link-hover-color: #9154f3;
+		width: 333px;
+	}
+	
+	.nav-link {
+		color : gray;
+	}
+	
+	.nav-item button {
+		width: 111px;
+		height: 30px;
+	}
+	
 	button {
 		width: 50px;
 		height: 50px;
 		display: inline;
 	}
 	
-	#submitbtn {
+	#delbtn {
 		background-color: #6900EF; 
 		color: white; 
 		border-radius: 0.375rem;
+	}
+	
+	.ccc {
+		display: inline;
+		margin: 0 0 5% 0;
 	}
 	
 </style>
@@ -103,12 +127,25 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="../home"><h1>coocha</h1></a>
+		<a href="/"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
-			<form method="post" name="form" method="/codeGroup/codeGroupInst">
-				<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
-				<font style="font-size: 20px"><b>코드그룹 관리</b></font>
+			<!-- <form method="post" name="form" method="/codeGroup/codeGroupInst"> -->
+			<form id="form" name="form" method="post">
+			<!-- *Vo.jsp s -->
+				<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+				<!-- *Vo.jsp e -->
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="nav-item">
+						<button class="nav-link" id="listtab">코드그룹 목록</button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link active" id="regtab"><b>코드그룹 등록</b></button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" id="modtab">코드그룹 수정</button>
+					</li>
+				</ul>
 				<div class="row">
 					<div class="col">
 						<h6>코드그룹 코드</h6>
@@ -176,35 +213,37 @@
 						<br><br>
 					</div>
 				</div>
-				<br><br>
-				<a href="codeGroupList">
-					<button type="button" class="btn btn-dark">
+				<div class="ccc">
+					<button type="button" id="listbtn" class="btn btn-dark">
 						<i class="fa-solid fa-list"></i>
 					</button>
-				</a>
-				<button type="button" id="submitbtn" class="btn btn-outline-dark" style="float: right">
-					<i class="fa-solid fa-circle-check"></i>
-				</button>
-				<button type="button" class="btn btn-outline-warning" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
-					<i class="fa-duotone fa-file-xmark"></i>
-				</button>
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">내용 취소</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<a href="/codeGroup/codeGroupList">
-									<button type="button" id="submitbtn">삭제</button>
-								</a>
+					<button type="button" id="savebtn" class="btn btn-outline-dark" style="float: right">
+						<i class="fa-solid fa-circle-check"></i>
+					</button>
+					<button type="button" class="btn btn-outline-warning" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						<i class="fa-duotone fa-file-xmark"></i>
+					</button>
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">내용 취소</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+									<button type="button" id="delbtn">삭제</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+			</form>
+			<form name="formVo" id="formVo" method="post">
+			<!-- *Vo.jsp s -->
+			<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
 			</form>
 <%-- 			
 			<c:forEach items="${list}" var="list" varStatus="status">
@@ -249,16 +288,6 @@
  
 	<script>
 	
-	$(function(){
-	    if (location.hash == "#codegrouptab"){
-	        $('.nav-tabs').find('li').eq(0).addClass('active').siblings().removeClass();
-	        $('.tab-content').find('#codegrouptab').addClass('active in').siblings().removeClass('active in');
-	    } else if(location.hash == "#codetab"){
-	        $('.nav-tabs').find('li').eq(1).addClass('active').siblings().removeClass();
-	        $('.tab-content').find('#codetab').addClass('active in').siblings().removeClass('active in');
-	    }
-	})
-
 	var goUrlList = "/codeGroup/codeGroupList";
 	var goUrlInst = "/codeGroup/codeGroupInst";
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";
@@ -270,18 +299,24 @@
 	var form = $("form[name=form]");
 	var formVo = $("form[name=formVo]");
 	
-	$("#submitbtn").on("click", function(){
-
+	$("#savebtn").on("click", function(){
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
-	   		// if (validationInst() == false) return false;
+	   		//if (validationInst() == false) return false;
 	   		form.attr("action", goUrlInst).submit();
 	   	} else {
 	   		// update
 	   		/* keyName.val(atob(keyName.val())); */
-	   		// if (validationUpdt() == false) return false;
+	   		//if (validationUpdt() == false) return false;
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
+	}); 
+	$("#listbtn").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	});
+	
+	$("#delbtn").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
 	});
 /* 	
 	setCheckboxValue = function(obj, targetObj) {

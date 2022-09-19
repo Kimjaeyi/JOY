@@ -11,20 +11,35 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/codeGroup/")
+
 public class CodeGroupController {
 	
 	@Autowired
 	CodeGroupServiceImpl service;
 
+	public void setSearchAndPaging(CodeGroupVo vo) throws Exception {
+			
+	//		vo.setShOptionDate(vo.getShOptionDate() == null ? 2 : vo.getShOptionDate());
+	//		vo.setShstartDate(vo.getShstartDate() == null || vo.getShstartDate() == "2021-08-31" ? null : vo.getShstartDate());
+	//		vo.setShendDate(vo.getShendDate() == null || vo.getShendDate() == "now()" ? null : vo.getShendDate());
+			
+		vo.setParamsPaging(service.selectOneCount(vo));
+		vo.setShDelNy(vo.getShDelNy() == null ? 0 : vo.getShDelNy());
+	}
+	
 	@RequestMapping(value = "codeGroupList")
 	public String codeGroupList(@ModelAttribute("vo") CodeGroupVo vo, Model model) throws Exception {
 
+		setSearchAndPaging(vo);
+		
+		if(vo.getTotalRows() > 0) {
+			List<CodeGroup> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		}
+		
 		System.out.println("vo.getShValue() : " + vo.getShValue());
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		System.out.println("vo.getShDelNy() : " + vo.getShDelNy());
-		
-		List<CodeGroup> list = service.selectList(vo);
-		model.addAttribute("list", list);
 		
 		return "infra/codegroup/xdmin/codeGroupList";
 	}
@@ -35,16 +50,27 @@ public class CodeGroupController {
 		System.out.println("vo.getSeq(): " + vo.getSeq());
 		CodeGroup result = service.selectOne(vo);
 		model.addAttribute("item", result);
+		
 		return "infra/codegroup/xdmin/codeGroupForm";
 	}
 	
 	@RequestMapping(value = "codeGroupInst")
-	public String codeGroupInst(CodeGroup dto) throws Exception {
+	public String codeGroupInst(CodeGroupVo vo, CodeGroup dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		int result = service.insert(dto);
-		System.out.println("controller result: " + result);
+		service.insert(dto);
 		
-		return "redirect:/codeGroup/codeGroupList";
+		vo.setSeq(dto.getSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+//		if (Constants.INSERT_AFTER_TYPE == 1) {
+//			return "redirect:/code/codeForm";
+//		} else {
+//			return "redirect:/code/codeList";
+//		}
+//		System.out.println("controller result: " + result);
+		
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 	@SuppressWarnings(value = { "all" })
@@ -55,7 +81,7 @@ public class CodeGroupController {
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/codeGroup/codeGroupList";
+		return "redirect:/codeGroup/codeGroupForm";
 	}
 	
 	@RequestMapping(value = "codeGroupUele")

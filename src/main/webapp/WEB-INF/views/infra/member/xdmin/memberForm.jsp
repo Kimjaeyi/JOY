@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html> 
 <head>
-	<title>Member Form</title>
+	<title>회원 등록</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -77,17 +77,31 @@
 		height: 50px;
 	}
 	
-	.form-check-input:checked {
-	    background-color: #6900EF;
-	    border-color: #6900EF;
-	}
-	
 	.aaa {
 		margin: 2% 15%;
 	}
 	
 	.col {
 		margin: 5% 0;
+	}
+	
+	.nav-tabs {
+		--bs-nav-tabs-link-active-color: #6900EF;
+		--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
+	}
+	
+	.nav {
+		--bs-nav-link-hover-color: #9154f3;
+		width: 333px;
+	}
+	
+	.nav-link {
+		color : gray;
+	}
+	
+	.nav-item button {
+		width: 111px;
+		height: 30px;
 	}
 	
 	button {
@@ -115,10 +129,25 @@
 	<div class="abc">
 		<a href="../home"><h1>coocha</h1></a>
 		<br><hr><br>
-		<form method="post" name="form" id="memberForm" method="/member/memberInst">
+		<div class="aaa">
+		<!-- <form method="post" name="form" id="memberForm" method="/member/memberInst"> -->
+		<form id="form" name="form" method="post">
 			<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
 			<div class="aaa">
-				<font style="font-size: 20px"><b>회원 등록</b></font>
+				<!-- *Vo.jsp s -->
+				<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+				<!-- *Vo.jsp e -->
+				<ul class="nav nav-tabs" id="myTab">
+					<li class="nav-item">
+						<button class="nav-link" id="listtab">회원 목록</button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link active" id="regtab"><b>회원 등록</b></button>
+					</li>
+					<li class="nav-item">
+						<button class="nav-link" id="modtab">회원 수정</button>
+					</li>
+				</ul>
 				<div class="row">
 					<div class="col">
 						<h6>회원이름</h6>
@@ -213,37 +242,38 @@
 				</div>
 				<br><br>
 				<div class="ccc">
-					<a href="memberList">
-						<button type="button" class="btn btn-outline-dark">
-							<i class="fa-solid fa-list"></i>
-						</button>
-					</a>
-					<button type="button" id="submitbtn" class="btn btn-outline-dark" style="float: right">
+					<button type="button" id="listbtn" class="btn btn-outline-dark">
+						<i class="fa-solid fa-list"></i>
+					</button>
+					<button type="button" id="savebtn" class="btn btn-outline-dark" style="float: right">
 						<i class="fa-solid fa-circle-check"></i>
 					</button>
 					<button type="button" class="btn btn-outline-warning" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
 						<i class="fa-duotone fa-file-xmark"></i>
 					</button>
-				</div>
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">내용 취소</h5>
-								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-							</div>
-							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
-							<div class="modal-footer">
-								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<a href="/member/memberList">
-									<button type="button" id="submitbtn">삭제</button>
-								</a>
+					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">내용 취소</h5>
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+								</div>
+								<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+									<button type="button" id="delbtn">삭제</button>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+			<form name="formVo" id="formVo" method="post">
+			<!-- *Vo.jsp s -->
+			<%@include file="memberVo.jsp"%>		<!-- #-> -->
+			<!-- *Vo.jsp e -->
+			</form>
+		</div>
 	</div>
 	
 	<script>
