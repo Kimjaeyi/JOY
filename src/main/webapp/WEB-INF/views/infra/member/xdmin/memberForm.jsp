@@ -110,7 +110,7 @@
 		display: inline;
 	}
 	
-	#submitbtn {
+	#delbtn {
 		background-color: #6900EF; 
 		color: white; 
 		border-radius: 0.375rem;
@@ -127,15 +127,13 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="../home"><h1>coocha</h1></a>
+		<a href="/"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
-		<!-- <form method="post" name="form" id="memberForm" method="/member/memberInst"> -->
-		<form id="form" name="form" method="post">
-			<input type="hidden" name="seq" value="<c:out value="${vo.seq }"/>">
-			<div class="aaa">
+			<!-- <form method="post" name="form" id="memberForm" method="/member/memberInst"> -->
+			<form id="form" name="form" method="post">
 				<!-- *Vo.jsp s -->
-				<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
+				<%@include file="memberVo.jsp"%>		<!-- #-> -->
 				<!-- *Vo.jsp e -->
 				<ul class="nav nav-tabs" id="myTab">
 					<li class="nav-item">
@@ -169,7 +167,7 @@
 						<h6>사용여부</h6>
 						<br>
 						<select class="form-select">
-							<option selected>선택하세요</option>
+							<option value="">선택하세요</option>
 							<option value="1">Y</option>
 							<option value="2">N</option>
 						</select>
@@ -306,18 +304,24 @@
 	var form = $("form[name=form]");
 	var formVo = $("form[name=formVo]");
 	
-	$("#submitbtn").on("click", function(){
-
+	$("#savebtn").on("click", function(){
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
-	   		// if (validationInst() == false) return false;
+	   		//if (validationInst() == false) return false;
 	   		form.attr("action", goUrlInst).submit();
 	   	} else {
 	   		// update
 	   		/* keyName.val(atob(keyName.val())); */
-	   		// if (validationUpdt() == false) return false;
+	   		//if (validationUpdt() == false) return false;
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
+	}); 
+	$("#listbtn").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
+	});
+	
+	$("#delbtn").on("click", function(){
+		formVo.attr("action", goUrlList).submit();
 	});
 	
 	</script>

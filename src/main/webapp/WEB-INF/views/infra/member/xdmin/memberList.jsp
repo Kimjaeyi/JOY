@@ -222,7 +222,7 @@
     		<div class="col-9">
 				<ul class="nav nav-tabs" id="myTab">
 					<li class="nav-item">
-						<button class="nav-link active" id="listtab">회원 관리</button>
+						<button class="nav-link active" id="listtab"><b>회원 관리</b></button>
 					</li>
 					<li class="nav-item">
 						<button class="nav-link" id="regtab">회원 등록</button>
@@ -234,7 +234,7 @@
 				<br>
 				<form method="post" name="formList">
 					<input type="hidden" name="seq">
-					<input type="hidden" name="thisPage" vlaue="<c:out value="${vo.thisPage}" default="1"/>">
+					<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 					<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
 					<input type="hidden" name="checkboxSeqArray">
 					
@@ -280,10 +280,10 @@
 								</div>
 								<div class="col-2">
 									<select class="form-select" name="shOption" id="selectfield">
-										<option value="" <c:if test="${empty vo.shOption}"></c:if>>선택</option>
-										<option value="1" <c:if test="${vo.shOption eq 1}"></c:if>>이름</option>
-										<option value="2" <c:if test="${vo.shOption eq 2}"></c:if>>이메일</option>
-										<option value="3" <c:if test="${vo.shOption eq 3}"></c:if>>연락처</option>
+										<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
+										<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>이름</option>
+										<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>이메일</option>
+										<option value="3" <c:if test="${vo.shOption eq 3}">selected</c:if>>연락처</option>
 									 </select>
 								</div>
 								<div class="col-3">
@@ -293,7 +293,7 @@
 									<button type="button" class="btn btn-outline-secondary" id="reset_btn"><i class="fa-solid fa-rotate-left"></i></button>
 								</div>
 								<div class="col-1" style="max-width: 55px">
-									<button class="btn btn-outline-secondary" type="submit" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+									<button class="btn btn-outline-secondary" id="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
 								</div>
 							</div>
 						</div>
@@ -420,7 +420,7 @@
 	});
 	
 	goForm = function(keyValue) {
-		mainKey.val(keyValue);
+		seq.val(keyValue);
 		form.attr("action", goUrlForm).submit();
 	}
 	

@@ -1,13 +1,12 @@
-package com.novetn.infra.modules.member;
+package com.novetn.infra.modules.item;
 
 import com.novetn.infra.common.constants.Constants;
 
-public class MemberVo {
+public class ItemVo {
 
 	private String shOption;
 	private String shValue;
 	private Integer shDelNy;
-	private Integer shOptionMem;
 	private String shstartDate;
 	private String shendDate;
 	private Integer shOptionDate;
@@ -48,12 +47,6 @@ public class MemberVo {
 	}
 	public void setShDelNy(Integer shDelNy) {
 		this.shDelNy = shDelNy;
-	}
-	public Integer getShOptionMem() {
-		return shOptionMem;
-	}
-	public void setShOptionMem(Integer shOptionMem) {
-		this.shOptionMem = shOptionMem;
 	}
 	public String getShstartDate() {
 		return shstartDate;
@@ -200,4 +193,5 @@ public class MemberVo {
 //		System.out.println("getEndRnumForOracle():" + getEndRnumForOracle());
 //		System.out.println("getStartRnumForMysql(): " + getStartRnumForMysql());
 	}
+	
 }
