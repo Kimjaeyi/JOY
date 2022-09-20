@@ -114,5 +114,18 @@
 		WHERE
 			seq = #{seq}
 	</delete>
+	
+	    <select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+		SELECT 
+			a.seq
+			, a.codeGroup_seq
+			, a.cdname_ko
+			, a.order
+		FROM
+			Code a
+		WHERE 1=1
+			AND delNY = 0
+			
+    </select>
 
 </mapper>

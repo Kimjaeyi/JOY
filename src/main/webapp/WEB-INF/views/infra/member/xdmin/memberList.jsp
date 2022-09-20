@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="false" %>
+<jsp:useBean id="CodeServiceImpl" class="com.novetn.infra.modules.code.CodeServiceImpl"/>
+
 <html> 
 <head>
 	<title>회원 목록</title>
@@ -314,6 +316,7 @@
 							<th scope="col">번호</th>
 							<th scope="col">등급</th>
 							<th scope="col">이름</th>
+							<th scope="col">성별</th>
 							<th scope="col">생년월일</th>
 							<th scope="col">이메일</th>
 							<th scope="col">연락처</th>
@@ -322,6 +325,7 @@
 						</tr>
 					</thead>
 					<tbody class="table-group-divider">
+						<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('12')}"/>
 						<c:choose>
 							<c:when test="${fn:length(list) eq 0}">
 								<td class="text-center" colspan="10">There is no data!</td>
@@ -333,6 +337,11 @@
 										<td scope="row"><c:out value="${list.seq }"/></td>
 										<td><c:out value="${list.membership }"/></td>
 										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></td>
+										<td>
+											<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+												<c:if test="${list.gender eq listGender.seq}"><c:out value="${listGender.cdname_ko }"/></c:if>
+											</c:forEach>
+										</td> 
 										<td><c:out value="${list.dob }"/></td>
 										<td><c:out value="${list.email }"/></td>
 										<td><c:out value="${list.phone }"/></td>

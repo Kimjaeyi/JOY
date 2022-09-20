@@ -6,7 +6,9 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ItemDao {
 
 	@Inject
@@ -35,11 +37,11 @@ public class ItemDao {
 		return sqlSession.update(namespace + ".uelete", dto);
 	}
 	
-	public int delete(Item vo) {
+	public int delete(ItemVo vo) {
 		return sqlSession.delete(namespace + ".delete", vo);
 	}
 	
-	public Member selectOne(ItemVo vo) {
+	public Item selectOne(ItemVo vo) {
 		Item result = sqlSession.selectOne(namespace + ".selectOne", vo);
 		System.out.println("dao result: " + result);
 		return result;

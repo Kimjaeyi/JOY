@@ -20,8 +20,7 @@
 		
 		<choose>
 			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND a.email LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 3">AND a.phone LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND a.delivery LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 	</sql>
 	
@@ -32,11 +31,13 @@
 			a.seq
 			, a.title
 			, a.discount
-			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership
-			, a.email
-			, a.phone
+			, a.price
+			, (SELECT b.cdname_ko FROM Code b WHERE 1=1 AND a.shippingfee = b.seq) AS fee
+			, (SELECT b.cdname_ko FROM Code b WHERE 1=1 AND a.deliverymethod = b.seq) AS delivery
+			, a.stock
 			, a.regDate
 			, a.modDate
+			, a.useNY
 			, a.delNY
 		<include refid="selectCommon" />	
 		<include refid="Base.selectListLowerForMysql" />
@@ -48,22 +49,24 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO member (
-			name
-			, dob
-			, membership
-			, email
-			, phone
-			, regDate
+		INSERT INTO item (
+			title
+			, discount
+			, price
+			, fee
+			, delivery
+			, stock
+			, useNY
 			, delNY
 		)
 		VALUES (
-			#{name}
-			, #{dob}
-			, #{membership}
-			, #{email}
-			, #{phone}
-			, now()
+			#{title}
+			, #{discount}
+			, #{price}
+			, #{fee}
+			, #{delivery}
+			, #{stock}
+			, 1
 			, 0
 		)
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
@@ -74,33 +77,35 @@
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			grade
-			, name
-			, dob
-			, email
-			, phone
+			title
+			, discount
+			, price
+			, shippingfee
+			, deliverymethod
+			, stock
 			, regDate
 			, delNY
-		FROM member
+		FROM item
 		WHERE 1=1
 			AND seq = #{seq}
 	</select>
 	
 	<update id="update">
-		UPDATE member
+		UPDATE item
 		SET
-			name = #{name}
-			, dob = #{dob}
-			, membership = #{membership}
-			, email = #{email}
-			, phone = #{phone}
-			, regDate = #{regDate}
+			title = #{title}
+			, discount = #{discount}
+			, price = #{price}
+			, fee = #{fee}
+			, delivery = #{delivery}
+			, stock = #{stock}
+			, modDate = #{modDate}
 		WHERE
 			seq = #{seq}
 	</update>
 	
 	<update id="uelete">
-		UPDATE member
+		UPDATE item
 		SET
 			delNY = 1
 		WHERE 
@@ -108,7 +113,7 @@
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM member
+		DELETE FROM item
 		WHERE
 			seq = #{seq}
 	</delete>

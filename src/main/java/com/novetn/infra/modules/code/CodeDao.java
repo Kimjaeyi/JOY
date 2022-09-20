@@ -50,6 +50,11 @@ public class CodeDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+//	for cache
+	public List<Code> selectListCachedCodeArrayList(){ 
+		return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); 
+	}
+	
 //	public List<Code> selectListWithoutPaging() {
 //		return sqlSession.selectList(namespace + ".selectListWithoutPaging", "");
 //	}

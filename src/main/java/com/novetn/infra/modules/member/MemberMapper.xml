@@ -42,12 +42,13 @@
 			a.seq
 			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership
 			, a.name
+			, a.gender
 			, a.dob
 			, a.email
 			, a.phone
 			, a.regDate
 			, a.delNY
-		<include refid="selectCommon" />	
+		<include refid="selectCommon" />
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	

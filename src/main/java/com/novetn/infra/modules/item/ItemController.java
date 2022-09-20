@@ -9,15 +9,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.novetn.infra.modules.member.MemberServiceImpl;
-
 @Controller
 @RequestMapping(value = "/item/")
 
 public class ItemController {
 
 	@Autowired
-	MemberServiceImpl service;
+	ItemServiceImpl service;
 	
 	public void setSearchAndPaging(ItemVo vo) throws Exception {
 		vo.setParamsPaging(service.selectOneCount(vo));
@@ -25,7 +23,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "itemList")
-	public String memberList(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
+	public String itemList(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
 		
 		setSearchAndPaging(vo);
 		
@@ -38,21 +36,21 @@ public class ItemController {
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		System.out.println("vo.getShDelNy() : " + vo.getShDelNy());
 		
-		return "infra/member/xdmin/itemList";
+		return "infra/item/xdmin/itemList";
 	}
 	
 	@RequestMapping(value = "itemForm")
-	public String memberForm(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
+	public String itemForm(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
 		Item result = service.selectOne(vo);
 		model.addAttribute("item", result);
 		
-		return "infra/member/xdmin/itemForm";
+		return "infra/item/xdmin/itemForm";
 	}
 	
 	@RequestMapping(value = "itemInst")
-	public String memberInst(Item vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String itemInst(Item vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.insert(dto);
 		
@@ -64,18 +62,18 @@ public class ItemController {
 	}
 	
 	@SuppressWarnings(value = { "all" })
-	@RequestMapping(value = "memberUpdt")
-	public String memberUpdt(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value = "itemUpdt")
+	public String itemUpdt(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.update(dto);
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberForm";
+		return "redirect:/item/itemForm";
 	}
 	
 	@RequestMapping(value = "itemUele")
-	public String memberUele(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String itemUele(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.uelete(dto);
 		
@@ -85,7 +83,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "itemDele")
-	public String memberDele(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String itemDele(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.delete(vo);
 		

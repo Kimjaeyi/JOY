@@ -247,8 +247,8 @@
 								<div class="col-2">
 									<select class="form-select" name="shDelNy">
 										<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
-										<option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
-										<option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
+										<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
+										<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
 									</select>
 								</div>
 								<div class="col-2">
@@ -316,31 +316,31 @@
 					</thead>
 					<tbody class="table-group-divider">
 					<c:choose>
-							<c:when test="${fn:length(list) eq 0 }">
-								<td class="text-center" colspan="10">There is no data!</td>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${list}" var="list" varStatus="status">
-									<tr data-tr_value = "<c:out value="${list.seq }"/>">
-										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-										<td scope="row"><c:out value="${list.seq }"/></td>
-										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name_ko }"/></a></td>
-										<td><c:out value="${list.codeNum }"/></td>
-										<td><c:out value="${list.cdname_ko }"/></td>
-										<td><c:out value="${list.name_eng }"/></td>
-										<td><c:out value="${list.order }"/></td>
-										<td><c:out value="${list.regDate }"/></td>
-										<td><c:out value="${list.modDate }"/></td>
-										<td>
-											<c:choose>
-												<c:when test="${list.delNY eq 0 }">N</c:when>
-												<c:otherwise>Y</c:otherwise>
-											</c:choose>
-										</td>
-									</tr>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
+						<c:when test="${fn:length(list) eq 0 }">
+							<td class="text-center" colspan="10">There is no data!</td>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${list}" var="list" varStatus="status">
+								<tr data-tr_value = "<c:out value="${list.seq }"/>">
+									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+									<td scope="row"><c:out value="${list.seq }"/></td>
+									<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name_ko }"/></a></td>
+									<td><c:out value="${list.codeNum }"/></td>
+									<td><c:out value="${list.cdname_ko }"/></td>
+									<td><c:out value="${list.name_eng }"/></td>
+									<td><c:out value="${list.order }"/></td>
+									<td><c:out value="${list.regDate }"/></td>
+									<td><c:out value="${list.modDate }"/></td>
+									<td>
+										<c:choose>
+											<c:when test="${list.delNY eq 0 }">N</c:when>
+											<c:otherwise>Y</c:otherwise>
+										</c:choose>
+									</td>
+								</tr>
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					</tbody>
 				</table>
 				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>

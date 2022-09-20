@@ -36,7 +36,7 @@ public class CodeController {
 			List<Code> list = service.selectList(vo);
 			model.addAttribute("list", list);
 		}
-
+		
 		System.out.println("vo.getShValue() : " + vo.getShValue());
 		System.out.println("vo.getShOption() : " + vo.getShOption());
 		System.out.println("vo.getShDelNy() : " + vo.getShDelNy());
@@ -102,7 +102,7 @@ public class CodeController {
 	}
 	
 	@RequestMapping(value = "codeDele")
-	public String codeDele(CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String codeDele(@ModelAttribute("vo") CodeVo vo, Code dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.delete(vo);
 		

@@ -1,5 +1,8 @@
 package com.novetn.infra.modules.code;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Code {
 
 	private String seq;
@@ -14,6 +17,9 @@ public class Code {
 	private Integer delNY;
 	private String regDate;
 	private String modDate;
+	
+//	for cache
+	public static List<Code> cachedCodeArrayList = new ArrayList<Code>();
 	
 	public String getSeq() {
 		return seq;
