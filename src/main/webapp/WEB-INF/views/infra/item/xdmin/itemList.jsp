@@ -62,8 +62,14 @@
 			font-size: small;
 		}
 		
-		table {
+		.overflow-x-auto {
+			overflow-x: auto;
 			margin: 5% 0;
+		}
+		
+		.overflow-x-auto table {
+			width: auto!important; 
+			white-space: nowrap;
 		}
 		
 		th, td {
@@ -297,55 +303,57 @@
 					<option value="2">30</option>
 				</select>
 				<br>
-				<table class="table table-light table-striped table-hover">
-					<thead>
-						<tr>
-							<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
-							<th scope="col">번호</th>
-							<th scope="col">상품 이름</th>
-							<th scope="col">상품 가격</th>
-							<th scope="col">배송비</th>
-							<th scope="col">택배사</th>
-							<th scope="col">재고</th>
-							<th scope="col">수정일</th>
-							<th scope="col">사용</th>
-							<th scope="col">삭제</th>
-						</tr>
-					</thead>
-					<tbody class="table-group-divider">
-					<c:choose>
-						<c:when test="${fn:length(list) eq 0 }">
-							<td class="text-center" colspan="10">There is no data!</td>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${list}" var="list" varStatus="status">
-								<tr data-tr_value = "<c:out value="${list.seq }"/>">
-									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-									<td scope="row"><c:out value="${list.seq }"/></td>
-									<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.title }"/></a></td>
-									<td><c:out value="${list.price }"/></td>
-									<td><c:out value="${list.fee }"/></td>
-									<td><c:out value="${list.delivery }"/></td>
-									<td><c:out value="${list.stock }"/></td>
-									<td><c:out value="${list.modDate }"/></td>
-									<td>
-										<c:choose>
-											<c:when test="${list.useNY eq 0 }">N</c:when>
-											<c:otherwise>Y</c:otherwise>
-										</c:choose>
-									</td>
-									<td>
-										<c:choose>
-											<c:when test="${list.delNY eq 0 }">N</c:when>
-											<c:otherwise>Y</c:otherwise>
-										</c:choose>
-									</td>
-								</tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-					</tbody>
-				</table>
+				<div class="overflow-x-auto">
+					<table class="table table-light table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
+								<th scope="col">번호</th>
+								<th scope="col">상품 이름</th>
+								<th scope="col">상품 가격</th>
+								<th scope="col">배송비</th>
+								<th scope="col">택배사</th>
+								<th scope="col">재고</th>
+								<th scope="col">수정일</th>
+								<th scope="col">사용</th>
+								<th scope="col">삭제</th>
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+						<c:choose>
+							<c:when test="${fn:length(list) eq 0 }">
+								<td class="text-center" colspan="10">There is no data!</td>
+							</c:when>
+							<c:otherwise>
+								<c:forEach items="${list}" var="list" varStatus="status">
+									<tr data-tr_value = "<c:out value="${list.seq }"/>">
+										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+										<td scope="row"><c:out value="${list.seq }"/></td>
+										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.title }"/></a></td>
+										<td><c:out value="${list.price }"/>원</td>
+										<td><c:out value="${list.fee }"/></td>
+										<td><c:out value="${list.delivery }"/></td>
+										<td><c:out value="${list.stock }"/></td>
+										<td><c:out value="${list.modDate }"/></td>
+										<td>
+											<c:choose>
+												<c:when test="${list.useNY eq 0 }">N</c:when>
+												<c:otherwise>Y</c:otherwise>
+											</c:choose>
+										</td>
+										<td>
+											<c:choose>
+												<c:when test="${list.delNY eq 0 }">N</c:when>
+												<c:otherwise>Y</c:otherwise>
+											</c:choose>
+										</td>
+									</tr>
+								</c:forEach>
+							</c:otherwise>
+						</c:choose>
+						</tbody>
+					</table>
+				</div>
 				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
 				<a href="itemForm">
 					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
