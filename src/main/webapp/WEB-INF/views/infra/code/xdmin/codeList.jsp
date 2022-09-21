@@ -95,10 +95,26 @@
 		float: right;
 	}
 	
-	#regbtn, #delbtn {
-		float: right;
+	#regbtn, #delbtn, #excelbtn {
+		display: inline;
 		width: 35px;
 		height: 33px;
+	}
+	
+	#regbtn, #delbtn {
+		float: right;
+	}
+	
+	#myTab {
+		width: 215px;
+	}
+	
+	#listtab button {
+		width: 65px;
+	}
+	
+	#regmodtab button {
+		width: 150px;
 	}
 	
 	.nav-tabs {
@@ -225,10 +241,7 @@
 						<button class="nav-link active" id="listtab"><b>코드 목록</b></button>
 					</li>
 					<li class="nav-item">
-						<button class="nav-link" id="regtab">코드 등록</button>
-					</li>
-					<li class="nav-item">
-						<button class="nav-link" id="modtab">코드 수정</button>
+						<button class="nav-link" id="regmodtab">코드 등록 및 수정</button>
 					</li>
 				</ul>
 				<br>
@@ -247,8 +260,8 @@
 								<div class="col-2">
 									<select class="form-select" name="shDelNy">
 										<option value="" <c:if test="${empty vo.shDelNy }">selected</c:if>>삭제여부</option>
-										<option value="0" <c:if test="${vo.shDelNy eq 0 }"></c:if>>N</option>
-										<option value="1" <c:if test="${vo.shDelNy eq 1 }"></c:if>>Y</option>
+										<option value="0" <c:if test="${vo.shDelNy eq 0 }">selected</c:if>>N</option>
+										<option value="1" <c:if test="${vo.shDelNy eq 1 }">selected</c:if>>Y</option>
 									</select>
 								</div>
 								<div class="col-2">
@@ -343,9 +356,10 @@
 					</c:choose>
 					</tbody>
 				</table>
+				<button type="button" class="btn btn-success" id="excelbtn"><i class="fa-regular fa-file-excel"></i></button>
 				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i></button>
 				<a href="codeForm">
-					<button type="button" class="btn btn-outline-success" id="regbtn"><i class="fa-solid fa-plus"></i></button>
+					<button type="button" class="btn btn-outline-primary" id="regbtn"><i class="fa-solid fa-plus"></i></button>
 				</a>
 				<!-- pagination s -->
 				<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>

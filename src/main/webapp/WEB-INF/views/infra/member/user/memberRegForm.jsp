@@ -143,6 +143,15 @@
 		margin : 0 0 2px 0;
 	}
 	
+	#resetbtn {
+		border: none;
+		background-color : white;
+		color : blueviolet;
+		border-radius : 6px;
+		width : 50px;
+		height : 50px;
+	}
+	
 </style>
 	
 <body>
@@ -180,32 +189,36 @@
 					<option value="2">KT</option>
 					<option value="3">LG</option>
 				</select>
+				<input type="text" class="form-control" style="width: 15%; display:inline; margin: 0 0 0 1%">
 				<h6 style="display: inline; margin: 0 1%">-</h6>
 				<input type="text" class="form-control" style="width: 20%; display:inline">
 				<h6 style="display: inline; margin: 0 1%">-</h6>
 				<input type="text" class="form-control" style="width: 20%; display:inline">
-				<br>
-				<h6>이메일</h6>
+				<br><br>
+				<h6 style="color: black">이메일</h6>
 				<input type="email" class="form-control" id="inputemail" placeholder="이메일을 입력해주세요">
 				<br>
-				<h6 style="color : black"><b>주소</b></h6>
+				<h6><b>주소</b></h6>
 				<div class="row">
 					<div class="col-3">
-						<input type="text" class="form-control" id="cczipcode" placeholder="우편번호" readonly>
+						<input type="text" class="form-control" id="cczipcode" placeholder="우편번호" disabled>
+					</div>
+					<div class="col-1">
+						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
 					</div>
 					<div class="col-5">
 						<button type="button" id="findaddress" onclick="here();">우편번호 찾기</button>
 					</div>
 				</div>
 				<div class="col-12">
-					<input type="text" class="form-control" id="ccaddress" placeholder="도로명 주소">
+					<input type="text" class="form-control" id="ccaddress" placeholder="도로명 주소" disabled>
 				</div>
 				<div class="row">
 					<div class="col-9">
 						<input type="text" class="form-control" id="ccdetailAddress" placeholder="상세주소">
 					</div>
 					<div class="col-3">
-						<input type="text" class="form-control" id="ccextraAddress" placeholder="참고항목">
+						<input type="text" class="form-control" id="ccextraAddress" placeholder="참고항목" disabled>
 					</div>
 				</div>
 				
@@ -280,6 +293,13 @@
 	        }
 	    }).open();
 	}
+	
+	$("#resetbtn").on("click", function() {
+		$("#cczipcode").val('');
+		$("#ccaddress").val('');
+		$("#ccdetailAddress").val('');
+		$("#ccextraAddress").val('');
+	});
 </script>
 </body>
 </html>

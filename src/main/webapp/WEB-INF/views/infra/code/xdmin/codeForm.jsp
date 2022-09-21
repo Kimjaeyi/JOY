@@ -85,6 +85,18 @@
 		margin: 5% 0;
 	}
 	
+	#myTab {
+		width: 215px;
+	}
+		
+	#listtab button {
+		width: 65px;
+	}
+	
+	#regmodtab button {
+		width: 150px;
+	}
+	
 	.nav-tabs {
 		--bs-nav-tabs-link-active-color: #6900EF;
 		--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
@@ -99,14 +111,9 @@
 		color : gray;
 	}
 	
-	.nav-item button {
-		width: 85px;
-		height: 30px;
-	}
-	
-	button {
-		width: 50px;
-		height: 50px;
+	#listbtn, #savebtn, #clearbtn {
+		width: 40px;
+		height: 40px;
 		display: inline;
 	}
 	
@@ -140,10 +147,7 @@
 						<button class="nav-link" id="listtab">코드 목록</button>
 					</li>
 					<li class="nav-item">
-						<button class="nav-link active" id="regtab"><b>코드 등록</b></button>
-					</li>
-					<li class="nav-item">
-						<button class="nav-link" id="modtab">코드 수정</button>
+						<button class="nav-link active" id="regmodtab"><b>코드 등록 및 수정</b></button>
 					</li>
 				</ul>
 				<div class="row">
@@ -229,11 +233,11 @@
 					<button type="button" id="listbtn" class="btn btn-outline-dark">
 						<i class="fa-solid fa-list"></i>
 					</button>
-					<button type="button" id="savebtn" class="btn btn-outline-dark" style="float: right">
+					<button type="button" id="savebtn" class="btn btn-dark" style="float: right">
 						<i class="fa-solid fa-circle-check"></i>
 					</button>
-					<button type="button" class="btn btn-outline-warning" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
-						<i class="fa-duotone fa-file-xmark"></i>
+					<button type="button" class="btn btn-warning" id="clearbtn" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+						<i class="fa-solid fa-rotate-left"></i>
 					</button>
 				</div>
 				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
