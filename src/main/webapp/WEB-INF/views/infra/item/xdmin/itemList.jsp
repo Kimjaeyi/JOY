@@ -107,6 +107,18 @@
 			height: 33px;
 		}
 		
+		#myTab {
+			width: 255px;
+		}
+		
+		#listtab button {
+			width: 30%;
+		}
+		
+		#regmodtab button {
+			width: 70%;
+		}
+		
 		.nav-tabs {
 			--bs-nav-tabs-link-active-color: #6900EF;
 			--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
@@ -231,10 +243,7 @@
 						<button class="nav-link active" id="listtab"><b>상품 목록</b></button>
 					</li>
 					<li class="nav-item">
-						<button class="nav-link" id="regtab">상품 등록</button>
-					</li>
-					<li class="nav-item">
-						<button class="nav-link" id="modtab">상품 수정</button>
+						<button class="nav-link" id="regmodtab">상품 등록 및 수정</button>
 					</li>
 				</ul>
 				<br>

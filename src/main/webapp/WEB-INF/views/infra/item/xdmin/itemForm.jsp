@@ -158,7 +158,7 @@
 						<br><br>
 						<h6>할인율</h6>
 						<br>
-						<input class="form-control" type="text" name="discount">
+						<input class="form-control" type="text" name="discount" value="<c:out value="${item.discount }"/>">
 						<br><br>
 						<h6>배송비</h6>
 						<br>
@@ -166,7 +166,8 @@
 						<br><br>
 						<h6>사용여부</h6>
 						<br>
-						<select class="form-select" value="<c:out value="${item.useNY }"/>">
+						<select class="form-select" value="<c:out value="${it
+						em.useNY }"/>">
 							<option selected>선택하세요</option>
 							<option value="0">N</option>
 							<option value="1">Y</option>

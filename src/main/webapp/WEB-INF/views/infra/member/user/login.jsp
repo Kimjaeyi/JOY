@@ -163,7 +163,7 @@
 				</div>
 				<br><br>
 				<div class="row justify-content-center">
-					<a href="../home">
+					<a href="/">
 					<button class="btn1" type="button"><b>로그인</b></button></a>
 				</div>
 			</div>

@@ -523,7 +523,7 @@
 							<ul class="deal-list">
 								<li>
 									<div class="deal">
-										<a href="itemView.html">
+										<a href="../item/itemView">
 											<div class="img">
 												<img src="resources/image/위메프1.png">
 											</div>
