@@ -120,4 +120,11 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value = "Regsuccess")
+	public String Regsuccess() throws Exception {
+		
+		return "infra/member/user/Regsuccess";
+		
+	}
+	
 }

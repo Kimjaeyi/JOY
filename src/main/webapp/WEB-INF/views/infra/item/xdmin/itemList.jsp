@@ -417,8 +417,6 @@ var goUrlForm = "/item/itemForm";
 
 var excelUri = "/item/excelDownload";
 
-var mainKey = $("input:hidden[name=mainKey]");
-
 var form = $("form[name=formList]");
 
 var seq = $("input:hidden[name=seq]");

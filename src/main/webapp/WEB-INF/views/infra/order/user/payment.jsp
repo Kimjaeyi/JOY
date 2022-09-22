@@ -14,69 +14,37 @@
     <!-- Bootstrap extra CSS -->    
     <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
+    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
     <!-- user css -->
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
+	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022091023"/>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-	
+</head>
+
 	<style type="text/css">
 
-@font-face {
-    font-family: 'GilbeotRainbow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'MICEGothic Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic Bold.woff2') format('woff2');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'ONE-Mobile-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'MICEGothic';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-01@1.0/MICEGothic.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'KoPubWorldDotum';
-    font-weight: 300;
-    font-style: normal;
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.eot');
-    src: url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.eot?#iefix') format('embedded-opentype'),
-        url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.woff2') format('woff2'),
-        url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.woff') format('woff'),
-        url('https://cdn.jsdelivr.net/gh/webfontworld/kopus/KoPubWorldDotumLight.ttf') format("truetype");
-    font-display: swap;
-}
-	
-	h1 {
-		font-family: 'GilbeotRainbow';
-		float : left;
-		margin: 0 0 0 250px;
-		color: #6900EF;
-	}
-	
 	h2 {
 		text-align : center;
+	}
+	
+	h3 {
+		font-size: 25px;
+	}
+	
+	h4 {
+		font-weight : bold;
+		font-size: 23px;
+	}
+	
+	h5 {
+		font-size: 20px;
+	}
+	
+	h6 {
+		font-size: 16px;
 	}
 	
 	h3, h5 {
@@ -85,7 +53,6 @@
 	
 	h6 {
 		font-weight: bold;
-		font-family: 'ONE-Mobile-Regular';
 	}
 	
 	a:link {
@@ -105,9 +72,13 @@
 		margin : 5% 15%;
 	}
 	
+	input[type='text'] {
+		border: 1px solid #ced4da;
+		border-radius: 0.375rem;
+	}
+	
 	input, select {
 		height: 50px;
-		font-family: 'KoPubWorldDotum';
 	}
 	
 	#inputphone {
@@ -122,6 +93,10 @@
 		width : 9%;
 		height : 50px;
 		font-weight: bold;
+		font-size: 15px;
+	}
+	
+	.form-check-input p {
 		font-size: 15px;
 	}
 	
@@ -140,20 +115,11 @@
 		font-size: 14px;
 	}
 	
-	h2, h3, h4, h5, button {
-    	font-family: 'MICEGothic Bold';
-	}
-	
-	h4 {
-		font-weight : bold;
-	}
-	
 	table, tr {
 		border: 1px solid black;
 		border-collapse: collaspe;
 		text-align: center;
 		width: 100%;
-		font-family: 'ONE-Mobile-Regular';
 	}
 	
 	td {
@@ -161,13 +127,8 @@
 		border: 1px solid black;
 	}
 	
-	.col-3 p {
-		font-family: 'KoPubWorldDotum';
-	}
-	
 	.paycheck {
 		margin: 0 5%;
-		font-family: 'ONE-Mobile-Regular';
 	}
 	
 	.d-grid button {
@@ -188,22 +149,10 @@
 		margin : 0 15%;
 		width : 100%;
 		height: 100%;
-		font-family: 'ONE-Mobile-Regular';
 	}
 	
-	#under p {
-		font-size : 13px;
-	}
-	
-	.footer {
-		font-size : 13px;
-		margin : 0 0 5% 0;
-	}
-	
-	.foot p {
-		margin: 0 5% 0 0;
-		display : inline;
-		color : #6C6C6C;
+	li {
+		margin: 0 2%;
 	}
 	
 
@@ -213,6 +162,52 @@
 <body>
 
 <!-- start -->
+	<div class="header" style="left: 0px;">
+        <div class="inner">
+            <h1 class="logo">
+                <a href="/"><span class="blind">COOCHA</span></a>
+                <span class="title-category">카테고리</span>
+            </h1>
+
+            <div class="search">
+                <div class="search-input"><input type="search" class="input"></div>
+            </div>
+
+            <div class="hamburger">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+
+            <ul class="gnb login">
+				<li>
+					<a href="javascript:;" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
+					<div class="area-my-page area-gnb-layer">
+					    <div class="title">MY PAGE</div>
+					    <ul>
+					        <li><div id="likeTab">내가 좋아요 한 상품</div></li>
+					        <li><a href="javascript:void(0);" id="viewTab">내가 본 상품</a></li>
+					        <li><a href="https://member.coocha.co.kr/member/join/myinfo.do">내 정보 수정</a></li>
+					        <li class="logout"><a href="javascript:fn_logout('');">로그아웃</a></li>
+					    </ul>
+					</div>
+				</li>
+				<li><div class="btn-like"><span class="blind">좋아요</span></div></li>
+				<li>
+				    <div class="btn-sc btn-layer-open"><span class="blind">더보기</span></div>
+				    <div class="area-servic-center area-gnb-layer">
+				        <div class="title">고객센터</div>
+				        <ul>
+				            <li>공지사항</li>
+				            <li>FAQ</li>
+				            <li>1:1 문의</li>
+				        </ul>
+				    </div>
+				</li>
+			</ul>
+        </div>
+    </div>
+    <br><br>
 	<input type="hidden" id="rtCount" name="rtCount">
 	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">
 	
@@ -292,7 +287,7 @@
 						</div>
 						<div class="col-2"></div>
 					</div>
-					<hr style="margin: -2px 0 15px 0">
+					<hr>
 					<div class="row justify-content-center">
 						<div class="col-3" style="text-align:center">
 							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">카카오페이 3,000원 할인</p>
@@ -357,13 +352,13 @@
 					<div class="paycheck">
 						<h6>하기 필수약관을 확인하였으며 결제에 동의합니다.</h6>
 						<br>
-						<a href="paysuccess.html">
-						<div class="d-grid">
-							<button type="button">결제하기</button>
-						</div>
+						<a href="paysuccess">
+							<div class="d-grid">
+								<button type="button">결제하기</button>
+							</div>
 						</a>
 						<br><br><br>
-						<h5 style="font-family: 'MICEGothic Bold'">약관동의</h5>
+						<h5>약관동의</h5>
 					</div>
 					<hr>
 					<div class="paycheck">
@@ -376,13 +371,13 @@
 					<div class="paycheck">
 						<div class="form-check">
 							<input class="form-check-input" type="checkbox" name="agreebox" style="display:inline">
-							<h6 style="display:inline; font-weight: normal">개인정보 제3자 제공에 동의합니다.</h6>
+							<p style="display:inline; font-weight: normal">개인정보 제3자 제공에 동의합니다.</p>
 							<br><br>
 							<input class="form-check-input" type="checkbox" name="agreebox" style="display:inline">
-							<h6 style="display:inline; font-weight: normal">결제대행서비스 이용약관에 동의합니다.</h6>
+							<p style="display:inline; font-weight: normal">결제대행서비스 이용약관에 동의합니다.</p>
 							<br><br>
 							<input class="form-check-input" type="checkbox" name="agreebox" style="display:inline">
-							<h6 style="display:inline; font-weight: normal">주문할 상품 설명에 명시된 내용과 사용조건을 확인하였으며, 취소 환불규정에 동의합니다.</h6>
+							<p style="display:inline; font-weight: normal">주문할 상품 설명에 명시된 내용과 사용조건을 확인하였으며, 취소 환불규정에 동의합니다.</p>
 						</div>
 					</div>
 					<hr>
@@ -391,49 +386,40 @@
 		</div>
 	</div>
 	<br><br>
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col" id="under">
-				<p>앱 다운로드</p>
-			</div>
-			<div class="col" id="under">
-				<p>회사소개</p>
-			</div>
-			<div class="col" id="under">
-				<p>고객센터</p>
-			</div>
-			<div class="col" id="under">
-				<p>서비스이용약관</p>
-			</div>
-			<div class="col" id="under">
-				<p><b>개인정보처리방침</b></p>
-			</div>
-			<div class="col" id="under">
-				<p>마케팅센터</p>
-			</div>
-			<div class="col" id="under">
-				<p>입점 및 광고 안내</p>
-			</div>
-		</div>
-		<br>
-		<p style="color: #6C6C6C; font-size: 13px"><b>쿠차는 상품에 직접 관여하지 않으며 상품 주문, 배송 및 환불의 의무와 책임은 각 판매업체에 있습니다.</b></p>
-		<br>
+	<footer>
 		<div class="footer">
-			<div class="foot">
-				<p>(주) jj컴퍼니</p>
-				<p>대표 김재이</p>
-				<p>사업자등록번호 123-22-07310</p>
+			<div class="inner">
+				<ul class="area-link">
+					<li>앱다운로드</li>
+					<li>회사소개</li>
+					<li>고객센터</li>
+					<li>서비스이용약관</li>
+					<li>위치정보이용약관</a</li>
+					<li><b>개인정보처리방침</b></li>
+					<li>마케팅센터</li>
+					<li>입점 및 광고 안내</li>
+				</ul>
+				<div class="area-text">
+					<p>쿠차는 상품에 직접 관여하지 않으며 상품 주문, 배송 및 환불의 의무와 책임은 각 판매업체에 있습니다.</p>
+				</div>
+				<div class="area-bottom">
+					<div class="info">
+						<span>(주)제이와이케이</span> 
+						<span>대표 김재이</span> 
+						<span>사업자등록번호 123-45-67890</span>
+					</div>
+					<div class="address">
+						<span>서울특별시 서초구 서초대로 77길 55, 3층</span> 
+						<span>고객센터 cs_coocha@coocha.com</span> 
+						<span>입점 · 광고 business@coocha.com</span>
+					</div>
+					<div class="copyright">
+						<p>© 2022. SearchFy Inc. All Rights Reserved.</p>
+					</div>
+				</div>
 			</div>
-			<br>
-			<div class="foot">
-				<p>서울시 서초구 서초대로 77길 55 에이프로스퀘어 3층</p>
-				<p>고객센터 cs_jy@coocha.com</p>
-				<p>입점 · 광고 business@coocha.com</p>
-			</div>
-			<br>
-			<p>ⓒ 2022. SearchFy Inc. All Rights Reserved.</p>
 		</div>
-	</div>
+	</footer>
 	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

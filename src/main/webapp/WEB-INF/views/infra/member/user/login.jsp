@@ -20,7 +20,6 @@
 	<link rel="stylesheet" href="/assets/css/sub.css?ver=202209131027">
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -126,7 +125,7 @@
 		margin : 0 22%;
 		width : 400px;
 		height : 70px;
-		background-color : #A9A9A9;
+		background-color: rgba( 255, 255, 255, 0.5 );
 		border: none;
 		border-radius : 6px;
 		text-align : center;
@@ -136,7 +135,7 @@
 		display : inline;
 		font-size : 15px;
 		margin: 0 1%;
-		color : white;
+		color : gray;
 		font-weight : bold;
 	}
 </style>
@@ -147,7 +146,7 @@
 
 	<div class="abc">
 		<br><br>
-		<a href="../home"><h1>coocha</h1></a>
+		<a href="/"><h1>coocha</h1></a>
 		<br><br><br>
 		<div class="aaa">
 			<div class="container">
@@ -164,7 +163,8 @@
 				<br><br>
 				<div class="row justify-content-center">
 					<a href="/">
-					<button class="btn1" type="button"><b>로그인</b></button></a>
+						<button class="btn1" type="button"><b>로그인</b></button>
+					</a>
 				</div>
 			</div>
 			<br>

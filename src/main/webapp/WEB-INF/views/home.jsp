@@ -8,38 +8,23 @@
 <%@ page session="false"%>
 <html>
 <head>
-<title>쿠차 | 시간을 줄여주는 쇼핑검색</title>
-<script src="https://kit.fontawesome.com/15c84217dd.js"
-	crossorigin="anonymous"></script>
+<title>coocha</title>
+<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 <!-- Bootstrap CSS -->
-<link
-	href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap extra CSS -->
-<link href="/resources/xdmin/css/bootstrap/sidebars.css"
-	rel="stylesheet">
+<link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
 <!-- jquery ui CSS -->
-<link
-	href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css"
-	rel="stylesheet">
+<link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
 <!-- user css -->
 <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
-	crossorigin="anonymous">
-<link rel="shortcut icon" type="image/x-icon"
-	href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
-<link rel="stylesheet"
-	href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
+<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
@@ -540,11 +525,6 @@
 													</span>
 												</div>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="845173282" data-scid="2620">
-													<span class="blind" data-value="845173282">좋아요</span>
-												</button>
-											</div>
 										</a>
 									</div>
 								</li>
@@ -562,11 +542,6 @@
 														<span class="unit">원</span>
 													</span>
 												</div>
-											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="844486488" data-scid="2620">
-													<span class="blind" data-value="844486488">좋아요</span>
-												</button>
 											</div>
 										</a>
 									</div>
@@ -590,11 +565,6 @@
 													</span>
 												</div>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="845173575" data-scid="2620">
-													<span class="blind" data-value="845173575">좋아요</span>
-												</button>
-											</div>
 										</a>
 									</div>
 								</li>
@@ -616,11 +586,6 @@
 													</span>
 												</div>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="845173334" data-scid="2620">
-													<span class="blind" data-value="845173334">좋아요</span>
-												</button>
-											</div>
 										</a>
 									</div>
 								</li>
@@ -638,11 +603,6 @@
 														<span class="unit">원</span>
 													</span>
 												</div>
-											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="845173652" data-scid="2620">
-													<span class="blind" data-value="845173652">좋아요</span>
-												</button>
 											</div>
 										</a>
 									</div>
@@ -698,24 +658,6 @@
 												</span> 
 												<span class="shopping-mall">11번가 쇼킹딜</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="819946186" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODE5OTQ2MTg2" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span> 
-												<span class="buy">구매 
-													<span class="num">60</span>
-												</span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -755,25 +697,6 @@
 												</span> 
 												<span class="shopping-mall">위메프</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="845173642" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQ1MTczNjQy" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span> 
-												<span class="delivery">무료배송</span>
-												<span class="buy">구매 
-													<span class="num">10,469</span>
-												</span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -811,20 +734,6 @@
 												</span> 
 												<span class="shopping-mall">티몬</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link "
-													data-did="845203946" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQ1MjAzOTQ2" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 <span class="num">0</span></span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -859,25 +768,10 @@
 											<div class="aside">
 												<span class="pay"> 
 													<span class="easy-pay">
-														<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-11.png?20200604" alt="">'
+														<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-11.png?20200604" alt="">
 													</span>
 												</span> 
 												<span class="shopping-mall">티몬</span>
-											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="845203958" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQ1MjAzOTU4" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span>
 											</div>
 										</div>
 									</div>
@@ -1072,24 +966,6 @@
 												</span> 
 												<span class="shopping-mall">11번가 쇼킹딜</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="842542681" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQyNTQyNjgx" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span> 
-												<span class="buy">구매 
-													<span class="num">2,172</span>
-												</span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -1127,24 +1003,6 @@
 												</span> 
 											<span class="shopping-mall">11번가 쇼킹딜</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="841823887" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQxODIzODg3" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-									</div>
-									<div class="bottom">
-										<div class="etc">
-											<span class="like">좋아요 
-												<span class="num">0</span>
-											</span> 
-											<span class="buy">구매 
-												<span class="num">2,940</span>
-											</span>
 										</div>
 									</div>
 								</a>
@@ -1180,22 +1038,6 @@
 												</span> 
 											<span class="shopping-mall">티몬</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="844529295" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQ0NTI5Mjk1" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span> 
-												<span class="delivery">무료배송</span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -1213,38 +1055,23 @@
 												<img src="resources/image/베스트11.jpg">
 											</div>
 											<div class="areas">
-												<div class="title">롯데 꼬깔콘 67gx8개 외
-													치토스,몽쉘,칙촉,가나,ABC,드림카카오,자일리톨모음</div>
+												<div class="title">롯데 꼬깔콘 67gx8개 외 치토스,몽쉘,칙촉,가나,ABC,드림카카오,자일리톨모음</div>
 												<div class="prices">
-													<span class="left"> <span class="num">8</span><span
-														class="unit">%</span>
-													</span> <span class="right"> <span class="num">11,780</span><span
-														class="unit">원</span>
+													<span class="left"> 
+														<span class="num">8</span>
+														<span class="unit">%</span>
+													</span> 
+													<span class="right"> 
+														<span class="num">11,780</span>
+														<span class="unit">원</span>
 													</span>
 												</div>
 											</div>
 											<div class="aside">
-												<span class="pay"> <span class="easy-pay"><img
-														src="http://images.coocha.co.kr/static/images/deal/easypay/spay-1.png?20200604"
-														alt=""></span>
-												</span> <span class="shopping-mall">위메프</span>
-											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link "
-													data-did="844486448" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQ0NDg2NDQ4"
-													data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 <span class="num">0</span></span> <span
-													class="delivery">유료배송</span><span class="buy">구매 <span
-													class="num">72</span></span>
+												<span class="pay"> 
+													<span class="easy-pay"><img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-1.png?20200604" alt=""></span>
+												</span> 
+												<span class="shopping-mall">위메프</span>
 											</div>
 										</div>
 									</div>
@@ -1278,26 +1105,6 @@
 														src="http://images.coocha.co.kr/static/images/deal/easypay/spay-13.png?20200604"
 														alt=""></span>
 												</span> <span class="shopping-mall">11번가 쇼킹딜</span>
-											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link "
-													data-did="829748774" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODI5NzQ4Nzc0"
-													data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span> 
-												<span class="buy">구매 
-													<span class="num">903</span>
-												</span>
 											</div>
 										</div>
 									</div>
@@ -1384,14 +1191,14 @@
 				</div>
 				<div class="area-bottom">
 					<div class="info">
-						<span>(주)서치파이</span> 
-						<span>대표 김태묵</span> 
-						<span>사업자등록번호 388-81-01489</span>
+						<span>(주)제이와이케이</span> 
+						<span>대표 김재이</span> 
+						<span>사업자등록번호 123-45-67890</span>
 					</div>
 					<div class="address">
-						<span>서울특별시 중구 삼일대로6길 2, 조양빌딩 별관 10층</span> 
+						<span>서울특별시 서초구 서초대로 77길 55, 3층</span> 
 						<span>고객센터 cs_coocha@coocha.com</span> 
-						<span>입점 · 광고 business@coocha.co</span>
+						<span>입점 · 광고 business@coocha.com</span>
 					</div>
 					<div class="copyright">
 						<p>© 2022. SearchFy Inc. All Rights Reserved.</p>
@@ -1405,14 +1212,6 @@
 	<!-- //탑으로 -->
 
 	<!-- 공통 스크립트 PARAM -->
-	<script>
-		var _LOGIN_YN = 'N';
-		var _PATH = '';
-		var _IMG_SERVER_PATH_DOMAIN = 'http://images.coocha.co.kr/static/images';
-		var _PAGEING_SCROLL = 2000;
-		var _COOCHA_LOGIN_DOMAIN = 'https://member.coocha.co.kr';
-	</script>
-
 	<script src="/static/js/lib/jquery.bxslider.js"></script>
 	<script src="/static/js/lib/jquery.nanoscroller.js"></script>
 	<script src="/static/js/lib/jquery.cookie.js"></script>
@@ -1421,33 +1220,6 @@
 	<script src="/static/js/main/main.ui.js"></script>
 	<script src="/static/js/main/main.js"></script>
 	<script src="/static/js/search/keyword.js"></script>
-
-	<script>
-		(function() {
-			var _fbq = window._fbq || (window._fbq = []);
-			if (!_fbq.loaded) {
-				var fbds = document.createElement('script');
-				fbds.async = true;
-				fbds.src = '//connect.facebook.net/en_US/fbds.js';
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(fbds, s);
-				_fbq.loaded = true;
-			}
-			_fbq.push([ 'addPixelId', '751408661596154' ]);
-		})();
-		window._fbq = window._fbq || [];
-		window._fbq.push([ 'track', 'PixelInitialized', {} ]);
-	</script>
-
-	<script type="text/javascript">
-		if (!wcs_add)
-			var wcs_add = {};
-		wcs_add["wa"] = "s_7667e8c0217";
-		if (!_nasa)
-			var _nasa = {};
-		wcs.inflow("coocha.co.kr");
-		wcs_do(_nasa);
-	</script>
 
 </body>
 </html>

@@ -16,17 +16,17 @@
     <!-- jquery ui CSS -->    
     <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
     <!-- user css -->
-    <link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="/assets/css/sub.css?ver=202209131049">
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fd23c44e522eb4a174fd81bfe4833f36&libraries=services"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+ -->	
 </head>
 
 <style type="text/css">
@@ -79,6 +79,7 @@
 		background-size : cover;
 		width : 100%;
 		height : auto;
+		background-attachment : scroll;
 	}
 
 	.container {
@@ -129,8 +130,19 @@
 		margin : 5px;
 	}
 	
-	#zipcode {
-		text-align : center;
+	.form-select {
+		color: gray;
+	}
+	
+	#inputphone {
+		width: 55%; 
+		display: inline; 
+		margin: 0 0 0 1%;
+	}
+	
+	#cczipcode, #findaddress, #ccaddress, #resetbtn,
+	#ccdetailAddress, #ccextraAddress, #ccLat, #ccLng {
+		margin: 0 0 1% 0;
 	}
 	
 	#findaddress {
@@ -158,9 +170,7 @@
 
 	<div class="abc">
 	<br><br>
-		<a href="home">
-			<h1>coocha</h1>
-		</a>
+		<a href="/"><h1>coocha</h1></a>
 		
 		<br>
 		<div class="aaa">
@@ -189,11 +199,7 @@
 					<option value="2">KT</option>
 					<option value="3">LG</option>
 				</select>
-				<input type="text" class="form-control" style="width: 15%; display:inline; margin: 0 0 0 1%">
-				<h6 style="display: inline; margin: 0 1%">-</h6>
-				<input type="text" class="form-control" style="width: 20%; display:inline">
-				<h6 style="display: inline; margin: 0 1%">-</h6>
-				<input type="text" class="form-control" style="width: 20%; display:inline">
+				<input type="text" class="form-control" id="inputphone" placeholder="ex. 010-0000-0000">
 				<br><br>
 				<h6 style="color: black">이메일</h6>
 				<input type="email" class="form-control" id="inputemail" placeholder="이메일을 입력해주세요">
@@ -207,10 +213,10 @@
 						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
 					</div>
 					<div class="col-5">
-						<button type="button" id="findaddress" onclick="here();">우편번호 찾기</button>
+						<button type="button" id="findaddress">우편번호 찾기</button>
 					</div>
 				</div>
-				<div class="col-12">
+				<div class="col">
 					<input type="text" class="form-control" id="ccaddress" placeholder="도로명 주소" disabled>
 				</div>
 				<div class="row">
@@ -219,6 +225,14 @@
 					</div>
 					<div class="col-3">
 						<input type="text" class="form-control" id="ccextraAddress" placeholder="참고항목" disabled>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						<input type="text" class="form-control" name="ccLat" id="ccLat" placeholder="위도" disabled>
+					</div>
+					<div class="col-4">
+						<input type="text" class="form-control" name="ccLng" id="ccLng" placeholder="경도" disabled>
 					</div>
 				</div>
 				
@@ -243,7 +257,7 @@
  -->	
  		
 			<div class="d-grid" id="loginbutton" style="margin-top: 5rem">
-				<a href="Regsuccess.html">
+				<a href="Regsuccess">
 					<button class="btn" type="button"><b>회원가입</b></button>
 				</a>
 			</div>
@@ -253,52 +267,70 @@
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	
+<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script type="text/javascript">
+	
+	$("#findaddress").on("click", function() {
+		here();
+	});
 	
 	function here() {
 	    new daum.Postcode({
-	        oncomplete: function(data) {
-	
-	            var addr = '';
-	            var extraAddr = '';
-	
-	            if (data.userSelectedType === 'R') {
-	                addr = data.roadAddress;
-	            } else {
-	                addr = data.jibunAddress;
-	            }
-	
-	            if(data.userSelectedType === 'R'){
-	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-	                    extraAddr += data.bname;
-	                }
-	                if(data.buildingName !== '' && data.apartment === 'Y'){
-	                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	                }
-	                if(extraAddr !== ''){
-	                    extraAddr = ' (' + extraAddr + ')';
-	                }
-	                document.getElementById("ccextraAddress").value = extraAddr;
-	            
-	            } else {
-	                document.getElementById("ccextraAddress").value = '';
-	            }
-	
-	            document.getElementById("cczipcode").value = data.zonecode;
-	            document.getElementById("ccaddress").value = addr;
-	            document.getElementById("ccdetailAddress").focus();
-	        }
+	          oncomplete: function(data) {
+        	    var addr = '';
+	  		    var extraAddr = '';
+
+				if (data.userSelectedType === 'R') { 
+	                  addr = data.roadAddress;
+	              } else { 
+	                  addr = data.jibunAddress;
+	              }
+
+	              if(data.userSelectedType === 'R'){
+	                  if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                      extraAddr += data.bname;
+	                  }
+	                  if(data.buildingName !== '' && data.apartment === 'Y'){
+	                      extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                  }
+	                  if(extraAddr !== ''){
+	                      extraAddr = ' (' + extraAddr + ')';
+	                  }
+	                  document.getElementById("ccextraAddress").value = extraAddr;
+	              
+	              } else {
+	                  document.getElementById("ccextraAddress").value = '';
+	              }
+
+	              document.getElementById('cczipcode').value = data.zonecode;
+	              document.getElementById('ccaddress').value = addr;
+	              document.getElementById('ccdetailAddress').focus();
+	              
+	              geocoder.addressSearch(addr, callback);
+				}
+	    
 	    }).open();
 	}
+	
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	var callback = function(result, status) {
+		if (status === kakao.maps.services.Status.OK) {
+			console.log(result);
+			$("input[name=ccLat]").val(result[0].x);
+			$("input[name=ccLng]").val(result[0].y);
+		}
+	};
+	
 	
 	$("#resetbtn").on("click", function() {
 		$("#cczipcode").val('');
 		$("#ccaddress").val('');
 		$("#ccdetailAddress").val('');
 		$("#ccextraAddress").val('');
+		$("#ccLat").val('');
+		$("#ccLng").val('');
 	});
 </script>
 </body>

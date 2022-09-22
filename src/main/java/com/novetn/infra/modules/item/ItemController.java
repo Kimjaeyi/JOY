@@ -106,4 +106,11 @@ public class ItemController {
 		
 	}
 	
+	@RequestMapping(value = "paysuccess")
+	public String paysuccess() throws Exception {
+		
+		return "infra/order/user/paysuccess";
+		
+	}
+	
 }
