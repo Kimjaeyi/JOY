@@ -11,4 +11,5 @@ public interface MemberService {
 		public int delete(MemberVo vo) throws Exception;
 		public Member selectOne(MemberVo vo) throws Exception;
 		public int selectOneCount(MemberVo vo) throws Exception;
+		public int selectOneIdCheck(Member dto) throws Exception;
 }

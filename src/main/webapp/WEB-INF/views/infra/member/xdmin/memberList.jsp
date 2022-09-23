@@ -331,6 +331,7 @@
 							<th scope="col">이름</th>
 							<th scope="col">성별</th>
 							<th scope="col">생년월일</th>
+							<th scope="col">아이디</th>
 							<th scope="col">이메일</th>
 							<th scope="col">연락처</th>
 							<th scope="col">가입일</th>
@@ -356,6 +357,7 @@
 											</c:forEach>
 										</td> 
 										<td><c:out value="${list.dob }"/></td>
+										<td><c:out value="${list.id }"/></td>
 										<td><c:out value="${list.email }"/></td>
 										<td><c:out value="${list.phone }"/></td>
 										<td><c:out value="${list.regDate }"/></td>

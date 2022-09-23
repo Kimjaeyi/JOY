@@ -113,4 +113,11 @@ public class ItemController {
 		
 	}
 	
+	@RequestMapping(value = "orderdetail")
+	public String orderdetail() throws Exception {
+		
+		return "infra/order/user/orderdetail";
+		
+	}
+	
 }

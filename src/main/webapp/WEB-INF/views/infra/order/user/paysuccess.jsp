@@ -7,7 +7,7 @@
 <%@ page session="false" %>
 <html> 
 <head>
-	<title>상품 결제</title>
+	<title>결제 성공</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -19,20 +19,13 @@
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022091023"/>
-	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.icon-icons.com/icons2/2091/PNG/512/settings_icon_128522.png">
-	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022091023"/>
+	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<style>
+<style type="text/css">
 
-	h1 {
-		float : left;
-		margin: 0 0 0 250px;
-		color: #6900EF;
-	}
-	
 	h2 {
 		text-align : center;
 	}
@@ -42,16 +35,16 @@
 	}
 		
 	a:link {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:visited {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:hover {
-			color:mediumpurple;
-			text-decoration: none;
+		color:mediumpurple;
+		text-decoration: none;
 	}
 
 	.aaa {
@@ -112,7 +105,7 @@
 
             <ul class="gnb login">
 				<li>
-					<a href="javascript:;" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
+					<a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
 					<div class="area-my-page area-gnb-layer">
 					    <div class="title">MY PAGE</div>
 					    <ul>
@@ -148,11 +141,11 @@
 		<br>
 		<hr style="border: 2px solid black">
 		<div class="aaa">
-			<h4 style="color: #6900EF; margin: 0 0 10% 0">"감사합니다. 주문이 접수되었습니다."</h4>
+			<h4 style="color: #6900EF; font-size: 22px; margin: 0 0 10% 0"><b>"감사합니다. 주문이 접수되었습니다."</b></h4>
 			<br>
-			<h5 style="float: left">결제내역</h5>
-			<br>
-			<table style="background-color: 	#F5F5F5">
+			<h5 style="float: left; font-size: 18px">결제내역</h5>
+			<br><br>
+			<table style="background-color: #F5F5F5">
 				<tr>
 					<td style="border: none" colspan="3">
 						<p style="font-size: 14px; font-weight: bold; display: inline; margin: 0 50px">주문금액</p>
@@ -171,11 +164,13 @@
 				<tr>
 					<td width="33%">
 						<p style="font-size: 14px; font-weight: bold">구매상품 총 1개</p>
+						<br>
 						<p style="font-size: 12px; display: inline; margin: 0 50px">-상품금액</p>
 						<p style="font-size: 11px; display: inline; margin: 0 50px">37,700원</p>
 					</td>
 					<td width="33%">
 						<p style="font-size: 14px; font-weight: bold">할인금액 3,000원</p>
+						<br>
 						<p style="font-size: 12px; display: inline; margin: 0 50px">-쿠폰사용</p>
 						<p style="font-size: 11px; display: inline; margin: 0 50px">3,000원</p>
 					</td>
@@ -186,10 +181,11 @@
 				</tr>
 			</table>
 			<br><br>
-			<h5 style="float: left">상품정보</h5>
+			<h5 style="float: left; font-size: 18px">상품정보</h5>
+			<br><br>
 			<table>
 				<tr>
-					<td style="border: none; width: 20%"><img src="../image/위메프1.png" style="width: 150px; height:150px"></td>
+					<td style="border: none; width: 20%"><img src="../resources/image/위메프1.png" style="width: 150px; height:150px"></td>
 					<td style="text-align: left; width: 35%"><p style="font-size: 12px; font-weight: bold">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml</p>
 						<br>
 						<p style="font-size: 11px">옵션 : 흑갈색</p>

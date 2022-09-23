@@ -3,6 +3,7 @@ package com.novetn.infra.modules.member;
 public class Member {
 
 	private String seq;
+	private String id;
 	private Integer gender;
 	private Integer grade;
 	private String membership;
@@ -18,6 +19,12 @@ public class Member {
 	}
 	public void setSeq(String seq) {
 		this.seq = seq;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public Integer getGender() {
 		return gender;

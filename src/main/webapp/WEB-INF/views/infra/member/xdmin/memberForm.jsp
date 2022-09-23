@@ -158,7 +158,11 @@
 						<br><br>
 						<h6>아이디</h6>
 						<br>
-						<input class="form-control" type="text" placeholder="5~20 영문 대/소문자, 숫자, 일부 특수문자만 사용 가능" name="id" id="id">
+						<input type="hidden" id="idAllowedNy" name=idAllowedNy" value="0">
+						<input class="form-control" type="text" placeholder="5~20 영문 대/소문자, 숫자, 일부 특수문자만 사용 가능" name="id" id="id" maxlength="20" <c:out value="${item.id}"/>"
+						<c:if test="${not empty item.id}">readonly</c:if>
+						>
+						<div class="invalid-feedback" id="idFeedback"></div> 
 						<br><br>
 						<h6>생년월일</h6>
 						<br>
@@ -326,6 +330,44 @@
 	
 	$("#delbtn").on("click", function(){
 		formVo.attr("action", goUrlList).submit();
+	});
+	
+	$("#id").on("focusout", function(){
+/* 		
+		if(!checkId('id', 2, 0, "5~20자리의 영문 대/소문자, 숫자, 일부 특수문자만 입력 가능합니다.")) {
+			return false;
+		} else {
+ */			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/idCheck"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val() }
+				,success: function(response) {
+					if(response.rt == "success") {
+						document.getElementById("id").classList.add('is-valid');
+	
+						document.getElementById("idFeedback").classList.remove('invalid-feedback');
+						document.getElementById("idFeedback").classList.add('valid-feedback');
+						document.getElementById("idFeedback").innerText = "사용 가능합니다.";
+						
+						document.getElementById("idAllowedNy").value = 1;
+						
+					} else {
+						document.getElementById("id").classList.add('is-invalid');
+						
+						document.getElementById("idFeedback").classList.remove('valid-feedback');
+						document.getElementById("idFeedback").classList.add('invalid-feedback');
+						document.getElementById("idFeedback").innerText = "사용 불가합니다.";
+						
+						document.getElementById("idAllowedNy").value = 0;
+					}
+				}
+			});
+//		}
 	});
 	
 	</script>

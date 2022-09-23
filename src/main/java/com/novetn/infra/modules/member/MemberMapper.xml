@@ -44,6 +44,7 @@
 			, a.name
 			, a.gender
 			, a.dob
+			, a.id
 			, a.email
 			, a.phone
 			, a.regDate
@@ -61,6 +62,7 @@
 		INSERT INTO member (
 			name
 			, dob
+			, id
 			, membership
 			, email
 			, phone
@@ -70,6 +72,7 @@
 		VALUES (
 			#{name}
 			, #{dob}
+			, {id}
 			, #{membership}
 			, #{email}
 			, #{phone}
@@ -87,6 +90,7 @@
 			grade
 			, name
 			, dob
+			, id
 			, email
 			, phone
 			, regDate
@@ -101,6 +105,7 @@
 		SET
 			name = #{name}
 			, dob = #{dob}
+			, id = #{id}
 			, membership = #{membership}
 			, email = #{email}
 			, phone = #{phone}
@@ -122,5 +127,13 @@
 		WHERE
 			seq = #{seq}
 	</delete>
+	
+	<select id="idCheck" resultType="Integer">
+		SELECT
+			COUNT(*)
+		FROM member
+		WHERE
+			id = #{id}
+	</select>
 
 </mapper>
