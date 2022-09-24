@@ -46,21 +46,31 @@
 	}
 	
 	.abc {
-		margin : 15% 15%;
+		margin : 10% 15%;
 	}
 	
 	input, select, .form-check {
 		height: 50px;
 	}
 	
-	h6 {
+	h3 {
 		font-weight: bold;
+		font-size: 25px;
+	}
+	
+	h5 {
+		font-weight: bold;
+		margin: 4% 0;
 	}
 	
 	.form-control {
 		margin: 0 0 27px 0;
 	}
-	
+/* 	
+	.form-check-input {
+		background: #6900EF;
+	}
+ */	
 	button {
 		width: 80px; 
 		height: 50px; 
@@ -124,29 +134,32 @@
         </div>
     </div>
     <br><br>
-    <h3 style="margin: 0 0 0 280px; display: inline">회원정보 수정</h3>
 	<br>
-	<hr style="border: 2px solid black">
 	<div class="abc">
+		<h3>회원정보 수정</h3>
+		<hr style="border: 2px solid black">
+		<br>
 		<div class="row justify-content-center">
 			<div class="col-3">
-				<h6>아이디</h6>
+				<br>
+				<h5>아이디</h5>
 				<br><br>
-				<h6>현재 비밀번호</h6>
+				<h5>현재 비밀번호</h5>
 				<br><br>
-				<h6>새 비밀번호</h6>
+				<h5>새 비밀번호</h5>
 				<br><br>
-				<h6>새 비밀번호 확인</h6>
+				<h5>새 비밀번호 확인</h5>
 				<br><br>
-				<h6>이메일</h6>
+				<h5>이메일</h5>
 				<br><br>
-				<h6>전화번호</h6>
+				<h5>전화번호</h5>
 				<br><br>
-				<h6>수신여부</h6>
+				<h5>수신여부</h5>
 			</div>
 			<div class="col-9">
-				<h6 style="color: #6900EF">kjy</h6>
 				<br>
+				<h6 style="color: #6900EF">kjy</h6>
+				<br><br>
 				<input type="password" class="form-control" style="width: 30%">
 				<input type="password" class="form-control" style="width: 30%; display:inline">
 				<p style="display:inline; font-size:12px; color: gray">&nbsp;&nbsp;8~15자 이내의 영문 대소문자, 숫자 및 특수문자 2가지 이상 조합으로 입력하세요.</p>
@@ -186,8 +199,8 @@
 					<label class="form-check-label" for="inlineCheckbox2">SMS 수신 동의</label>
 				</div>
 				<br><br>
-				<a href="mypage"><button type="button">취소</button></a>
-				<a href="mypage"><button type="button" style="background-color: #6900EF; color: white">확인</button></a>
+				<a href="mypage"><button type="button" style="background-color: #F0F0F0"><b>취소</b></button></a>
+				<a href="mypage"><button type="button" style="background-color: #6900EF; color: white"><b>확인</b></button></a>
 			</div>
 		</div>
 		<br>
