@@ -153,4 +153,18 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value = "shipping")
+	public String shipping() throws Exception {
+		
+		return "infra/member/user/shipping";
+		
+	}
+	
+	@RequestMapping(value = "infoModForm")
+	public String infoModForm() throws Exception {
+		
+		return "infra/member/user/infoModForm";
+		
+	}
+	
 }

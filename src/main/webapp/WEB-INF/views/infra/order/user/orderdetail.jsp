@@ -10,7 +10,9 @@
 	<title>결제 상세정보</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/resources/c
+	
+	ommon/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap extra CSS -->    
     <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
     <!-- jquery ui CSS -->    
@@ -26,21 +28,17 @@
 
 <style type="text/css">
 
-	h5, h6 {
-		font-weight: bold;
-	}
-		
 	a:link {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:visited {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:hover {
-			color:mediumpurple;
-			text-decoration: none;
+		color:mediumpurple;
+		text-decoration: none;
 	}
 
 	.abc {
@@ -53,6 +51,7 @@
 	
 	h4 {
 		font-weight : bold;
+		font-size: 20px;
 	}
 	
 	.col-4 p {
@@ -68,6 +67,7 @@
 		height: 40px; 
 		font-size: 13px;
 		display: inline;
+		vertical-align: middle;
 	}
 	
 	table, tr {
@@ -80,12 +80,6 @@
 	td {
 		padding: 20px;
 		border: 1px solid black;
-	}
-	
-	.container {
-		margin : 0 15%;
-		width : 100%;
-		height: 100%;
 	}
 	
 	li {
@@ -145,26 +139,32 @@
     <div class="abc">
 			<div class="row">
 				<div class="col-3">
-					<a href="/member/mypage"><h3 style="color: #6900EF; font-size: 25px; margin: 2% 0""><b>마이쿠차</b></h3></a>
+					<a href="/member/mypage">
+						<h3 style="color: #6900EF; font-size: 25px; margin: 2% 0""><b>마이페이지</b></h3>
+					</a>
 					<br><br><br>
-					<a href="/member/shipping"><h6 style="font-size: 18px; margin: 2% 0">주문배송조회</h6>
+					<a href="/member/shipping">
+						<h6 style="font-size: 18px; margin: 2% 0"><b>주문배송조회</b></h6>
+					</a>
 					<br>
-					<a href="/member/infoModForm"><h6 style="font-size: 18px; margin: 2% 0">회원정보 수정</h6></a>
+					<a href="/member/infoModForm">
+						<h6 style="font-size: 18px; margin: 2% 0"><b>회원정보 수정</b></h6>
+					</a>
 				</div>
 				<div class="col-8">
 					<h4>주문상세내역</h4>
 					<br>
 					<div class="row justify-content-center" style="border: 1px solid gray; border-radius: 4px; padding: 20px">
 					<br>
-						<div class="col-3" style="font-weight: bold">
-							<p style="font-size: 13px; display:inline"><b>주문일자</b></h6>
-							<p style="font-size: 13px; display:inline">2022-07-22</h6>
+						<div class="col-3" style="line-height: 40px">
+							<h6 style="font-size: 13px; display:inline; margin: 25px 0 0 0"><b>주문일자</b></h6>
+							<h6 style="font-size: 13px; display:inline; margin: 25px 0 0 0">2022-07-22</h6>
 						</div>
-						<div class="col-5" style="font-weight: bold">
-							<h6 style="font-size: 13px; display:inline"><b>구매번호</b></h6> 
-							<h6 style="font-size: 13px; display:inline">202207221234567789011</h6>
+						<div class="col-5" style="line-height: 40px">
+							<h6 style="font-size: 13px; display:inline; margin: 25px 0 0 0"><b>구매번호</b></h6> 
+							<h6 style="font-size: 13px; display:inline; margin: 25px 0 0 0">202207221234567789011</h6>
 						</div>
-						<div class="col-4">
+						<div class="col-4" style="line-height: 40px">
 							<button type="button" id="btn1">거래명세서</button>
 							<button type="button" id="btn2">영수증조회</button>
 						</div>
@@ -191,9 +191,9 @@
 							<br>
 							<p style="font-size: 13px; font-weight: bold">2022-07-22</p>
 							<br>
-							<a href="/member/orderdetail">
-							<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline">2022072212</p><br>
-							<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline; margin: -15px 0 0 0">3456789011</p>
+							<a href="orderdetail">
+								<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline">2022072212</p><br>
+								<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline; margin: -15px 0 0 0">3456789011</p>
 							</a>
 						</div>
 						<div class="col-2" style="text-align:center">
