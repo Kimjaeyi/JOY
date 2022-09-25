@@ -60,7 +60,7 @@
 	
 	h5 {
 		font-weight: bold;
-		margin: 4% 0;
+		margin: 4% 20% 4% 5%;
 	}
 	
 	.form-control {
@@ -82,6 +82,10 @@
 	
 	li {
 		margin: 0 2%;
+	}
+	
+	.inline h6, .inline h5, .inline input, .inline select {
+		display : inline;
 	}
 
 </style>
@@ -164,37 +168,20 @@
 				<input type="password" class="form-control" style="width: 30%; display:inline">
 				<p style="display:inline; font-size:12px; color: gray">&nbsp;&nbsp;8~15자 이내의 영문 대소문자, 숫자 및 특수문자 2가지 이상 조합으로 입력하세요.</p>
 				<input type="password" class="form-control" style="width: 30%">
-				<input type="text" class="form-control" value="kjy" style="width: 20%; display:inline">
-				<h6 style="display: inline; margin: 0 10px">@</h6>
-				<input type="text" class="form-control" value="naver.com" style="width: 20%; display:inline" readonly>
-				<select class="form-select" id="selbox" aria-label="Default select example" style="display: inline; width: 20%; margin: 0 43px">
-					<option selected>선택</option>
-					<option value="1">naver.com</option>
-					<option value="2">gmail.com</option>
-					<option value="3">hanmail.net</option>
-					<option value="4">daum.net</option>
-					<option value="5">nate.com</option>
-					<option value="direct">직접입력</option>
+				<input type="text" class="form-control" value="kjy@naver.com" style="width: 30%">
+				<select class="form-select" id="selbox" style="display: inline; width: 10%; margin: -2.7% 0 0 0">
+					<option selected>::통신사::</option>
+					<option value="1">SKT</option>
+					<option value="2">KT</option>
+					<option value="3">LG</option>
 				</select>
+				<input type="text" class="form-control" value="010-1234-5678" style="width: 30%; display: inline">
 				<br>
-				<select class="form-select" id="selbox" aria-label="Default select example" style="display: inline; width: 20%">
-					<option selected>선택</option>
-					<option value="1">010</option>
-					<option value="2">011</option>
-					<option value="3">016</option>
-					<option value="4">017</option>
-					<option value="5">019</option>
-				</select>
-				<h6 style="display: inline; margin: 0 13.5px">-</h6>
-				<input type="text" class="form-control" value="1234" style="width: 20%; display: inline">
-				<h6 style="display: inline; margin: 0 13.5px">-</h6>
-				<input type="text" class="form-control" value="5678" style="width: 20%; display: inline">
-				<br>
-				<div class="form-check form-check-inline" style="margin: 13px 0 0 0">
+				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
 					<label class="form-check-label" for="inlineCheckbox1">이메일 수신 동의</label>
 				</div>
-				<div class="form-check form-check-inline" style="margin: 13px 0 0 60px">
+				<div class="form-check form-check-inline" style="margin: 0 0 0 60px">
 					<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
 					<label class="form-check-label" for="inlineCheckbox2">SMS 수신 동의</label>
 				</div>
@@ -203,7 +190,6 @@
 				<a href="mypage"><button type="button" style="background-color: #6900EF; color: white"><b>확인</b></button></a>
 			</div>
 		</div>
-		<br>
 	</div>
 	<br><br>
 	<footer>
