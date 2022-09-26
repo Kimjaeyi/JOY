@@ -94,7 +94,7 @@
 		background-color: rgba(255,255,255,0.5);
 	}
 
-	h2, #loginbutton {
+	h2, #regbtn {
 		font-weight : bold;
 	}
 	
@@ -256,9 +256,9 @@
 			</div>
  -->	
  		
-			<div class="d-grid" id="loginbutton" style="margin-top: 5rem">
+			<div class="d-grid" id="regbtn" style="margin-top: 5rem">
 				<a href="Regsuccess">
-					<button class="btn" type="button"><b>회원가입</b></button>
+					<button class="btn" type="button" id=""><b>회원가입</b></button>
 				</a>
 			</div>
 			<br><br>
@@ -273,7 +273,13 @@
 	
 	var goUrlInst = "/member/memberInst";
 	
-	
+	$("#savebtn").on("click", function(){
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   		//if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	}
+	});
 
 	$("#findaddress").on("click", function() {
 		here();
@@ -327,7 +333,6 @@
 		}
 	};
 	
-	
 	$("#resetbtn").on("click", function() {
 		$("#cczipcode").val('');
 		$("#ccaddress").val('');
@@ -337,7 +342,15 @@
 		$("#ccLng").val('');
 	});
 	
+	if(!checkIdNull('inputid', "아이디를 입력해주세요.")) return false;
+	if(!checkPwdNull('inputpwd', "비밀번호를 입력해주세요.")) return false;
+	if(!checkNameNull('inputname', "이름을 입력해주세요.")) return false;
+	if(!checkDobNull('inputdob', "생년월일을 입력해주세요.")) return false;
+	if(!checkPhoneNull('inputphone', "연락처를 입력해주세요.")) return false;
+	if(!checkEmailNull('inputemail', "이메일을 입력해주세요.")) return false;
 	
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
 </body>
 </html>
