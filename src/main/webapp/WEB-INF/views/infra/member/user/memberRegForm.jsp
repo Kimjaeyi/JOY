@@ -342,13 +342,23 @@
 		$("#ccLng").val('');
 	});
 	
-	if(!checkIdNull('inputid', "아이디를 입력해주세요.")) return false;
-	if(!checkPwdNull('inputpwd', "비밀번호를 입력해주세요.")) return false;
-	if(!checkNameNull('inputname', "이름을 입력해주세요.")) return false;
-	if(!checkDobNull('inputdob', "생년월일을 입력해주세요.")) return false;
-	if(!checkPhoneNull('inputphone', "연락처를 입력해주세요.")) return false;
-	if(!checkEmailNull('inputemail', "이메일을 입력해주세요.")) return false;
+	checkNull = function (obj, value, message) {
+		if(value == "" || value == null) {
+			alert(message);
+			obj.focus();
+			return false;
+		}
+	}
 	
+	$("#savebtn").on("click", function() {
+		if(!checkNull($("#inputid"), $("#inputid").val(), "아이디를 입력해주세요.")) return false;
+		if(!checkNull("#inputpwd"), $("#inputpwd").val(), "비밀번호를 입력해주세요.")) return false;
+		if(!checkNull("#inputname"), $("#inputname").val(), "이름을 입력해주세요.")) return false;
+		if(!checkNull("#inputdob"), $("#inputdob").val(), "생년월일을 입력해주세요.")) return false;
+		if(!checkNull("#inputphone"), $("#inputphone").val(), "연락처를 입력해주세요.")) return false;
+		if(!checkNull("#inputemail"), $("#inputemail").val(), "이메일을 입력해주세요.")) return false;
+	});
+		
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
