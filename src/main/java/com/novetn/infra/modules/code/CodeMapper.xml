@@ -10,7 +10,7 @@
 	
 	<sql id = "selectCommon">
 		FROM Code a
-		inner join CodeGroup b on b.seq = a.codeGroup_seq
+			inner join CodeGroup b ON a.codeGroup_seq = b.seq
 		WHERE 1=1
 
 			
@@ -52,9 +52,7 @@
 	
 	<insert id="insert">
 		INSERT INTO Code (
-			name_ko
-			, codegroupNum
-			, codeNum
+			codeNum
 			, cdname_ko
 			, name_eng
 			, regDate
@@ -63,9 +61,7 @@
 			, delNY
 		)
 		VALUES (
-			#{name_ko}
-			, #{codegroupNum}
-			, #{codeNum}
+			#{codeNum}
 			, #{cdname_ko}
 			, #{name_eng}
 			, #{regDate}
@@ -81,9 +77,7 @@
  	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			name_ko
-			, codegroupNum
-			, codeNum
+			codeNum
 			, cdname_ko
 			, name_eng
 			, regDate

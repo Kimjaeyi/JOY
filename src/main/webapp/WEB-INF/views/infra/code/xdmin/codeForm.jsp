@@ -140,7 +140,7 @@
 					<div class="col">
 						<h6>코드그룹 코드</h6>
 						<br>
-						<input class="form-control" type="text" value="<c:out value="${item.b.codegroupNum }"/>" disabled readonly/>
+						<input class="form-control" type="text" disabled readonly/>
 						<br><br>
 						<h6>코드 이름(한글)</h6>
 						<br>
@@ -174,7 +174,7 @@
 					<div class="col">
 						<h6>코드그룹 이름</h6>
 						<br>
-						<input class="form-control" type="text" value="<c:out value="${item.b.name_ko }"/>" disabled>
+						<input class="form-control" type="text" disabled>
 						<br><br>
 						<h6>코드 이름(영문)</h6>
 						<br>
@@ -234,6 +234,7 @@
 			<%@include file="codeVo.jsp"%>		<!-- #-> -->
 			<!-- *Vo.jsp e -->
 			</form>
+			<br><br>
 		</div>
 	</div>
 	

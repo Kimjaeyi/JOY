@@ -97,14 +97,17 @@
 		float: right;
 	}
 	
-	#regbtn, #delbtn, #excelbtn {
+	#excelbtn {
 		display: inline;
 		width: 35px;
 		height: 33px;
 	}
 	
 	#regbtn, #delbtn {
+		display: inline;
 		float: right;
+		width: 48px;
+		height: 35px;
 	}
 	
 	#myTab {

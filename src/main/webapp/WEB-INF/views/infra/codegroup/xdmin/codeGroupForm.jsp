@@ -250,6 +250,7 @@
 			<%@include file="codeGroupVo.jsp"%>		<!-- #-> -->
 			<!-- *Vo.jsp e -->
 			</form>
+			<br><br>
 <%-- 			
 			<c:forEach items="${list}" var="list" varStatus="status">
 				<c:out value="${list.codegroupNum }"/>
