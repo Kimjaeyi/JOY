@@ -47,7 +47,8 @@
 	
 	<insert id="insert">
 		INSERT INTO CodeGroup (
-			codegroupNum
+			seq
+			, codegroupNum
 			, name_ko
 			, name_eng
 			, codeamount
@@ -57,7 +58,8 @@
 			, delNY
 		)
 		VALUES (
-			#{codegroupNum}
+			#{seq}
+			, #{codegroupNum}
 			, #{name_ko}
 			, #{name_eng}
 			, #{codeamount}

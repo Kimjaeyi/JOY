@@ -66,11 +66,12 @@
 	.form-control {
 		margin: 0 0 27px 0;
 	}
-/* 	
-	.form-check-input {
-		background: #6900EF;
+	
+	.form-check-input:checked {
+	    background-color: #6900EF;
+	    border-color: #6900EF;
 	}
- */	
+	
 	button {
 		width: 80px; 
 		height: 50px; 

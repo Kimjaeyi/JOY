@@ -174,6 +174,12 @@
 		vertical-align: middle;
 	}
 	
+	input[type='search'] {
+		display: block;
+		border: 1px solid #ced4da;
+		border-radius: 0.375rem;
+	}
+	
 </style>
 	
 <body>

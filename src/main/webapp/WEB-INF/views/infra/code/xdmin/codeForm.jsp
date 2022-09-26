@@ -37,20 +37,6 @@
 	
 	<style type="text/css">
 
-	@font-face {
-	    font-family: 'GilbeotRainbow';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-	}
-	
-	h1 {
-		font-family: 'GilbeotRainbow';
-		margin: 30px 0 0 10%;
-		font-size: 40px;
-		color: #6900EF;
-	}
-	
 	h6 {
 		font-weight: bold;
 	}
@@ -154,7 +140,7 @@
 					<div class="col">
 						<h6>코드그룹 코드</h6>
 						<br>
-						<input class="form-control" type="text" disabled readonly/>
+						<input class="form-control" type="text" value="<c:out value="${item.b.codegroupNum }"/>" disabled readonly/>
 						<br><br>
 						<h6>코드 이름(한글)</h6>
 						<br>
@@ -188,20 +174,7 @@
 					<div class="col">
 						<h6>코드그룹 이름</h6>
 						<br>
-						<select class="form-select" name="codeGroup_seq">
-							<option selected>::선택::</option>
-							<option value="1">등급</option>
-							<option value="2">통신사</option>
-							<option value="3">이메일도메인</option>
-							<option value="4">배송비</option>
-							<option value="5">택배사</option>
-							<option value="6">출고가능일</option>
-							<option value="7">배송가능지역</option>
-							<option value="8">교환반품배송비</option>
-							<option value="9">반품가능기간</option>
-							<option value="10">진행상황</option>
-							<option value="11">문의종류</option>
-						</select>
+						<input class="form-control" type="text" value="<c:out value="${item.b.name_ko }"/>" disabled>
 						<br><br>
 						<h6>코드 이름(영문)</h6>
 						<br>
@@ -250,7 +223,7 @@
 							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<button type="button" id="delbtn">삭제</button>
+								<button type="button" class="btn btn-secondary" id="delbtn">삭제</button>
 							</div>
 						</div>
 					</div>
@@ -271,6 +244,7 @@
 	var goUrlUpdt = "/code/codeUpdt";
 	var goUrlUele = "/code/codeUele";
 	var goUrlDele = "/code/codeDele";
+	var goUrlForm = "/code/codeForm";
 	
 	var seq = $("input:hidden[name=seq]"); 
 
@@ -294,7 +268,7 @@
 	});
 	
 	$("#delbtn").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
+		formVo.attr("action", goUrlForm).submit();
 	});
 	
 	</script>

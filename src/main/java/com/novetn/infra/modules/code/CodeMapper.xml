@@ -12,6 +12,7 @@
 		FROM Code a
 		inner join CodeGroup b on b.seq = a.codeGroup_seq
 		WHERE 1=1
+
 			
 		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
 		<choose>
@@ -21,7 +22,7 @@
 		
 		<choose>
 			<when test="shOption == 1">AND a.codeNum LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND b.name_ko LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND codeGroupname LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND a.cdname_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
@@ -31,7 +32,8 @@
 		<include refid="Base.selectListUpperForMysql" />
 			SELECT
 				a.seq
-			    ,b.name_ko
+				,b.name_ko
+				,b.codegroupNum
 			    ,a.codeNum
 			    ,a.cdname_ko
 			    ,a.name_eng
@@ -50,7 +52,8 @@
 	
 	<insert id="insert">
 		INSERT INTO Code (
-			codeGroup_seq
+			name_ko
+			, codegroupNum
 			, codeNum
 			, cdname_ko
 			, name_eng
@@ -60,7 +63,8 @@
 			, delNY
 		)
 		VALUES (
-			#{codeGroup_seq}
+			#{name_ko}
+			, #{codegroupNum}
 			, #{codeNum}
 			, #{cdname_ko}
 			, #{name_eng}
@@ -77,7 +81,8 @@
  	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			codeGroup_seq
+			name_ko
+			, codegroupNum
 			, codeNum
 			, cdname_ko
 			, name_eng
@@ -92,8 +97,7 @@
 	<update id="update">
 		UPDATE Code
 		SET
-			codeGroup_seq = #{codeGroup_seq}
-			, codeNum = #{codeNum}
+			codeNum = #{codeNum}
 			, cdname_ko = #{cdname_ko}
 			, name_eng = #{name_eng}
 			, modDate = now()

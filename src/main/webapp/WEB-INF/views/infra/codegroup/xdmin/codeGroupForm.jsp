@@ -168,6 +168,10 @@
 							<option value="2">N</option>
 						</select>
 						<br><br>
+						<h6>번호</h6>
+						<br>
+						<input class="form-control" type="text" id="seq" name="seq" value="<c:out value="${item.seq }"/>">
+						<br><br>
 						<h6>예비1(varchar type)</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자">
@@ -175,10 +179,6 @@
 						<h6>예비1(int type)</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="숫자">
-						<br><br>
-						<h6>번호</h6>
-						<br>
-						<input class="form-control" type="text" value="<c:out value="${item.seq }"/>" id="seq">
 						<br><br>
 						<h6>설명</h6>
 						<br>
@@ -203,6 +203,10 @@
 							<option value="2">N</option>
 						</select>
 						<br><br>
+						<h6>순서</h6>
+						<br>
+						<input class="form-control" type="text"  placeholder="숫자">
+						<br><br>
 						<h6>예비2(varchar type)</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자">
@@ -210,10 +214,6 @@
 						<h6>예비2(int type)</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="숫자">
-						<br><br>
-						<h6>순서</h6>
-						<br>
-						<input class="form-control" type="text"  placeholder="숫자">
 						<br><br>
 					</div>
 				</div>
@@ -237,7 +237,7 @@
 								<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-									<button type="button" id="delbtn">삭제</button>
+									<button type="button" class="btn btn-secondary" id="delbtn">삭제</button>
 								</div>
 							</div>
 						</div>
@@ -298,6 +298,7 @@
 	var goUrlUpdt = "/codeGroup/codeGroupUpdt";
 	var goUrlUele = "/codeGroup/codeGroupUele";
 	var goUrlDele = "/codeGroup/codeGroupDele";
+	var goUrlForm = "/codeGroup/codeGroupForm";
 	
 	var seq = $("input:hidden[name=seq]");
 	
@@ -321,7 +322,7 @@
 	});
 	
 	$("#delbtn").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
+		formVo.attr("action", goUrlForm).submit();
 	});
 /* 	
 	setCheckboxValue = function(obj, targetObj) {

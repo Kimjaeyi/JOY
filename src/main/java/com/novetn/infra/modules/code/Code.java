@@ -7,8 +7,10 @@ public class Code {
 
 	private String seq;
 	private String codeGroup_seq;
-	private Integer groupNum;
+	private Integer codegroupNum;
 	private String name_ko;
+	private String codeGroupname;
+	private Integer groupNum;
 	private Integer codeNum;
 	private String anotherCode;
 	private String cdname_ko;
@@ -33,17 +35,29 @@ public class Code {
 	public void setCodeGroup_seq(String codeGroup_seq) {
 		this.codeGroup_seq = codeGroup_seq;
 	}
-	public Integer getgroupNum() {
-		return groupNum;
+	public Integer getCodegroupNum() {
+		return codegroupNum;
 	}
-	public void setCodegroupNum(Integer groupNum) {
-		this.groupNum = groupNum;
+	public void setCodegroupNum(Integer codegroupNum) {
+		this.codegroupNum = codegroupNum;
 	}
 	public String getName_ko() {
 		return name_ko;
 	}
 	public void setName_ko(String name_ko) {
 		this.name_ko = name_ko;
+	}
+	public String getCodeGroupname() {
+		return codeGroupname;
+	}
+	public void setCodeGroupname(String codeGroupname) {
+		this.codeGroupname = codeGroupname;
+	}
+	public Integer getGroupNum() {
+		return groupNum;
+	}
+	public void setGroupNum(Integer groupNum) {
+		this.groupNum = groupNum;
 	}
 	public Integer getCodeNum() {
 		return codeNum;
@@ -93,6 +107,11 @@ public class Code {
 	public void setModDate(String modDate) {
 		this.modDate = modDate;
 	}
-	
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
+	}
 	
 }

@@ -174,6 +174,12 @@
 		vertical-align: middle;
 	}
 	
+	input[type='search'] {
+		display: block;
+		border: 1px solid #ced4da;
+		border-radius: 0.375rem;
+	}
+	
 </style>
 	
 <body>
@@ -337,9 +343,9 @@
 								<tr data-tr_value = "<c:out value="${list.seq }"/>">
 									<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 									<td scope="row"><c:out value="${list.seq }"/></td>
-									<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name_ko }"/></a></td>
+									<td><c:out value="${list.name_ko }"/></a></td>
 									<td><c:out value="${list.codeNum }"/></td>
-									<td><c:out value="${list.cdname_ko }"/></td>
+									<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.cdname_ko }"/></td>
 									<td><c:out value="${list.name_eng }"/></td>
 									<td><c:out value="${list.order }"/></td>
 									<td><c:out value="${list.regDate }"/></td>
