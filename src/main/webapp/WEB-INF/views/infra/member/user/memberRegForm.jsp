@@ -271,6 +271,10 @@
 
 <script type="text/javascript">
 	
+	var goUrlInst = "/member/memberInst";
+	
+	
+
 	$("#findaddress").on("click", function() {
 		here();
 	});
@@ -332,6 +336,8 @@
 		$("#ccLat").val('');
 		$("#ccLng").val('');
 	});
+	
+	
 </script>
 </body>
 </html>

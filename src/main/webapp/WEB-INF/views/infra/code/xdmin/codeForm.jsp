@@ -261,7 +261,7 @@
 	var goUrlDele = "/code/codeDele";
 	var goUrlForm = "/code/codeForm";
 	
-	var seq = $("input:hidden[name=seq]"); 
+	var seq = $("input:hidden[name=seq]");
 
 	var form = $("form[name=form]");
 	var formVo = $("form[name=formVo]");

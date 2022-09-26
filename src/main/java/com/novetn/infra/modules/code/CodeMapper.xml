@@ -81,15 +81,18 @@
  	
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			codeNum
-			, cdname_ko
-			, name_eng
-			, regDate
-			, modDate
-			, delNY
-		FROM Code
+			b.name_ko
+			, b.codegroupNum
+			, a.codeNum
+			, a.cdname_ko
+			, a.name_eng
+			, a.regDate
+			, a.modDate
+			, a.delNY
+		FROM Code a
+		inner join CodeGroup b ON a.codeGroup_seq = b.seq
 		WHERE 1=1
-			AND seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 
 	<update id="update">
