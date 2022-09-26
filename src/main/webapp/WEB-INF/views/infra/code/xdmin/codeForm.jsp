@@ -37,6 +37,20 @@
 	
 	<style type="text/css">
 
+	@font-face {
+	    font-family: 'GilbeotRainbow';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
+	
+	h1 {
+		font-family: 'GilbeotRainbow';
+		margin: 30px 0 0 10%;
+		font-size: 40px;
+		color: #6900EF;
+	}
+
 	h6 {
 		font-weight: bold;
 	}
@@ -140,7 +154,7 @@
 					<div class="col">
 						<h6>코드그룹 코드</h6>
 						<br>
-						<input class="form-control" type="text" disabled readonly/>
+						<input class="form-control" type="text" name="codegroupNum" id="codegroupNum" value="<c:out value="${item.codegroupNum }"/>" readonly>
 						<br><br>
 						<h6>코드 이름(한글)</h6>
 						<br>
@@ -174,7 +188,7 @@
 					<div class="col">
 						<h6>코드그룹 이름</h6>
 						<br>
-						<input class="form-control" type="text" disabled>
+						<input class="form-control" type="text" name="name_ko" id="name_ko" value="<c:out value="${item.name_ko }"/>" readonly>
 						<br><br>
 						<h6>코드 이름(영문)</h6>
 						<br>

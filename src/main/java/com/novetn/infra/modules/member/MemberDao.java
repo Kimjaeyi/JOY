@@ -55,5 +55,6 @@ public class MemberDao {
 	public int selectOneIdCheck(Member dto) {
 		return sqlSession.selectOne(namespace + ".idCheck", dto);
 	}
+	
 }
 

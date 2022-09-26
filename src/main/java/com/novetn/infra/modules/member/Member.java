@@ -4,6 +4,7 @@ public class Member {
 
 	private String seq;
 	private String id;
+	private String pwd;
 	private Integer gender;
 	private Integer grade;
 	private String membership;
@@ -25,6 +26,12 @@ public class Member {
 	}
 	public void setId(String id) {
 		this.id = id;
+	}
+	public String getPwd() {
+		return pwd;
+	}
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
 	public Integer getGender() {
 		return gender;

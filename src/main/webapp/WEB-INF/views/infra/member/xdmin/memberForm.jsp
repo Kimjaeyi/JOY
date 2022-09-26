@@ -205,7 +205,7 @@
 						<br><br>
 						<h6>비밀번호</h6>
 						<br>
-						<input class="form-control" type="text" placeholder="8~20자리 영문 대/소문자, 숫자, 특수문자 2가지 이상 사용" name="pwd" id="pwd">
+						<input class="form-control" type="text" placeholder="8~20자리 영문 대/소문자, 숫자, 특수문자 2가지 이상 사용" name="pwd" id="pwd" maxlength="20">
 						<br><br>
 						<h6>휴대폰번호</h6>
 						<br>
@@ -232,15 +232,15 @@
 						<h6>개인정보 유효기간</h6>
 						<br>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="private" id="private1" value="option1">
+							<input class="form-check-input" type="radio" name="private" id="private1" value="1">
 							<label class="form-check-label" for="inlineRadio1">1년</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="private" id="private2" value="option2">
+							<input class="form-check-input" type="radio" name="private" id="private2" value="2">
 							<label class="form-check-label" for="inlineRadio2">3년</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="private" id="private3" value="option3">
+							<input class="form-check-input" type="radio" name="private" id="private3" value="3">
 							<label class="form-check-label" for="inlineRadio3">탈퇴 시 파기</label>
 						</div>
 						<br><br>

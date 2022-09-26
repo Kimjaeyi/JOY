@@ -45,6 +45,7 @@
 			, a.gender
 			, a.dob
 			, a.id
+			, a.pwd
 			, a.email
 			, a.phone
 			, a.regDate
@@ -63,6 +64,7 @@
 			name
 			, dob
 			, id
+			, pwd
 			, membership
 			, email
 			, phone
@@ -72,7 +74,8 @@
 		VALUES (
 			#{name}
 			, #{dob}
-			, {id}
+			, #{id}
+			, #{pwd}
 			, #{membership}
 			, #{email}
 			, #{phone}
@@ -91,6 +94,7 @@
 			, name
 			, dob
 			, id
+			, pwd
 			, email
 			, phone
 			, regDate
@@ -106,6 +110,7 @@
 			name = #{name}
 			, dob = #{dob}
 			, id = #{id}
+			, pwd = #{pwd}
 			, membership = #{membership}
 			, email = #{email}
 			, phone = #{phone}

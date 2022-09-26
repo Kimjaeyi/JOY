@@ -22,7 +22,7 @@
 		
 		<choose>
 			<when test="shOption == 1">AND a.codeNum LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND codeGroupname LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND name_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 3">AND a.cdname_ko LIKE CONCAT('%',#{shValue},'%')</when>
 			<when test="shOption == 4">AND a.name_eng LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
@@ -52,7 +52,9 @@
 	
 	<insert id="insert">
 		INSERT INTO Code (
-			codeNum
+			name_ko
+			, codegroupNum
+			, codeNum
 			, cdname_ko
 			, name_eng
 			, regDate
@@ -61,7 +63,9 @@
 			, delNY
 		)
 		VALUES (
-			#{codeNum}
+			# {name_ko}
+			, #{codegroupNum}
+			, #{codeNum}
 			, #{cdname_ko}
 			, #{name_eng}
 			, #{regDate}

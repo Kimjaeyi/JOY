@@ -236,7 +236,7 @@
 							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<button type="button" id="delbtn">삭제</button>
+								<button type="button" class="btn btn-secondary" id="delbtn">삭제</button>
 							</div>
 						</div>
 					</div>
@@ -247,6 +247,7 @@
 			<%@include file="itemVo.jsp"%>		<!-- #-> -->
 			<!-- *Vo.jsp e -->
 			</form>
+			<br><br>
 		</div>
 	</div>
 	
@@ -257,6 +258,7 @@
 	var goUrlUpdt = "/item/itemUpdt";
 	var goUrlUele = "/item/itemUele";
 	var goUrlDele = "/item/itemDele";
+	var goUrlForm = "/item/itemForm";
 	
 	var seq = $("input:hidden[name=seq]"); 
 
@@ -280,7 +282,7 @@
 	});
 	
 	$("#delbtn").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
+		formVo.attr("action", goUrlForm).submit();
 	});
 	
 	</script>
