@@ -155,16 +155,16 @@
 				<br>
 				<div class="row justify-content-center">
 					<div class="col-7">
-						<input type="text" class="form-control" id="inputid" value="kjy" placeholder="아이디">
+						<input type="text" class="form-control" id="id" value="kjy" placeholder="아이디">
 						<br>
-						<input type="password" class="form-control" id="inputpwd" value="12345" placeholder="비밀번호">
+						<input type="password" class="form-control" id="pwd" value="12345" placeholder="비밀번호">
 					</div>
 				</div>
 				<br><br>
+				sessSeq: <c:out value="${sessSeq }"/><br>
+				sessId: <c:out value="${sessId }"/><br>
 				<div class="row justify-content-center">
-					<a href="/member/managerLogin">
-						<button class="btn1" type="button" id="loginbtn"><b>로그인</b></button>
-					</a>
+					<button class="btn1" type="button" id="loginbtn"><b>로그인</b></button>
 				</div>
 			</div>
 			<br>
@@ -202,7 +202,6 @@
 <script>
 
 $("#loginbtn").on("click", function(){
-	if(validation() == false) return false;
 	
 	$.ajax({
 		async: true 
@@ -211,20 +210,17 @@ $("#loginbtn").on("click", function(){
 		/* ,dataType:"json" */
 		,url: "/member/loginProc"
 		/* ,data : $("#formLogin").serialize() */
-		,data : { "Id" : $("#Id").val(), "Pwd" : $("#Pwd").val(), "autoLogin" : $("#autoLogin").is(":checked")}
+		,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val(), "autoLogin" : $("#autoLogin").is(":checked")}
 		,success: function(response) {
 			if(response.rt == "success") {
 				if(response.changePwd == "true") {
-					location.href = URL_CHANGE_PWD_FORM;
+					location.href = "/member/userLogin"
 				} else {
-					location.href = URL_INDEX_ADMIN;
+					location.href ="/member/managerLogin"
 				}
 			} else {
-				alert("회원없음");
+				alert("아이디나 비밀번호가 일치하지 않습니다.");
 			}
-		}
-		,error : function(jqXHR, textStatus, errorThrown){
-			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 		}
 	});
 });

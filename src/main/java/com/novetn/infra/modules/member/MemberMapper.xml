@@ -141,7 +141,7 @@
 			id = #{id}
 	</select>
 	
-	<select id="selectOneId" resultType="resultMapObj">
+	<select id="selectOneId" resultMap="resultMapObj">
 		SELECT
 			a.seq
 			, a.id
@@ -150,14 +150,14 @@
 			a.id = #{id}
 	</select>
 	
-	<select id="selectOneLogin" resultType="resultMapObj">
+	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
 			a.seq
 			, a.id
-		FROM member
+		FROM member a
 		WHERE
 			a.id = #{id}
-			<if test="pwd != null and !pwd.equals('')">AND a.pwd = #{pwd}</if>
+			a.pwd = #{pwd}
 	</select>
 
 </mapper>
