@@ -116,8 +116,6 @@
 			<h3 style="display: inline">회원가입이 완료</h3>
 			<h5 style="display: inline">되었습니다.</h5>
 			<br><br>
-			<h6>아이디 : kjy 가입일시 : 2022-07-29 09:32</h6>
-			<br><br><br>
 			<a href="/">
 				<button type="button" style="background-color: #6900EF; color: white; border-radius: 6px; border: none; width: 70px; height: 40px"><b>확인</b></button>
 			</a>

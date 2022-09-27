@@ -164,6 +164,11 @@
 		height : 50px;
 	}
 	
+	.form-check-input:checked {
+	    background-color: #6900EF;
+	    border-color: #6900EF;
+	}
+	
 </style>
 	
 <body>
@@ -235,6 +240,30 @@
 						<input type="text" class="form-control" name="ccLng" id="ccLng" placeholder="경도" disabled>
 					</div>
 				</div>
+				<br>
+				<h6><b>성별</b></h6>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="gender" id="gender1" value="43">
+					<label class="form-check-label" for="inlineRadio1">여자</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="gender" id="gender2" value="44">
+					<label class="form-check-label" for="inlineRadio2">남자</label>
+				</div>
+				<br><br>
+				<h6><b>개인정보 유효기간</b></h6>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="private" id="private1" value="45">
+					<label class="form-check-label" for="inlineRadio1">1년</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="private" id="private2" value="46">
+					<label class="form-check-label" for="inlineRadio2">3년</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="radio" name="private" id="private3" value="47">
+					<label class="form-check-label" for="inlineRadio3">탈퇴 시 파기</label>
+				</div>
 			</div>
 <!-- 			
 			<div class="accordion accordion-flush" id="accordionFlushExample" width="150" height="100">
@@ -275,7 +304,6 @@
 	var seq = $("input:hidden[name=seq]");
 	
 	var form = $("form[name=form]");
-	var formVo = $("form[name=formVo]");	
 	
 	$("#savebtn").on("click", function(){
 		if (seq.val() == "0" || seq.val() == ""){
