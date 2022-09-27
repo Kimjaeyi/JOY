@@ -472,8 +472,7 @@
 	<!-- main contents -->
 	<div class="main-container">
 		<!-- 검색 -->
-		<div class="section group-search"
-			style="background-image: url(http://images.coocha.co.kr/WebStyleShopBanner/mainbg/img_20201224171334.jpg)">
+		<div class="section group-search" style="background-image: url(http://images.coocha.co.kr/WebStyleShopBanner/mainbg/img_20201224171334.jpg)">
 			<div class="inner">
 				<div class="contents">
 					<p class="text">

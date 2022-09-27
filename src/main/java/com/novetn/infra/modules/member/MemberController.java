@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.novetn.infra.common.constants.Constants;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -136,7 +140,7 @@ public class MemberController {
 	@RequestMapping(value = "login")
 	public String login() throws Exception {
 		
-		return "infra/member/user/login";
+		return "infra/member/user/loginForm";
 		
 	}
 	
@@ -154,7 +158,7 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping(value = "memberRegForm")
+	@RequestMapping(value = "join")
 	public String memberRegForm() throws Exception {
 		
 		return "infra/member/user/memberRegForm";
@@ -187,6 +191,24 @@ public class MemberController {
 		
 		return "infra/member/user/infoModForm";
 		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "loginProc")
+	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+
+		Member rtMember = service.selectOneId(dto);
+
+		if (rtMember != null) {
+			Member rtMember2 = service.selectOneLogin(dto);
+
+				
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
+			httpSession.setAttribute("sessSeq", rtMember2.getSeq());
+			httpSession.setAttribute("sessId", rtMember2.getId());
+		}
+		return returnMap;
 	}
 	
 }

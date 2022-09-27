@@ -140,5 +140,24 @@
 		WHERE
 			id = #{id}
 	</select>
+	
+	<select id="selectOneId" resultType="resultMapObj">
+		SELECT
+			seq
+			, id
+		FROM member
+		WHERE
+			id = #{id}
+	</select>
+	
+	<select id="selectOneLogin" resultType="resultMapObj">
+		SELECT
+			seq
+			, id
+		FROM member
+		WHERE
+			id = #{id}
+			<if test="pwd != null and !pwd.equals('')">AND pwd = #{pwd}</if>
+	</select>
 
 </mapper>

@@ -12,6 +12,7 @@ public class Member {
 	private String dob;
 	private String email;
 	private String phone;
+	private Integer validity;
 	private String regDate;
 	private Integer delNY;
 	
@@ -74,6 +75,12 @@ public class Member {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public Integer getValidity() {
+		return validity;
+	}
+	public void setValidity(Integer validity) {
+		this.validity = validity;
 	}
 	public String getRegDate() {
 		return regDate;

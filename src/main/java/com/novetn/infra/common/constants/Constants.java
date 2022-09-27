@@ -20,7 +20,7 @@ public final class Constants {
 	
 	public static final int DATE_INTERVAL = -7;
 	
-	public static final long PASSWORD_CHANGE_INTERVAL = 90;
+	public static final long PASSWOPRD_CHANGE_INTERVAL = 90;
 	
 	public static final String UPROAD_PATH_PREFIX = "D://factory/ws_sts_4131/joy/src/main/webapp/resources/uploaded";
 	

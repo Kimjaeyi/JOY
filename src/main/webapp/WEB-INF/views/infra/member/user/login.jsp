@@ -163,7 +163,7 @@
 				<br><br>
 				<div class="row justify-content-center">
 					<a href="/member/managerLogin">
-						<button class="btn1" type="button"><b>로그인</b></button>
+						<button class="btn1" type="button" id="loginbtn"><b>로그인</b></button>
 					</a>
 				</div>
 			</div>
@@ -193,14 +193,43 @@
 				<br>
 				<a href="findID"><p>아이디 찾기 &nbsp;｜</p></a>
 				<a href="findPW"><p>비밀번호 찾기 &nbsp;｜</p></a>
-				<a href="memberRegForm"><p>회원가입</p></a>
+				<a href="join"><p>회원가입</p></a>
 			</div>
 			<br><br><br>
 		</div>
- 		
 	</div>
 
+<script>
 
+$("#loginbtn").on("click", function(){
+	if(validation() == false) return false;
+	
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		/* ,dataType:"json" */
+		,url: "/member/loginProc"
+		/* ,data : $("#formLogin").serialize() */
+		,data : { "Id" : $("#Id").val(), "Pwd" : $("#Pwd").val(), "autoLogin" : $("#autoLogin").is(":checked")}
+		,success: function(response) {
+			if(response.rt == "success") {
+				if(response.changePwd == "true") {
+					location.href = URL_CHANGE_PWD_FORM;
+				} else {
+					location.href = URL_INDEX_ADMIN;
+				}
+			} else {
+				alert("회원없음");
+			}
+		}
+		,error : function(jqXHR, textStatus, errorThrown){
+			alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+	});
+});
+
+</script>
 
 
 <!-- end -->
