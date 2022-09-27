@@ -202,7 +202,6 @@ public class MemberController {
 
 		if (rtMember != null) {
 			Member rtMember2 = service.selectOneLogin(dto);
-
 				
 			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
 			httpSession.setAttribute("sessSeq", rtMember2.getSeq());
