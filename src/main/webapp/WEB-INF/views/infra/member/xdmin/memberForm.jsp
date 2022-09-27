@@ -195,7 +195,7 @@
 					<div class="col">
 						<h6>회원등급</h6>
 						<br>
-						<select class="form-select" name="membership" id="membership" value="<c:out value="${item.membership }"/>">
+						<select class="form-select">
 							<option selected>::선택::</option>
 							<option value="1">MANAGER</option>
 							<option value="2">일반</option>
@@ -232,15 +232,15 @@
 						<h6>개인정보 유효기간</h6>
 						<br>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="private" id="private1" value="1">
+							<input class="form-check-input" type="radio" name="private" id="private" value="1">
 							<label class="form-check-label" for="inlineRadio1">1년</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="private" id="private2" value="2">
+							<input class="form-check-input" type="radio" name="private" id="private" value="2">
 							<label class="form-check-label" for="inlineRadio2">3년</label>
 						</div>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input" type="radio" name="private" id="private3" value="3">
+							<input class="form-check-input" type="radio" name="private" id="private" value="3">
 							<label class="form-check-label" for="inlineRadio3">탈퇴 시 파기</label>
 						</div>
 						<br><br>

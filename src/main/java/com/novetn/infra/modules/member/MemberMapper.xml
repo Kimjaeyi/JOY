@@ -40,7 +40,7 @@
  -->
  		SELECT
 			a.seq
-			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership
+<!-- 			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership -->
 			, a.name
 			, a.gender
 			, a.dob
@@ -65,7 +65,6 @@
 			, dob
 			, id
 			, pwd
-			, membership
 			, email
 			, phone
 			, regDate
@@ -76,7 +75,6 @@
 			, #{dob}
 			, #{id}
 			, #{pwd}
-			, #{membership}
 			, #{email}
 			, #{phone}
 			, now()
@@ -111,7 +109,6 @@
 			, dob = #{dob}
 			, id = #{id}
 			, pwd = #{pwd}
-			, membership = #{membership}
 			, email = #{email}
 			, phone = #{phone}
 			, regDate = #{regDate}

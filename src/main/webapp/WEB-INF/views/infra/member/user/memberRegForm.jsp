@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html> 
 <head>
 	<title>회원가입</title>
@@ -134,14 +134,14 @@
 		color: gray;
 	}
 	
-	#inputphone {
+	#phone {
 		width: 55%; 
 		display: inline; 
 		margin: 0 0 0 1%;
 	}
 	
-	#cczipcode, #findaddress, #ccaddress, #resetbtn,
-	#ccdetailAddress, #ccextraAddress, #ccLat, #ccLng {
+	#zipcode, #findaddress, #address, #resetbtn,
+	#detailAddress, #ccextraAddress, #ccLat, #ccLng {
 		margin: 0 0 1% 0;
 	}
 	
@@ -173,29 +173,29 @@
 	
 <body>
 
+<form id="form" name="form" method="post">
 	<div class="abc">
 	<br><br>
 		<a href="/"><h1>coocha</h1></a>
 		<br>
-		<form id="form" name="form" method="post">
 		<div class="aaa">
 			<div class="container">
 				<h2><b>JOIN</b></h2>
 				<br>
 				<h6>아이디</h6>
-				<input type="text" class="form-control" id="inputid" placeholder="아이디를 입력해주세요">
+				<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력해주세요" value="<c:out value="${item.id}"/>">
 				<br>
 				<h6>비밀번호</h6>
-				<input type="password" class="form-control" id="inputpwd" placeholder="비밀번호를 입력해주세요">
+				<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요" value="<c:out value="${item.pwd}"/>">
 				<br>
 				<h6>비밀번호 확인</h6>
-				<input type="password" class="form-control" id="inputpwd" placeholder="비밀번호를 다시 한번 입력해주세요">
+				<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 다시 한번 입력해주세요" value="<c:out value="${item.pwd}"/>">
 				<br>
 				<h6>이름</h6>
-				<input type="text" class="form-control" id="inputname" placeholder="이름을 입력해주세요">
+				<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력해주세요" value="<c:out value="${item.name}"/>">
 				<br>
 				<h6>생년월일</h6>
-				<input type="text" class="form-control" id="inputdob" placeholder="생년월일 8자리 (ex. 20220101)">
+				<input type="text" class="form-control" id="dob" name="dob" placeholder="생년월일 8자리 (ex. 20220101)" value="<c:out value="${item.dob}"/>">
 				<br>
 				<h6>휴대폰번호</h6>
 				<select class="form-select" style="width: 15%; display: inline">
@@ -204,15 +204,15 @@
 					<option value="2">KT</option>
 					<option value="3">LG</option>
 				</select>
-				<input type="text" class="form-control" id="inputphone" placeholder="ex. 010-0000-0000">
+				<input type="text" class="form-control" id="phone" name="phone" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
 				<br><br>
 				<h6 style="color: black">이메일</h6>
-				<input type="email" class="form-control" id="inputemail" placeholder="이메일을 입력해주세요">
+				<input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력해주세요" value="<c:out value="${item.email}"/>">
 				<br>
 				<h6><b>주소</b></h6>
 				<div class="row">
 					<div class="col-3">
-						<input type="text" class="form-control" id="cczipcode" placeholder="우편번호" disabled>
+						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" disabled>
 					</div>
 					<div class="col-1">
 						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
@@ -222,11 +222,11 @@
 					</div>
 				</div>
 				<div class="col">
-					<input type="text" class="form-control" id="ccaddress" placeholder="도로명 주소" disabled>
+					<input type="text" class="form-control" id="address" name="address" placeholder="도로명 주소" disabled>
 				</div>
 				<div class="row">
 					<div class="col-9">
-						<input type="text" class="form-control" id="ccdetailAddress" placeholder="상세주소">
+						<input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소">
 					</div>
 					<div class="col-3">
 						<input type="text" class="form-control" id="ccextraAddress" placeholder="참고항목" disabled>
@@ -243,25 +243,25 @@
 				<br>
 				<h6><b>성별</b></h6>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="gender" id="gender1" value="43">
+					<input class="form-check-input" type="radio" name="gender" id="gender" value="43">
 					<label class="form-check-label" for="inlineRadio1">여자</label>
 				</div>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="gender" id="gender2" value="44">
+					<input class="form-check-input" type="radio" name="gender" id="gender" value="44">
 					<label class="form-check-label" for="inlineRadio2">남자</label>
 				</div>
 				<br><br>
 				<h6><b>개인정보 유효기간</b></h6>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="private" id="private1" value="45">
+					<input class="form-check-input" type="radio" name="validity" id="validity" value="45">
 					<label class="form-check-label" for="inlineRadio1">1년</label>
 				</div>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="private" id="private2" value="46">
+					<input class="form-check-input" type="radio" name="validity" id="validity" value="46">
 					<label class="form-check-label" for="inlineRadio2">3년</label>
 				</div>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="radio" name="private" id="private3" value="47">
+					<input class="form-check-input" type="radio" name="validity" id="validity" value="47">
 					<label class="form-check-label" for="inlineRadio3">탈퇴 시 파기</label>
 				</div>
 			</div>
@@ -284,14 +284,12 @@
 			</div>
  -->	
 			<div class="d-grid" id="regbtn" style="margin-top: 5rem">
-				<a href="Regsuccess">
-					<button class="btn" type="button" id=""><b>회원가입</b></button>
-				</a>
+				<button class="btn" type="button" id="savebtn"><b>회원가입</b></button>
 			</div>
 			<br><br>
 		</div>
-		</form>
 	</div>
+</form>
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -306,17 +304,15 @@
 	var form = $("form[name=form]");
 	
 	$("#savebtn").on("click", function(){
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   		//if (validationInst() == false) return false;
-	   		form.attr("action", goUrlInst).submit();
-	   	}
+   		form.attr("action", goUrlInst).submit();
 	});
 
 	$("#findaddress").on("click", function() {
 		here();
 	});
+	</script>
 	
+	<script type="text/javascript">	
 	function here() {
 	    new daum.Postcode({
 	          oncomplete: function(data) {

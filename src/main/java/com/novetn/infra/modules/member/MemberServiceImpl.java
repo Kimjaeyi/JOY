@@ -29,6 +29,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public int update(Member dto) throws Exception {
+		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
 		return dao.update(dto);
 	}
 	
@@ -66,6 +67,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public Member selectOneLogin(Member dto) throws Exception {
+		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
 		return dao.selectOneLogin(dto);
 	}
 	

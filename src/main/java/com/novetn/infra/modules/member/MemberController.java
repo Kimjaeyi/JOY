@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.novetn.infra.common.constants.Constants;
+import com.novetn.infra.common.util.UtilSecurity;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -100,10 +100,9 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberJoin")
-	public String memberInst(Member vo, Member dto) throws Exception {
+	public String memberJoin(MemberVo vo, Member dto) throws Exception {
 		
 		service.insert(dto);
-		
 		return "infra/member/user/Regsuccess";
 	}
 	
@@ -159,7 +158,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "join")
-	public String memberRegForm() throws Exception {
+	public String join() throws Exception {
 		
 		return "infra/member/user/memberRegForm";
 		
@@ -193,19 +192,47 @@ public class MemberController {
 		
 	}
 	
+//	@ResponseBody
+//	@RequestMapping(value = "loginProc")
+//	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+//		Map<String, Object> returnMap = new HashMap<String, Object>();
+//		Member rtMember = service.selectOneId(dto);
+//
+//		if (rtMember != null) {
+//			Member rtMember2 = service.selectOneLogin(dto);
+//
+//			if (rtMember2 != null) {
+//				
+//				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
+//				httpSession.setAttribute("sessId", rtMember2.getId());
+//
+//				System.out.println(httpSession.getAttribute("sessName"));
+//				}
+//				returnMap.put("rt", "success");
+//			} else {
+//				dto.setSeq(rtMember.getSeq());
+//				returnMap.put("rt", "fail");
+//			}
+//		
+//			return returnMap;
+//		}
+	
 	@ResponseBody
 	@RequestMapping(value = "loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 
-		Member rtMember = service.selectOneId(dto);
+		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+		Member rtMember = service.selectOneLogin(dto);
 
 		if (rtMember != null) {
-			Member rtMember2 = service.selectOneLogin(dto);
-				
-			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE); // 60second * 30 = 30minute
-			httpSession.setAttribute("sessSeq", rtMember2.getSeq());
-			httpSession.setAttribute("sessId", rtMember2.getId());
+			httpSession.setAttribute("sessSeq", rtMember.getSeq());
+			httpSession.setAttribute("sessId", rtMember.getId());
+			
+			returnMap.put("rt", "success");
+			
+		} else {
+			returnMap.put("rt", "fail");
 		}
 		return returnMap;
 	}
