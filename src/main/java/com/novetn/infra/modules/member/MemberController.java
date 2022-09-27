@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.novetn.infra.common.util.UtilSecurity;
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -192,49 +191,52 @@ public class MemberController {
 		
 	}
 	
-//	@ResponseBody
-//	@RequestMapping(value = "loginProc")
-//	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
-//		Map<String, Object> returnMap = new HashMap<String, Object>();
-//		Member rtMember = service.selectOneId(dto);
-//
-//		if (rtMember != null) {
-//			Member rtMember2 = service.selectOneLogin(dto);
-//
-//			if (rtMember2 != null) {
-//				
-//				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
-//				httpSession.setAttribute("sessId", rtMember2.getId());
-//
-//				System.out.println(httpSession.getAttribute("sessName"));
-//				}
-//				returnMap.put("rt", "success");
-//			} else {
-//				dto.setSeq(rtMember.getSeq());
-//				returnMap.put("rt", "fail");
-//			}
-//		
-//			return returnMap;
-//		}
-	
 	@ResponseBody
 	@RequestMapping(value = "loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-
-		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
-		Member rtMember = service.selectOneLogin(dto);
+		
+		Member rtMember = service.selectOneId(dto);
 
 		if (rtMember != null) {
-			httpSession.setAttribute("sessSeq", rtMember.getSeq());
-			httpSession.setAttribute("sessId", rtMember.getId());
-			
-			returnMap.put("rt", "success");
-			
-		} else {
-			returnMap.put("rt", "fail");
-		}
-		return returnMap;
+			Member rtMember2 = service.selectOneLogin(dto);
+
+			if (rtMember2 != null) {
+				
+				httpSession.setAttribute("sessSeq", rtMember2.getSeq());
+				httpSession.setAttribute("sessId", rtMember2.getId());
+
+				System.out.println(httpSession.getAttribute("sessName"));
+				returnMap.put("rt", "success");
+				}
+				
+			} else {
+				dto.setSeq(rtMember.getSeq());
+				returnMap.put("rt", "fail");
+			}
+		
+			return returnMap;
 	}
+	
+	
+//	@ResponseBody
+//	@RequestMapping(value = "loginProc")
+//	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+//		Map<String, Object> returnMap = new HashMap<String, Object>();
+//
+//		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+//		Member rtMember = service.selectOneLogin(dto);
+//
+//		if (rtMember != null) {
+//			httpSession.setAttribute("sessSeq", rtMember.getSeq());
+//			httpSession.setAttribute("sessId", rtMember.getId());
+//			
+//			returnMap.put("rt", "success");
+//			
+//		} else {
+//			returnMap.put("rt", "fail");
+//		}
+//		return returnMap;
+//	}
 	
 }

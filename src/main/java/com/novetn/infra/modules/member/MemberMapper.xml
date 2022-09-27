@@ -40,7 +40,7 @@
  -->
  		SELECT
 			a.seq
-<!-- 			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership -->
+			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership
 			, a.name
 			, a.gender
 			, a.dob
@@ -140,21 +140,21 @@
 	
 	<select id="selectOneId" resultMap="resultMapObj">
 		SELECT
-			a.seq
-			, a.id
-		FROM member a
-		WHERE
-			a.id = #{id}
+			seq
+			, id
+		FROM member
+		WHERE 1=1
+		AND	id = #{id}
 	</select>
 	
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
-			a.seq
-			, a.id
-		FROM member a
-		WHERE
-			a.id = #{id}
-			a.pwd = #{pwd}
+			seq
+			, id
+		FROM member
+		WHERE 1=1 
+		AND	id = #{id}
+		AND	pwd = #{pwd}
 	</select>
 
 </mapper>

@@ -510,7 +510,7 @@
 									<div class="deal">
 										<a href="../item/itemView">
 											<div class="img">
-												<img src="resources/image/위메프1.png">
+												<img src="../resources/image/위메프1.png">
 											</div>
 											<div class="areas">
 												<div class="title">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml + 트릿 150ml + 샴푸 80 + 트릿 80 외</div>
@@ -532,7 +532,7 @@
 									<div class="deal">
 										<a href=" ">
 											<div class="img">
-												<img src="resources/image/위메프2.jpg">
+												<img src="../resources/image/위메프2.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">아임웰 닭가슴살 볶음밥 1+1+1팩 외 아임닭/아임웰 BEST + 오늘 54%쿠폰</div>
@@ -550,7 +550,7 @@
 									<div class="deal">
 										<a href=" ">
 											<div class="img">
-												<img src="resources/image/위메프3.png">
+												<img src="../resources/image/위메프3.png">
 											</div>
 											<div class="areas">
 												<div class="title">다우니 실내건조 섬유유연제 1L 3개+200ml, 덜마른 빨래 세균 번식 억제</div>
@@ -572,7 +572,7 @@
 									<div class="deal">
 										<a href=" ">
 											<div class="img">
-												<img src="resources/image/위메프4.png">
+												<img src="../resources/image/위메프4.png">
 											</div>
 											<div class="areas">
 												<div class="title">Jeep 1941 빅로고 반팔티셔츠 외 22S/S 신상 반팔티셔츠 모음 할인전</div>
@@ -593,7 +593,7 @@
 									<div class="deal">
 										<a href=" ">
 											<div class="img">
-												<img src="resources/image/위메프5.png">
+												<img src="../resources/image/위메프5.png">
 											</div>
 											<div class="areas">
 												<div class="title">농심오뚜기 컵라면 6개입 84종 진라면 신라면 진짬뽕 육개장 새우탕 사발면 컵누들 참깨라면</div>
@@ -635,7 +635,7 @@
 												<span class="ranking"><span class="blind">1</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트1.jpg">
+												<img src="../resources/image/베스트1.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">[복날몸보신] [배스킨라빈스x굽네치킨] 최대 23% 할인 초복 프로모션</div>
@@ -674,7 +674,7 @@
 												</span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트2.jpg">
+												<img src="../resources/image/베스트2.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">개당89원 초특가 KF94 ALL국산 소형/대형 새부리형/입체형컬러마스크/에어데이즈/이비에</div>
@@ -711,7 +711,7 @@
 												<span class="ranking"><span class="blind">3</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트3.jpg">
+												<img src="../resources/image/베스트3.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">[롯데리아] 1만원권 11% 할인</div>
@@ -750,7 +750,7 @@
 												</span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트4.jpg">
+												<img src="../resources/image/베스트4.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">[뉴발란스] 선착순쿠폰 뉴발란스/아디다스/나이키 외 스포츠 브랜드 의류/슈즈 총모음전</div>
@@ -789,7 +789,7 @@
 												</span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트5.jpg">
+												<img src="../resources/image/베스트5.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">[20%쿠폰] 양말폭탄 아동/성인 여름양말 메시 페이크삭스 스니커즈 선물세트</div>
@@ -808,21 +808,6 @@
 												</span> 
 												<span class="shopping-mall">티몬</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="841602084" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQxNjAyMDg0" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -837,7 +822,7 @@
 												<span class="ranking"><span class="blind">6</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트6.jpg">
+												<img src="../resources/image/베스트6.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">[타미힐피거] 마지막 특!가! 타미힐피거 반팔피게티 최.저.가.세.일</div>
@@ -860,24 +845,6 @@
 												</span> 
 												<span class="shopping-mall">11번가 쇼킹딜</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="845168417" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="ODQ1MTY4NDE3" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span> 
-												<span class="buy">구매 
-													<span class="num">367</span>
-												</span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -892,7 +859,7 @@
 												<span class="ranking"><span class="blind">7</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트7.jpg">
+												<img src="../resources/image/베스트7.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">★최대40%쿠폰★ 온더바디 발을씻자 풋샴푸 385ml X 3개 외 샴푸, 바디워시</div>
@@ -915,24 +882,6 @@
 												</span> 
 												<span class="shopping-mall">11번가 쇼킹딜</span>
 											</div>
-											<div class="btns">
-												<button type="button" class="btn-like no-link" data-did="753820821" data-scid="2615">
-													<span class="blind">좋아요</span>
-												</button>
-												<button type="button" data-target-did="NzUzODIwODIx" data-target-cid="TH_01" class="btn-details no-link">
-													<span class="blind">상세</span>
-												</button>
-											</div>
-										</div>
-										<div class="bottom">
-											<div class="etc">
-												<span class="like">좋아요 
-													<span class="num">0</span>
-												</span> 
-												<span class="buy">구매 
-													<span class="num">7,379</span>
-												</span>
-											</div>
 										</div>
 									</div>
 								</a>
@@ -947,7 +896,7 @@
 												<span class="ranking"><span class="blind">8</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트8.jpg">
+												<img src="../resources/image/베스트8.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">[크록스공식점]30%쿠폰! 성인/키즈 클로그 외 여름슈즈 단독가!</div>
@@ -980,7 +929,7 @@
 												<span class="ranking"><span class="blind">9</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트9.jpg">
+												<img src="../resources/image/베스트9.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">[기프티콘] 파리바게뜨 우유팥빙수+꽃빙수(딸기망고)</div>
@@ -1019,7 +968,7 @@
 												</span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트10.jpg">
+												<img src="../resources/image/베스트10.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">티젠 김태리 콤부차 30스틱 / 10스틱 파인애플 / 유자 / 레몬 / 피치 / 베리</div>
@@ -1052,7 +1001,7 @@
 												<span class="ranking"><span class="blind">11</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트11.jpg">
+												<img src="../resources/image/베스트11.jpg">
 											</div>
 											<div class="areas">
 												<div class="title">롯데 꼬깔콘 67gx8개 외 치토스,몽쉘,칙촉,가나,ABC,드림카카오,자일리톨모음</div>
@@ -1087,24 +1036,26 @@
 												<span class="ranking"><span class="blind">12</span></span>
 											</div>
 											<div class="img">
-												<img src="resources/image/베스트12.jpg">
+												<img src="../resources/image/베스트12.jpg">
 											</div>
 											<div class="areas">
-												<div class="title">10%쿠폰 코렐 파이렉스 스누피 계량컵
-													밀폐용기/저장용기/믹싱볼/텀블러 모음전</div>
+												<div class="title">10%쿠폰 코렐 파이렉스 스누피 계량컵 밀폐용기/저장용기/믹싱볼/텀블러 모음전</div>
 												<div class="prices">
-													<span class="left"> <span class="num">33</span><span
-														class="unit">%</span>
-													</span> <span class="right"> <span class="num">7,900</span><span
-														class="unit">원</span>
+													<span class="left"> 
+														<span class="num">33</span>
+														<span class="unit">%</span>
+													</span> 
+													<span class="right"> 
+														<span class="num">7,900</span>
+														<span class="unit">원</span>
 													</span>
 												</div>
 											</div>
 											<div class="aside">
-												<span class="pay"> <span class="easy-pay"><img
-														src="http://images.coocha.co.kr/static/images/deal/easypay/spay-13.png?20200604"
-														alt=""></span>
-												</span> <span class="shopping-mall">11번가 쇼킹딜</span>
+												<span class="pay"> 
+													<span class="easy-pay"><img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-13.png?20200604" alt=""></span>
+												</span> 
+												<span class="shopping-mall">11번가 쇼킹딜</span>
 											</div>
 										</div>
 									</div>
