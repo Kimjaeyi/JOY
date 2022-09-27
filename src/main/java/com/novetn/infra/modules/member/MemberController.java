@@ -95,6 +95,14 @@ public class MemberController {
 		return "redirect:/member/memberList";
 	}
 	
+	@RequestMapping(value = "memberJoin")
+	public String memberInst(Member vo, Member dto) throws Exception {
+		
+		service.insert(dto);
+		
+		return "infra/member/user/Regsuccess";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "idCheck")
 	public Map<String, Object> checkId(Member dto) throws Exception {
