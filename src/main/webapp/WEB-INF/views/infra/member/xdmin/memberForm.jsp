@@ -325,7 +325,9 @@
 	   		//if (validationUpdt() == false) return false;
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
+		
 	}); 
+	
 	$("#listbtn").on("click", function(){
 		formVo.attr("action", goUrlList).submit();
 	});

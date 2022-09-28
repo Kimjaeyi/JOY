@@ -15,7 +15,6 @@ public class Member {
 	private Integer validity;
 	private String regDate;
 	private Integer delNY;
-	
 	public String getSeq() {
 		return seq;
 	}

@@ -56,7 +56,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "memberInst")
-	public String memberInst(Member vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String memberInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.insert(dto);
 		
