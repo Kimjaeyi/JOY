@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-<%@ page session="false"%>
+<%-- <%@ page session="false"%> --%>
 <html>
 <head>
 <title>coocha</title>
@@ -31,12 +31,30 @@
 
 <style type="text/css">
 	
-	.gnb .managebtn {
+	.gnb .logoutbtn {
+		width: 75px;
 		display: inline-block;
 		position: absolute;
-		top: 47px;
-		right: 245px;
-		color: white;
+	    top: 29px;
+	    right: 220px;
+	    color: white;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
+	}
+	
+	.gnb .managebtn {
+		width: 65px;
+		display: inline-block;
+		position: absolute;
+	    top: 35px;
+	    right: 300px;
+	    color: white;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
 	}
 	
 	.footer li {
@@ -72,6 +90,7 @@
 
 				<ul class="gnb">
 					<li><a href="/codeGroup/codeGroupList"><div class="managebtn"><i class="fa-solid fa-wrench fa-lg"></i></div></a></li>
+					<li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li>
 					<li><a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
 					<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
 					<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
@@ -1196,15 +1215,29 @@
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 	<!-- //탑으로 -->
 
-	<!-- 공통 스크립트 PARAM -->
-	<script src="/static/js/lib/jquery.bxslider.js"></script>
-	<script src="/static/js/lib/jquery.nanoscroller.js"></script>
-	<script src="/static/js/lib/jquery.cookie.js"></script>
-	<script src="/static/js/common/common.js"></script>
-	<script src="/static/js/common/util.js"></script>
-	<script src="/static/js/main/main.ui.js"></script>
-	<script src="/static/js/main/main.js"></script>
-	<script src="/static/js/search/keyword.js"></script>
+	<script type="text/javascript">
+	
+	$("#logoutbtn").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/member/login";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
+	</script>
 
 </body>
 </html>

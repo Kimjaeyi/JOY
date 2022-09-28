@@ -35,8 +35,8 @@
 		width: 75px;
 		display: inline-block;
 		position: absolute;
-	    top: 26px;
-	    right: 149px;
+	    top: 29px;
+	    right: 220px;
 	    color: white;
 	    padding: 10px 10px 9px;
 	    font-weight: bold;
@@ -48,8 +48,8 @@
 		width: 75px;
 		display: inline-block;
 		position: absolute;
-	    top: 26px;
-	    right: 220px;
+	    top: 29px;
+	    right: 300px;
 	    color: white;
 	    padding: 10px 10px 9px;
 	    font-weight: bold;
@@ -91,6 +91,7 @@
 				<ul class="gnb">
 					<li><span class="userid"><c:out value="${sessId }"/>님 :) </span></li>
 					<li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li>
+					<li><a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
 					<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
 					<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
 						<div class="area-servic-center area-gnb-layer">
