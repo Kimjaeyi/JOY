@@ -51,6 +51,18 @@ public class CodeServiceImpl implements CodeService {
 		System.out.println("cachedCodeArrayList: " + Code.cachedCodeArrayList.size() + " cached !");
 	}
 	
+//	public static List<Code> selectListCachedCode(String seq) throws Exception {
+//		List<Code> rt = new ArrayList<Code>();
+//		for(Code codeRow : Code.cachedCodeArrayList) {
+//			if (codeRow.getCodeGroup_seq().equals(seq)) {
+//				rt.add(codeRow);
+//			} else {
+//				// by pass
+//			}
+//		}
+//		return rt;
+//	}
+	
 	public static List<Code> selectListCachedCode(String seq) throws Exception {
 		List<Code> rt = new ArrayList<Code>();
 		for(Code codeRow : Code.cachedCodeArrayList) {
@@ -61,6 +73,20 @@ public class CodeServiceImpl implements CodeService {
 			}
 		}
 		return rt;
+		
+	}
+	
+	public static String selectOneCachedCode(String seq) throws Exception {
+		String rt = "";
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if (codeRow.getSeq().equals(seq)) {
+				rt = codeRow.getCdname_ko();
+			} else {
+				// by pass
+			}
+		}
+		return rt;
+		
 	}
 	
 	

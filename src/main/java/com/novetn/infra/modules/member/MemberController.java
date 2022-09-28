@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.novetn.infra.common.util.UtilCookie;
+import com.novetn.infra.modules.code.CodeServiceImpl;
+
 
 @Controller
 @RequestMapping(value = "/member/")
@@ -58,6 +61,7 @@ public class MemberController {
 	@RequestMapping(value = "memberInst")
 	public String memberInst(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
+		dto.setEmail(dto.getEmailID() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
 		service.insert(dto);
 		
 		vo.setSeq(dto.getSeq());
@@ -101,6 +105,7 @@ public class MemberController {
 	@RequestMapping(value = "memberJoin")
 	public String memberJoin(MemberVo vo, Member dto) throws Exception {
 		
+		dto.setEmail(dto.getEmailID() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
 		service.insert(dto);
 		return "infra/member/user/Regsuccess";
 	}
@@ -122,6 +127,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "managerLogin")
+	
 	public String managerLogin() throws Exception {
 		
 		return "infra/member/xdmin/managerLogin";
@@ -216,6 +222,16 @@ public class MemberController {
 			}
 		
 			return returnMap;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "logoutProc")
+	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+//		UtilCookie.deleteCookie();
+		httpSession.invalidate();
+		returnMap.put("rt", "success");
+		return returnMap;
 	}
 	
 	

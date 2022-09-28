@@ -200,14 +200,23 @@
 				<h6>휴대폰번호</h6>
 				<select class="form-select" style="width: 15%; display: inline">
 					<option selected>통신사</option>
-					<option value="1">SKT</option>
-					<option value="2">KT</option>
-					<option value="3">LG</option>
+					<option value="5">SKT</option>
+					<option value="6">KT</option>
+					<option value="7">LG</option>
 				</select>
 				<input type="text" class="form-control" id="phone" name="phone" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
 				<br><br>
 				<h6 style="color: black">이메일</h6>
-				<input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력해주세요" value="<c:out value="${item.email}"/>">
+				<input type="email" class="form-control" id="emailID" name="emailID" placeholder="이메일아이디를 입력해주세요" value="<c:out value="${item.emailID}"/>" style="width: 30%; display: inline">
+				<select class="form-select" name="emailDomain" id="emailDomain" style="width: 30%; display: inline">
+					<option selected>::이메일도메인::</option>
+					<option value="8" <c:if test="${item.emailDomain eq 8}">selected</c:if>>@naver.com</option>
+					<option value="9" <c:if test="${item.emailDomain eq 9}">selected</c:if>>@gmail.com</option>
+					<option value="10" <c:if test="${item.emailDomain eq 10}">selected</c:if>>@hanmail.net</option>
+					<option value="11" <c:if test="${item.emailDomain eq 11}">selected</c:if>>@daum.com</option>
+					<option value="12" <c:if test="${item.emailDomain eq 12}">selected</c:if>>@nate.com</option>
+					<option value="13" <c:if test="${item.emailDomain eq 13}">selected</c:if>>@coocha.com</option>
+				</select>
 				<br>
 				<h6><b>주소</b></h6>
 				<div class="row">

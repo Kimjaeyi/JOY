@@ -21,13 +21,33 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
+
+<style type="text/css">
+
+	.gnb .logoutbtn {
+		width: 75px;
+		display: inline-block;
+		position: absolute;
+	    top: 26px;
+	    right: 149px;
+	    color: white;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
+	}
+	
+	.footer li {
+		margin: 0 2%;
+	}
+
+</style>
 
 <body>
 
@@ -37,7 +57,7 @@
 		<div class="header">
 			<div class="inner">
 				<h1 class="logo">
-					<a href="Mainpage.html" data-scid="2220"><span class="blind">COOCHA</span></a>
+					<a href="/" data-scid="2220"><span class="blind">COOCHA</span></a>
 					<span class="title-category">카테고리</span>
 				</h1>
 
@@ -56,7 +76,7 @@
 
 				<!-- 로그인 전 -->
 				<ul class="gnb">
-					<li><a href="/member/login" class="btn-login">로그인</a></li>
+					<li><a href="/member/logoutProc" class="logoutbtn">로그아웃</a></li>
 					<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
 					<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
 						<div class="area-servic-center area-gnb-layer">
@@ -68,9 +88,6 @@
 							</ul>
 						</div></li>
 				</ul>
-				<!-- 로그인 전 -->
-				<!-- 로그인 후 -->
-				<!-- 로그인 후 -->
 			</div>
 		</div>
 
@@ -472,8 +489,7 @@
 	<!-- main contents -->
 	<div class="main-container">
 		<!-- 검색 -->
-		<div class="section group-search"
-			style="background-image: url(http://images.coocha.co.kr/WebStyleShopBanner/mainbg/img_20201224171334.jpg)">
+		<div class="section group-search" style="background-image: url(http://images.coocha.co.kr/WebStyleShopBanner/mainbg/img_20201224171334.jpg)">
 			<div class="inner">
 				<div class="contents">
 					<p class="text">
@@ -1161,8 +1177,31 @@
 	<!-- 탑으로 -->
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 	<!-- //탑으로 -->
-
-	<!-- 공통 스크립트 PARAM -->
+	
+	<script type="text/javascript">
+	
+	$("#logoutbtn").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/member/login";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
+	</script>
+<!-- 	
 	<script src="/static/js/lib/jquery.bxslider.js"></script>
 	<script src="/static/js/lib/jquery.nanoscroller.js"></script>
 	<script src="/static/js/lib/jquery.cookie.js"></script>
@@ -1171,6 +1210,7 @@
 	<script src="/static/js/main/main.ui.js"></script>
 	<script src="/static/js/main/main.js"></script>
 	<script src="/static/js/search/keyword.js"></script>
-
+ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

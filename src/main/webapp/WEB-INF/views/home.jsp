@@ -1209,8 +1209,7 @@
 	<!-- 탑으로 -->
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 	<!-- //탑으로 -->
-
-	<!-- 공통 스크립트 PARAM -->
+<!-- 
 	<script src="/static/js/lib/jquery.bxslider.js"></script>
 	<script src="/static/js/lib/jquery.nanoscroller.js"></script>
 	<script src="/static/js/lib/jquery.cookie.js"></script>
@@ -1219,6 +1218,6 @@
 	<script src="/static/js/main/main.ui.js"></script>
 	<script src="/static/js/main/main.js"></script>
 	<script src="/static/js/search/keyword.js"></script>
-
+ -->
 </body>
 </html>
