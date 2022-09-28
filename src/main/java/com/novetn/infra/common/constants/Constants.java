@@ -12,7 +12,7 @@ public final class Constants {
 	
 	public static final int SESSION_MINUTE = 30;
 	
-	public static final String URL_LOGINFORM = "/member/loginForm";
+	public static final String URL_LOGINFORM = "/member/login";
 	
 	public static final String DATETIME_FORMAT_BASIC = "yyyy-MM-dd HH:mm:ss";
 	

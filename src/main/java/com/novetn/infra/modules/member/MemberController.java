@@ -217,7 +217,6 @@ public class MemberController {
 				}
 				
 			} else {
-				dto.setSeq(rtMember.getSeq());
 				returnMap.put("rt", "fail");
 			}
 		
@@ -228,7 +227,7 @@ public class MemberController {
 	@RequestMapping(value = "logoutProc")
 	public Map<String, Object> logoutProc(HttpSession httpSession) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
-//		UtilCookie.deleteCookie();
+		UtilCookie.deleteCookie();
 		httpSession.invalidate();
 		returnMap.put("rt", "success");
 		return returnMap;

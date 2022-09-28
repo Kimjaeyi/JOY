@@ -5,7 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
-<%@ page session="false"%>
+<%-- <%@ page session="false"%> --%>
 <html>
 <head>
 <title>coocha</title>
@@ -21,6 +21,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
@@ -36,6 +37,19 @@
 		position: absolute;
 	    top: 26px;
 	    right: 149px;
+	    color: white;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
+	}
+	
+	.gnb .userid {
+		width: 75px;
+		display: inline-block;
+		position: absolute;
+	    top: 26px;
+	    right: 220px;
 	    color: white;
 	    padding: 10px 10px 9px;
 	    font-weight: bold;
@@ -74,9 +88,9 @@
 					</div>
 				</div>
 
-				<!-- 로그인 전 -->
 				<ul class="gnb">
-					<li><a href="/member/logoutProc" class="logoutbtn">로그아웃</a></li>
+					<li><span class="userid"><c:out value="${sessId }"/>님 :) </span></li>
+					<li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li>
 					<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
 					<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
 						<div class="area-servic-center area-gnb-layer">
@@ -1211,6 +1225,6 @@
 	<script src="/static/js/main/main.js"></script>
 	<script src="/static/js/search/keyword.js"></script>
  -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </body>
 </html>
