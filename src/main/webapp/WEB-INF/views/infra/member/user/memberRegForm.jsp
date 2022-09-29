@@ -231,14 +231,14 @@
 					</div>
 				</div>
 				<div class="col">
-					<input type="text" class="form-control" id="address" name="address" placeholder="도로명 주소" readonly>
+					<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" readonly>
 				</div>
 				<div class="row">
 					<div class="col-9">
-						<input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소">
+						<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소">
 					</div>
 					<div class="col-3">
-						<input type="text" class="form-control" id="ccextraAddress" placeholder="참고항목" readonly>
+						<input type="text" class="form-control" id="addr3" name="addr3" placeholder="참고항목" readonly>
 					</div>
 				</div>
 				<div class="row">
@@ -344,15 +344,15 @@
 	                  if(extraAddr !== ''){
 	                      extraAddr = ' (' + extraAddr + ')';
 	                  }
-	                  document.getElementById("ccextraAddress").value = extraAddr;
+	                  document.getElementById("addr3").value = extraAddr;
 	              
 	              } else {
-	                  document.getElementById("ccextraAddress").value = '';
+	                  document.getElementById("addr3").value = '';
 	              }
 
-	              document.getElementById('cczipcode').value = data.zonecode;
-	              document.getElementById('ccaddress').value = addr;
-	              document.getElementById('ccdetailAddress').focus();
+	              document.getElementById('zipcode').value = data.zonecode;
+	              document.getElementById('addr1').value = addr;
+	              document.getElementById('addr2').focus();
 	              
 	              geocoder.addressSearch(addr, callback);
 				}
@@ -371,10 +371,10 @@
 	};
 	
 	$("#resetbtn").on("click", function() {
-		$("#cczipcode").val('');
-		$("#ccaddress").val('');
-		$("#ccdetailAddress").val('');
-		$("#ccextraAddress").val('');
+		$("#zipcode").val('');
+		$("#addr1").val('');
+		$("#addr2").val('');
+		$("#addr3").val('');
 		$("#ccLat").val('');
 		$("#ccLng").val('');
 	});
@@ -388,12 +388,12 @@
 	}
 	
 	$("#savebtn").on("click", function() {
-		if(!checkNull($("#inputid"), $("#inputid").val(), "아이디를 입력해주세요.")) return false;
-		if(!checkNull("#inputpwd"), $("#inputpwd").val(), "비밀번호를 입력해주세요.")) return false;
-		if(!checkNull("#inputname"), $("#inputname").val(), "이름을 입력해주세요.")) return false;
-		if(!checkNull("#inputdob"), $("#inputdob").val(), "생년월일을 입력해주세요.")) return false;
-		if(!checkNull("#inputphone"), $("#inputphone").val(), "연락처를 입력해주세요.")) return false;
-		if(!checkNull("#inputemail"), $("#inputemail").val(), "이메일을 입력해주세요.")) return false;
+		if(!checkNull($("#id"), $("#id").val(), "아이디를 입력해주세요.")) return false;
+		if(!checkNull("#pwd"), $("#pwd").val(), "비밀번호를 입력해주세요.")) return false;
+		if(!checkNull("#name"), $("#name").val(), "이름을 입력해주세요.")) return false;
+		if(!checkNull("#dob"), $("#dob").val(), "생년월일을 입력해주세요.")) return false;
+		if(!checkNull("#phone"), $("#phone").val(), "연락처를 입력해주세요.")) return false;
+		if(!checkNull("#email"), $("#email").val(), "이메일을 입력해주세요.")) return false;
 	});
 		
 </script>

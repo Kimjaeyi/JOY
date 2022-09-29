@@ -14,9 +14,14 @@ public class Member {
 	private String emailID;
 	private String emailDomain;
 	private String phone;
+	private Integer zipcode;
+	private String addr1;
+	private String addr2;
+	private String addr3;
 	private Integer validity;
 	private String regDate;
 	private Integer delNY;
+	
 	public String getSeq() {
 		return seq;
 	}
@@ -88,6 +93,30 @@ public class Member {
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	public Integer getZipcode() {
+		return zipcode;
+	}
+	public void setZipcode(Integer zipcode) {
+		this.zipcode = zipcode;
+	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+	public String getAddr3() {
+		return addr3;
+	}
+	public void setAddr3(String addr3) {
+		this.addr3 = addr3;
 	}
 	public Integer getValidity() {
 		return validity;
