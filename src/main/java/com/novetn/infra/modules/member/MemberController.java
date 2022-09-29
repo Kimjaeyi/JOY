@@ -169,13 +169,6 @@ public class MemberController {
 		
 	}
 	
-	@RequestMapping(value = "Regsuccess")
-	public String Regsuccess() throws Exception {
-		
-		return "infra/member/user/Regsuccess";
-		
-	}
-	
 	@RequestMapping(value = "mypage")
 	public String mypage() throws Exception {
 		

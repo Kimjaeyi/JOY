@@ -51,8 +51,8 @@
 			, a.emailDomain
 			, a.phone
 			, a.zipcode
-			, a.address
-			, a.addressDetail
+			, a.addr1
+			, a.addr2
 			, a.addr3
 			, a.regDate
 			, a.delNY
@@ -76,8 +76,8 @@
 			, emailDomain
 			, phone
 			, zipcode
-			, address
-			, addressDetail
+			, addr1
+			, addr2
 			, addr3
 			, regDate
 			, delNY
@@ -92,8 +92,8 @@
 			, #{emailDomain}
 			, #{phone}
 			, #{zipcode}
-			, #{address}
-			, #{addressDetail}
+			, #{addr1}
+			, #{addr2}
 			, #{addr3}
 			, now()
 			, 0
@@ -116,8 +116,8 @@
 			, emailDomain
 			, phone
 			, zipcode
-			, address
-			, addressDetail
+			, addr1
+			, addr2
 			, addr3
 			, regDate
 			, delNY
@@ -138,8 +138,8 @@
 			, emailDomain = #{emailDomain}
 			, phone = #{phone}
 			, zipcode = #{zipcode}
-			, address = #{address}
-			, addressDetail = #{addressDetail}
+			, addr1 = #{addr1}
+			, addr2 = #{addr2}
 			, addr3 = #{addr3}
 			, regDate = #{regDate}
 		WHERE

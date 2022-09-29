@@ -29,6 +29,8 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/" />
 			<exclude-mapping path="/resources/**" />
+			<exclude-mapping path="/member/join" />
+			<exclude-mapping path="/member/memberJoin" />
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/loginProc" />
 			<exclude-mapping path="/item/itemView" />
