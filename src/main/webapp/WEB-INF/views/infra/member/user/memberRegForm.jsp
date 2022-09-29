@@ -73,7 +73,7 @@
 		background-image: url('../resources/image/logbg.jpg');
 		background-repeat: no-repeat;
 		background-size : cover;
-		background-attachment : scroll;
+		background-attachment : fixed;
 	}
 	
 	body {
@@ -81,7 +81,7 @@
 	}
 
 	.container {
-		margin : 5% 0;
+		margin : 5% 0 0 0;
 	}
 	
 	.aaa {
@@ -99,6 +99,7 @@
 	h6 {
 		color : white;
 		font-weight : bold;
+		margin-top: 3%;
 	}
 	
 	input, select {
@@ -128,19 +129,15 @@
 		margin : 5px;
 	}
 	
-	.form-select {
-		color: gray;
-	}
-	
 	#phone {
 		width: 55%; 
 		display: inline; 
-		margin: 0 0 0 1%;
+		margin-left: 1%;
 	}
 	
 	#zipcode, #findaddress, #addr1, #resetbtn,
 	#addr2, #addr3, #ccLat, #ccLng {
-		margin: 0 0 1% 0;
+		margin-bottom: 1%;
 	}
 	
 	#findaddress {
@@ -183,8 +180,10 @@
 					<br>
 					<h6>아이디</h6>
 					<input type="hidden" id="idAllowedNy" name=idAllowedNy" value="0">
-					<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력해주세요" maxlength="20" value="<c:out value="${item.id}"/>">
+					<input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력해주세요" maxlength="20" value="<c:out value="${item.id}"/>"
 					<c:if test="${not empty item.id}">readonly</c:if>
+					>
+					<div class="invalid-feedback" id="idFeedback"></div>
 					<br>
 					<h6>비밀번호</h6>
 					<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요" value="<c:out value="${item.pwd}"/>">
@@ -209,7 +208,7 @@
 					</select>
 					<input type="text" class="form-control" id="phone" name="phone" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
 					<br><br>
-					<h6 style="color: black">이메일</h6>
+					<h6>이메일</h6>
 					<input type="email" class="form-control" id="emailID" name="emailID" placeholder="이메일아이디를 입력해주세요" value="<c:out value="${item.emailID}"/>" style="width: 30%; display: inline">
 					<select class="form-select" name="emailDomain" id="emailDomain" style="width: 30%; display: inline">
 						<option selected>::이메일도메인::</option>
@@ -220,8 +219,8 @@
 						<option value="12" <c:if test="${item.emailDomain eq 12}">selected</c:if>>@nate.com</option>
 						<option value="13" <c:if test="${item.emailDomain eq 13}">selected</c:if>>@coocha.com</option>
 					</select>
-					<br>
-					<h6><b>주소</b></h6>
+					<br><br>
+					<h6>주소</h6>
 					<div class="row">
 						<div class="col-3">
 							<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
@@ -253,52 +252,34 @@
 						</div>
 					</div>
 					<br>
-					<h6><b>성별</b></h6>
-					<div class="form-check form-check-inline">
+					<h6>성별</h6>
+					<div class="form-check form-check-inline" name="gender">
 						<input class="form-check-input" type="radio" name="gender" id="gender1" value="43" <c:if test="${item.gender eq 43 }"> checked</c:if>>
-						<label class="form-check-label" for="gender1">여자</label>
+						<label class="form-check-label" for="gender1">남자</label>
 					</div>
-					<div class="form-check form-check-inline">
+					<div class="form-check form-check-inline" name="gender">
 						<input class="form-check-input" type="radio" name="gender" id="gender2" value="44" <c:if test="${item.gender eq 44 }"> checked</c:if>>
-						<label class="form-check-label" for="gender2">남자</label>
+						<label class="form-check-label" for="gender2">여자</label>
 					</div>
 					<br><br>
-					<h6><b>개인정보 유효기간</b></h6>
-					<div class="form-check form-check-inline">
+					<h6>개인정보 유효기간</h6>
+					<div class="form-check form-check-inline" name="validity">
 						<input class="form-check-input" type="radio" name="validity" id="validity1" value="45" <c:if test="${item.validity eq 45 }"> checked</c:if>>
 						<label class="form-check-label" for="validity1">1년</label>
 					</div>
-					<div class="form-check form-check-inline">
+					<div class="form-check form-check-inline" name="validity">
 						<input class="form-check-input" type="radio" name="validity" id="validity2" value="46" <c:if test="${item.validity eq 46 }"> checked</c:if>>
 						<label class="form-check-label" for="validity2">3년</label>
 					</div>
-					<div class="form-check form-check-inline">
+					<div class="form-check form-check-inline" name="validity">
 						<input class="form-check-input" type="radio" name="validity" id="validity3" value="47" <c:if test="${item.validity eq 47 }"> checked</c:if>>
 						<label class="form-check-label" for="validity3">탈퇴 시 파기</label>
 					</div>
-					<div class="d-grid" id="regbtn" style="margin-top: 5rem">
+					<div class="d-grid" id="regbtn" style="margin-top: 3rem">
 						<button class="btn" type="button" id="savebtn"><b>회원가입</b></button>
 					</div>
 					<br><br>
 				</div>
-	<!-- 			
-				<div class="accordion accordion-flush" id="accordionFlushExample" width="150" height="100">
-					<div class="accordion-item">
-						<h2 class="accordion-header" id="flush-headingOne">
-							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-							<i class="fa-solid fa-square-check"></i> &nbsp;쿠차 가입 전체 약관에 동의합니다.
-							</button>
-						</h2>
-						<div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-							<div class="accordion-body">
-							<i class="fa-solid fa-square-check"></i> &nbsp;서비스 이용약관(필수) 
-							<br><i class="fa-solid fa-square-check"></i> &nbsp;위치정보 이용약관(필수) 
-							<br><i class="fa-solid fa-square-check"></i> &nbsp;개인정보 취급방침(필수)
-							</div>
-						</div>
-					</div>
-				</div>
-	 -->	
 			</div>
 		</div>
 	</div>
@@ -381,7 +362,7 @@
 		$("#ccLat").val('');
 		$("#ccLng").val('');
 	});
-	
+/* 	
 	checkNull = function (obj, value, message) {
 		if(value == "" || value == null) {
 			alert(message);
@@ -389,7 +370,7 @@
 			return false;
 		}
 	}
-	
+ */	
 	$("#savebtn").on("click", function() {
 
 		if (!checkNull($("#name"), $("#name").val(), "이름은 필수 입력 사항입니다."))
@@ -405,6 +386,12 @@
 			return false;
 		
 		if (!checkNull($("#dob"), $("#dob").val(), "생년월일을 입력해 주세요."))
+			return false;
+		
+		if (!checkNull($("#email"), $("#email").val(), "이메일을 입력해 주세요."))
+			return false;
+		
+		if (!checkNull($("#emailDomain"), $("#emailDomain").val(), "이메일도메인을 선택해 주세요."))
 			return false;
 		
 		if (!checkNull($("#phone"), $("#phone").val(), "전화번호를 입력해 주세요."))

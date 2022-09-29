@@ -214,7 +214,7 @@
 				if(response.rt == "success") {
 					if ($("#id").val() == "kjy" || $("#pwd").val() == "123") {
 						location.href = "/member/managerLogin";
-					} else {
+					} else { 
 						location.href = "/member/userLogin";
 					}
 				} else {

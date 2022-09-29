@@ -9,10 +9,12 @@ public class Member {
 	private Integer grade;
 	private String membership;
 	private String name;
+	private String name_eng;
 	private String dob;
 	private String email;
 	private String emailID;
 	private String emailDomain;
+	private String telecom;
 	private String phone;
 	private Integer zipcode;
 	private String addr1;
@@ -64,6 +66,12 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getName_eng() {
+		return name_eng;
+	}
+	public void setName_eng(String name_eng) {
+		this.name_eng = name_eng;
+	}
 	public String getDob() {
 		return dob;
 	}
@@ -87,6 +95,12 @@ public class Member {
 	}
 	public void setEmailDomain(String emailDomain) {
 		this.emailDomain = emailDomain;
+	}
+	public String getTelecom() {
+		return telecom;
+	}
+	public void setTelecom(String telecom) {
+		this.telecom = telecom;
 	}
 	public String getPhone() {
 		return phone;

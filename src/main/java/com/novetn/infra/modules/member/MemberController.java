@@ -137,9 +137,16 @@ public class MemberController {
 	@RequestMapping(value = "userLogin")
 	public String userLogin() throws Exception {
 		
-		return "infra/member/user/userLogin";
+		return "home";
 		
 	}
+	
+//	@RequestMapping(value = "loginSuccess")
+//	public String loginSuccess() throws Exception {
+//		
+//		return "/";
+//		
+//	}
 	
 	@RequestMapping(value = "login")
 	public String login() throws Exception {
