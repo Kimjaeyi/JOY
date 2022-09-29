@@ -106,7 +106,7 @@
 </style>
 	
 	<div class="abc">
-		<h1 style="margin: 30px 0 0 10%;">coocha</h1>
+		<a href="/"><h1 style="margin: 30px 0 0 10%">coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
 			<i class="fa-regular fa-circle-check fa-3x"></i>
