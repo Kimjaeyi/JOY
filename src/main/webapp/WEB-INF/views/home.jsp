@@ -37,7 +37,7 @@
 		<div class="header">
 			<div class="inner">
 				<h1 class="logo">
-					<a href="Mainpage.html" data-scid="2220"><span class="blind">COOCHA</span></a>
+					<a href="/"><span class="blind">COOCHA</span></a>
 					<span class="title-category">카테고리</span>
 				</h1>
 

@@ -1,618 +1,499 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
-<html> 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags"%>
+<%@ page session="true"%>
+<html>
 <head>
-	<title>위메프</title>
-	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-	<!-- Bootstrap CSS -->
-	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap extra CSS -->    
-    <link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
-    <!-- jquery ui CSS -->    
-    <link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">    
-    <!-- user css -->
-    <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<link rel="shortcut icon" type="image/x-icon" href="https://view01.wemep.co.kr/wmp-favicon/56/201802/25/fvc_tyz3wil8h3aj.ico">
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-	<link rel="stylesheet" href="/resources/demos/style.css">
-	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-	
-	<style type="text/css">
-
-	@import url('../css/font.css');
-
-	.abc {
-		margin : 2% 15%;
-	}
-	
-	.header img {
-		margin : 0 15% 0 3%;
-		width : 90px;
-		height : 30px;
-	}
-	
-	h3, h4, h5 {
-		font-weight: bold;
-	}
-	
-	.form-select {
-		font-family: 'KoPubWorldDotum';
-		font-weight: bold;
-	}
-	
-	#search {
-		width : 450px;
-		height : 50px;
-		margin : 0 0 0 20px;
-		display: inline;
-	}
-	
-	#searchbutton {
-		border: none; 
-		background-color: #FF5959;
-		color: white;
-		border-radius: 4px; 
-		width: 70px; 
-		height: 48px; 
-		display: inline;
-		font-weight: bold;
-	}
-	
-	#logo, #search {
-		display : inline;
-	}
-	
-	.header p {
-		font-size : 13px;
-		margin : 0 1%;
-		float : right;
-		display : inline;
-		color : gray;
-	}
-	
-	.cate {
-		text-align : center;
-	}
-	
-	.cate p {
-		font-size : 14px;
-		font-weight : bold;
-		color : black;
-		margin : 0 2%;
-		float : left;
-	}
-	
-	.card {
-		margin : 5% 18%;
-		border : none;
-	}
-	
-	.card-body {
-		margin : 0 0 0 8%;
-	}
-	
-	.aaa {
-		color : gray;
-		font-size : 12px;
-		margin : 0 15%;
-	}
-	
-	.card-text small {
-		color : darkgray;
-	}
-	
-	.itemtab {
-		text-align: center;
-		margin: 0 10%;
-		padding: 50px;
-		background: white;
-	}
-	
-	#content1 {
-		margin: 0 15%;
-	}
-	
-	#content2, #content3, #content4 {
-		margin: 0 15%;
-		line-height: 1.5;
-		text-align: left;
-	}
-	
-	#content2, #content3, #content4 p {
-		margin: 5% 10%;
-		line-height: 1.5;
-		text-align: left;
-		font-family: 'KoPubWorldDotum';
-	}
-	
-	.ccc {
-		margin: 0 10%;
-	}
-	
-	#tab1, #tab2, #tab3, #tab4, section {
-		display : none;
-	}
-	
-	section {
-		padding : 20px 0 0;
-		border-top : 1px solid #ddd;
-	}
-	
-	label {
-		width: 250px;
-		display: inline-block;
-		margin: 0 0 -1px;
-		padding: 15px 25px;
-		font-weight: bold;
-		text-align: center;
-		color: #bbb;
-		border: 1px solid transparent;
-		font-family: 'MICEGothic Bold';
-	}
-	
-	label:hover {
-		color: #2e9cdf;
-		cursor: pointer;
-	}
-	
-	input:checked + label {
-		color: #FF5959;
-		border: 2px solid #FF5959;
-		border-bottom: 1px solid white;
-	}
-	
-	#tab1:checked ~ #content1, #tab2:checked ~ #content2, 
-	#tab3:checked ~ #content3, #tab4:checked ~ #content4 {
-		display: block;
-	}
-	
-	#purchase {
-		border: none;
-		border-radius: 4px;
-		background-color: #FF5959;
-		color: white;
-		width: 180px;
-		height: 65px;
-		float: right;
-		font-family: 'MICEGothic Bold';
-		font-size: 22px;
-		letter-spacing: 1px;
-	}
-	
-	table {
-		width: 80%;
-		font-family: 'KoPubWorldDotum';
-	}
-	
-	tr, td {
-		border-collapse: collapse;
-		padding : 20px;
-		margin: 5px 10px;
-	}
-	
-	.btn-go-top {
-		position: fixed;
-		bottom: 40px;
-		right: 40px;
-		width: 42px;
-		height: 42px;
-		z-index: 900;
-		background-image: url(../images/common/common/go-top.svg); 
-	}
-	.btn-go-top:hover {
-		background-image: url(../images/common/common/go-top-over.svg);
-		transition: background-image .2s ease; 
-	}
-	.blind {
-		position: absolute;
-		clip: rect(0 0 0 0);
-		width: 1px;
-		height: 1px;
-		margin: -1px;
-		overflow: hidden; 
-	}
-	
-	.reviewtop {
-		text-align: center;
-	}
-	
-	.RatingStar {
-		text-align: center;
-		width: 30;
-		height: 30;
-	}
-	.inner-star::before {
-		color: #FF9600;
-	}
-	.outer-star {
-		position: relative;
-		display: inline-block;
-		color: #CCCCCC;
-	}
-	.inner-star {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 0%;
-		overflow: hidden;
-		white-space: nowrap;
-	}
-	.outer-star::before, .inner-star::before {
-		content: '\f005 \f005 \f005 \f005 \f005';
-		font-family: 'Font Awesome 5 free';
-		font-weight: 900;
-	}
-	
-	.accordion {
-		--bs-accordion-btn-focus-border-color: #FF5959;
-		--bs-accordion-active-color: #FF5959;
-    	--bs-accordion-active-bg: #FF5959;
-	}
-	
-	.accordion-button {
-		font-size: 12px;
-		color: gray;
-	}
-	
-	.accordion-button:not(.collapsed) {
-	    color: #ED0000;
-	    background-color: #FFC6C6;
-    }
-
-</style>
-<body>
-
-<!-- start -->
-
-	<div class="abc">
-		<div class="header">
-			<p>장바구니</p>
-			<p>마이페이지</p>
-			<p>고객센터</p>
-			<p>회원가입</p>
-			<p>로그인</p>
-			<br><br>
-			<img src="../resources/image/위메프.png">
-			<input class="form-control" type="text" id="search">
-			<button type="button" id="searchbutton">검색</button>
-		</div>
-	</div>
-	<hr style="color : gray">
-	<div class="cate">
-		<p style="margin : 0 2% 0 16%">홈</p>
-		<p>특가</p>
-		<p>마트위크</p>
-		<p>베스트</p>
-		<p>베이비프로</p>
-		<p>디지털프로</p>
-		<p>마트프로</p>
-		<p>신규오픈</p>
-		<p>백화점·직구</p>
-	</div>
-	<br>
-	<hr style="color : gray">
-	<div class="aaa">
-		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i> 홈</li>
-				<li class="breadcrumb-item">바디/헤어</li>
-				<li class="breadcrumb-item">샴푸/린스/헤어케어</li>
-				<li class="breadcrumb-item active" aria-current="page">샴푸/린스</li>
-			</ol>
-		</nav>
-	</div>
-	<hr style="color : gray">
-	<div class="card">
-		<div class="row">
-			<div class="col-5">
-			  <img src="../resources/image/위메프상세.jpg" class="img-fluid rounded-start" alt="...">
-			</div>
-			<div class="col-7">
-				 <div class="card-body">
-				<h3 class="card-title">22만개 판매돌파! 1+3 리엔 물들임<br>새치커버 샴푸 450ml</h3>
-				<hr style="color : gray">
-				<h4 style="font-weight:bold; display:inline">37,770</h4>
-				<h5 style="display:inline">원</h5>
-				<hr style="color : gray">
-				<p class="card-text">
-					<small><i class="fa-solid fa-truck"></i> &nbsp;&nbsp;무료배송 ｜ 택배배송 ｜ 3일 이내 출고</small>
-					<br>
-					<small>(주말, 공휴일 제외)</small>
-					<br><br>
-					<small><i class="fa-solid fa-cart-shopping"></i> &nbsp;&nbsp;최대 999개까지 구매 가능</small>
-				</p>
-				<br><br>
-				<select class="form-select" aria-label="Default select example">
-					<option selected>옵션을 선택하세요</option>
-					<option value="1">[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
-					<option value="2">[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
-				</select>
-				<br><br><br>
-				<h4 style="display:inline">총 상품 금액</h4>
-				<h5 style="display:inline; float:right">원</h5>
-				<h4 style="font-weight:bold; display:inline; float:right">0</h4>
-				<br><br><br><br>
-				<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br><br>
-	<div class="itemtab">
-	    <input id="tab1" type="radio" name="tabs" checked>
-	    <label for="tab1">상세정보</label>
-	    <input id="tab2" type="radio" name="tabs">
-	    <label for="tab2">구매후기</label>
-	    <input id="tab3" type="radio" name="tabs">
-	    <label for="tab3">상품문의</label>
-	    <input id="tab4" type="radio" name="tabs">
-	    <label for="tab4">배송·교환·반품</label>
-	    <section id="content1">
-	        <img src="../resources/image/itemdetail.jpg">
-	    </section>
-	    <section id="content2">
-<!-- 	    
-	        <div class="reviewtop">
-	        	<br><br><br>
-		        <h6><b>총 3건의 후기가 있습니다.</b></h6>
-		        <br><br>
-		        <h4>평균별점</h4>
-		        <div class="RatingStar">
-					<div class="RatingScore">
-						<div class="outer-star">
-							<div class="inner-star"></div>
-						</div>
-					</div>
-				</div>
-				<br>
-				<h3><b>4.5</b></h3>
-			</div>
-			<br><br>
-			<hr>
-			<h6><b>전체후기 3개</b></h6>
-			<hr>
- -->			
-	    </section>
-	    <section id="content3">
-	        <h5><b>상품문의</b></h5>
-	        <br>
-			<div class="accordion" id="accordionPanelsStayOpenExample">
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingOne">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-						<b style="font-size: 13px">*기타문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-					  <b style="font-size: 13px">*배송문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingThree">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingFour">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-					  <b style="font-size: 13px">*상품문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingFive">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingSix">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
-					  <b style="font-size: 13px">*배송문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingSeven">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingEight">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
-					  <b style="font-size: 13px">*상품문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingNine">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingTen">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-			</div>
-	    </section>
-	    <section id="content4">
-	        <h5 style="font-weight: bold; margin: 5% 10%">배송/교환/반품</h5>
-	        <p font-size=10px><b>배송 안내</b></p>
-	        <div class="ccc">
-				<table class="table table-striped-columns">
-					<thead>
-						<tr>
-							<td width="30%">배송비</td>
-							<td width="70%">무료배송</td>
-						</tr>
-					</thead>
-					<tr>
-						<td>배송방법/상품 출고일</td>
-						<td>택배배송(CJ대한통운) ｜ 당일 출고(오후 12시 이전 결제 건까지)</td>
-					</tr>
-				</table>
-			</div>
-	    </section>
-	</div>
-	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
-<!-- 상세정보사진 이어붙이기
-https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%25EC%2597%2594%2520%25EB%25AC%25BC%25EB%2593%25A4%25EC%259E%2584%25EC%2583%25B4%25ED%2591%25B8&_service=5&_no=8
- -->
-<!-- end -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<title>상품 상세</title>
+<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
+<!-- Bootstrap CSS -->
+<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap extra CSS -->
+<link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
+<!-- jquery ui CSS -->
+<link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
+<!-- user css -->
+<link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+</head>
 
-<script type="text/javascript">
-	/*<![CDATA[*/ ratings = {RatingScore: 4.5} 
-	totalRating = 5;table = document.querySelector('.RatingStar');
-	function rateIt() {
-		for (rating in ratings) {
-			ratingPercentage = ratings[rating] / totalRating * 100;
-			ratingRounded = Math.round(ratingPercentage / 10) * 10 + '%';
-			star = table.querySelector(`.${rating} .inner-star`);
-			numberRating = table.querySelector(`.${rating} .numberRating`);
-			star.style.width = ratingRounded;numberRating.innerText = ratings[rating];
-			}
-		}
-	rateIt()
-/*]]>*/
-</script>
+<style type="text/css">
 
-</body>
-</html>
+	.gnb .logoutbtn {
+		width: 75px;
+		display: inline-block;
+		position: absolute;
+	    top: 29px;
+	    right: 220px;
+	    color: white;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
+	}
+	
+	.gnb .userid {
+		width: 75px;
+		display: inline-block;
+		position: absolute;
+	    top: 29px;
+	    right: 300px;
+	    color: white;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
+	}
+	
+	.footer li {
+		margin: 0 2%;
+	}
+
+</style>
+
+<body>
+
+	<!-- 헤더 -->
+	<header class="main-header" id="top">
+		<!-- main에 붙는 경우 :: main-header 클래스 추가 -->
+		<div class="header">
+			<div class="inner">
+				<h1 class="logo">
+					<a href="/" data-scid="2220"><span class="blind">COOCHA</span></a>
+					<span class="title-category">카테고리</span>
+				</h1>
+
+				<div class="search">
+					<div class="search-input">
+						<input type="search" class="input">
+					</div>
+					<!-- //검색어 미 입력 시 :: 인풋창에 마우스 클릭만 한 경우 -->
+				</div>
+
+				<div class="hamburger">
+					<div class="hamburger-box">
+						<div class="hamburger-inner"></div>
+					</div>
+				</div>
+
+				<ul class="gnb">
+					<li><span class="userid"><c:out value="${sessId }"/>님 :) </span></li>
+					<li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li>
+					<li><a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
+					<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
+					<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
+						<div class="area-servic-center area-gnb-layer">
+							<div class="title">고객센터</div>
+							<ul>
+								<li><a href="/customer/boardList">공지사항</a></li>
+								<li><a href="/customer/faqList">FAQ</a></li>
+								<li><a href="/customer/inquiryList">1:1 문의</a></li>
+							</ul>
+						</div></li>
+				</ul>
+			</div>
+		</div>
+
+		<!-- 카테고리 -->
+		<div class="group-menu">
+			<div class="inner">
+				<ul class="menu-1depth">
+					<li><a href="#" class="on" data-tab="fashion" value="8">패션
+							· 뷰티</a></li>
+					<li><a href="#" data-tab="shopping" value="9">쇼핑</a></li>
+					<li><a href="#" data-tab="restaurant" value="E">맛집</a></li>
+					<li><a href="#" data-tab="beauty" value="D">뷰티샵</a></li>
+					<li><a href="#" data-tab="travel" value="T">여행</a></li>
+					<li><a href="#" data-tab="culture" value="C">문화</a></li>
+				</ul>
+
+				<div class="menu-list">
+					<!-- 패션뷰티 -->
+					<div class="cate-con fashion on" value="8">
+						<ul class="list">
+							<li>
+								<div class="menu-2depth">여성의류</div>
+								<ul class="menu-3depth">
+									<li>티셔츠</li>
+									<li>블라우스/셔츠</li>
+									<li>오피스룩/세트</li>
+									<li>니트/스웨터</li>
+									<li>원피스</li>
+									<li>스커트</li>
+									<li>바지</li>
+									<li>재킷</li>
+									<li>코트</li>
+									<li>점퍼</li>
+									<li>가디건</li>
+									<li>조끼</li>
+									<li>테마의류</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">남성의류</div>
+								<ul class="menu-3depth">
+									<li>티셔츠</li>
+									<li>셔츠</li>
+									<li>니트/스웨터</li>
+									<li>정장</li>
+									<li>바지</li>
+									<li>재킷</li>
+									<li>코트</li>
+									<li>점퍼</li>
+									<li>가디건</li>
+									<li>조끼</li>
+									<li>테마의류</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">패션잡화</div>
+								<ul class="menu-3depth">
+									<li>신발</li>
+									<li>모자/헤어액세서리</li>
+									<li>지갑/벨트</li>
+									<li>가방</li>
+									<li>시계</li>
+									<li>선글라스/안경테</li>
+									<li>주얼리/액세서리</li>
+									<li>양말</li>
+									<li>스카프/손수건</li>
+									<li>우산/양산</li>
+									<li>장갑</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">뷰티</div>
+								<ul class="menu-3depth">
+									<li>스킨케어</li>
+									<li>선케어</li>
+									<li>베이스메이크업</li>
+									<li>색조메이크업</li>
+									<li>클렌징</li>
+									<li>메이크업소품</li>
+									<li>남성화장품</li>
+									<li>바디케어</li>
+									<li>헤어케어</li>
+									<li>향수</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">스포츠패션</div>
+							</li>
+							<li>
+								<div class="menu-2depth">여성웨어/잠옷</div>
+							</li>
+							<li>
+								<div class="menu-2depth">시즌의류</div>
+							</li>
+						</ul>
+					</div>
+					<!-- //패션뷰티 -->
+
+					<!-- 쇼핑 -->
+					<div class="cate-con shopping" value="9">
+						<ul class="list">
+							<li>
+								<div class="menu-2depth">식품건강</div>
+								<ul class="menu-3depth">
+									<li>농산물</li>
+									<li>축산물</li>
+									<li>수산물</li>
+									<li>생수/음료</li>
+									<li>발효식품/소스</li>
+									<li>홍삼/건강식품</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">가구 / 인테리어</div>
+								<ul class="menu-3depth">
+									<li>침실가구</li>
+									<li>거실가구</li>
+									<li>주방가구</li>
+									<li>사무/학생용품</li>
+									<li>수납가구</li>
+									<li>침구</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">레저 / 자동차</div>
+								<ul class="menu-3depth">
+									<li>자동차용품</li>
+									<li>오토바이용품</li>
+									<li>골프용품</li>
+									<li>자전거용품</li>
+									<li>스키/보드용품</li>
+									<li>헬스/다이어트</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">생활 / 주방</div>
+								<ul class="menu-3depth">
+									<li>주방/식기</li>
+									<li>욕실용품</li>
+									<li>세제/세탁용품</li>
+									<li>청소용품</li>
+									<li>생활용품</li>
+									<li>문구/사무/용지</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">유아</div>
+								<ul class="menu-3depth">
+									<li>임산부용품</li>
+									<li>기저귀/물티슈</li>
+									<li>수유/이유용품</li>
+									<li>분유/이유식</li>
+									<li>유모차/카시트/외출</li>
+									<li>유아동패션</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">디지털 / 가전</div>
+								<ul class="menu-3depth">
+									<li>휴대폰/휴대기기</li>
+									<li>카메라/캠코더</li>
+									<li>TV/영상가전</li>
+									<li>음향가전</li>
+									<li>컴퓨터/주변기기</li>
+									<li>냉장고/주방가전</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">선물 / e쿠폰 / 상품권</div>
+								<ul class="menu-3depth">
+									<li>선물/이벤트</li>
+									<li>카페</li>
+									<li>베이커리/아이스크림</li>
+									<li>패스트푸드</li>
+									<li>백화점상품권</li>
+									<li>도서/문화상품권</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">중고차</div>
+								<ul class="menu-3depth">
+									<li>국산차</li>
+									<li>수입차</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">해외쇼핑</div>
+							</li>
+						</ul>
+					</div>
+					<!-- //쇼핑 -->
+
+					<!-- 맛집 -->
+					<div class="cate-con restaurant" value="E">
+						<ul class="list">
+							<li>
+								<div class="menu-2depth">카페</div>
+								<ul class="menu-3depth">
+									<li>카페</li>
+									<li>베이커리/빵</li>
+									<li>아이스크림/빙수</li>
+									<li>케이크/초콜릿</li>
+									<li>전통차/떡</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">식사</div>
+								<ul class="menu-3depth">
+									<li>뷔페식</li>
+									<li>한식</li>
+									<li>양식</li>
+									<li>일식</li>
+									<li>아시아/기타식</li>
+									<li>중식</li>
+								</ul>
+							</li>
+							<li>
+								<div class="list no-3depth">
+									<div class="menu-2depth">배달</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- //맛집 -->
+
+					<!-- 뷰티샵 -->
+					<div class="cate-con beauty" value="D">
+						<ul class="list">
+							<li>
+								<div class="menu-2depth">피부샵</div>
+								<ul class="menu-3depth">
+									<li>에스테틱</li>
+									<li>여드름/케어관리</li>
+									<li>테라피</li>
+									<li>미백/화이트닝</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">미용/네일샵</div>
+								<ul class="menu-3depth">
+									<li>네일아트/케어</li>
+									<li>속눈썹</li>
+									<li>왁싱</li>
+									<li>메이크업</li>
+									<li>태닝</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">마사지</div>
+								<ul class="menu-3depth">
+									<li>스포츠마사지</li>
+									<li>경락/체형관리</li>
+									<li>다이어트</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">헤어샵</div>
+								<ul class="menu-3depth">
+									<li>염색</li>
+									<li>펌</li>
+									<li>케어</li>
+									<li>컷트</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- //뷰티샵 -->
+
+					<!-- 여행 -->
+					<div class="cate-con travel" value="T">
+						<ul class="list">
+							<li>
+								<div class="menu-2depth">제주여행</div>
+								<ul class="menu-3depth">
+									<li>편도항공권</a></li>
+									<li>왕복항공권</a></li>
+									<li>지방출발항공권</a></li>
+									<li>렌터카</a></li>
+									<li>제주호텔</a></li>
+									<li>제주리조트</a></li>
+									<li제주펜션
+									</a>
+							</li>
+							<li>글램핑/캠핑</a></li>
+							<li>게스트하우스</a></li>
+							<li>레저/입장권</a></li>
+							<li>맛집/카페</a></li>
+							<li>여행패키지</a></li>
+						</ul>
+						</li>
+						<li>
+							<div class="menu-2depth">국내여행</div>
+							<ul class="menu-3depth">
+								<li>레저</li>
+								<li>테마파크</li>
+								<li>워터파크/스파</li>
+								<li>호텔</li>
+								<li>펜션</li>
+								<li>글램핑/캠핑</li>
+								<li>게스트하우스</li>
+								<li>모텔</li>
+								<li>리조트</li>
+								<li>국내렌터카</li>
+								<li>내륙여행</li>
+								<li>스키장</li>
+								<li>관광지/입장권</li>
+							</ul>
+						</li>
+						<li>
+							<div class="menu-2depth">해외항공권</div>
+							<ul class="menu-3depth">
+								<li>일본</li>
+								<li>홍콩/마카오</li>
+								<li>중국/대만</li>
+								<li>동남아</li>
+								<li>괌/사이판/호주</li>
+								<li>미주/하와이/중남미</li>
+								<li>유럽/기타</li>
+							</ul>
+						</li>
+						<li>
+							<div class="menu-2depth">해외패키지/자유</div>
+							<ul class="menu-3depth">
+								<li>일본</li>
+								<li>홍콩/마카오</li>
+								<li>중국/대만</li>
+								<li>동남아</li>
+								<li>괌/사이판/호주</li>
+								<li>미주/하와이/중남미</li>
+								<li>유럽/기타</li>
+								<li>부산/지방출발</li>
+							</ul>
+						</li>
+						<li>
+							<div class="menu-2depth">해외호텔/숙박</div>
+						</li>
+						<li>
+							<div class="menu-2depth">와이파이/유심</div>
+						</li>
+						<li>
+							<div class="menu-2depth">해외투어/입장권</div>
+						</li>
+						</ul>
+					</div>
+					<!-- //여행 -->
+
+					<!-- 문화 -->
+					<div class="cate-con culture" value="C">
+						<ul class="list">
+							<li>
+								<div class="menu-2depth">공연/전시</div>
+								<ul class="menu-3depth">
+									<li>연극</li>
+									<li>뮤지컬</li>
+									<li>콘서트</li>
+									<li>공연</li>
+									<li>전시</li>
+									<li>스포츠</li>
+									<li>체험</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">생활서비스</div>
+								<ul class="menu-3depth">
+									<li>키즈카페/놀이방</li>
+									<li>찜질방/사우나</li>
+									<li>자동차</li>
+									<li>포토스튜디오</li>
+									<li>멀티방/노래방</li>
+									<li>웨딩/돌잔치</li>
+									<li>의류/잡화매장</li>
+								</ul>
+							</li>
+							<li>
+								<div class="menu-2depth">교육서비스</div>
+								<ul class="menu-3depth">
+									<li>어학</li>
+									<li>강습</li>
+									<li>컨설팅</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<!-- //문화 -->
+
+					<div class="bottom">
+						<a href="javascript:;" onclick="viewCategoryAll($(this).attr('cid'))" data-scid="406005" data-cid="8" class="link-categoty-all" cid="8">
+							<span class="cate">패션 · 뷰티</span> 
+						카테고리 전체보기</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 카테고리 -->
+	</header>
