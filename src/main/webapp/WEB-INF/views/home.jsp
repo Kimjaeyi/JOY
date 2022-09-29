@@ -78,8 +78,7 @@
 		<div class="group-menu">
 			<div class="inner">
 				<ul class="menu-1depth">
-					<li><a href="#" class="on" data-tab="fashion" value="8">패션
-							· 뷰티</a></li>
+					<li><a href="#" class="on" data-tab="fashion" value="8">패션 · 뷰티</a></li>
 					<li><a href="#" data-tab="shopping" value="9">쇼핑</a></li>
 					<li><a href="#" data-tab="restaurant" value="E">맛집</a></li>
 					<li><a href="#" data-tab="beauty" value="D">뷰티샵</a></li>

@@ -7,7 +7,7 @@
 <%@ page session="true" %>
 <html> 
 <head>
-	<title>상품 결제</title>
+	<title>상품 상세</title>
 	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
 	<!-- Bootstrap CSS -->
 	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,22 +26,54 @@
 
 <style type="text/css">
 	
-	.abc {
-		margin: 0 20%;
+/* 	.abc {
+		margin: 7% 20%;
 	}
 	
-	.cate {
+	.cate li {
+		font-size : 16px;
+		font-weight : bold;
+		color : black;
+		margin : 5px 3%;
+		display: inline;
+		float: left;
+	} */
+/* 	
+	.aaa {
+		color : gray;
+		font-size : 12px;
+		margin : 10% 15% 5% 15%;
+	}
+	
+	.breadcrumb-item {
+		color: gray;
+		float: left;
+	}
+ */	
+ 	.cate {
 		text-align : center;
 	}
 	
 	.cate p {
-	
 		font-size : 14px;
 		font-weight : bold;
 		color : black;
-		margin : 8% 3% 0 3%;
-		display: inline;
-		float: center;
+		margin : 8px 2%;
+		float : left;
+	}
+	
+	.aaa {
+		color : gray;
+		font-size : 12px;
+		margin : 0 19%;
+	}
+	
+	.bbb {
+		margin: 7% 0 0 0;
+	}
+	
+	.breadcrumb-item {
+		font-size: 13px;
 	}
 	
 	.card {
@@ -49,18 +81,20 @@
 		border : none;
 	}
 	
+	.card-title {
+		font-size: 30px;
+		font-weight: bold;
+		letter-spacing: 1.5px;
+		margin: 8px 0;
+	}
+	
 	.card-body {
 		margin : 0 0 0 8%;
 	}
 	
-	.aaa {
-		color : gray;
-		font-size : 12px;
-		margin : 7% 15% 5% 15%;
-	}
-	
 	.card-text small {
 		color : darkgray;
+		font-size: 13px;
 	}
 	
 	.itemtab {
@@ -84,7 +118,6 @@
 		margin: 5% 10%;
 		line-height: 1.5;
 		text-align: left;
-		font-family: 'KoPubWorldDotum';
 	}
 	
 	.ccc {
@@ -109,7 +142,6 @@
 		text-align: center;
 		color: #bbb;
 		border: 1px solid transparent;
-		font-family: 'MICEGothic Bold';
 	}
 	
 	label:hover {
@@ -118,8 +150,8 @@
 	}
 	
 	input:checked + label {
-		color: #FF5959;
-		border: 2px solid #FF5959;
+		color: #6900EF;
+		border: 2px solid #6900EF;
 		border-bottom: 1px solid white;
 	}
 	
@@ -131,19 +163,17 @@
 	#purchase {
 		border: none;
 		border-radius: 4px;
-		background-color: #FF5959;
+		background-color: #6900EF;
 		color: white;
 		width: 180px;
 		height: 65px;
 		float: right;
-		font-family: 'MICEGothic Bold';
 		font-size: 22px;
 		letter-spacing: 1px;
 	}
 	
 	table {
 		width: 80%;
-		font-family: 'KoPubWorldDotum';
 	}
 	
 	tr, td {
@@ -206,9 +236,9 @@
 	}
 	
 	.accordion {
-		--bs-accordion-btn-focus-border-color: #FF5959;
-		--bs-accordion-active-color: #FF5959;
-    	--bs-accordion-active-bg: #FF5959;
+		--bs-accordion-btn-focus-border-color: mediumpurple;
+		--bs-accordion-active-color: mediumpurple;
+    	--bs-accordion-active-bg: mediumpurple;
 	}
 	
 	.accordion-button {
@@ -277,10 +307,36 @@
 			</ul>
         </div>
     </div>
-    <div class="abc">
+    <!-- <div class="abc">
+    	<hr style="color : gray">
 		<div class="cate">
-			<hr style="color : gray">
-			<p>홈</p>
+			<li>홈</li>
+			<li>특가</li>
+			<li>마트위크</li>
+			<li>베스트</li>
+			<li>베이비프로</li>
+			<li>디지털프로</li>
+			<li>마트프로</li>
+			<li>신규오픈</li>
+			<li>백화점·직구</li>
+		</div>
+		<br><br>
+		<hr style="color : gray">
+		<br>
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i> 홈</li>
+				<li class="breadcrumb-item">바디/헤어</li>
+				<li class="breadcrumb-item">샴푸/린스/헤어케어</li>
+				<li class="breadcrumb-item active" aria-current="page">샴푸/린스</li>
+			</ol>
+		</nav>
+		<hr style="color : gray">
+	</div> -->
+	<div class="bbb">
+		<hr style="color : gray">
+		<div class="cate">
+			<p style="margin : 8px 2% 8px 20%">홈</p>
 			<p>특가</p>
 			<p>마트위크</p>
 			<p>베스트</p>
@@ -290,7 +346,7 @@
 			<p>신규오픈</p>
 			<p>백화점·직구</p>
 		</div>
-		<br>
+		<br><br>
 		<hr style="color : gray">
 		<div class="aaa">
 			<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -301,8 +357,8 @@
 					<li class="breadcrumb-item active" aria-current="page">샴푸/린스</li>
 				</ol>
 			</nav>
-			<hr style="color : gray">
 		</div>
+		<hr style="color : gray">
 	</div>
 	<div class="card">
 		<div class="row">
@@ -311,10 +367,11 @@
 			</div>
 			<div class="col-7">
 				 <div class="card-body">
-				<h3 class="card-title">22만개 판매돌파! 1+3 리엔 물들임<br>새치커버 샴푸 450ml</h3>
+				<h3 class="card-title">22만개 판매돌파! 1+3 리엔 물들임</h3>
+				<h3 class="card-title">새치커버 샴푸 450ml</h3>
 				<hr style="color : gray">
-				<h4 style="font-weight:bold; display:inline">37,770</h4>
-				<h5 style="display:inline">원</h5>
+				<h4 style="font-weight:bold; display:inline; font-size: 24px">37,770</h4>
+				<h5 style="display:inline; font-size: 20px">원</h5>
 				<hr style="color : gray">
 				<p class="card-text">
 					<small><i class="fa-solid fa-truck"></i> &nbsp;&nbsp;무료배송 ｜ 택배배송 ｜ 3일 이내 출고</small>
