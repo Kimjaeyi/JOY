@@ -221,7 +221,7 @@
 				<h6><b>주소</b></h6>
 				<div class="row">
 					<div class="col-3">
-						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" disabled>
+						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
 					</div>
 					<div class="col-1">
 						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
@@ -231,22 +231,22 @@
 					</div>
 				</div>
 				<div class="col">
-					<input type="text" class="form-control" id="address" name="address" placeholder="도로명 주소" disabled>
+					<input type="text" class="form-control" id="address" name="address" placeholder="도로명 주소" readonly>
 				</div>
 				<div class="row">
 					<div class="col-9">
 						<input type="text" class="form-control" id="detailAddress" name="detailAddress" placeholder="상세주소">
 					</div>
 					<div class="col-3">
-						<input type="text" class="form-control" id="ccextraAddress" placeholder="참고항목" disabled>
+						<input type="text" class="form-control" id="ccextraAddress" placeholder="참고항목" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-4">
-						<input type="text" class="form-control" name="ccLat" id="ccLat" placeholder="위도" disabled>
+						<input type="text" class="form-control" name="ccLat" id="ccLat" placeholder="위도" readonly>
 					</div>
 					<div class="col-4">
-						<input type="text" class="form-control" name="ccLng" id="ccLng" placeholder="경도" disabled>
+						<input type="text" class="form-control" name="ccLng" id="ccLng" placeholder="경도" readonly>
 					</div>
 				</div>
 				<br>
