@@ -50,6 +50,33 @@
 		float: left;
 	}
  */	
+ 
+ 	.after .gnb .logoutbtn {
+		width: 75px;
+		display: inline-block;
+		position: absolute;
+	    top: 29px;
+	    right: 220px;
+	    color: gray;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
+	}
+	
+	.after .gnb .userid {
+		width: 75px;
+		display: inline-block;
+		position: absolute;
+	    top: 29px;
+	    right: 300px;
+	    color: white;
+	    padding: 10px 10px 9px;
+	    font-weight: bold;
+	    line-height: 1.5s7;
+	    text-align: center;
+	}
+	
  	.cate {
 		text-align : center;
 	}
@@ -279,34 +306,52 @@
                 </div>
             </div>
 
-            <ul class="gnb login">
-				<li>
-					<a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
-					<div class="area-my-page area-gnb-layer">
-					    <div class="title">MY PAGE</div>
-					    <ul>
-					        <li><div id="likeTab">내가 좋아요 한 상품</div></li>
-					        <li><a href="javascript:void(0);" id="viewTab">내가 본 상품</a></li>
-					        <li><a href="https://member.coocha.co.kr/member/join/myinfo.do">내 정보 수정</a></li>
-					        <li class="logout"><a href="javascript:fn_logout('');">로그아웃</a></li>
-					    </ul>
+            <!-- 로그인 전 -->
+				<c:if test="${sessSeq eq null}">
+					<div class="before">
+						<ul class="gnb">
+							<li><a href="/member/login" class="btn-login">로그인</a></li>
+							<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
+							<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
+								<div class="area-servic-center area-gnb-layer">
+									<div class="title">고객센터</div>
+									<ul>
+										<li><a href="/customer/boardList">공지사항</a></li>
+										<li><a href="/customer/faqList">FAQ</a></li>
+										<li><a href="/customer/inquiryList">1:1 문의</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
 					</div>
-				</li>
-				<li><div class="btn-like"><span class="blind">좋아요</span></div></li>
-				<li>
-				    <div class="btn-sc btn-layer-open"><span class="blind">더보기</span></div>
-				    <div class="area-servic-center area-gnb-layer">
-				        <div class="title">고객센터</div>
-				        <ul>
-				            <li>공지사항</li>
-				            <li>FAQ</li>
-				            <li>1:1 문의</li>
-				        </ul>
-				    </div>
-				</li>
-			</ul>
+				</c:if>
+				<!-- 로그인 전 -->
+				<!-- 로그인 후 -->
+				<c:if test="${sessSeq ne null}">
+					<div class="after">
+						<ul class="gnb">
+							<%-- <li><span class="userid"><c:out value="${sessId }"/>님 :) </span></li> --%>
+							<!-- <li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li> -->
+							<li><a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
+							<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
+							<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
+								<div class="area-servic-center area-gnb-layer">
+									<div class="title">고객센터</div>
+									<ul>
+										<li><a href="/customer/boardList">공지사항</a></li>
+										<li><a href="/customer/faqList">FAQ</a></li>
+										<li><a href="/customer/inquiryList">1:1 문의</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</c:if>
+				<!-- 로그인 후 -->
         </div>
     </div>
+    <input type="hidden" id="rtCount" name="rtCount">
+	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">
     <!-- <div class="abc">
     	<hr style="color : gray">
 		<div class="cate">
@@ -383,13 +428,13 @@
 				<br><br>
 				<select class="form-select" aria-label="Default select example">
 					<option selected>옵션을 선택하세요</option>
-					<option value="1">[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
-					<option value="2">[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
+					<option value="37700" id="option1">[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
+					<option value="37700" id="option2">[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
 				</select>
 				<br><br><br>
-				<h4 style="display:inline">총 상품 금액</h4>
-				<h5 style="display:inline; float:right">원</h5>
-				<h4 style="font-weight:bold; display:inline; float:right">0</h4>
+				<h4 style="display:inline; font-size: 18px"><b>총 상품 금액</b></h4>
+				<h5 style="display:inline; float:right; font-size: 18px"><b>원</b></h5>
+				<h4 style="display:inline; float:right; font-size: 24px" id="totalprice"><b></b></h4>
 				<br><br><br><br>
 				<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
 				</div>
@@ -649,7 +694,9 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-	/*<![CDATA[*/ ratings = {RatingScore: 4.5} 
+
+/* 
+	ratings = {RatingScore: 4.5} 
 	totalRating = 5;table = document.querySelector('.RatingStar');
 	function rateIt() {
 		for (rating in ratings) {
@@ -661,7 +708,55 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 			}
 		}
 	rateIt()
-/*]]>*/
+ */
+ 
+ 	var price = 37700;
+	var coochaCount = 1;
+	var totalprice = (price*coochaCount);
+	
+	/* 화면에 보여지는 부분 */
+	$("#totalprice").text(totalprice.toLocaleString());
+	$("#optionprice").text("0");
+	
+	$(document).ready(function() {
+		   $("#option1").click(function(){
+		      var option1Price = $(this).attr('value');   
+		      $("#optionprice").text((option1Price)/1000 + ",000");
+		      $("#totalprice").text(totalprice.toLocaleString());
+		      $('#rtOption').val(option1Price); 
+		      
+		   });
+		   $("#option2").click(function(){
+		      var option2Price = $(this).attr('value');      
+		      $("#optionprice").text((option2Price)/1000 + ",000");
+		      $("#totalprice").text(totalprice.toLocaleString());
+		      $('#rtOption').val(option2Price); 
+		   });
+		});
+	
+	$("#rtCount").val(coochaCount);
+	$("#rtOption").val(totalprice);
+	
+	$("#logoutbtn").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+ 
 </script>
 
 </body>
