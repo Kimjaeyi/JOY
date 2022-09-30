@@ -60,11 +60,55 @@
 	
 	h5 {
 		font-weight: bold;
-		margin: 4% 20% 4% 5%;
+		margin: 5% 20% 6% 5%;
 	}
 	
 	.form-control {
 		margin: 0 0 27px 0;
+	}
+	
+	#zipcode, #findaddress, #addr1, #resetbtn,
+	#addr2, #addr3, #ccLat, #ccLng {
+		margin-bottom: 1%;
+		margin-right: 1%;
+	}
+	
+	#zipcode {
+		width : 15%;
+		display: inline;
+	}
+	
+	#findaddress {
+		border : none;
+		background-color : #6900EF;
+		color : white;
+		border-radius : 6px;
+		width : 150px;
+		height : 50px;
+	}
+	
+	#resetbtn {
+		border: none;
+		background-color : lightgray;
+		color : blueviolet;
+		border-radius : 6px;
+		width : 50px;
+		height : 50px;
+	}
+	
+	#addr1 {
+		width: 40%;
+		display: inline;
+	}
+	
+	#addr2 {
+		width: 25%;
+		display: inline;
+	}
+	
+	#addr3 {
+		width: 10%;
+		display: inline;
 	}
 	
 	.form-check-input:checked {
@@ -72,7 +116,7 @@
 	    border-color: #6900EF;
 	}
 	
-	button {
+	#backbtn, #savebtn {
 		width: 80px; 
 		height: 50px; 
 		float: right; 
@@ -159,6 +203,8 @@
 				<br><br>
 				<h5>전화번호</h5>
 				<br><br>
+				<h5>주소</h5>
+				<br><br><br><br><br>
 				<h5>수신여부</h5>
 			</div>
 			<div class="col-9">
@@ -168,15 +214,33 @@
 				<input type="password" class="form-control" style="width: 30%; display:inline">
 				<p style="display:inline; font-size:12px; color: gray">&nbsp;&nbsp;8~15자 이내의 영문 대소문자, 숫자 및 특수문자 2가지 이상 조합으로 입력하세요.</p>
 				<input type="password" class="form-control" style="width: 30%">
-				<input type="text" class="form-control" value="kjy@naver.com" style="width: 30%">
+				<input type="text" class="form-control" style="width: 25%; display: inline">
+				<select class="form-select" id="selbox" style="display: inline; width: 15%; margin: -2.7% 0 0 0">
+					<option selected>::이메일도메인::</option>
+					<option value="1">@naver.com</option>
+					<option value="2">@gmail.com</option>
+					<option value="3">@hanmail.net</option>
+					<option value="4">@daum.com</option>
+					<option value="5">@nate.com</option>
+					<option value="6">@coocha.com</option>
+				</select>
+				<br>
 				<select class="form-select" id="selbox" style="display: inline; width: 10%; margin: -2.7% 0 0 0">
 					<option selected>::통신사::</option>
 					<option value="1">SKT</option>
 					<option value="2">KT</option>
 					<option value="3">LG</option>
 				</select>
-				<input type="text" class="form-control" value="010-1234-5678" style="width: 30%; display: inline">
+				<input type="text" class="form-control" style="width: 30%; display: inline">
 				<br>
+				<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
+				<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
+				<button type="button" id="findaddress">우편번호 찾기</button>
+				<br>
+				<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" readonly>
+				<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소">
+				<input type="text" class="form-control" id="addr3" name="addr3" placeholder="참고항목" readonly>
+				<br><br>
 				<div class="form-check form-check-inline">
 					<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
 					<label class="form-check-label" for="inlineCheckbox1">이메일 수신 동의</label>
@@ -186,7 +250,7 @@
 					<label class="form-check-label" for="inlineCheckbox2">SMS 수신 동의</label>
 				</div>
 				<br><br>
-				<a href="mypage"><button type="button" style="background-color: #F0F0F0"><b>취소</b></button></a>
+				<a href="mypage"><button type="button" id="backbtn" style="background-color: #F0F0F0"><b>취소</b></button></a>
 				<a href="mypage"><button type="button" id="savebtn" style="background-color: #6900EF; color: white"><b>확인</b></button></a>
 			</div>
 		</div>
@@ -228,6 +292,9 @@
 		</div>
 	</footer>
 	
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="/resources/js/validation.js"></script>
+	
 	<script type="text/javascript">
 	
 	var goUrlInst = "/member/memberMod";
@@ -246,6 +313,56 @@
 	   		form.attr("action", goUrlUpdt).submit();
 	   	}
 		
+	});
+	
+	$("#findaddress").on("click", function() {
+		here();
+	});
+	
+	function here() {
+	    new daum.Postcode({
+	          oncomplete: function(data) {
+        	    var addr = '';
+	  		    var extraAddr = '';
+
+				if (data.userSelectedType === 'R') { 
+	                  addr = data.roadAddress;
+	              } else { 
+	                  addr = data.jibunAddress;
+	              }
+
+	              if(data.userSelectedType === 'R'){
+	                  if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+	                      extraAddr += data.bname;
+	                  }
+	                  if(data.buildingName !== '' && data.apartment === 'Y'){
+	                      extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+	                  }
+	                  if(extraAddr !== ''){
+	                      extraAddr = ' (' + extraAddr + ')';
+	                  }
+	                  document.getElementById("addr3").value = extraAddr;
+	              
+	              } else {
+	                  document.getElementById("addr3").value = '';
+	              }
+
+	              document.getElementById('zipcode').value = data.zonecode;
+	              document.getElementById('addr1').value = addr;
+	              document.getElementById('addr2').focus();
+	              
+				}
+	    
+	    }).open();
+	}
+	
+	$("#resetbtn").on("click", function() {
+		$("#zipcode").val('');
+		$("#addr1").val('');
+		$("#addr2").val('');
+		$("#addr3").val('');
+		$("#ccLat").val('');
+		$("#ccLng").val('');
 	});
 	
 	</script>

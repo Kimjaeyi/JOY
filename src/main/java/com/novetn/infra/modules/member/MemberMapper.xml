@@ -73,15 +73,7 @@
 			, dob
 			, id
 			, pwd
-			, email = CONCAT(#{emailID},
-				<choose>
-					<when test="emailDomain eq 8">'@naver.com')</when>
-					<when test="emailDomain eq 9">'@gmail.com')</when>
-					<when test="emailDomain eq 10">'@hanmail.net')</when>
-					<when test="emailDomain eq 11">'@daum.com')</when>
-					<when test="emailDomain eq 12">'@nate.com')</when>
-					<when test="emailDomain eq 13">'@coocha.com')</when>
-				</choose>
+			, email 
 			, emailID
 			, emailDomain
 			, telecom
@@ -151,8 +143,17 @@
 			, dob = #{dob}
 			, id = #{id}
 			, pwd = #{pwd}
+			, gender = #{gender}
 			, email = #{email}
-			, emailID = #{emailID}
+			, emailID = = CONCAT(#{emailID},
+				<choose>
+					<when test="emailDomain eq 8">'@naver.com')</when>
+					<when test="emailDomain eq 9">'@gmail.com')</when>
+					<when test="emailDomain eq 10">'@hanmail.net')</when>
+					<when test="emailDomain eq 11">'@daum.com')</when>
+					<when test="emailDomain eq 12">'@nate.com')</when>
+					<when test="emailDomain eq 13">'@coocha.com')</when>
+				</choose>
 			, emailDomain = #{emailDomain}
 			, telecom = #{telecom}
 			, phone = #{phone}
@@ -160,7 +161,7 @@
 			, addr1 = #{addr1}
 			, addr2 = #{addr2}
 			, addr3 = #{addr3}
-			, regDate = #{regDate}
+			, validity = #{validity}
 		WHERE
 			seq = #{seq}
 	</update>
