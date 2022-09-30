@@ -1274,10 +1274,6 @@
             $('.hamburger').addClass('active');
             $('.group-menu').show();
             $('.main-container').addClass('fix');
-            $('.title-category').show();
-            $('.header .logo a').hide();
-            $('.header .search').hide();
-            $('.header .gnb').hide();
             $('.link-categoty-all').val('8');
             mask();
 
