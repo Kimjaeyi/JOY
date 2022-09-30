@@ -56,6 +56,7 @@
 	    line-height: 1.5s7;
 	    text-align: center;
 	}
+	
 /* 	
 	.main-header .after .btn-sc {
 	    background-image: url(../images/common/header/btn-sc-white.svg);
@@ -594,6 +595,7 @@
 							<li><a href="#" class="top-WEMAKEPRICE on" onclick="showTab('wmplist');">위메프</a></li>
 							<li><a href="javascript:topDealShopClick('ticketmonster', '2');" class="top-ticketmonster">티몬</a></li>
 							<li><a href="javascript:topDealShopClick('11st', '3');" class="top-11st">11번가</a></li>
+						</ul>
 							<!-- //top10 업체영역 -->
 					</div>
 				</div>
@@ -1265,6 +1267,59 @@
 	<!-- //탑으로 -->
 	
 	<script type="text/javascript">
+	
+	 $('.hamburger, .btn-close').on('click', function(){
+        if($('.group-menu').css('display') === 'none'){
+            $('header').addClass('fix');
+            $('.hamburger').addClass('active');
+            $('.group-menu').show();
+            $('.main-container').addClass('fix');
+            $('.title-category').show();
+            $('.header .logo a').hide();
+            $('.header .search').hide();
+            $('.header .gnb').hide();
+            $('.link-categoty-all').val('8');
+            mask();
+
+            $(window).on('scroll', function() {
+                $('.main-header').addClass('scroll fix');
+                if ($(window).scrollTop() > 520) {
+                    $('.main-header .header .search').hide();
+                }
+            });
+        } else{
+            hamburgerHide();
+        }
+    });
+	 
+	 function hamburgerHide(){
+	        $('header').removeClass('fix');
+	        $('.header').css('left', 0);
+	        $('.hamburger').removeClass('active');
+	        $('.group-menu').hide();
+	        $('.dim-bg').hide();
+	        $('.main-container').removeClass('fix');
+	        $('.title-category').hide();
+	        $('.menu-1depth > li > a').removeClass('on');
+	        $('.menu-1depth > li:first > a').addClass('on');
+	        $('.cate-con').removeClass('on');
+	        $('.cate-con:first').addClass('on');
+	 }
+	 
+	 $('.menu-1depth > li >a').on('click', function(){
+	        var activeTab = $(this).attr('data-tab');
+	        var activeTabText = $(this).text();
+	        console.log(activeTabText);
+	        $('.menu-1depth > li > a').removeClass('on');
+	        $('.cate-con').removeClass('on');
+	        $(this).addClass('on');
+	        $('.' + activeTab).addClass('on');
+	        $('.link-categoty-all .cate').html(activeTabText);
+
+	        var cateAll = $(this).attr('value');
+	        $('.link-categoty-all').attr('cid', cateAll);
+	        $('.link-categoty-all').attr('data-cid', cateAll);
+	    });
 	
 	$("#logoutbtn").on("click", function(){
 		$.ajax({
