@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html> 
 <head>
 	<title>회원정보 수정</title>
@@ -92,7 +92,7 @@
 </style>
 
 <body>
-
+	<form id="form" name="form" method="post">
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
@@ -163,8 +163,7 @@
 			</div>
 			<div class="col-9">
 				<br>
-				<h6 style="color: #6900EF">kjy</h6>
-				<br><br>
+				<input class="form-control" type="text" id="id" name="id" value="<c:out value="${item.id}"/>" style="color: #6900EF; width: 30%" readonly>
 				<input type="password" class="form-control" style="width: 30%">
 				<input type="password" class="form-control" style="width: 30%; display:inline">
 				<p style="display:inline; font-size:12px; color: gray">&nbsp;&nbsp;8~15자 이내의 영문 대소문자, 숫자 및 특수문자 2가지 이상 조합으로 입력하세요.</p>
@@ -188,10 +187,11 @@
 				</div>
 				<br><br>
 				<a href="mypage"><button type="button" style="background-color: #F0F0F0"><b>취소</b></button></a>
-				<a href="mypage"><button type="button" style="background-color: #6900EF; color: white"><b>확인</b></button></a>
+				<a href="mypage"><button type="button" id="savebtn" style="background-color: #6900EF; color: white"><b>확인</b></button></a>
 			</div>
 		</div>
 	</div>
+	</form>
 	<br><br>
 	<footer>
 		<div class="footer">
@@ -227,9 +227,31 @@
 			</div>
 		</div>
 	</footer>
+	
+	<script type="text/javascript">
+	
+	var goUrlInst = "/member/memberMod";
+//	var goUrlUpdt = "/member/memberUpdt";
+		
+	var seq = $("input:hidden[name=seq]");
+	
+	var form = $("form[name=form]");
+	
+	$("#savebtn").on("click", function(){
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+		
+	});
+	
+	</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
 </body>
 </html>

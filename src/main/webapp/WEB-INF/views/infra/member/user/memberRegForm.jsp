@@ -292,7 +292,7 @@
 
 <script type="text/javascript">
 	
-	var goUrlInst = "/member/memberJoin";
+	var goUrlInst = "/member/memberMod";
 	
 	var seq = $("input:hidden[name=seq]");
 	
@@ -397,7 +397,7 @@
 		if (!checkNull($("#phone"), $("#phone").val(), "전화번호를 입력해 주세요."))
 			return false;
 		
-		if (!checkNull($("#zipcode"), $("#zipcode").val(), "우편 번호를 입력해 주세요."))
+		if (!checkNull($("#zipcode"), $("#zipcode").val(), "우편번호를 입력해 주세요."))
 			return false;
 		
 		if (!checkNull($("#addr1"), $("#addr1").val(), "도로명 혹은 지번 주소를 입력해 주세요."))

@@ -33,10 +33,10 @@
 			<exclude-mapping path="/member/memberJoin" />
 			<exclude-mapping path="/member/login" />
 			<exclude-mapping path="/member/loginProc" />
+			<exclude-mapping path="/member/findID" />
+			<exclude-mapping path="/member/findPW" />
 			<exclude-mapping path="/member/idCheck" />
 			<exclude-mapping path="/item/itemView" />
-			<exclude-mapping path="/member/findId" />
-			<exclude-mapping path="/member/findPwd" />
 <!-- 			
 			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />

@@ -197,6 +197,19 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value = "memberMod")
+	public String memberMod(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+		
+		dto.setEmail(dto.getEmailID() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
+		service.insert(dto);
+		
+		vo.setSeq(dto.getSeq());
+		
+		redirectAttributes.addFlashAttribute("vo", vo);
+		
+		return "redirect:/member/memberMod";
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "loginProc")
 	public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {

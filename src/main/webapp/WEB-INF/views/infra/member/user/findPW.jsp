@@ -68,11 +68,12 @@
 			text-decoration: none;
 	}
 	
-	body {
+	.backimage {
 		background-image: url('../resources/image/findbg.jpg');
 		background-repeat: no-repeat;
 		background-size : cover;
 		background-position: 0 -200px;
+		background-attachment : fixed;
 	}
 
 	.container {
@@ -157,40 +158,42 @@
 <body>
 
 <!-- start -->
-	<div class="abc">
-		<br><br>
-		<a href="../home">
-			<h1>coocha</h1>
-		</a>
-		<br><br><br>
-		<div class="aaa">
-			<div class="container">
-				<h2><b>FIND ID / PW</b></h2>
-				<br><br><br>
-				<a href="findID"><h4 style="color: lightgray">아이디 찾기</h4></a>
-				<a href="findPW"><h4>비밀번호 찾기</h4></a>
-				<br><br><br>
-				<div class="row justify-content-center">
-					<div class="col-7">
-						<input type="text" class="form-control" id="inputID" placeholder="아이디">
-						<br>
+	<div class="backimage">
+		<div class="abc">
+			<br><br>
+			<a href="/">
+				<h1>coocha</h1>
+			</a>
+			<br><br><br>
+			<div class="aaa">
+				<div class="container">
+					<h2><b>FIND ID / PW</b></h2>
+					<br><br><br>
+					<a href="findID"><h4 style="color: lightgray">아이디 찾기</h4></a>
+					<a href="findPW"><h4>비밀번호 찾기</h4></a>
+					<br><br><br>
+					<div class="row justify-content-center">
+						<div class="col-7">
+							<input type="text" class="form-control" id="inputID" placeholder="아이디">
+							<br>
+						</div>
 					</div>
+					<div class="ccc">
+						<select class="form-select" id="inputGroupSelect01">
+							<option selected>선택</option>
+							<option value="1">010</option>
+							<option value="2">011</option>
+							<option value="3">016</option>
+							<option value="4">017</option>
+							<option value="5">018</option>
+							<option value="6">019</option>
+						</select>
+						<input type="text" class="form-control" id="inputphone" placeholder="휴대폰번호">
+					</div>
+					<br><br>
+					<button class="btn" id="findbutton" type="button"><b>비밀번호 찾기</b></button>
+					<br><br><br><br><br><br><br><br><br><br>
 				</div>
-				<div class="ccc">
-					<select class="form-select" id="inputGroupSelect01">
-						<option selected>선택</option>
-						<option value="1">010</option>
-						<option value="2">011</option>
-						<option value="3">016</option>
-						<option value="4">017</option>
-						<option value="5">018</option>
-						<option value="6">019</option>
-					</select>
-					<input type="text" class="form-control" id="inputphone" placeholder="휴대폰번호">
-				</div>
-				<br><br>
-				<button class="btn" id="findbutton" type="button"><b>비밀번호 찾기</b></button>
-				<br><br><br><br><br><br><br><br><br><br>
 			</div>
 		</div>
 	</div>
