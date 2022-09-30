@@ -45,7 +45,7 @@
 	}
 	
 	.after .gnb .userid {
-		width: 75px;
+		width: 120px;
 		display: inline-block;
 		position: absolute;
 	    top: 29px;
