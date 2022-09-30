@@ -75,6 +75,7 @@ public class MemberController {
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
+		dto.setEmail(dto.getEmailID() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
 		service.update(dto);
 		
 		redirectAttributes.addFlashAttribute("vo", vo);

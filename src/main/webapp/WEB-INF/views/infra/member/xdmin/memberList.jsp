@@ -68,6 +68,16 @@
 		margin: 5% 0;
 	}
 	
+	.overflow-x-auto {
+		overflow-x: auto;
+		margin: 5% 0;
+	}
+	
+	.overflow-x-auto table {
+		width: auto!important; 
+		white-space: nowrap;
+	}
+	
 	th, td {
 		text-align : center;
 		vertical-align: middle;
@@ -193,7 +203,7 @@
 	<div class="header" style="left: 0px">
         <div class="inner">
             <h1 class="logo">
-                <a href="/"><span class="blind">COOCHA</span></a>
+                <a href="/member/managerLogin"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
 
@@ -331,57 +341,59 @@
 					<option value="2">30</option>
 				</select>
 				<br>
-				<table class="table table-light table-striped table-hover">
-					<thead>
-						<tr>
-							<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
-							<th scope="col">번호</th>
-							<th scope="col">등급</th>
-							<th scope="col">이름</th>
-							<th scope="col">성별</th>
-							<th scope="col">생년월일</th>
-							<th scope="col">아이디</th>
-							<th scope="col">이메일</th>
-							<th scope="col">연락처</th>
-							<th scope="col">가입일</th>
-							<th scope="col">탈퇴여부</th>
-						</tr>
-					</thead>
-					<tbody class="table-group-divider">
-						<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('12')}"/>
-						<c:choose>
-							<c:when test="${fn:length(list) eq 0}">
-								<td class="text-center" colspan="10">There is no data!</td>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${list}" var="list" varStatus="status">
-									<tr data-tr_value = "<c:out value="${list.seq }"/>">
-										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
-										<td scope="row"><c:out value="${list.seq }"/></td>
-										<td><c:out value="${list.membership }"/></td>
-										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></td>
-										<td>
-											<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
-												<c:if test="${list.gender eq listGender.seq}"><c:out value="${listGender.cdname_ko }"/></c:if>
-											</c:forEach>
-										</td> 
-										<td><c:out value="${list.dob }"/></td>
-										<td><c:out value="${list.id }"/></td>
-										<td><c:out value="${list.email }"/></td>
-										<td><c:out value="${list.phone }"/></td>
-										<td><c:out value="${list.regDate }"/></td>
-										<td>
-											<c:choose>
-												<c:when test="${list.delNY eq 0 }">N</c:when>
-												<c:otherwise>Y</c:otherwise>
-											</c:choose>
-										</td>
-									</tr>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</tbody>
-				</table>
+				<div class="overflow-x-auto">
+					<table class="table table-light table-striped table-hover">
+						<thead>
+							<tr>
+								<th scope="col"><input class="form-check-input" type="checkbox" name="check" id="allcheck"></th>
+								<th scope="col">번호</th>
+								<th scope="col">등급</th>
+								<th scope="col">이름</th>
+								<th scope="col">성별</th>
+								<th scope="col">생년월일</th>
+								<th scope="col">아이디</th>
+								<th scope="col">이메일</th>
+								<th scope="col">연락처</th>
+								<th scope="col">가입일</th>
+								<th scope="col">탈퇴여부</th>
+							</tr>
+						</thead>
+						<tbody class="table-group-divider">
+							<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('12')}"/>
+							<c:choose>
+								<c:when test="${fn:length(list) eq 0}">
+									<td class="text-center" colspan="10">There is no data!</td>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${list}" var="list" varStatus="status">
+										<tr data-tr_value = "<c:out value="${list.seq }"/>">
+											<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
+											<td scope="row"><c:out value="${list.seq }"/></td>
+											<td><c:out value="${list.membership }"/></td>
+											<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></td>
+											<td>
+												<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
+													<c:if test="${list.gender eq listGender.seq}"><c:out value="${listGender.cdname_ko }"/></c:if>
+												</c:forEach>
+											</td> 
+											<td><c:out value="${list.dob }"/></td>
+											<td><c:out value="${list.id }"/></td>
+											<td><c:out value="${list.email }"/></td>
+											<td><c:out value="${list.phone }"/></td>
+											<td><c:out value="${list.regDate }"/></td>
+											<td>
+												<c:choose>
+													<c:when test="${list.delNY eq 0 }">N</c:when>
+													<c:otherwise>Y</c:otherwise>
+												</c:choose>
+											</td>
+										</tr>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
+						</tbody>
+					</table>
+				</div>
 				<button type="button" class="btn btn-success" id="excelbtn"><i class="fa-regular fa-file-excel"></i></button>
 				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i><i class="fa-solid fa-user"></i></button>
 				<a href="memberForm">
