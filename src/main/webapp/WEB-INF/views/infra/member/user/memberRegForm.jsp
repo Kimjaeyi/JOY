@@ -292,7 +292,7 @@
 
 <script type="text/javascript">
 	
-	var goUrlInst = "/member/memberMod";
+	var goUrlInst = "/member/memberJoin";
 	
 	var seq = $("input:hidden[name=seq]");
 	
@@ -371,6 +371,7 @@
 		}
 	}
  */	
+ /* 
 	$("#savebtn").on("click", function() {
 
 		if (!checkNull($("#name"), $("#name").val(), "이름은 필수 입력 사항입니다."))
@@ -407,7 +408,7 @@
 			return false;
 		
 	});
-	
+ */	
 	$("#id").on("focusout", function(){
 		$.ajax({
 			async: true 
@@ -456,7 +457,6 @@
     });
 
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -162,7 +162,7 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="/"><h1>coocha</h1></a>
+		<a href="/member/managerLogin"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
 			<!-- <form method="post" name="form" id="memberForm" method="/member/memberInst"> -->
@@ -255,8 +255,8 @@
 						<h6>비밀번호 확인</h6>
 						<br>
 						<input type="password" class="form-control" id="pwd2" name="pwd2" placeholder="비밀번호를 다시 한번 입력해주세요">
-						<span id="alert-success" style="display: none; color: green; text-align: left;"><i class="fa-solid fa-check"></i> 비밀번호가 일치합니다.</span>
-						<span id="alert-danger" style="display: none; color: red; text-align: left;"><i class="fa-solid fa-xmark"></i> 비밀번호가 일치하지 않습니다.</span>
+						<span id="alert-success" style="display: none; color: green; font-size: 13px; text-align: left;"><i class="fa-solid fa-check"></i> 비밀번호가 일치합니다.</span>
+						<span id="alert-danger" style="display: none; color: red; font-size: 13px; text-align: left;"><i class="fa-solid fa-xmark"></i> 비밀번호가 일치하지 않습니다.</span>
 						<br><br><br>
 						<h6>휴대폰번호</h6>
 						<br>
@@ -334,6 +334,9 @@
 			<br><br>
 		</div>
 	</div>
+	
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="/resources/js/validation.js"></script>
 	
 	<script type="text/javascript">
 /* 	
@@ -424,29 +427,16 @@
 	              document.getElementById('addr1').value = addr;
 	              document.getElementById('addr2').focus();
 	              
-	              geocoder.addressSearch(addr, callback);
 				}
 	    
 	    }).open();
 	}
-	
-	var geocoder = new kakao.maps.services.Geocoder();
-	
-	var callback = function(result, status) {
-		if (status === kakao.maps.services.Status.OK) {
-			console.log(result);
-			$("input[name=ccLat]").val(result[0].x);
-			$("input[name=ccLng]").val(result[0].y);
-		}
-	};
 	
 	$("#resetbtn").on("click", function() {
 		$("#zipcode").val('');
 		$("#addr1").val('');
 		$("#addr2").val('');
 		$("#addr3").val('');
-		$("#ccLat").val('');
-		$("#ccLng").val('');
 	});
 	
 	$("#id").on("focusout", function(){
