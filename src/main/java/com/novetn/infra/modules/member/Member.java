@@ -151,4 +151,5 @@ public class Member {
 		this.delNY = delNY;
 	}
 	
+	
 }
