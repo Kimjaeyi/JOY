@@ -152,9 +152,9 @@
 				<br>
 				<div class="row justify-content-center">
 					<div class="col-7">
-						<input type="text" class="form-control" placeholder="아이디" id="id" name="id">
+						<input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="kjy">
 						<br>
-						<input type="password" class="form-control" placeholder="비밀번호" id="pwd" name="pwd">
+						<input type="password" class="form-control" placeholder="비밀번호" id="pwd" name="pwd" value="123">
 					</div>
 				</div>
 				<br><br>
