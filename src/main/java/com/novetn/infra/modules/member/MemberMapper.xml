@@ -10,8 +10,8 @@
 	
 	<sql id = "selectCommon">
 		FROM member a
+			inner join Code b ON a.grade = b.seq
 		WHERE 1=1
-			<!-- inner join Code b ON a.grade = b.seq -->
 		 
 		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
 		<if test="shOptionMem != null and !shOptionMem.equals('')">AND a.grade = #{shOptionMem}</if>
@@ -29,19 +29,10 @@
 
 	<select id="selectList" resultMap="resultMapObj">
 		<include refid="Base.selectListUpperForMysql" />
-<!-- 		
-		SELECT
-			a.seq
-			, a.name_ko
-			, a.name_eng
-			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
-			, a.useNY
-			, a.delNY
-		FROM CodeGroup a
- -->
  		SELECT
 			a.seq
-			, (SELECT b.name_eng FROM Code b WHERE 1=1 AND a.grade = b.codeNum) AS membership
+			, a.membership
+			, b.name_eng
 			, a.name
 			, a.gender
 			, a.dob
@@ -73,6 +64,8 @@
 			, dob
 			, id
 			, pwd
+			, membership
+			, name_eng
 			, email 
 			, emailID
 			, emailDomain
@@ -92,6 +85,8 @@
 			, #{dob}
 			, #{id}
 			, #{pwd}
+			, #{membership}
+			, #{name_eng}
 			, #{email}
 			, #{emailID}
 			, #{emailDomain}
@@ -114,38 +109,46 @@
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			name
-			, dob
-			, id
-			, pwd
-			, gender
-			, email
-			, emailID
-			, emailDomain
-			, telecom
-			, phone
-			, zipcode
-			, addr1
-			, addr2
-			, addr3
-			, validity
-			, regDate
-			, delNY
-		FROM member
+			a.name
+			, a.dob
+			, a.id
+			, a.pwd
+			, b.name_eng
+			, a.membership
+			, a.gender
+			, a.email
+			, a.emailID
+			, a.emailDomain
+			, a.telecom
+			, a.phone
+			, a.zipcode
+			, a.addr1
+			, a.addr2
+			, a.addr3
+			, a.validity
+			, a.regDate
+			, a.delNY
+		FROM member a
+			inner join Code b ON a.grade = b.seq
 		WHERE 1=1
-			AND seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 	
 	<update id="update">
-		UPDATE member
+		UPDATE member 
 		SET
 			name = #{name}
+			, membership = CONCAT(
+				<choose>
+					<when test="membership eq 1">'MANAGER')</when>
+					<when test="membership eq 2">'FRIEND')</when>
+					<when test="membership eq 3">'VIP')</when>
+					<when test="membership eq 4">'VVIP')</when>
+				</choose>
 			, dob = #{dob}
-			, id = #{id}
 			, pwd = #{pwd}
 			, gender = #{gender}
-			, email = #{email}
-			, emailID = = CONCAT(#{emailID},
+			, email = CONCAT(#{emailID},
 				<choose>
 					<when test="emailDomain eq 8">'@naver.com')</when>
 					<when test="emailDomain eq 9">'@gmail.com')</when>
@@ -154,8 +157,14 @@
 					<when test="emailDomain eq 12">'@nate.com')</when>
 					<when test="emailDomain eq 13">'@coocha.com')</when>
 				</choose>
+			, emailID = #{emailID}
 			, emailDomain = #{emailDomain}
-			, telecom = #{telecom}
+			, telecom = CONCAT(
+				<choose>
+					<when test="telecom eq 5">'SKT')</when>
+					<when test="telecom eq 6">'KT')</when>
+					<when test="telecom eq 7">'LG')</when>
+				</choose>
 			, phone = #{phone}
 			, zipcode = #{zipcode}
 			, addr1 = #{addr1}
