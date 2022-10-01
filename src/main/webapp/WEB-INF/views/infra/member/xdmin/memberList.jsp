@@ -282,7 +282,7 @@
 									<select class="form-select" name="shOptionMem">
 										<option value="" <c:if test="${empty vo.shOptionMem}">selected</c:if>>구분</option>
 										<option value="1" <c:if test="${vo.shOptionMem eq 1}">selected</c:if>>MANAGER</option>
-										<option value="2" <c:if test="${vo.shOptionMem eq 2}">selected</c:if>>일반</option>
+										<option value="2" <c:if test="${vo.shOptionMem eq 2}">selected</c:if>>FRIEND</option>
 										<option value="3" <c:if test="${vo.shOptionMem eq 3}">selected</c:if>>VIP</option>
 										<option value="4" <c:if test="${vo.shOptionMem eq 4}">selected</c:if>>VVIP</option>
 									 </select>
@@ -369,7 +369,7 @@
 										<tr data-tr_value = "<c:out value="${list.seq }"/>">
 											<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 											<td scope="row"><c:out value="${list.seq }"/></td>
-											<td><c:out value="${list.membership }"/></td>
+											<td><c:out value="${list.name_eng }"/></td>
 											<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></td>
 											<td>
 												<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
