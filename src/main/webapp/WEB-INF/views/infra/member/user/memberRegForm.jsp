@@ -221,7 +221,7 @@
 					</select>
 					<br><br>
 					<h6>주소</h6>
-					<div class="row">
+					<div class="row"> 
 						<div class="col-3">
 							<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
 						</div>
