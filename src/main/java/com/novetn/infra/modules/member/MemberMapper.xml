@@ -50,6 +50,7 @@
 			, a.regDate
 			, a.delNY
 		<include refid="selectCommon" />
+		ORDER BY a.seq DESC
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
@@ -138,12 +139,12 @@
 		UPDATE member 
 		SET
 			name = #{name}
-			, membership = CONCAT(
+			, membership = 
 				<choose>
-					<when test="membership eq 1">'MANAGER')</when>
-					<when test="membership eq 2">'FRIEND')</when>
-					<when test="membership eq 3">'VIP')</when>
-					<when test="membership eq 4">'VVIP')</when>
+					<when test="membership eq 1">'MANAGER'</when>
+					<when test="membership eq 2">'FRIEND'</when>
+					<when test="membership eq 3">'VIP'</when>
+					<when test="membership eq 4">'VVIP'</when>
 				</choose>
 			, dob = #{dob}
 			, pwd = #{pwd}
@@ -159,11 +160,11 @@
 				</choose>
 			, emailID = #{emailID}
 			, emailDomain = #{emailDomain}
-			, telecom = CONCAT(
+			, telecom = 
 				<choose>
-					<when test="telecom eq 5">'SKT')</when>
-					<when test="telecom eq 6">'KT')</when>
-					<when test="telecom eq 7">'LG')</when>
+					<when test="telecom eq 5">'SKT'</when>
+					<when test="telecom eq 6">'KT'</when>
+					<when test="telecom eq 7">'LG'</when>
 				</choose>
 			, phone = #{phone}
 			, zipcode = #{zipcode}
@@ -179,14 +180,14 @@
 		UPDATE member
 		SET
 			delNY = 1
-		WHERE 
-			seq = #{seq}
+		WHERE 1=1
+			AND seq = #{seq}
 	</update>
 	
 	<delete id="delete">
 		DELETE FROM member
-		WHERE
-			seq = #{seq}
+		WHERE 1=1
+			AND seq = #{seq}
 	</delete>
 	
 	<select id="idCheck" resultType="Integer">
