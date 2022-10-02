@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html> 
 <head>
 	<title>회원 등록</title>
@@ -231,17 +231,17 @@
 					<div class="col">
 						<h6>회원등급</h6>
 						<br>
-						<select class="form-select">
-							<option selected>::선택::</option>
-							<option value="1">MANAGER</option>
-							<option value="2">FRIEND</option>
-							<option value="3">VIP</option>
-							<option value="4">VVIP</option>
+						<select class="form-select" name="membership" id="membership">
+							<option selected>::회원 등급::</option>
+							<option value="1" <c:if test="${item.membership eq 1}">selected</c:if>>MANAGER</option>
+							<option value="2" <c:if test="${item.membership eq 2}">selected</c:if>>FRIEND</option>
+							<option value="3" <c:if test="${item.membership eq 3}">selected</c:if>>VIP</option>
+							<option value="4" <c:if test="${item.membership eq 4}">selected</c:if>>VVIP</option>
 						</select>
 						<br><br>
 						<h6>이메일</h6>
 						<br>
-						<input type="email" class="form-control" id="emailID" name="emailID" placeholder="이메일아이디를 입력해주세요" value="<c:out value="${item.emailID}"/>" style="width: 54%; display: inline">
+						<input type="text" class="form-control" id="emailID" name="emailID" placeholder="이메일아이디를 입력해주세요" value="<c:out value="${item.emailID}"/>" style="width: 54%; display: inline">
 						<select class="form-select" name="emailDomain" id="emailDomain" style="width: 45%; display: inline">
 							<option selected>::이메일도메인::</option>
 							<option value="8" <c:if test="${item.emailDomain eq 8}">selected</c:if>>@naver.com</option>
