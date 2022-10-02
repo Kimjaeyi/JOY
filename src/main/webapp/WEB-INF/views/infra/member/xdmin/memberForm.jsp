@@ -261,7 +261,7 @@
 						<h6>휴대폰번호</h6>
 						<br>
 						<select class="form-select" name="telecom" id="telecom" style="width: 20%; display: inline">
-							<option selected>통신사</option>
+							<option selected>::통신사::</option>
 							<option value="5" <c:if test="${item.telecom eq 5}">selected</c:if>>SKT</option>
 							<option value="6" <c:if test="${item.telecom eq 6}">selected</c:if>>KT</option>
 							<option value="7" <c:if test="${item.telecom eq 7}">selected</c:if>>LG</option>
