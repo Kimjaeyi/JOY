@@ -31,9 +31,9 @@
 		<include refid="Base.selectListUpperForMysql" />
  		SELECT
 			a.seq
-			, a.membership
-			, b.name_eng
+			, b.cdname_ko
 			, a.name
+			, a.grade
 			, a.gender
 			, a.dob
 			, a.id
@@ -65,8 +65,7 @@
 			, dob
 			, id
 			, pwd
-			, membership
-			, name_eng
+			, grade
 			, email 
 			, emailID
 			, emailDomain
@@ -86,8 +85,7 @@
 			, #{dob}
 			, #{id}
 			, #{pwd}
-			, #{membership}
-			, #{name_eng}
+			, #{grade}
 			, #{email}
 			, #{emailID}
 			, #{emailDomain}
@@ -114,8 +112,8 @@
 			, a.dob
 			, a.id
 			, a.pwd
-			, b.name_eng
-			, a.membership
+			, a.grade
+			, b.cdname_ko
 			, a.gender
 			, a.email
 			, a.emailID
@@ -139,13 +137,7 @@
 		UPDATE member 
 		SET
 			name = #{name}
-			, membership = 
-				<choose>
-					<when test="membership eq 1">'MANAGER'</when>
-					<when test="membership eq 2">'FRIEND'</when>
-					<when test="membership eq 3">'VIP'</when>
-					<when test="membership eq 4">'VVIP'</when>
-				</choose>
+			, grade = #{grade}
 			, dob = #{dob}
 			, pwd = #{pwd}
 			, gender = #{gender}
@@ -160,20 +152,15 @@
 				</choose>
 			, emailID = #{emailID}
 			, emailDomain = #{emailDomain}
-			, telecom = 
-				<choose>
-					<when test="telecom eq 5">'SKT'</when>
-					<when test="telecom eq 6">'KT'</when>
-					<when test="telecom eq 7">'LG'</when>
-				</choose>
+			, telecom = #{telecom}
 			, phone = #{phone}
 			, zipcode = #{zipcode}
 			, addr1 = #{addr1}
 			, addr2 = #{addr2}
 			, addr3 = #{addr3}
 			, validity = #{validity}
-		WHERE
-			seq = #{seq}
+		WHERE 1=1
+			AND seq = #{seq}
 	</update>
 	
 	<update id="uelete">
@@ -194,8 +181,8 @@
 		SELECT
 			COUNT(*)
 		FROM member
-		WHERE
-			id = #{id}
+		WHERE 1=1
+			AND id = #{id}
 	</select>
 	
 	<select id="selectOneId" resultMap="resultMapObj">
