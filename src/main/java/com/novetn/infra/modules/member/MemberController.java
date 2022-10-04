@@ -71,7 +71,7 @@ public class MemberController {
 		return "redirect:/member/memberForm";
 	}
 	
-	@SuppressWarnings(value = { "all" })
+	/* @SuppressWarnings(value = { "all" }) */
 	@RequestMapping(value = "memberUpdt")
 	public String memberUpdt(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -92,6 +92,7 @@ public class MemberController {
 		
 		return "redirect:/member/memberList";
 	}
+	
 	
 	@RequestMapping(value = "memberDele")
 	public String memberDele(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {

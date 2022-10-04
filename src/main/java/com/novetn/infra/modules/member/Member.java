@@ -9,7 +9,7 @@ public class Member {
 	private Integer grade;
 	private String membership;
 	private String name;
-	private String name_eng;
+	private String cdname_ko;
 	private String dob;
 	private String email;
 	private String emailID;
@@ -66,11 +66,11 @@ public class Member {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getName_eng() {
-		return name_eng;
+	public String getCdname_ko() {
+		return cdname_ko;
 	}
-	public void setName_eng(String name_eng) {
-		this.name_eng = name_eng;
+	public void setCdname_ko(String cdname_ko) {
+		this.cdname_ko = cdname_ko;
 	}
 	public String getDob() {
 		return dob;

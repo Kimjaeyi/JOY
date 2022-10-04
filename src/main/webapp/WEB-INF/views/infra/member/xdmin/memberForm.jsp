@@ -231,12 +231,12 @@
 					<div class="col">
 						<h6>회원등급</h6>
 						<br>
-						<select class="form-select" name="membership" id="membership">
+						<select class="form-select" name="grade" id="grade">
 							<option selected>::회원 등급::</option>
-							<option value="1" <c:if test="${item.membership eq 1}">selected</c:if>>MANAGER</option>
-							<option value="2" <c:if test="${item.membership eq 2}">selected</c:if>>FRIEND</option>
-							<option value="3" <c:if test="${item.membership eq 3}">selected</c:if>>VIP</option>
-							<option value="4" <c:if test="${item.membership eq 4}">selected</c:if>>VVIP</option>
+							<option value="1" <c:if test="${item.grade eq 1}">selected</c:if>>MANAGER</option>
+							<option value="2" <c:if test="${item.grade eq 2}">selected</c:if>>FRIEND</option>
+							<option value="3" <c:if test="${item.grade eq 3}">selected</c:if>>VIP</option>
+							<option value="4" <c:if test="${item.grade eq 4}">selected</c:if>>VVIP</option>
 						</select>
 						<br><br>
 						<h6>이메일</h6>
