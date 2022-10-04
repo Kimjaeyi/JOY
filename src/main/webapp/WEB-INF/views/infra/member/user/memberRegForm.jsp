@@ -21,12 +21,12 @@
 	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fd23c44e522eb4a174fd81bfe4833f36&libraries=services"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!-- 	
+	
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
- -->	
+	
 </head>
 
 <style type="text/css">
@@ -197,7 +197,7 @@
 					<input type="text" class="form-control" id="name" name="name" placeholder="이름을 입력해주세요" value="<c:out value="${item.name}"/>">
 					<br>
 					<h6>생년월일</h6>
-					<input type="text" class="form-control" id="dob" name="dob" placeholder="생년월일 8자리 (YYYY-MM-DD)" value="<c:out value="${item.dob}"/>">
+					<input type="text" class="form-control shDate" id="dob" name="dob" placeholder="생년월일 8자리 (YYYY-MM-DD)" value="<c:out value="${item.dob}"/>" autocomplete="off">
 					<br>
 					<h6>휴대폰번호</h6>
 					<select class="form-select" name="telecom" id="telecom" style="width: 15%; display: inline">
@@ -304,6 +304,25 @@
 
 	$("#findaddress").on("click", function() {
 		here();
+	});
+	
+	$(document).ready(function() {
+		$("input.shDate").datepicker();
+	});
+	
+	$.datepicker.setDefaults({
+		dateFormat : 'yy-mm-dd',
+		prevText : '이전 달',
+		nextText : '다음 달',
+		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+		showMonthAfterYear : true,
+		yearSuffix : '년'
 	});
 	
 	function here() {
