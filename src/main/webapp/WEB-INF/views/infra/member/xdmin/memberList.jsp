@@ -4,7 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
+
 <jsp:useBean id="CodeServiceImpl" class="com.novetn.infra.modules.code.CodeServiceImpl"/>
 
 <html> 
@@ -359,6 +360,7 @@
 							</tr>
 						</thead>
 						<tbody class="table-group-divider">
+							<c:set var="listCodeMembership" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 							<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('12')}"/>
 							<c:choose>
 								<c:when test="${fn:length(list) eq 0}">
@@ -369,7 +371,7 @@
 										<tr data-tr_value = "<c:out value="${list.seq }"/>">
 											<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 											<td scope="row"><c:out value="${list.seq }"/></td>
-											<td><c:out value="${list.name_eng }"/></td>
+											<td><c:out value="${list.cdname_ko }"/></td>
 											<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.name }"/></td>
 											<td>
 												<c:forEach items="${listCodeGender}" var="listGender" varStatus="statusGender">
@@ -396,9 +398,7 @@
 				</div>
 				<button type="button" class="btn btn-success" id="excelbtn"><i class="fa-regular fa-file-excel"></i></button>
 				<button type="button" class="btn btn-danger" id="delbtn" style="margin: 0 0 0 20px"><i class="fa-solid fa-minus"></i><i class="fa-solid fa-user"></i></button>
-				<a href="memberForm">
-					<button type="button" class="btn btn-outline-primary" id="regbtn"><i class="fa-solid fa-plus"></i><i class="fa-regular fa-user"></i></button>
-				</a>
+				<button type="button" class="btn btn-outline-primary" id="regbtn"><i class="fa-solid fa-plus"></i><i class="fa-regular fa-user"></i></button>
 				<!-- pagination s -->
 				<%@include file="../../../common/xdmin/includeV1/pagination.jsp"%>
 				<!-- pagination e -->
@@ -455,6 +455,10 @@
 	$("#search_btn").on("click", function(){
 		if(validationList() == false) return false;
 		form.attr("action", goUrlList).submit();
+	});
+	
+	$("#regbtn").on("click", function(){
+		$(location).attr("href", goUrlForm);
 	});
 	
 	$("#reset_btn").on("click", function(){
