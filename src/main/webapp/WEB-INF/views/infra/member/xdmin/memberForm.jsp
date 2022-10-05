@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<!-- fmt : 숫자, 날짜 관련된 함수 -->  
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
@@ -135,13 +136,14 @@
 		 display: inline;
 	}
 	
-	#listbtn, #savebtn, #clearbtn {
+	#listbtn, #savebtn, #clearbtn, #delbtn, #uelbtn {
 		width: 40px;
 		height: 40px;
 		display: inline;
+		margin: 0 5px;
 	}
 	
-	#delbtn {
+	#realclearbtn, #realdelbtn, #realuelbtn {
 		background-color: #6900EF; 
 		color: white; 
 		border-radius: 0.375rem;
@@ -149,7 +151,7 @@
 	
 	.ccc {
 		display: inline;
-		margin: 0 0 5% 0;
+		margin-bottom: 5%;
 	}
 	
 	.form-check-input:checked {
@@ -179,6 +181,18 @@
 						<button class="nav-link active" id="regmodtab"><b>회원 등록 및 수정</b></button>
 					</li>
 				</ul>
+				<div class="row">
+					<div class="col">
+						<h6>삭제여부</h6>
+						<br>
+						<select class="form-select" name="delNY">
+							<option selected>::선택::</option>
+							<option value="1" <c:if test="${item.delNY eq 1}">selected</c:if>>Y</option>
+							<option value="0" <c:if test="${item.delNY eq 0}">selected</c:if>>N</option>
+						</select>
+					</div>
+					<div class="col"></div>
+				</div>
 				<div class="row">
 					<div class="col">
 						<h6>회원이름</h6>
@@ -272,26 +286,6 @@
 				</div>
 				<div class="row">
 					<div class="col">
-						<h6>사용여부</h6>
-						<br>
-						<select class="form-select">
-							<option value="">선택하세요</option>
-							<option value="1">Y</option>
-							<option value="2">N</option>
-						</select>
-					</div>
-					<div class="col">
-						<h6>삭제여부</h6>
-						<br>
-						<select class="form-select">
-							<option selected>선택하세요</option>
-							<option value="1">Y</option>
-							<option value="2">N</option>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
 						<h6>성별</h6>
 						<br>
 						<div class="form-check form-check-inline" name="gender">
@@ -322,27 +316,64 @@
 				</div>
 				<br><br>
 				<div class="ccc">
+					<div class="ccc">
 					<button type="button" id="listbtn" class="btn btn-outline-dark">
 						<i class="fa-solid fa-list"></i>
 					</button>
 					<button type="button" id="savebtn" class="btn btn-dark" style="float: right">
 						<i class="fa-solid fa-circle-check"></i>
 					</button>
-					<button type="button" class="btn btn-warning" id="clearbtn" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					<button type="button" class="btn btn-danger" id="delbtn" style="float: right" data-bs-toggle="modal" data-bs-target="#deleteModal">
+						<i class="fa-solid fa-trash"></i>
+					</button>
+					<button type="button" class="btn btn-outline-danger" id="uelbtn" style="float: right" data-bs-toggle="modal" data-bs-target="#ueleteModal">
+						<i class="fa-solid fa-x"></i>
+					</button>
+					<button type="button" class="btn btn-warning" id="clearbtn" style="float: right" data-bs-toggle="modal" data-bs-target="#clearModal">
 						<i class="fa-solid fa-rotate-left"></i>
 					</button>
-					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">내용 취소</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-									<button type="button" class="btn btn-secondary" id="delbtn">삭제</button>
-								</div>
+				</div>
+				<div class="modal fade" id="ueleteModal" tabindex="-1" aria-labelledby="ueleteModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="ueleteModalLabel">내용 취소</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">해당 데이터를 비활성화하시겠습니까?</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-secondary" id="realuelbtn">삭제</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="deleteModalLabel">내용 취소</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">해당 데이터를 삭제하시겠습니까?</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-secondary" id="realdelbtn">삭제</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="clearModal" tabindex="-1" aria-labelledby="clearModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="clearModalLabel">내용 취소</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-secondary" id="realclearbtn">삭제</button>
 							</div>
 						</div>
 					</div>
@@ -409,8 +440,16 @@
 		formVo.attr("action", goUrlList).submit();
 	});
 	
-	$("#delbtn").on("click", function(){
+	$("#realclearbtn").on("click", function(){
 		formVo.attr("action", goUrlForm).submit();
+	});
+	
+	$("#realdelbtn").on("click", function(){
+		formVo.attr("action", goUrlDele).submit();
+	});
+	
+	$("#realuelbtn").on("click", function(){
+		formVo.attr("action", goUrlUele).submit();
 	});
 	
 	$("#findaddress").on("click", function() {
