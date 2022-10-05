@@ -458,7 +458,7 @@
 		});
 	});
 	
-	$('#pwd').focusout(function () {
+	$('#pwd2').focusout(function () {
         var pwd1 = $("#pwd").val();
         var pwd2 = $("#pwd2").val();
   

@@ -47,6 +47,7 @@
 			, a.addr1
 			, a.addr2
 			, a.addr3
+			, a.validity
 			, a.regDate
 			, a.delNY
 		<include refid="selectCommon" />
@@ -85,7 +86,7 @@
 			, #{dob}
 			, #{id}
 			, #{pwd}
-			, #{grade}
+			, 2
 			, #{email}
 			, #{emailID}
 			, #{emailDomain}
