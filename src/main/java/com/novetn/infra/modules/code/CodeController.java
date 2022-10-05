@@ -58,6 +58,9 @@ public class CodeController {
 		Code result = service.selectOne(vo);
 		model.addAttribute("item", result);
 		
+		List<Code> add = service.codeGroupNameAdd(vo);
+		model.addAttribute("add", add);
+		
 		return "infra/code/xdmin/codeForm";
 	}
 	
