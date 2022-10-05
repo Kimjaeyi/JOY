@@ -15,7 +15,8 @@ public class Code {
 	private String anotherCode;
 	private String cdname_ko;
 	private String name_eng;
-	private Integer order; 
+	private Integer order;
+	private Integer useNY;
 	private Integer delNY;
 	private String regDate;
 	private String modDate;
@@ -88,6 +89,12 @@ public class Code {
 	}
 	public void setOrder(Integer order) {
 		this.order = order;
+	}
+	public Integer getUseNY() {
+		return useNY;
+	}
+	public void setUseNY(Integer useNY) {
+		this.useNY = useNY;
 	}
 	public Integer getDelNY() {
 		return delNY;
