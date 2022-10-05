@@ -82,11 +82,12 @@
 	}
 	
 	.col {
-		margin: 5% 0;
+		margin: 1% 0;
 	}
 	
 	#myTab {
 		width: 267px;
+		margin-bottom: 4%;
 	}
 	
 	#listtab button {
@@ -155,11 +156,27 @@
 						<h6>코드그룹 코드</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="codegroupNum" name="codegroupNum" value="<c:out value="${item.codegroupNum }"/>">
-						<br><br>
+					</div>
+					<div class="col">
+						<h6>코드그룹 코드(Another)</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" name="codeGroup_seq">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
 						<h6>코드그룹 이름(한글)</h6>
 						<br>
 						<input class="form-control" type="text" value="<c:out value="${item.name_ko }"/>" placeholder="한글, 숫자" id="name_ko" name="name_ko">
-						<br><br>
+					</div>
+					<div class="col">
+						<h6>코드그룹 이름(영문)</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="name_eng" name="name_eng" value="<c:out value="${item.name_eng }"/>">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
 						<h6>사용여부</h6>
 						<br>
 						<select class="form-select">
@@ -167,34 +184,8 @@
 							<option value="1">Y</option>
 							<option value="2">N</option>
 						</select>
-						<br><br>
-						<h6>번호</h6>
-						<br>
-						<input class="form-control" type="text" id="seq" name="seq" value="<c:out value="${item.seq }"/>">
-						<br><br>
-						<h6>예비1(varchar type)</h6>
-						<br>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자">
-						<br><br>
-						<h6>예비1(int type)</h6>
-						<br>
-						<input class="form-control" type="text" placeholder="숫자">
-						<br><br>
-						<h6>설명</h6>
-						<br>
-						<textarea class="form-control" rows="3"></textarea>
-						<br><br>
 					</div>
-					<br><br><br>
 					<div class="col">
-						<h6>코드그룹 코드(Another)</h6>
-						<br>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" name="codeGroup_seq">
-						<br><br>
-						<h6>코드그룹 이름(영문)</h6>
-						<br>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="name_eng" name="name_eng" value="<c:out value="${item.name_eng }"/>">
-						<br><br>
 						<h6>삭제여부</h6>
 						<br>
 						<select class="form-select">
@@ -202,21 +193,53 @@
 							<option value="1">Y</option>
 							<option value="2">N</option>
 						</select>
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>번호</h6>
+						<br>
+						<input class="form-control" type="text" id="seq" name="seq" value="<c:out value="${item.seq }"/>">
+					</div>
+					<div class="col">
 						<h6>순서</h6>
 						<br>
 						<input class="form-control" type="text"  placeholder="숫자">
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>예비1(varchar type)</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자">
+					</div>
+					<div class="col">
 						<h6>예비2(varchar type)</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자">
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>예비1(int type)</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="숫자">
+					</div>
+					<div class="col">
 						<h6>예비2(int type)</h6>
 						<br>
 						<input class="form-control" type="text" placeholder="숫자">
-						<br><br>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col">
+						<h6>설명</h6>
+						<br>
+						<textarea class="form-control" rows="3"></textarea>
+					</div>
+					<div class="col"></div>
+				</div>
+				<br><br>
 				<div class="ccc">
 					<button type="button" id="listbtn" class="btn btn-outline-dark">
 						<i class="fa-solid fa-list"></i>

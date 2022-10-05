@@ -82,11 +82,12 @@
 	}
 	
 	.col {
-		margin: 5% 0;
+		margin: 1% 0;
 	}
 	
 	#myTab {
 		width: 215px;
+		margin-bottom: 4%;
 	}
 		
 	#listtab button {
@@ -183,50 +184,6 @@
 						<h6>회원이름</h6>
 						<br>
 						<input class="form-control" type="text" name="name" id="name" value="<c:out value="${item.name }"/>">
-						<br><br>
-						<h6>아이디</h6>
-						<br>
-						<input type="hidden" id="idAllowedNy" name=idAllowedNy" value="0">
-						<input class="form-control" type="text" placeholder="5~20자리 영문 대/소문자 + 숫자" name="id" id="id" maxlength="20" value="<c:out value="${item.id}"/>"
-						<c:if test="${not empty item.id}">readonly</c:if>
-						>
-						<div class="invalid-feedback" id="idFeedback"></div> 
-						<br><br>
-						<h6>비밀번호</h6>
-						<br>
-						<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요" value="<c:out value="${item.pwd}"/>">
-						<br>
-						<br><br>
-						<h6>생년월일</h6>
-						<br>
-						<input type="text" class="form-control" id="dob" name="dob" placeholder="생년월일 8자리 (YYYY-MM-DD)" value="<c:out value="${item.dob}"/>">
-						<br><br>
-						<h6>주소</h6>
-						<br>
-						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" style="display: inline; width: 20%" value="<c:out value="${item.zipcode}"/>" readonly>
-						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
-						<button type="button" id="findaddress">우편번호 찾기</button>
-						<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" value="<c:out value="${item.addr1}"/>" readonly>
-						<br><br><br>
-						<h6>사용여부</h6>
-						<br>
-						<select class="form-select">
-							<option value="">선택하세요</option>
-							<option value="1">Y</option>
-							<option value="2">N</option>
-						</select>
-						<br><br>
-						<h6>성별</h6>
-						<br>
-						<div class="form-check form-check-inline" name="gender">
-							<input class="form-check-input" type="radio" name="gender" id="gender1" value="43" <c:if test="${item.gender eq 43 }"> checked</c:if>>
-							<label class="form-check-label" for="gender1">남자</label>
-						</div>
-						<div class="form-check form-check-inline" name="gender">
-							<input class="form-check-input" type="radio" name="gender" id="gender2" value="44" <c:if test="${item.gender eq 44 }"> checked</c:if>>
-							<label class="form-check-label" for="gender2">여자</label>
-						</div>
-						<br><br>
 					</div>
 					<div class="col">
 						<h6>회원등급</h6>
@@ -238,7 +195,19 @@
 							<option value="3" <c:if test="${item.grade eq 3}">selected</c:if>>VIP</option>
 							<option value="4" <c:if test="${item.grade eq 4}">selected</c:if>>VVIP</option>
 						</select>
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>아이디</h6>
+						<br>
+						<input type="hidden" id="idAllowedNy" name=idAllowedNy" value="0">
+						<input class="form-control" type="text" placeholder="5~20자리 영문 대/소문자 + 숫자" name="id" id="id" maxlength="20" value="<c:out value="${item.id}"/>"
+						<c:if test="${not empty item.id}">readonly</c:if>
+						>
+						<div class="invalid-feedback" id="idFeedback"></div> 
+					</div>
+					<div class="col">
 						<h6>이메일</h6>
 						<br>
 						<input type="text" class="form-control" id="emailID" name="emailID" placeholder="이메일아이디를 입력해주세요" value="<c:out value="${item.emailID}"/>" style="width: 54%; display: inline">
@@ -251,13 +220,29 @@
 							<option value="12" <c:if test="${item.emailDomain eq 12}">selected</c:if>>@nate.com</option>
 							<option value="13" <c:if test="${item.emailDomain eq 13}">selected</c:if>>@coocha.com</option>
 						</select>
-						<br><br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>비밀번호</h6>
+						<br>
+						<input type="password" class="form-control" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요" value="<c:out value="${item.pwd}"/>">
+					</div>
+					<div class="col">
 						<h6>비밀번호 확인</h6>
 						<br>
 						<input type="password" class="form-control" id="pwd2" name="pwd2" placeholder="비밀번호를 다시 한번 입력해주세요">
 						<span id="alert-success" style="display: none; color: green; font-size: 13px; text-align: left;"><i class="fa-solid fa-check"></i> 비밀번호가 일치합니다.</span>
 						<span id="alert-danger" style="display: none; color: red; font-size: 13px; text-align: left;"><i class="fa-solid fa-xmark"></i> 비밀번호가 일치하지 않습니다.</span>
-						<br><br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>생년월일</h6>
+						<br>
+						<input type="text" class="form-control" id="dob" name="dob" placeholder="생년월일 8자리 (YYYY-MM-DD)" value="<c:out value="${item.dob}"/>">
+					</div>
+					<div class="col">
 						<h6>휴대폰번호</h6>
 						<br>
 						<select class="form-select" name="telecom" id="telecom" style="width: 20%; display: inline">
@@ -267,12 +252,35 @@
 							<option value="7" <c:if test="${item.telecom eq 7}">selected</c:if>>LG</option>
 						</select>
 						<input type="text" class="form-control" id="phone" name="phone" style="width: 79%; display: inline" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
-						<br><br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>주소</h6>
+						<br>
+						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" style="display: inline; width: 20%" value="<c:out value="${item.zipcode}"/>" readonly>
+						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
+						<button type="button" id="findaddress">우편번호 찾기</button>
+						<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" value="<c:out value="${item.addr1}"/>" readonly>
+					</div>
+					<div class="col">
 						<h6>&nbsp;</h6>
 						<br>
 						<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소" value="<c:out value="${item.addr2}"/>">
 						<input type="text" class="form-control" id="addr3" name="addr3" placeholder="참고항목" value="<c:out value="${item.addr3}"/>" readonly>
-						<br><br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>사용여부</h6>
+						<br>
+						<select class="form-select">
+							<option value="">선택하세요</option>
+							<option value="1">Y</option>
+							<option value="2">N</option>
+						</select>
+					</div>
+					<div class="col">
 						<h6>삭제여부</h6>
 						<br>
 						<select class="form-select">
@@ -280,7 +288,22 @@
 							<option value="1">Y</option>
 							<option value="2">N</option>
 						</select>
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>성별</h6>
+						<br>
+						<div class="form-check form-check-inline" name="gender">
+							<input class="form-check-input" type="radio" name="gender" id="gender1" value="43" <c:if test="${item.gender eq 43 }"> checked</c:if>>
+							<label class="form-check-label" for="gender1">남자</label>
+						</div>
+						<div class="form-check form-check-inline" name="gender">
+							<input class="form-check-input" type="radio" name="gender" id="gender2" value="44" <c:if test="${item.gender eq 44 }"> checked</c:if>>
+							<label class="form-check-label" for="gender2">여자</label>
+						</div>
+					</div>
+					<div class="col">
 						<h6>개인정보 유효기간</h6>
 						<br>
 						<div class="form-check form-check-inline" name="validity">
@@ -295,7 +318,6 @@
 							<input class="form-check-input" type="radio" name="validity" id="validity3" value="47" <c:if test="${item.validity eq 47 }"> checked</c:if>>
 							<label class="form-check-label" for="validity3">탈퇴 시 파기</label>
 						</div>
-						<br><br>
 					</div>
 				</div>
 				<br><br>
@@ -477,7 +499,7 @@
 //		}
 	});
 	
-	$('#pwd').focusout(function () {
+	$('#pwd2').focusout(function () {
         var pwd1 = $("#pwd").val();
         var pwd2 = $("#pwd2").val();
   
