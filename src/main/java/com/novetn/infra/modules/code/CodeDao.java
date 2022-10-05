@@ -55,6 +55,10 @@ public class CodeDao {
 		return sqlSession.selectList(namespace + ".selectListCachedCodeArrayList", null); 
 	}
 	
+	public List<Code> codeGroupNameAdd(CodeVo vo){ 
+		return sqlSession.selectList(namespace + ".codeGroupNameAdd", vo); 
+	} 
+	
 //	public List<Code> selectListWithoutPaging() {
 //		return sqlSession.selectList(namespace + ".selectListWithoutPaging", "");
 //	}

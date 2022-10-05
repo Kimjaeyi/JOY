@@ -86,6 +86,7 @@
 			, deliverymethod
 			, stock
 			, regDate
+			, useNY
 			, delNY
 		FROM item
 		WHERE 1=1
@@ -102,6 +103,8 @@
 			, delivery = #{delivery}
 			, stock = #{stock}
 			, modDate = #{modDate}
+			, useNY = #{useNY}
+			, delNY = #{delNY}
 		WHERE
 			seq = #{seq}
 	</update>

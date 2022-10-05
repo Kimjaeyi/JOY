@@ -35,6 +35,7 @@
 				, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
 				, a.regDate
 				, a.modDate
+				, a.useNY
 				, a.delNY
 		<include refid="selectCommon" />	
 		<include refid="Base.selectListLowerForMysql" />	
@@ -82,6 +83,7 @@
 			, (SELECT COUNT(b.codeGroup_seq) FROM Code b WHERE 1=1 AND a.seq = b.codeGroup_seq) AS codeamount
 			, a.regDate
 			, a.modDate
+			, a.useNY
 			, a.delNY
 		FROM CodeGroup a
 		WHERE 1=1
@@ -95,6 +97,8 @@
 			, name_ko = #{name_ko}
 			, name_eng = #{name_eng}
 			, modDate = now()
+			, useNY = #{useNY}
+			, delNY = #{delNY}
 		WHERE
 			seq = #{seq}
 	</update>
@@ -102,7 +106,6 @@
 	<update id="uelete">
 		UPDATE CodeGroup
 		SET
-		\
 			delNY = 1
 		WHERE 
 			seq = #{seq}

@@ -160,6 +160,7 @@
 			, addr2 = #{addr2}
 			, addr3 = #{addr3}
 			, validity = #{validity}
+			, delNY = #{delNY}
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
