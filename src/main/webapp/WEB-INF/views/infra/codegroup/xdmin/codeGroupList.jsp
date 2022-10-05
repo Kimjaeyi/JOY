@@ -135,6 +135,11 @@
 		color: #6900EF;
 	}
 	
+	.count {
+		display: inline;
+		margin: 3% 0;
+	}
+	
 	.pagination {
 		justify-content: center;
 		--bs-pagination-color: mediumpurple;
@@ -310,12 +315,15 @@
 					</form>
 				</div>
 				<font style="font-size: 20px"><b>코드그룹관리</b></font>
-				<br>
-				<select class="form-select" id="viewsel">
-					<option selected>10</option>
-					<option value="1">15</option>
-					<option value="2">30</option>
-				</select>
+				<br><br>
+				<div class="count">
+					<span>total: </span><c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/>
+					<select class="form-select" id="viewsel">
+						<option selected>10</option>
+						<option value="1">15</option>
+						<option value="2">30</option>
+					</select>
+				</div>
 				<br>
 				<table class="table table-light table-striped table-hover">
 					<thead>
