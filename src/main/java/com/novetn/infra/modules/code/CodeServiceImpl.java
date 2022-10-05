@@ -106,4 +106,9 @@ public class CodeServiceImpl implements CodeService {
 		return dao.selectOneCount(vo);
 	}
 	
+	@Override
+	public List<Code> codeGroupNameAdd(CodeVo vo) throws Exception {
+		return dao.codeGroupNameAdd(vo);
+	}
+	
 }

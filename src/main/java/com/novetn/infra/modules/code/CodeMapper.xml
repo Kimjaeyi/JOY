@@ -40,6 +40,7 @@
 			    ,a.order
 			    ,a.regDate
 			    ,a.modDate
+			    ,a.useNY
 			    ,a.delNY
 		<include refid="selectCommon" />	
 		<include refid="Base.selectListLowerForMysql" />
@@ -88,6 +89,7 @@
 			, a.name_eng
 			, a.regDate
 			, a.modDate
+			, a.useNY
 			, a.delNY
 		FROM Code a
 		inner join CodeGroup b ON a.codeGroup_seq = b.seq
@@ -102,6 +104,8 @@
 			, cdname_ko = #{cdname_ko}
 			, name_eng = #{name_eng}
 			, modDate = now()
+			, useNY = #{useNY}
+			, delNY = #{delNY}
 		WHERE
 			seq = #{seq}
 	</update>
@@ -120,7 +124,7 @@
 			seq = #{seq}
 	</delete>
 	
-	    <select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
+	<select id="selectListCachedCodeArrayList" resultMap="resultMapObj">
 		SELECT 
 			a.seq
 			, a.codeGroup_seq
@@ -130,7 +134,14 @@
 			Code a
 		WHERE 1=1
 			AND delNY = 0
-			
+    </select>
+    
+    <select id="codeGroupNameAdd" resultMap="resultMapObj">
+    	SELECT
+    		seq
+    		, name_ko
+    	FROM CodeGroup
+    	WHERE 1=1
     </select>
 
 </mapper>
