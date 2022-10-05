@@ -66,7 +66,7 @@
 	}
 	
 	table {
-		margin: 5% 0;
+		margin-bottom: 5%;
 	}
 	
 	.overflow-x-auto {
@@ -149,6 +149,11 @@
 	
 	#lefttab.nav-link.active {
 		color: #6900EF;
+	}
+	
+	.count {
+		margin: 3% 0;
+		display: inline;
 	}
 
 	.pagination {
@@ -335,12 +340,15 @@
 					</div>
 				</form>
 				<font style="font-size: 20px"><b>회원관리</b></font>
-				<br>
-				<select class="form-select" id="viewsel">
-					<option selected>10</option>
-					<option value="1">15</option>
-					<option value="2">30</option>
-				</select>
+				<br><br>
+				<div class="count">
+					<span>total: </span><c:out value="${vo.totalRows - ((vo.thisPage -1) * vo.rowNumToShow + status.index) }"/>
+					<select class="form-select" id="viewsel">
+						<option selected>10</option>
+						<option value="1">15</option>
+						<option value="2">30</option>
+					</select>
+				</div>
 				<br>
 				<div class="overflow-x-auto">
 					<table class="table table-light table-striped table-hover">
@@ -356,12 +364,13 @@
 								<th scope="col">이메일</th>
 								<th scope="col">연락처</th>
 								<th scope="col">가입일</th>
+								<th scope="col">개인정보유효</th>
 								<th scope="col">탈퇴여부</th>
 							</tr>
 						</thead>
 						<tbody class="table-group-divider">
-							<c:set var="listCodeMembership" value="${CodeServiceImpl.selectListCachedCode('1')}"/>
 							<c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('12')}"/>
+							<c:set var="listCodeValidity" value="${CodeServiceImpl.selectListCachedCode('13')}"/>
 							<c:choose>
 								<c:when test="${fn:length(list) eq 0}">
 									<td class="text-center" colspan="10">There is no data!</td>
@@ -383,6 +392,11 @@
 											<td><c:out value="${list.email }"/></td>
 											<td><c:out value="${list.phone }"/></td>
 											<td><c:out value="${list.regDate }"/></td>
+											<td>
+												<c:forEach items="${listCodeValidity}" var="listValidity" varStatus="statusValidity">
+													<c:if test="${list.validity eq listValidity.seq}"><c:out value="${listValidity.cdname_ko }"/></c:if>
+												</c:forEach>
+											</td>
 											<td>
 												<c:choose>
 													<c:when test="${list.delNY eq 0 }">N</c:when>
