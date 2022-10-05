@@ -82,11 +82,12 @@
 	}
 	
 	.col {
-		margin: 5% 0;
+		margin: 1% 0;
 	}
 	
 	#myTab {
 		width: 215px;
+		margin-bottom: 4%;
 	}
 		
 	#listtab button {
@@ -111,13 +112,14 @@
 		color : gray;
 	}
 	
-	#listbtn, #savebtn, #clearbtn {
+	#listbtn, #savebtn, #clearbtn, #delbtn, #uelbtn {
 		width: 40px;
 		height: 40px;
 		display: inline;
+		margin: 0 5px;
 	}
 	
-	#delbtn {
+	#realclearbtn, #realdelbtn, #realuelbtn {
 		background-color: #6900EF; 
 		color: white; 
 		border-radius: 0.375rem;
@@ -125,7 +127,7 @@
 	
 	.ccc {
 		display: inline;
-		margin: 0 0 5% 0;
+		margin-bottom: 5%;
 	}
 	
 </style>
@@ -155,66 +157,95 @@
 						<h6>코드그룹 코드</h6>
 						<br>
 						<input class="form-control" type="text" name="codegroupNum" id="codegroupNum" value="<c:out value="${item.codegroupNum }"/>" readonly>
-						<br><br>
-						<h6>코드 이름(한글)</h6>
-						<br>
-						<input class="form-control" type="text" name="cdname_ko" value="<c:out value="${item.cdname_ko }"/>">
-						<br><br>
-						<h6>코드</h6>
-						<br>
-						<input class="form-control" type="text" name="codeNum" value="<c:out value="${item.codeNum }"/>">
-						<br><br>
-						<h6>사용여부</h6>
-						<br>
-						<select class="form-select">
-							<option selected>선택하세요</option>
-							<option value="1">Y</option>
-							<option value="2">N</option>
-						</select>
-						<br><br>
-						<h6>예비1(varchar type)</h6>
-						<br>
-						<input class="form-control" type="text">
-						<br><br>
-						<h6>예비1(int type)</h6>
-						<br>
-						<input class="form-control" type="text">
-						<br><br>
-						<h6>설명</h6>
-						<br>
-						<textarea class="form-control" rows="3"></textarea>
-						<br><br>
 					</div>
 					<div class="col">
 						<h6>코드그룹 이름</h6>
 						<br>
-						<input class="form-control" type="text" name="name_ko" id="name_ko" value="<c:out value="${item.name_ko }"/>" readonly>
-						<br><br>
+						<select class="form-select" name="codeGroup_seq">
+							<option value="">::코드그룹명::</option>
+							<c:forEach items="${add}" var="add" varStatus="status">
+								<option value="" <c:if test="${add.seq eq item.codeGroup_seq }"> selected</c:if>><c:out value="${add.name_ko }"/></option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>코드 이름(한글)</h6>
+						<br>
+						<input class="form-control" type="text" name="cdname_ko" value="<c:out value="${item.cdname_ko }"/>">
+					</div>
+					<div class="col">
 						<h6>코드 이름(영문)</h6>
 						<br>
 						<input class="form-control" type="text" name="name_eng" value="<c:out value="${item.name_eng }"/>">
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>코드</h6>
+						<br>
+						<input class="form-control" type="text" name="codeNum" value="<c:out value="${item.codeNum }"/>">
+					</div>
+					<div class="col">
 						<h6>순서</h6>
 						<br>
 						<input class="form-control" type="text" name="order">
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>사용여부</h6>
+						<br>
+						<select class="form-select" name="useNY">
+							<option selected>::선택::</option>
+							<option value="1" <c:if test="${item.useNY eq 1}">selected</c:if>>Y</option>
+							<option value="0" <c:if test="${item.useNY eq 0}">selected</c:if>>N</option>
+						</select>
+					</div>
+					<div class="col">
 						<h6>삭제여부</h6>
 						<br>
-						<select class="form-select">
-							<option selected>선택하세요</option>
-							<option value="1">Y</option>
-							<option value="2">N</option>
+						<select class="form-select" name="delNY">
+							<option selected>::선택::</option>
+							<option value="1" <c:if test="${item.delNY eq 1}">selected</c:if>>Y</option>
+							<option value="0" <c:if test="${item.delNY eq 0}">selected</c:if>>N</option>
 						</select>
-						<br><br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>예비1(varchar type)</h6>
+						<br>
+						<input class="form-control" type="text">
+					</div>
+					<div class="col">
 						<h6>예비2(varchar type)</h6>
 						<br>
 						<input class="form-control" type="text">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>예비1(int type)</h6>
+						<br>
+						<input class="form-control" type="text">
 						<br><br>
+					</div>
+					<div class="col">
 						<h6>예비2(int type)</h6>
 						<br>
 						<input class="form-control" type="text">
 						<br><br>
 					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>설명</h6>
+						<br>
+						<textarea class="form-control" rows="3"></textarea>
+					</div>
+					<div class="col"></div>
 				</div>
 				<div class="ccc">
 					<button type="button" id="listbtn" class="btn btn-outline-dark">
@@ -223,21 +254,57 @@
 					<button type="button" id="savebtn" class="btn btn-dark" style="float: right">
 						<i class="fa-solid fa-circle-check"></i>
 					</button>
-					<button type="button" class="btn btn-warning" id="clearbtn" style="float: right; margin: 0 20px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					<button type="button" class="btn btn-danger" id="delbtn" style="float: right" data-bs-toggle="modal" data-bs-target="#deleteModal">
+						<i class="fa-solid fa-trash"></i>
+					</button>
+					<button type="button" class="btn btn-outline-danger" id="uelbtn" style="float: right" data-bs-toggle="modal" data-bs-target="#ueleteModal">
+						<i class="fa-solid fa-x"></i>
+					</button>
+					<button type="button" class="btn btn-warning" id="clearbtn" style="float: right" data-bs-toggle="modal" data-bs-target="#clearModal">
 						<i class="fa-solid fa-rotate-left"></i>
 					</button>
 				</div>
-				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal fade" id="ueleteModal" tabindex="-1" aria-labelledby="ueleteModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">내용 취소</h5>
+								<h5 class="modal-title" id="ueleteModalLabel">내용 취소</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">해당 데이터를 비활성화하시겠습니까?</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-secondary" id="realuelbtn">삭제</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="deleteModalLabel">내용 취소</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">해당 데이터를 삭제하시겠습니까?</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-secondary" id="realdelbtn">삭제</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="clearModal" tabindex="-1" aria-labelledby="clearModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="clearModalLabel">내용 취소</h5>
 								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 							</div>
 							<div class="modal-body">입력한 데이터를 모두 삭제하시겠습니까?</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<button type="button" class="btn btn-secondary" id="delbtn">삭제</button>
+								<button type="button" class="btn btn-secondary" id="realclearbtn">삭제</button>
 							</div>
 						</div>
 					</div>
@@ -282,8 +349,16 @@
 		formVo.attr("action", goUrlList).submit();
 	});
 	
-	$("#delbtn").on("click", function(){
+	$("#realclearbtn").on("click", function(){
 		formVo.attr("action", goUrlForm).submit();
+	});
+	
+	$("#realdelbtn").on("click", function(){
+		formVo.attr("action", goUrlDele).submit();
+	});
+	
+	$("#realuelbtn").on("click", function(){
+		formVo.attr("action", goUrlUele).submit();
 	});
 	
 	</script>
