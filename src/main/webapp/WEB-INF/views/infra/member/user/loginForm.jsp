@@ -70,12 +70,10 @@
 		text-decoration: none;
 	}
 	
-	body {
+	.backimage {
 		background-image: url("../resources/image/logbg.jpg");
 		background-repeat: no-repeat;
 		background-size : cover;
-		width : 100%;
-		height : auto;
 	}
 
 	.container {
@@ -141,58 +139,60 @@
 <body>
 
 <!-- start -->
-	<div class="abc">
-		<br><br>
-		<a href="/"><h1>coocha</h1></a>
-		<br><br><br>
-		<div class="aaa">
-			<div class="container">
-				<br><br>
-				<h2><b>LOGIN</b></h2>
-				<br>
-				<div class="row justify-content-center">
-					<div class="col-7">
-						<input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="kjy">
-						<br>
-						<input type="password" class="form-control" placeholder="비밀번호" id="pwd" name="pwd" value="123">
-					</div>
-				</div>
-				<br><br>
-				sessSeq : <c:out value="${sessSeq }"/><br>
-				sessId : <c:out value="${sessId }"/><br>
-				<div class="row justify-content-center">
-					<button class="btn1" type="button" id="loginbtn"><b>로그인</b></button>
-				</div>
-			</div>
-			<br>
-			<div class="container">
-				<h6><b>간편로그인</b></h6>
-				<br>
-				<div class="row justify-content-center">
-					<div class="col-1">
-						<a href="https://nid.naver.com/nidlogin.login?oauth_token=fnc77UPYrVvzZmFqE6&consumer_key=LY2kzz66QOIl_rYOcwEE&logintp=oauth2&nurl=https%3A%2F%2Fnid.naver.com%2Foauth2.0%2Fauthorize%3Fresponse_type%3Dtoken%26state%3Dc2cf4fff-4b41-4c46-8978-38fad9d416c3%26client_id%3DLY2kzz66QOIl_rYOcwEE%26redirect_uri%3Dhttps%253A%252F%252Fmember.coocha.co.kr%252Fmember%252Flogin%252Fsnscallback.do%26locale%3Dko_KR%26inapp_view%3D%26oauth_os%3D&locale=ko_KR&inapp_view=&svctype=">
-						<img src="../resources/image/naver.png" style="width:40px;"></a>
-					</div>
-					<div class="col-1">
-						<a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fproxy%3DeasyXDM_Kakao_1umprdwc0zu_provider%26ka%3Dsdk%252F1.43.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FWin32%2520origin%252Fhttps%25253A%25252F%25252Fmember.coocha.co.kr%26origin%3Dhttps%253A%252F%252Fmember.coocha.co.kr%26response_type%3Dcode%26redirect_uri%3Dkakaojs%26state%3Dv9t01oe252pj5m55naeq%26client_id%3De080e5f8a171c5bd650ef6d2efe60fd3&talk_login=hidden">
-						<img src="../resources/image/kakao.png" style="width:40px;"></a>
-					</div>
-					<div class="col-1">
-						<img src="../resources/image/google.png" style="width:40px;">
-					</div>
-					<div class="col-1">
-						<img src="../resources/image/facebook.png" style="width:40px;">
-					</div>
-				</div>
-			</div>
+	<div class="backimage">
+		<div class="abc">
 			<br><br>
-			<div class="box">
-				<br>
-				<a href="findID"><p>아이디 찾기 &nbsp;｜</p></a>
-				<a href="findPW"><p>비밀번호 찾기 &nbsp;｜</p></a>
-				<a href="join"><p>회원가입</p></a>
-			</div>
+			<a href="/"><h1>coocha</h1></a>
 			<br><br><br>
+			<div class="aaa">
+				<div class="container">
+					<br><br>
+					<h2><b>LOGIN</b></h2>
+					<br>
+					<div class="row justify-content-center">
+						<div class="col-7">
+							<input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="kjy">
+							<br>
+							<input type="password" class="form-control" placeholder="비밀번호" id="pwd" name="pwd" value="123">
+						</div>
+					</div>
+					<br><br>
+					sessSeq : <c:out value="${sessSeq }"/><br>
+					sessId : <c:out value="${sessId }"/><br>
+					<div class="row justify-content-center">
+						<button class="btn1" type="button" id="loginbtn"><b>로그인</b></button>
+					</div>
+				</div>
+				<br>
+				<div class="container">
+					<h6><b>간편로그인</b></h6>
+					<br>
+					<div class="row justify-content-center">
+						<div class="col-1">
+							<a href="https://nid.naver.com/nidlogin.login?oauth_token=fnc77UPYrVvzZmFqE6&consumer_key=LY2kzz66QOIl_rYOcwEE&logintp=oauth2&nurl=https%3A%2F%2Fnid.naver.com%2Foauth2.0%2Fauthorize%3Fresponse_type%3Dtoken%26state%3Dc2cf4fff-4b41-4c46-8978-38fad9d416c3%26client_id%3DLY2kzz66QOIl_rYOcwEE%26redirect_uri%3Dhttps%253A%252F%252Fmember.coocha.co.kr%252Fmember%252Flogin%252Fsnscallback.do%26locale%3Dko_KR%26inapp_view%3D%26oauth_os%3D&locale=ko_KR&inapp_view=&svctype=">
+							<img src="../resources/image/naver.png" style="width:40px;"></a>
+						</div>
+						<div class="col-1">
+							<a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fproxy%3DeasyXDM_Kakao_1umprdwc0zu_provider%26ka%3Dsdk%252F1.43.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FWin32%2520origin%252Fhttps%25253A%25252F%25252Fmember.coocha.co.kr%26origin%3Dhttps%253A%252F%252Fmember.coocha.co.kr%26response_type%3Dcode%26redirect_uri%3Dkakaojs%26state%3Dv9t01oe252pj5m55naeq%26client_id%3De080e5f8a171c5bd650ef6d2efe60fd3&talk_login=hidden">
+							<img src="../resources/image/kakao.png" style="width:40px;"></a>
+						</div>
+						<div class="col-1">
+							<img src="../resources/image/google.png" style="width:40px;">
+						</div>
+						<div class="col-1">
+							<img src="../resources/image/facebook.png" style="width:40px;">
+						</div>
+					</div>
+				</div>
+				<br><br>
+				<div class="box">
+					<br>
+					<a href="findID"><p>아이디 찾기 &nbsp;｜</p></a>
+					<a href="findPW"><p>비밀번호 찾기 &nbsp;｜</p></a>
+					<a href="join"><p>회원가입</p></a>
+				</div>
+				<br><br><br>
+			</div>
 		</div>
 	</div>
 
