@@ -71,4 +71,15 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectOneLogin(dto);
 	}
 	
+	@Override
+	public int infochange(Member dto) throws Exception {
+		return dao.infochange(dto);
+	}
+	
+//	@Override
+//	public int changePW(Member dto) throws Exception {
+//		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));
+//		return dao.update(dto);
+//	}
+	
 }

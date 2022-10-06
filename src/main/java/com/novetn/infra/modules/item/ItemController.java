@@ -92,8 +92,15 @@ public class ItemController {
 		return "redirect:/item/itemList";
 	}
 	
+	@RequestMapping(value = "mainPage")
+	public String mainPage() throws Exception {
+		
+		return "infra/item/user/mainPage";
+		
+	}
+	
 	@RequestMapping(value = "itemView")
-	public String login() throws Exception {
+	public String itemView() throws Exception {
 		
 		return "infra/item/user/itemView";
 		

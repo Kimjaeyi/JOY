@@ -139,7 +139,7 @@ public class MemberController {
 	@RequestMapping(value = "userLogin")
 	public String userLogin() throws Exception {
 		
-		return "home";
+		return "infra/item/user/mainPage";
 		
 	}
 	
@@ -207,24 +207,38 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "infoModForm")
-	public String infoModForm() throws Exception {
+	public String infoModForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		
+		System.out.println("vo.getSeq(): " + vo.getSeq());
+		Member result = service.selectOne(vo);
+		model.addAttribute("user", result);
 		
 		return "infra/member/user/infoModForm";
-		
 	}
 	
-	@RequestMapping(value = "memberMod")
-	public String memberMod(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	@RequestMapping(value = "infochange")
+	public String infochange(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		dto.setEmail(dto.getEmailID() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
-		service.insert(dto);
-		
-		vo.setSeq(dto.getSeq());
+		service.infochange(dto);
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
-		return "redirect:/member/memberMod";
+		return "redirect:/member/infoModForm";
 	}
+	
+//	@RequestMapping(value = "memberMod")
+//	public String memberMod(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+//		
+//		dto.setEmail(dto.getEmailID() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
+//		service.insert(dto);
+//		
+//		vo.setSeq(dto.getSeq());
+//		
+//		redirectAttributes.addFlashAttribute("vo", vo);
+//		
+//		return "redirect:/member/memberMod";
+//	}
 	
 	@ResponseBody
 	@RequestMapping(value = "loginProc")

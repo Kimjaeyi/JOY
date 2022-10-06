@@ -66,6 +66,10 @@ public class MemberDao {
 		return sqlSession.selectOne(namespace + ".selectOneLogin", dto);
 	}
 	
+	public int infochange(Member dto) {
+		return sqlSession.update(namespace + ".infochange", dto);
+	}
+	
 	public static String getSessionSeqCore(HttpServletRequest httpServletRequest) {
 		HttpSession httpSession =  httpServletRequest.getSession();
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");

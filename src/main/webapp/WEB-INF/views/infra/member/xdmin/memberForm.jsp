@@ -265,7 +265,7 @@
 							<option value="6" <c:if test="${item.telecom eq 6}">selected</c:if>>KT</option>
 							<option value="7" <c:if test="${item.telecom eq 7}">selected</c:if>>LG</option>
 						</select>
-						<input type="text" class="form-control" id="phone" name="phone" style="width: 79%; display: inline" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
+						<input type="text" class="form-control" id="phone" name="phone" style="width: 40%; display: inline" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
 					</div>
 				</div>
 				<div class="row">

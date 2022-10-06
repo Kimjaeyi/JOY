@@ -142,7 +142,7 @@
 	<div class="backimage">
 		<div class="abc">
 			<br><br>
-			<a href="/"><h1>coocha</h1></a>
+			<a href="/item/mainPage"><h1>coocha</h1></a>
 			<br><br><br>
 			<div class="aaa">
 				<div class="container">

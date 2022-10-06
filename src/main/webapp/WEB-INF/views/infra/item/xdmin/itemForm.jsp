@@ -130,6 +130,14 @@
 		margin: 0 0 5% 0;
 	}
 	
+	.addScroll{
+		overflow-y:auto;
+		height: 150px;
+		background-color:#E9ECEF;
+		padding-top:5px; 
+		padding-left:5px;
+	}
+	
 </style>
 
 <body>
@@ -163,6 +171,7 @@
 						<br>
 						<input class="form-control" type="text" name="stock" value="<c:out value="${item.stock }"/>">
 					</div>
+				</div>
 				<div class="row">
 					<div class="col">
 						<h6>상품 이름</h6>
@@ -227,11 +236,19 @@
 					</div>
 				<div class="row">
 					<div class="col">
-						<h6>설명</h6>
+						<h6>이미지 첨부</h6>
 						<br>
-						<textarea class="form-control" rows="3"></textarea>
+						<input type="file" multiple="multiple">
 					</div>
-					<div class="col"></div>
+					<div class="col">
+						<h6><!-- 설명 --></h6>
+						<br>
+						<div class="addScroll">
+							<ul id="ulFile1" class="list-group">
+							</ul>
+						</div>
+						<!-- <textarea class="form-control" rows="3"></textarea> -->
+					</div>
 				</div>
 				<div class="ccc">
 					<div class="ccc">
