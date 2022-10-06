@@ -212,11 +212,7 @@
 			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
-					if ($("#id").val() == "kjy" || $("#pwd").val() == "123") {
-						location.href = "/member/managerLogin";
-					} else { 
-						location.href = "/member/userLogin";
-					}
+					location.href = "/member/userLogin";
 				} else {
 					alert("아이디나 비밀번호가 일치하지 않습니다.");
 				}

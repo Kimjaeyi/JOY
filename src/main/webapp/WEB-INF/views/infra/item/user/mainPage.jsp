@@ -49,7 +49,7 @@
 		display: inline-block;
 		position: absolute;
 	    top: 29px;
-	    right: 300px;
+	    right: 270px;
 	    color: white;
 	    padding: 10px 10px 9px;
 	    font-weight: bold;
@@ -83,20 +83,20 @@
 	    line-height: 1.5s7;
 	    text-align: center;
 	}
-	
-	.managerLogin .managebtn {
+*/	
+	.managebtn {
 		width: 65px;
 		display: inline-block;
 		position: absolute;
-	    top: 35px;
-	    right: 300px;
+	    top: 38px;
+	    right: 360px;
 	    color: white;
 	    padding: 10px 10px 9px;
 	    font-weight: bold;
 	    line-height: 1.5s7;
 	    text-align: center;
 	}
- */	
+	
 	.footer li {
 		margin: 0 2%;
 	}
@@ -152,6 +152,9 @@
 				<c:if test="${sessSeq ne null}">
 					<div class="after">
 						<ul class="gnb">
+							<c:if test="${sessSeq eq 1}">
+								<a href="/member/memberList"><div class="managebtn"><i class="fa-solid fa-wrench fa-lg"></i></div></a>
+							</c:if>
 							<li><span class="userid"><c:out value="${sessId }"/>님 :) </span></li>
 							<li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li>
 							<li><a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
