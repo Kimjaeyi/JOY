@@ -34,6 +34,7 @@
 				a.seq
 				,b.name_ko
 				,b.codegroupNum
+				,a.codeGroup_seq
 			    ,a.codeNum
 			    ,a.cdname_ko
 			    ,a.name_eng
@@ -52,22 +53,24 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO Code (
-			name_ko
-			, codegroupNum
-			, codeNum
-			, cdname_ko
-			, name_eng
-			, regDate
-			, modDate
-			, useNY
-			, delNY
+		INSERT INTO Code a (
+			b.name_ko
+			, b.codegroupNum
+			, a.codeNum
+			, a.cdname_ko
+			, a.codeGroup_seq
+			, a.name_eng
+			, a.regDate
+			, a.modDate
+			, a.useNY
+			, a.delNY
 		)
 		VALUES (
-			# {name_ko}
+			#{name_ko}
 			, #{codegroupNum}
 			, #{codeNum}
 			, #{cdname_ko}
+			, #{codeGroup_seq}
 			, #{name_eng}
 			, #{regDate}
 			, now()
@@ -84,6 +87,7 @@
 		SELECT
 			b.name_ko
 			, b.codegroupNum
+			, a.codeGroup_seq
 			, a.codeNum
 			, a.cdname_ko
 			, a.name_eng
@@ -101,6 +105,7 @@
 		UPDATE Code
 		SET
 			codeNum = #{codeNum}
+			, codeGroup_seq = #{codeGroup_seq}
 			, cdname_ko = #{cdname_ko}
 			, name_eng = #{name_eng}
 			, modDate = now()

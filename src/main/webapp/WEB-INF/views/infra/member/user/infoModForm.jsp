@@ -205,7 +205,7 @@
 						<h5>아이디</h5>
 					</div>
 					<div class="col-9">
-						<input class="form-control" type="text" id="id" name="id" value="<c:out value="${item.id}"/>" style="color: #6900EF; width: 35%" readonly>
+						<input class="form-control" type="text" id="id" name="id" value="<c:out value="${user.id}"/>" style="color: #6900EF; width: 35%" readonly>
 					</div>
 				</div>
 				<div class="row">
@@ -213,7 +213,7 @@
 						<h5>비밀번호</h5>
 					</div>
 					<div class="col-9">
-						<input type="password" class="form-control" id="pwd" name="pwd" style="width: 35%" value="<c:out value="${item.pwd}"/>" readonly>
+						<input type="password" class="form-control" id="pwd" name="pwd" style="width: 35%" value="<c:out value="${user.pwd}"/>" readonly>
 					</div>
 				</div>
 				<div class="row">
@@ -221,15 +221,15 @@
 						<h5>이메일</h5>
 					</div>
 					<div class="col-9">
-						<input type="text" class="form-control" id="emailID" name="emailID" value="<c:out value="${item.emailID}"/>" style="width: 20%; display: inline">
+						<input type="text" class="form-control" id="emailID" name="emailID" value="<c:out value="${user.emailID}"/>" style="width: 20%; display: inline">
 						<select class="form-select" name="emailDomain" id="emailDomain" style="width: 38%; display: inline">
 							<option selected>::이메일도메인::</option>
-							<option value="8" <c:if test="${item.emailDomain eq 8}">selected</c:if>>@naver.com</option>
-							<option value="9" <c:if test="${item.emailDomain eq 9}">selected</c:if>>@gmail.com</option>
-							<option value="10" <c:if test="${item.emailDomain eq 10}">selected</c:if>>@hanmail.net</option>
-							<option value="11" <c:if test="${item.emailDomain eq 11}">selected</c:if>>@daum.com</option>
-							<option value="12" <c:if test="${item.emailDomain eq 12}">selected</c:if>>@nate.com</option>
-							<option value="13" <c:if test="${item.emailDomain eq 13}">selected</c:if>>@coocha.com</option>
+							<option value="8" <c:if test="${user.emailDomain eq 8}">selected</c:if>>@naver.com</option>
+							<option value="9" <c:if test="${user.emailDomain eq 9}">selected</c:if>>@gmail.com</option>
+							<option value="10" <c:if test="${user.emailDomain eq 10}">selected</c:if>>@hanmail.net</option>
+							<option value="11" <c:if test="${user.emailDomain eq 11}">selected</c:if>>@daum.com</option>
+							<option value="12" <c:if test="${user.emailDomain eq 12}">selected</c:if>>@nate.com</option>
+							<option value="13" <c:if test="${user.emailDomain eq 13}">selected</c:if>>@coocha.com</option>
 						</select>
 					</div>
 				</div>
@@ -240,11 +240,11 @@
 					<div class="col-9">
 						<select class="form-select" name="telecom" id="telecom" style="width: 20%; display: inline">
 							<option selected>::통신사::</option>
-							<option value="5" <c:if test="${item.telecom eq 5}">selected</c:if>>SKT</option>
-							<option value="6" <c:if test="${item.telecom eq 6}">selected</c:if>>KT</option>
-							<option value="7" <c:if test="${item.telecom eq 7}">selected</c:if>>LG</option>
+							<option value="5" <c:if test="${user.telecom eq 5}">selected</c:if>>SKT</option>
+							<option value="6" <c:if test="${user.telecom eq 6}">selected</c:if>>KT</option>
+							<option value="7" <c:if test="${user.telecom eq 7}">selected</c:if>>LG</option>
 						</select>
-						<input type="text" class="form-control" id="phone" name="phone" style="width: 35%; display: inline" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
+						<input type="text" class="form-control" id="phone" name="phone" style="width: 35%; display: inline" placeholder="ex. 010-0000-0000" value="<c:out value="${user.phone}"/>">
 					</div>
 				</div>
 				<div class="row">
@@ -262,9 +262,9 @@
 						<h5></h5>
 					</div>
 					<div class="col-9">
-						<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" value="<c:out value="${item.addr1}"/>" readonly>
-						<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소" value="<c:out value="${item.addr2}"/>">
-						<input type="text" class="form-control" id="addr3" name="addr3" placeholder="참고항목" value="<c:out value="${item.addr3}"/>" readonly>
+						<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" value="<c:out value="${user.addr1}"/>" readonly>
+						<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소" value="<c:out value="${user.addr2}"/>">
+						<input type="text" class="form-control" id="addr3" name="addr3" placeholder="참고항목" value="<c:out value="${user.addr3}"/>" readonly>
 					</div>
 				</div>
 				<div class="row">
@@ -273,11 +273,11 @@
 					</div>
 					<div class="col-9">
 						<div class="form-check form-check-inline" name="gender">
-							<input class="form-check-input" type="radio" name="gender" id="gender1" value="43" <c:if test="${item.gender eq 43 }"> checked</c:if>>
+							<input class="form-check-input" type="radio" name="gender" id="gender1" value="43" <c:if test="${user.gender eq 43 }"> checked</c:if>>
 							<label class="form-check-label" for="gender1">남자</label>
 						</div>
 						<div class="form-check form-check-inline" name="gender">
-							<input class="form-check-input" type="radio" name="gender" id="gender2" value="44" <c:if test="${item.gender eq 44 }"> checked</c:if>>
+							<input class="form-check-input" type="radio" name="gender" id="gender2" value="44" <c:if test="${user.gender eq 44 }"> checked</c:if>>
 							<label class="form-check-label" for="gender2">여자</label>
 						</div>
 					</div>
@@ -288,15 +288,15 @@
 					</div>
 					<div class="col-9">
 						<div class="form-check form-check-inline" name="validity">
-							<input class="form-check-input" type="radio" name="validity" id="validity1" value="45" <c:if test="${item.validity eq 45 }"> checked</c:if>>
+							<input class="form-check-input" type="radio" name="validity" id="validity1" value="45" <c:if test="${user.validity eq 45 }"> checked</c:if>>
 							<label class="form-check-label" for="validity1">1년</label>
 						</div>
 						<div class="form-check form-check-inline" name="validity">
-							<input class="form-check-input" type="radio" name="validity" id="validity2" value="46" <c:if test="${item.validity eq 46 }"> checked</c:if>>
+							<input class="form-check-input" type="radio" name="validity" id="validity2" value="46" <c:if test="${user.validity eq 46 }"> checked</c:if>>
 							<label class="form-check-label" for="validity2">3년</label>
 						</div>
 						<div class="form-check form-check-inline" name="validity">
-							<input class="form-check-input" type="radio" name="validity" id="validity3" value="47" <c:if test="${item.validity eq 47 }"> checked</c:if>>
+							<input class="form-check-input" type="radio" name="validity" id="validity3" value="47" <c:if test="${user.validity eq 47 }"> checked</c:if>>
 							<label class="form-check-label" for="validity3">탈퇴 시 파기</label>
 						</div>
 					</div>
