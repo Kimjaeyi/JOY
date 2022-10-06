@@ -46,7 +46,7 @@
 	}
 	
 	.abc {
-		margin : 10% 15%;
+		margin : 10% 20%;
 	}
 	
 	input, select, .form-check {
@@ -58,13 +58,12 @@
 		font-size: 25px;
 	}
 	
-	h5 {
+	h5, h6 {
 		font-weight: bold;
-		margin: 5% 20% 6% 5%;
 	}
 	
-	.form-control {
-		margin: 0 0 27px 0;
+	.row {
+		margin: 3% 0;
 	}
 	
 	#zipcode, #findaddress, #addr1, #resetbtn,
@@ -97,17 +96,17 @@
 	}
 	
 	#addr1 {
-		width: 40%;
+		width: 45%;
 		display: inline;
 	}
 	
 	#addr2 {
-		width: 25%;
+		width: 33%;
 		display: inline;
 	}
 	
 	#addr3 {
-		width: 10%;
+		width: 15%;
 		display: inline;
 	}
 	
@@ -185,69 +184,122 @@
     <br><br>
 	<br>
 	<div class="abc">
-		<h3>회원정보 수정</h3>
-		<hr style="border: 2px solid black">
-		<br>
-		<div class="row justify-content-center">
+		<div class="row">
 			<div class="col-3">
+				<a href="/member/mypage"><h3 style="font-size: 25px; margin-bottom: 8%"><b>마이쿠차</b></h3></a>
 				<br>
-				<h5>아이디</h5>
-				<br><br>
-				<h5>현재 비밀번호</h5>
-				<br><br>
-				<h5>새 비밀번호</h5>
-				<br><br>
-				<h5>새 비밀번호 확인</h5>
-				<br><br>
-				<h5>이메일</h5>
-				<br><br>
-				<h5>전화번호</h5>
-				<br><br>
-				<h5>주소</h5>
-				<br><br><br><br><br>
-				<h5>수신여부</h5>
+				<a href="/member/shipping"><h6 style="font-size: 18px; margin: 4% 0">주문배송조회</h6></a>
+				<br>
+				<a href="/member/infoModForm"><h6 style="color: #6900EF; font-size: 18px; margin: 4% 0">회원정보 수정</h6></a>
+				<br>
+				<a href="/member/changePW"><h6 style="font-size: 18px; margin: 4% 0">비밀번호 변경</h6></a>
+				<br>
+				<a href="/member/unregister"><h6 style="font-size: 18px; margin: 4% 0">회원 탈퇴</h6></a>
 			</div>
 			<div class="col-9">
+				<h3>회원정보 수정</h3>
+				<hr style="border: 2px solid black">
 				<br>
-				<input class="form-control" type="text" id="id" name="id" value="<c:out value="${item.id}"/>" style="color: #6900EF; width: 30%" readonly>
-				<input type="password" class="form-control" style="width: 30%">
-				<input type="password" class="form-control" style="width: 30%; display:inline">
-				<p style="display:inline; font-size:12px; color: gray">&nbsp;&nbsp;8~15자 이내의 영문 대소문자, 숫자 및 특수문자 2가지 이상 조합으로 입력하세요.</p>
-				<input type="password" class="form-control" style="width: 30%">
-				<input type="text" class="form-control" style="width: 25%; display: inline">
-				<select class="form-select" id="selbox" style="display: inline; width: 15%; margin: -2.7% 0 0 0">
-					<option selected>::이메일도메인::</option>
-					<option value="1">@naver.com</option>
-					<option value="2">@gmail.com</option>
-					<option value="3">@hanmail.net</option>
-					<option value="4">@daum.com</option>
-					<option value="5">@nate.com</option>
-					<option value="6">@coocha.com</option>
-				</select>
-				<br>
-				<select class="form-select" id="selbox" style="display: inline; width: 10%; margin: -2.7% 0 0 0">
-					<option selected>::통신사::</option>
-					<option value="1">SKT</option>
-					<option value="2">KT</option>
-					<option value="3">LG</option>
-				</select>
-				<input type="text" class="form-control" style="width: 30%; display: inline">
-				<br>
-				<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" readonly>
-				<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
-				<button type="button" id="findaddress">우편번호 찾기</button>
-				<br>
-				<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" readonly>
-				<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소">
-				<input type="text" class="form-control" id="addr3" name="addr3" placeholder="참고항목" readonly>
-				<br><br>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-					<label class="form-check-label" for="inlineCheckbox1">이메일 수신 동의</label>
+				<div class="row">
+					<div class="col-3">
+						<h5>아이디</h5>
+					</div>
+					<div class="col-9">
+						<input class="form-control" type="text" id="id" name="id" value="<c:out value="${item.id}"/>" style="color: #6900EF; width: 35%" readonly>
+					</div>
 				</div>
-				<div class="form-check form-check-inline" style="margin: 0 0 0 60px">
-					<input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-					<label class="form-check-label" for="inlineCheckbox2">SMS 수신 동의</label>
+				<div class="row">
+					<div class="col-3">
+						<h5>비밀번호</h5>
+					</div>
+					<div class="col-9">
+						<input type="password" class="form-control" id="pwd" name="pwd" style="width: 35%" value="<c:out value="${item.pwd}"/>" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<h5>이메일</h5>
+					</div>
+					<div class="col-9">
+						<input type="text" class="form-control" id="emailID" name="emailID" value="<c:out value="${item.emailID}"/>" style="width: 20%; display: inline">
+						<select class="form-select" name="emailDomain" id="emailDomain" style="width: 38%; display: inline">
+							<option selected>::이메일도메인::</option>
+							<option value="8" <c:if test="${item.emailDomain eq 8}">selected</c:if>>@naver.com</option>
+							<option value="9" <c:if test="${item.emailDomain eq 9}">selected</c:if>>@gmail.com</option>
+							<option value="10" <c:if test="${item.emailDomain eq 10}">selected</c:if>>@hanmail.net</option>
+							<option value="11" <c:if test="${item.emailDomain eq 11}">selected</c:if>>@daum.com</option>
+							<option value="12" <c:if test="${item.emailDomain eq 12}">selected</c:if>>@nate.com</option>
+							<option value="13" <c:if test="${item.emailDomain eq 13}">selected</c:if>>@coocha.com</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<h5>전화번호</h5>
+					</div>
+					<div class="col-9">
+						<select class="form-select" name="telecom" id="telecom" style="width: 20%; display: inline">
+							<option selected>::통신사::</option>
+							<option value="5" <c:if test="${item.telecom eq 5}">selected</c:if>>SKT</option>
+							<option value="6" <c:if test="${item.telecom eq 6}">selected</c:if>>KT</option>
+							<option value="7" <c:if test="${item.telecom eq 7}">selected</c:if>>LG</option>
+						</select>
+						<input type="text" class="form-control" id="phone" name="phone" style="width: 35%; display: inline" placeholder="ex. 010-0000-0000" value="<c:out value="${item.phone}"/>">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<h5>주소</h5>
+					</div>
+					<div class="col-9">
+						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" style="display: inline; width: 20%" value="<c:out value="${item.zipcode}"/>" readonly>
+						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
+						<button type="button" id="findaddress">우편번호 찾기</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<h5></h5>
+					</div>
+					<div class="col-9">
+						<input type="text" class="form-control" id="addr1" name="addr1" placeholder="도로명 주소" value="<c:out value="${item.addr1}"/>" readonly>
+						<input type="text" class="form-control" id="addr2" name="addr2" placeholder="상세주소" value="<c:out value="${item.addr2}"/>">
+						<input type="text" class="form-control" id="addr3" name="addr3" placeholder="참고항목" value="<c:out value="${item.addr3}"/>" readonly>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<h5>성별</h5>
+					</div>
+					<div class="col-9">
+						<div class="form-check form-check-inline" name="gender">
+							<input class="form-check-input" type="radio" name="gender" id="gender1" value="43" <c:if test="${item.gender eq 43 }"> checked</c:if>>
+							<label class="form-check-label" for="gender1">남자</label>
+						</div>
+						<div class="form-check form-check-inline" name="gender">
+							<input class="form-check-input" type="radio" name="gender" id="gender2" value="44" <c:if test="${item.gender eq 44 }"> checked</c:if>>
+							<label class="form-check-label" for="gender2">여자</label>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<h5>개인정보 유효기간</h5>
+					</div>
+					<div class="col-9">
+						<div class="form-check form-check-inline" name="validity">
+							<input class="form-check-input" type="radio" name="validity" id="validity1" value="45" <c:if test="${item.validity eq 45 }"> checked</c:if>>
+							<label class="form-check-label" for="validity1">1년</label>
+						</div>
+						<div class="form-check form-check-inline" name="validity">
+							<input class="form-check-input" type="radio" name="validity" id="validity2" value="46" <c:if test="${item.validity eq 46 }"> checked</c:if>>
+							<label class="form-check-label" for="validity2">3년</label>
+						</div>
+						<div class="form-check form-check-inline" name="validity">
+							<input class="form-check-input" type="radio" name="validity" id="validity3" value="47" <c:if test="${item.validity eq 47 }"> checked</c:if>>
+							<label class="form-check-label" for="validity3">탈퇴 시 파기</label>
+						</div>
+					</div>
 				</div>
 				<br><br>
 				<a href="mypage"><button type="button" id="backbtn" style="background-color: #F0F0F0"><b>취소</b></button></a>

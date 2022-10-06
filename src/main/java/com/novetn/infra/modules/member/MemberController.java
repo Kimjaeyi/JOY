@@ -185,6 +185,20 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value = "changePW")
+	public String changePW() throws Exception {
+		
+		return "infra/member/user/changePW";
+		
+	}
+	
+	@RequestMapping(value = "unregister")
+	public String unregister() throws Exception {
+		
+		return "infra/member/user/unregister";
+		
+	}
+	
 	@RequestMapping(value = "shipping")
 	public String shipping() throws Exception {
 		
