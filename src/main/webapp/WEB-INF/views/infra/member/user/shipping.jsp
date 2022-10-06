@@ -143,12 +143,16 @@
     <div class="abc">
 		<div class="row">
 			<div class="col-3">
-					<a href="/member/mypage"><h3 style="font-size: 25px; margin: 2% 0""><b>마이페이지</b></h3></a>
-					<br><br><br>
-					<a href="shipping"><h6 style="color: #6900EF; font-size: 18px; margin: 2% 0">주문배송조회</h6></a>
-					<br>
-					<a href="/member/infoModForm"><h6 style="font-size: 18px; margin: 2% 0">회원정보 수정</h6></a>
-				</div>
+				<a href="/member/mypage"><h3 style="font-size: 25px; margin-bottom: 8%"><b>마이쿠차</b></h3></a>
+				<br>
+				<a href="/member/shipping"><h6 style="color: #6900EF; font-size: 18px; margin: 4% 0">주문배송조회</h6></a>
+				<br>
+				<a href="/member/infoModForm"><h6 style="font-size: 18px; margin: 4% 0">회원정보 수정</h6></a>
+				<br>
+				<a href="/member/changePW"><h6 style="font-size: 18px; margin: 4% 0">비밀번호 변경</h6></a>
+				<br>
+				<a href="/member/unregister"><h6 style="font-size: 18px; margin: 4% 0">회원 탈퇴</h6></a>
+			</div>
 			<div class="col-6" style="margin: 0 7% 10% 7%">
 				<h4>주문배송조회</h4>
 				<br>

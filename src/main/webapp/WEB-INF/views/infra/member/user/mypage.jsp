@@ -26,10 +26,6 @@
 
 <style type="text/css">
 
-	h5, h6 {
-		font-weight: bold;
-	}
-		
 	a:link {
 			color:black;
 			text-decoration: none;
@@ -51,7 +47,7 @@
 		height: 50px;
 	}
 
-	h4 {
+	h4, h5, h6 {
 		font-weight : bold;
 	}
 	
@@ -128,102 +124,145 @@
     </div>
     <br><br>
     <div class="abc">
-			<div class="row">
-				<div class="col-3">
-					<h3 style="color: #6900EF; font-size: 25px; margin: 2% 0"><b>마이쿠차</b></h3>
-					<br><br><br>
-					<a href="/member/shipping"><h6 style="font-size: 18px; margin: 2% 0">주문배송조회</h6></a>
-					<br>
-					<a href="/member/infoModForm"><h6 style="font-size: 18px; margin: 2% 0">회원정보 수정</h6></a>
+		<div class="row">
+			<div class="col-3">
+				<a href="/member/mypage"><h3 style="color: #6900EF; font-size: 25px; margin-bottom: 8%"><b>마이쿠차</b></h3></a>
+				<br>
+				<a href="/member/shipping"><h6 style="font-size: 18px; margin: 4% 0">주문배송조회</h6></a>
+				<br>
+				<a href="/member/infoModForm"><h6 style="font-size: 18px; margin: 4% 0">회원정보 수정</h6></a>
+				<br>
+				<a href="/member/changePW"><h6 style="font-size: 18px; margin: 4% 0">비밀번호 변경</h6></a>
+				<br>
+				<a href="/member/unregister"><h6 style="font-size: 18px; margin: 4% 0">회원 탈퇴</h6></a>
+			</div>
+			<div class="col-8">
+				<h4 style="font-size: 20px; margin: 0 0 5% 0">마이페이지</h4>
+				<div class="row" style="border: 1px solid #6900EF; border-radius: 4px">
+					<div class="col-3" style="margin: 0 0 0 30px">
+						<br>
+						<h6>쿠폰</h6>
+						<br>
+						<h6>포인트</h6>
+						<br>
+					</div>
+					<div class="col-2" style="margin: 0 30px 0 0; text-align:right">
+						<br>
+						<h6 style="color: #6900EF">1장</h6>
+						<br>
+						<h6 style="color: #6900EF">0Point</h6>
+						<br>
+					</div>
+					<div class="col-3" style="margin: 0 0 0 30px">
+						<br>
+						<h6>구매확정</h6>
+						<br>
+						<h6>리뷰작성대기</h6>
+						<br>
+					</div>
+					<div class="col-2" style="text-align:right">
+						<br>
+						<h6 style="color: #6900EF">1건</h6>
+						<br>
+						<h6 style="color: #6900EF">1건</h6>
+						<br>
+					</div>
 				</div>
-				<div class="col-8">
-					<h4 style="font-size: 20px; margin: 0 0 5% 0">마이페이지</h4>
-					<div class="row" style="border: 1px solid #6900EF; border-radius: 4px">
-						<div class="col-3" style="margin: 0 0 0 30px">
-							<br>
-							<h6>쿠폰</h6>
-							<br>
-							<h6>포인트</h6>
-							<br>
-						</div>
-						<div class="col-2" style="margin: 0 30px 0 0; text-align:right">
-							<br>
-							<h6 style="color: #6900EF">1장</h6>
-							<br>
-							<h6 style="color: #6900EF">0Point</h6>
-							<br>
-						</div>
-						<div class="col-3" style="margin: 0 0 0 30px">
-							<br>
-							<h6>구매확정</h6>
-							<br>
-							<h6>리뷰작성대기</h6>
-							<br>
-						</div>
-						<div class="col-2" style="text-align:right">
-							<br>
-							<h6 style="color: #6900EF">1건</h6>
-							<br>
-							<h6 style="color: #6900EF">1건</h6>
-							<br>
-						</div>
-					</div>
-					<br><br><br>
-					<div class="ccc" style="margin: 3% 0">
-						<h4 style="display: inline; font-size: 20px">최근 구매내역</h4>
-						<p style="display: inline; color: gray; font-size: 12px">고객님께서 최근 2개월간 구매하신 상품의 내용과 배송현황입니다.</p>
-					</div>
-					<hr>
-					<div class="row justify-content-center">
-						<div class="col-3" style="text-align:center">
-							<p style="color: gray; font-size: 13px; font-weight: bold">주문일/구매번호</p>
-						</div>
-						<div class="col-5" style="text-align:center">
-							<p style="color: gray; font-size: 13px; font-weight: bold">상품정보</p>
-						</div>
-						<div class="col-2" style="text-align:center">
-							<p style="color: gray; font-size: 13px; font-weight: bold">상품금액</p>
-						</div>
-						<div class="col-2" style="text-align:center">
-							<p style="color: gray; font-size: 13px; font-weight: bold">관리</p>
-						</div>
-					</div>
-					<hr>
-					<div class="row justify-content-center">
-						<div class="col-3" style="text-align:center">
-							<br><br>
-							<p style="font-size: 13px; font-weight: bold">2022-07-22</p>
-							<br>
-							<a href="/item/orderdetail">
-								<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline">2022072212</p><br>
-								<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline; margin: -15px 0 0 0">3456789011</p>
-							</a>
-						</div>
-						<div class="col-2" style="text-align:center">
-							<img src="/resources/image/위메프1.png" style="width:100px; height: 100px; display: inline">
-						</div>
-						<div class="col-3">
-							<br><br>
-							<p style="color: gray; font-size: 13px; vertical-align: middle">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml</p>
-						</div>
-						<div class="col-2" style="text-align: center; vertical-align: middle">
-							<br><br>
-							<p style="color: gray; font-size: 13px; font-weight: bold">37,700원</p><br>
-							<p style="color: gray; font-size: 13px">(1개)</p>
-						</div>
-						<div class="col-2" style="text-align: center; vertical-align: middle">
-							<br><br>
-							<p style="color: gray; font-size: 13px; font-weight: bold; color: #6900EF">상품준비중</p>
-							<br>
-							<button type="button" style="font-size: 12px; border: none; border-radius: 4px">배송조회</button>
-							<button type="button" style="font-size: 12px; border: none; border-radius: 4px">상품리뷰작성</button>
-						</div>
-					</div>
-					<hr>
+				<br><br><br>
+				<div class="ccc" style="margin: 3% 0">
+					<h4 style="display: inline; font-size: 20px">최근 구매내역</h4>
+					<p style="display: inline; color: gray; font-size: 12px">고객님께서 최근 2개월간 구매하신 상품의 내용과 배송현황입니다.</p>
 				</div>
+				<hr>
+				<div class="row justify-content-center">
+					<div class="col-3" style="text-align:center">
+						<p style="color: gray; font-size: 13px; font-weight: bold">주문일/구매번호</p>
+					</div>
+					<div class="col-5" style="text-align:center">
+						<p style="color: gray; font-size: 13px; font-weight: bold">상품정보</p>
+					</div>
+					<div class="col-2" style="text-align:center">
+						<p style="color: gray; font-size: 13px; font-weight: bold">상품금액</p>
+					</div>
+					<div class="col-2" style="text-align:center">
+						<p style="color: gray; font-size: 13px; font-weight: bold">관리</p>
+					</div>
+				</div>
+				<hr>
+				<div class="row justify-content-center">
+					<div class="col-3" style="text-align:center">
+						<br><br>
+						<p style="font-size: 13px; font-weight: bold">2022-07-22</p>
+						<br>
+						<a href="/item/orderdetail">
+							<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline">2022072212</p><br>
+							<p style="color: gray; font-size: 13px; font-weight: bold; text-decoration: underline; margin: -15px 0 0 0">3456789011</p>
+						</a>
+					</div>
+					<div class="col-2" style="text-align:center">
+						<img src="/resources/image/위메프1.png" style="width:100px; height: 100px; display: inline">
+					</div>
+					<div class="col-3">
+						<br><br>
+						<p style="color: gray; font-size: 13px; vertical-align: middle">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml</p>
+					</div>
+					<div class="col-2" style="text-align: center; vertical-align: middle">
+						<br><br>
+						<p style="color: gray; font-size: 13px; font-weight: bold">37,700원</p><br>
+						<p style="color: gray; font-size: 13px">(1개)</p>
+					</div>
+					<div class="col-2" style="text-align: center; vertical-align: middle">
+						<br><br>
+						<p style="color: gray; font-size: 13px; font-weight: bold; color: #6900EF">상품준비중</p>
+						<br>
+						<button type="button" style="font-size: 12px; border: none; border-radius: 4px">배송조회</button>
+						<button type="button" style="font-size: 12px; border: none; border-radius: 4px">상품리뷰작성</button>
+					</div>
+				</div>
+				<hr>
 			</div>
 		</div>
 	</div>	
 	<br><br>
+	<footer>
+		<div class="footer">
+			<div class="inner">
+				<ul class="area-link">
+					<li>앱다운로드</li>
+					<li>회사소개</li>
+					<li>고객센터</li>
+					<li>서비스이용약관</li>
+					<li>위치정보이용약관</a</li>
+					<li><b>개인정보처리방침</b></li>
+					<li>마케팅센터</li>
+					<li>입점 및 광고 안내</li>
+				</ul>
+				<div class="area-text">
+					<p>쿠차는 상품에 직접 관여하지 않으며 상품 주문, 배송 및 환불의 의무와 책임은 각 판매업체에 있습니다.</p>
+				</div>
+				<div class="area-bottom">
+					<div class="info">
+						<span>(주)제이와이케이</span> 
+						<span>대표 김재이</span> 
+						<span>사업자등록번호 123-45-67890</span>
+					</div>
+					<div class="address">
+						<span>서울특별시 서초구 서초대로 77길 55, 3층</span> 
+						<span>고객센터 cs_coocha@coocha.com</span> 
+						<span>입점 · 광고 business@coocha.com</span>
+					</div>
+					<div class="copyright">
+						<p>© 2022. SearchFy Inc. All Rights Reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
 
 </body>
+</html>
