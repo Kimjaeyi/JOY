@@ -28,6 +28,7 @@
 		<interceptor>
 			<mapping path="/**"/>
 			<exclude-mapping path="/" />
+			<exclude-mapping path="/item/mainPage" />
 			<exclude-mapping path="/resources/**" />
 			<exclude-mapping path="/member/join" />
 			<exclude-mapping path="/member/memberJoin" />

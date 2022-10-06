@@ -104,7 +104,7 @@
 	}
 	
 </style>
-	
+<body>
 	<div class="abc">
 		<a href="/"><h1 style="margin: 30px 0 0 10%">coocha</h1></a>
 		<br><hr><br>
@@ -116,7 +116,7 @@
 			<h3 style="display: inline">회원가입이 완료</h3>
 			<h5 style="display: inline">되었습니다.</h5>
 			<br><br>
-			<a href="/">
+			<a href="/item/mainPage">
 				<button type="button" style="background-color: #6900EF; color: white; border-radius: 6px; border: none; width: 70px; height: 40px"><b>확인</b></button>
 			</a>
 		</div>
@@ -157,3 +157,5 @@
 			</div>
 		</footer>
 	</div>
+</body>
+</html>
