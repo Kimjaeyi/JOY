@@ -128,13 +128,13 @@ public class MemberController {
 		return returnMap;
 	}
 	
-	@RequestMapping(value = "managerLogin")
-	
-	public String managerLogin() throws Exception {
-		
-		return "infra/member/xdmin/managerLogin";
-		
-	}
+//	@RequestMapping(value = "managerLogin")
+//	
+//	public String managerLogin() throws Exception {
+//		
+//		return "infra/member/xdmin/managerLogin";
+//		
+//	}
 	
 	@RequestMapping(value = "userLogin")
 	public String userLogin() throws Exception {

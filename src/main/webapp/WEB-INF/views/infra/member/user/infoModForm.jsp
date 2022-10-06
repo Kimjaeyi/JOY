@@ -22,6 +22,11 @@
 	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/resources/demos/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 </head>
 
 <style type="text/css">
@@ -60,6 +65,10 @@
 	
 	h5, h6 {
 		font-weight: bold;
+	}
+	
+	h5 {
+		margin: 6% 0;
 	}
 	
 	.row {
@@ -136,6 +145,9 @@
 
 <body>
 	<form id="form" name="form" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="memberVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
@@ -218,6 +230,14 @@
 				</div>
 				<div class="row">
 					<div class="col-3">
+						<h5>생년월일</h5>
+					</div>
+					<div class="col-9">
+						<input class="form-control shDate" type="text" id="dob" name="dob" value="<c:out value="${user.dob}"/>" style="width: 35%">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
 						<h5>이메일</h5>
 					</div>
 					<div class="col-9">
@@ -252,7 +272,7 @@
 						<h5>주소</h5>
 					</div>
 					<div class="col-9">
-						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" style="display: inline; width: 20%" value="<c:out value="${item.zipcode}"/>" readonly>
+						<input type="text" class="form-control" id="zipcode" name="zipcode" placeholder="우편번호" style="display: inline; width: 20%" value="<c:out value="${user.zipcode}"/>" readonly>
 						<button type="button" id="resetbtn"><i class="fa-solid fa-rotate-left"></i></button>
 						<button type="button" id="findaddress">우편번호 찾기</button>
 					</div>
@@ -308,6 +328,10 @@
 		</div>
 	</div>
 	</form>
+	<form name="formVo" id="formVo" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="memberVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<br><br>
 	<footer>
 		<div class="footer">
@@ -349,26 +373,39 @@
 	
 	<script type="text/javascript">
 	
-	var goUrlInst = "/member/memberMod";
-//	var goUrlUpdt = "/member/memberUpdt";
+	var goUrlForm = "/member/infoModForm";
+	var goUrlUpdt = "/member/infochange";
 		
 	var seq = $("input:hidden[name=seq]");
+	var formVo = $("form[name=formVo]");
 	
 	var form = $("form[name=form]");
 	
 	$("#savebtn").on("click", function(){
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-		
+   		form.attr("action", goUrlUpdt).submit();
 	});
 	
 	$("#findaddress").on("click", function() {
 		here();
+	});
+	
+	$(document).ready(function() {
+		$("input.shDate").datepicker();
+	});
+	
+	$.datepicker.setDefaults({
+		dateFormat : 'yy-mm-dd',
+		prevText : '이전 달',
+		nextText : '다음 달',
+		monthNames : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		monthNamesShort : [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월',
+				'9월', '10월', '11월', '12월' ],
+		dayNames : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesShort : [ '일', '월', '화', '수', '목', '금', '토' ],
+		dayNamesMin : [ '일', '월', '화', '수', '목', '금', '토' ],
+		showMonthAfterYear : true,
+		yearSuffix : '년'
 	});
 	
 	function here() {

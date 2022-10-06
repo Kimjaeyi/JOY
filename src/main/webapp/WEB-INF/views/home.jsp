@@ -130,7 +130,7 @@
 								<p class="card-text"><center>코드그룹 / 코드 / 회원 / 상품 관리</center></p>
 								<br>
 								<div class="bbb">
-									<a href="/codeGroup/codeGroupList"><button type="button" class="btn">바로가기</button></a>
+									<a href="/member/memberList"><button type="button" class="btn" id="managerpage">바로가기</button></a>
 								</div>
 							</div>
 						</div>
@@ -140,6 +140,25 @@
 			<br><br><br><br>
 		</div>
 	</div>
+	
+	<script type="text/javascript">
+	
+		$("#managerpage").on("click", function(){
+			if (sessSeq == 1){
+		   		// insert
+		   		//if (validationInst() == false) return false;
+		   		form.attr("action", goUrlPage).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		//if (validationUpdt() == false) return false;
+		   		alert("접근할 수 없습니다");
+		   		return false;
+		   	}
+			
+		}); 
+	
+	</script>
 		
 </body>
 </html>

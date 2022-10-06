@@ -199,7 +199,7 @@
 					<h6>생년월일</h6>
 					<input type="text" class="form-control shDate" id="dob" name="dob" placeholder="생년월일 8자리 (YYYY-MM-DD)" value="<c:out value="${item.dob}"/>" autocomplete="off">
 					<br>
-					<h6>휴대폰번호</h6>
+					<h6>전화번호</h6>
 					<select class="form-select" name="telecom" id="telecom" style="width: 15%; display: inline">
 						<option selected>통신사</option>
 						<option value="5" <c:if test="${item.telecom eq 5}">selected</c:if>>SKT</option>
