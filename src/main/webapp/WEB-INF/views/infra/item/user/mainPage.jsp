@@ -599,7 +599,6 @@
 							<!-- //top10 업체영역 -->
 					</div>
 				</div>
- 				
 				<div class="contents" id="wmplist">
 					<div class="slider">
 						<!-- top10 딜영역 -->
@@ -712,7 +711,9 @@
 				</div>
 			</div>
 		</div>
-		
+		<!-- //실시간 핫딜 TOP10 -->
+
+		<!-- 베스트 -->
 		<div class="section group-best">
 			<form name="bestDealForm" id="bestDealForm" action="/" class="blind">
 				<input type="hidden" name="tabKey" id="tabKey" value="TH_01" /> 
@@ -721,6 +722,7 @@
 			<div class="inner">
 				<div class="title">베스트</div>
 				<div class="contents" style="overflow-anchor: none;">
+					<!-- 베스트 딜리스트 -->
 					<ul class="deal-list" id="dealListDiv">
 						<li>
 							<div class="deal">
@@ -1143,7 +1145,8 @@
 												<img src="/resources/image/베스트12.jpg">
 											</div>
 											<div class="areas">
-												<div class="title">10%쿠폰 코렐 파이렉스 스누피 계량컵 밀폐용기/저장용기/믹싱볼/텀블러 모음전</div>
+												<div class="title">10%쿠폰 코렐 파이렉스 스누피 계량컵
+													밀폐용기/저장용기/믹싱볼/텀블러 모음전</div>
 												<div class="prices">
 													<span class="left"> <span class="num">33</span><span
 														class="unit">%</span>
@@ -1170,7 +1173,7 @@
 				</div>
 			</div>
 		</div>
-		
+		<!-- //베스트 -->
 
 		<!-- 주요쇼핑몰 -->
 		<div class="section group-shopping">
@@ -1323,7 +1326,7 @@
 			,data: {}
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "item/mainPage";
+					location.href = "/";
 				} else {
 					// by pass
 				}
