@@ -151,7 +151,7 @@
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
-                <a href="/"><span class="blind">COOCHA</span></a>
+                <a href="/item/mainPage"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
 
@@ -323,7 +323,7 @@
 				</div>
 				<br><br>
 				<a href="mypage"><button type="button" id="backbtn" style="background-color: #F0F0F0"><b>취소</b></button></a>
-				<a href="mypage"><button type="button" id="savebtn" style="background-color: #6900EF; color: white"><b>확인</b></button></a>
+				<button type="button" id="savebtn" style="background-color: #6900EF; color: white"><b>확인</b></button>
 			</div>
 		</div>
 	</div>

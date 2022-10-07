@@ -161,7 +161,7 @@
 	<div class="backimage">
 		<div class="abc">
 			<br><br>
-			<a href="/">
+			<a href="/item/mainPage">
 				<h1>coocha</h1>
 			</a>
 			<br><br><br>

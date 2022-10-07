@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html> 
 <head>
 	<title>상품 등록</title>
@@ -144,7 +144,7 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="/member/managerLogin"><h1>coocha</h1></a>
+		<a href="/"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
 			<!-- <form method="post" name="form" action="/code/codeInst"> -->
