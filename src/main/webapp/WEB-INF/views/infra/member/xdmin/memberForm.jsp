@@ -165,7 +165,7 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="/member/managerLogin"><h1>coocha</h1></a>
+		<a href="/"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
 			<!-- <form method="post" name="form" id="memberForm" method="/member/memberInst"> -->

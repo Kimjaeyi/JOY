@@ -130,7 +130,7 @@
 								<p class="card-text"><center>코드그룹 / 코드 / 회원 / 상품 관리</center></p>
 								<br>
 								<div class="bbb">
-									<a href="/member/memberList"><button type="button" class="btn" id="managerpage">바로가기</button></a>
+									<button type="button" class="btn" id="managerpage">바로가기</button>
 								</div>
 							</div>
 						</div>
@@ -144,7 +144,7 @@
 	<script type="text/javascript">
 	
 		$("#managerpage").on("click", function(){
-			if (sessSeq == 1){
+			if (sessSeq == "1"){
 		   		// insert
 		   		//if (validationInst() == false) return false;
 		   		form.attr("action", goUrlPage).submit();
