@@ -142,7 +142,7 @@
 	</div>
 	
 	<script type="text/javascript">
-	
+/* 	
 		$("#managerpage").on("click", function(){
 			if (sessSeq == "1"){
 		   		// insert
@@ -150,14 +150,41 @@
 		   		form.attr("action", goUrlPage).submit();
 		   	} else {
 		   		// update
-		   		/* keyName.val(atob(keyName.val())); */
+		   		// keyName.val(atob(keyName.val()));
 		   		//if (validationUpdt() == false) return false;
 		   		alert("접근할 수 없습니다");
 		   		return false;
 		   	}
 			
 		}); 
-	
+*/
+
+		$("#managerpage").on("click", function(){
+			
+			/* if(validation() == false) return false; */
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/loginProc"
+				,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
+				,success: function(response) {
+					if(response.rt == "success") {
+						if ($("#id").val() == "kjy" && $("#pwd").val() == "123") {
+							location.href = "/member/memberList";
+						} else {
+							alert("관리자만 접근 가능합니다.")
+							location.href = "/item/mainPage";
+						}
+					} else {
+						alert("접근할 수 없습니다");
+						location.href = "/member/login";
+					}
+				}
+			});
+		});
+ 
 	</script>
 		
 </body>

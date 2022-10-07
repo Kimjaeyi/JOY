@@ -148,7 +148,7 @@
 		<br><hr><br>
 		<div class="aaa">
 			<!-- <form method="post" name="form" action="/code/codeInst"> -->
-				<form id="form" name="form" method="post">
+				<form id="form" name="form" method="post" enctype="multipart/form-data">
 				<!-- *Vo.jsp s -->
 				<%@include file="itemVo.jsp"%>		<!-- #-> -->
 				<!-- *Vo.jsp e -->
@@ -238,7 +238,7 @@
 					<div class="col">
 						<h6>이미지 첨부</h6>
 						<br>
-						<input type="file" multiple="multiple">
+						<input type="file" multiple="multiple" name="imgfile" id="imgfile">
 					</div>
 					<div class="col">
 						<h6><!-- 설명 --></h6>
@@ -250,6 +250,8 @@
 						<!-- <textarea class="form-control" rows="3"></textarea> -->
 					</div>
 				</div>
+				<button type="button" class="btn btn-success" onclick="uploadValidation()">
+				
 				<div class="ccc">
 					<div class="ccc">
 					<button type="button" id="listbtn" class="btn btn-outline-dark">
@@ -341,6 +343,11 @@
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 	   		//if (validationInst() == false) return false;
+	   		
+	   		
+	   		
+	   		
+	   		return false;
 	   		form.attr("action", goUrlInst).submit();
 	   	} else {
 	   		// update
@@ -365,6 +372,38 @@
 		formVo.attr("action", goUrlUele).submit();
 	});
 	
+/*	uploadValidation = function(){
+    	
+    	var obj = document.getElementById("imgfile").files;
+    	var fileNum = obj.length;
+    	var ext = objName.split('.').pop().toLowerCase();
+    	var extArray = eval("extArray" + div);
+    	var totalSize = 0;
+    	
+    	if(extArray.indexOf(ext) == -1) {
+    		alert("허용된 확장자가 아닙니다.");
+//    		$("#file"+seq).val("");
+    		return false;
+    	}
+    	
+    	if (fileNum > 2) {
+    		alert("최대 2개까지 업로드 가능합니다");
+    		return false;
+    	}
+    	
+    	alert(obj);
+    	alert(obj.length);
+    	
+    	for(var i=0; i<obj.length; i++){
+    		alert(obj[i].name + " : " + obj[i].size);
+    		totalSize += obj[i].size;
+    	}
+    	
+    	
+    	alert(totalSize);
+    }
+*/
+
 	</script>
 	<!-- end -->
 

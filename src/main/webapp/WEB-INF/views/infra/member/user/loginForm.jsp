@@ -214,7 +214,7 @@
 				if(response.rt == "success") {
 					location.href = "/member/userLogin";
 				} else {
-					alert("아이디나 비밀번호가 일치하지 않습니다.");
+					alert("일치하는 회원정보가 없습니다");
 				}
 			}
 		});
