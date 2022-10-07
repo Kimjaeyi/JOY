@@ -206,22 +206,30 @@ public class MemberController {
 		
 	}
 	
+	//회원수정폼
 	@RequestMapping(value = "infoModForm")
-	public String infoModForm(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+	public String infoModForm(@ModelAttribute("vo") MemberVo vo, Model model, HttpSession httpSession) throws Exception {
 		
-		System.out.println("vo.getSeq(): " + vo.getSeq());
+		String seq = (String) httpSession.getAttribute("sessSeq");
+		vo.setSeq(seq);
+		
 		Member result = service.selectOne(vo);
 		model.addAttribute("user", result);
 		
 		return "infra/member/user/infoModForm";
 	}
 	
+	//회원수정업데이트
 	@RequestMapping(value = "infochange")
-	public String infochange(MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String infochange(MemberVo vo, Member dto, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+		
+		String seq = (String) httpSession.getAttribute("sessSeq");
+		
+		dto.setSeq(seq);
 		
 		dto.setEmail(dto.getEmailID() + CodeServiceImpl.selectOneCachedCode(dto.getEmailDomain()));
 		service.infochange(dto);
-		
+		vo.setSeq(dto.getSeq());
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/member/infoModForm";
