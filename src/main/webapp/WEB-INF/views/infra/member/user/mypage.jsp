@@ -80,7 +80,7 @@
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
-                <a href="/"><span class="blind">COOCHA</span></a>
+                <a href="/item/mainPage"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
 
@@ -130,7 +130,7 @@
 				<br>
 				<a href="/member/shipping"><h6 style="font-size: 18px; margin: 4% 0">주문배송조회</h6></a>
 				<br>
-				<a href="javascript:goForm(<c:out value="${list.seq }"/>)"><h6 style="font-size: 18px; margin: 4% 0">회원정보 수정</h6></a>
+				<a href="/member/infoModForm"><h6 style="font-size: 18px; margin: 4% 0">회원정보 수정</h6></a>
 				<br>
 				<a href="/member/changePW"><h6 style="font-size: 18px; margin: 4% 0">비밀번호 변경</h6></a>
 				<br>
@@ -258,17 +258,6 @@
 			</div>
 		</div>
 	</footer>
-	
-	<script type="text/javascript">
-		
-		goForm = function(keyValue) {
-			seq.val(keyValue);
-			form.attr("action", goUrlForm).submit();
-		}
-	
-		var goUrlForm = "/member/infoModForm";
-		
-	</script>
 	
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>

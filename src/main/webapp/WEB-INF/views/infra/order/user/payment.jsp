@@ -165,7 +165,7 @@
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
-                <a href="/"><span class="blind">COOCHA</span></a>
+                <a href="/item/mainPage"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
 
