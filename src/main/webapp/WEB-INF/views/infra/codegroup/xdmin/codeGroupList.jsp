@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<%@ page session="false" %>
+<%@ page session="true" %>
 <html> 
 <head>
 	<title>코드그룹 목록</title>
@@ -193,7 +193,7 @@
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
-                <a href="/member/managerLogin"><span class="blind">COOCHA</span></a>
+                <a href="/"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
 
