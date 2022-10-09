@@ -240,10 +240,10 @@
 		<div class="row">
 			<div class="col-3">
 	    		<nav class="nav flex-column">
+	    			<a class="nav-link" href="../member/memberList" id="lefttab">회원 관리</a>
+					<a class="nav-link" href="../item/itemList" id="lefttab">상품 관리</a>
 					<a class="nav-link" href="../codeGroup/codeGroupList" id="lefttab">코드그룹 관리</a>
 					<a class="nav-link active" href="codeList" aria-current="page" id="lefttab">코드 관리</a>
-					<a class="nav-link" href="../member/memberList" id="lefttab">회원 관리</a>
-					<a class="nav-link" href="../item/itemList" id="lefttab">상품 관리</a>
 				</nav>
 	    	</div>
     		<div class="col-9">
