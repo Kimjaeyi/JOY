@@ -50,4 +50,5 @@ public class ItemDao {
 	public int selectOneCount(ItemVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
+	
 }

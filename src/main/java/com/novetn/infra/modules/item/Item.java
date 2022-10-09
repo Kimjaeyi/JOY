@@ -6,10 +6,9 @@ public class Item {
 	private String title;
 	private Integer discount;
 	private Integer price;
+	private String cdname_ko;
 	private Integer shippingfee;
-	private String fee;
 	private Integer deliverymethod;
-	private String delivery;
 	private Integer release;
 	private Integer maximum;
 	private Integer possible;
@@ -45,29 +44,23 @@ public class Item {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
+	public String getCdname_ko() {
+		return cdname_ko;
+	}
+	public void setCdname_ko(String cdname_ko) {
+		this.cdname_ko = cdname_ko;
+	}
 	public Integer getShippingfee() {
 		return shippingfee;
 	}
 	public void setShippingfee(Integer shippingfee) {
 		this.shippingfee = shippingfee;
 	}
-	public String getFee() {
-		return fee;
-	}
-	public void setFee(String fee) {
-		this.fee = fee;
-	}
 	public Integer getDeliverymethod() {
 		return deliverymethod;
 	}
 	public void setDeliverymethod(Integer deliverymethod) {
 		this.deliverymethod = deliverymethod;
-	}
-	public String getDelivery() {
-		return delivery;
-	}
-	public void setDelivery(String delivery) {
-		this.delivery = delivery;
 	}
 	public Integer getRelease() {
 		return release;
