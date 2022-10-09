@@ -162,9 +162,29 @@
 				</ul>
 				<div class="row">
 					<div class="col">
+						<h6>사용여부</h6>
+						<br>
+						<select class="form-select" name="useNY">
+							<option selected>::선택::</option>
+							<option value="1" <c:if test="${item.useNY eq 1}">selected</c:if>>Y</option>
+							<option value="0" <c:if test="${item.useNY eq 0}">selected</c:if>>N</option>
+						</select>
+					</div>
+					<div class="col">
+						<h6>삭제여부</h6>
+						<br>
+						<select class="form-select" name="delNY">
+							<option selected>::선택::</option>
+							<option value="1" <c:if test="${item.delNY eq 1}">selected</c:if>>Y</option>
+							<option value="0" <c:if test="${item.delNY eq 0}">selected</c:if>>N</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
 						<h6>번호</h6>
 						<br>
-						<input class="form-control" type="text" name="seq" value="<c:out value="${item.seq }"/>" disabled readonly/>
+						<input class="form-control" type="text" name="seq" value="<c:out value="${item.seq }"/>" readonly/>
 					</div>
 					<div class="col">
 						<h6>재고</h6>
@@ -181,7 +201,7 @@
 					<div class="col">
 						<h6>출고일</h6>
 						<br>
-						<input class="form-control" type="text" name="release">
+						<input class="form-control" type="text" name="release" value="<c:out value="${item.release }"/>">
 					</div>
 				</div>
 				<div class="row">
@@ -200,40 +220,26 @@
 					<div class="col">
 						<h6>배송비</h6>
 						<br>
-						<input class="form-control" type="text" name="fee" value="<c:out value="${item.fee }"/>">
+						<select class="form-select" name="shippingfee">
+							<option selected>::선택::</option>
+							<option value="14" <c:if test="${item.shippingfee eq 14}">selected</c:if>>무료</option>
+							<option value="15" <c:if test="${item.shippingfee eq 15}">selected</c:if>>3만원 이상 구매시 무료배송</option>
+							<option value="16" <c:if test="${item.shippingfee eq 16}">selected</c:if>>5만원 이상 구매시 무료배송</option>
+							<option value="17" <c:if test="${item.shippingfee eq 17}">selected</c:if>>3,000원</option>
+						</select>
 					</div>
 					<div class="col">
 						<h6>택배사</h6>
 						<br>
 						<select class="form-select" name="delivery">
 							<option selected>::선택::</option>
-							<option value="1">등급</option>
-							<option value="2">통신사</option>
-							<option value="3">이메일도메인</option>
-							<option value="4">배송비</option>
-							<option value="5">택배사</option>
+							<option value="18" <c:if test="${item.deliverymethod eq 18}">selected</c:if>>CJ대한통운</option>
+							<option value="19" <c:if test="${item.deliverymethod eq 19}">selected</c:if>>우체국택배</option>
+							<option value="20" <c:if test="${item.deliverymethod eq 20}">selected</c:if>>롯데택배</option>
+							<option value="21" <c:if test="${item.deliverymethod eq 21}">selected</c:if>>한진택배</option>
 						</select>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col">
-						<h6>사용여부</h6>
-						<br>
-						<select class="form-select" name="useNY">
-							<option selected>::선택::</option>
-							<option value="1" <c:if test="${item.useNY eq 1}">selected</c:if>>Y</option>
-							<option value="0" <c:if test="${item.useNY eq 0}">selected</c:if>>N</option>
-						</select>
-					</div>
-					<div class="col">
-						<h6>삭제여부</h6>
-						<br>
-						<select class="form-select" name="delNY">
-							<option selected>::선택::</option>
-							<option value="1" <c:if test="${item.delNY eq 1}">selected</c:if>>Y</option>
-							<option value="0" <c:if test="${item.delNY eq 0}">selected</c:if>>N</option>
-						</select>
-					</div>
 				<div class="row">
 					<div class="col">
 						<h6>이미지 첨부</h6>

@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <%@ page session="true" %>
+
+<jsp:useBean id="CodeServiceImpl" class="com.novetn.infra.modules.code.CodeServiceImpl"/>
 <html> 
 <head>
 	<title>상품 목록</title>
@@ -250,10 +252,10 @@
 		<div class="row">
 			<div class="col-3">
 	    		<nav class="nav flex-column">
+	    			<a class="nav-link" href="../member/memberList" id="lefttab">회원 관리</a>
+					<a class="nav-link active" href="itemList" aria-current="page" id="lefttab">상품 관리</a>
 					<a class="nav-link" href="../codeGroup/codeGroupList" id="lefttab">코드그룹 관리</a>
 					<a class="nav-link" href="../code/codeList" id="lefttab">코드 관리</a>
-					<a class="nav-link" href="../member/memberList" id="lefttab">회원 관리</a>
-					<a class="nav-link active" href="itemList" aria-current="page" id="lefttab">상품 관리</a>
 				</nav>
 	    	</div>
     		<div class="col-9">
@@ -288,8 +290,7 @@
 								<div class="col-2">
 									<select class="form-select" name="shOptionDate">
 										<option value="" selected>날짜선택</option>
-										<option value="1">등록일</option>
-										<option value="2">수정일</option>
+										<option value="1">수정일</option>
 									</select>
 								</div>
 								<div class="col-3" style="max-width: 150px">
@@ -307,7 +308,7 @@
 									<select class="form-select" name="shOption" id="selectfield">
 										<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
 										<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>상품 이름</option>
-										<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>택배사</option>
+										<%-- <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>택배사</option> --%>
 									 </select>
 								</div>
 								<div class="col-3">
@@ -342,15 +343,17 @@
 								<th scope="col">번호</th>
 								<th scope="col">상품 이름</th>
 								<th scope="col">상품 가격</th>
-								<th scope="col">배송비</th>
+								<!-- <th scope="col">배송비</th> -->
 								<th scope="col">택배사</th>
 								<th scope="col">재고</th>
-								<th scope="col">수정일</th>
+								<th scope="col">최근수정일</th>
 								<th scope="col">사용</th>
 								<th scope="col">삭제</th>
 							</tr>
 						</thead>
 						<tbody class="table-group-divider">
+						<%-- <c:set var="listCodeshippingfee" value="${CodeServiceImpl.selectListCachedCode('14')}"/>
+						<c:set var="listCodedeliverymethod" value="${CodeServiceImpl.selectListCachedCode('18')}"/> --%>
 						<c:choose>
 							<c:when test="${fn:length(list) eq 0 }">
 								<td class="text-center" colspan="10">There is no data!</td>
@@ -362,8 +365,17 @@
 										<td scope="row"><c:out value="${list.seq }"/></td>
 										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.title }"/></a></td>
 										<td><c:out value="${list.price }"/>원</td>
-										<td><c:out value="${list.fee }"/></td>
-										<td><c:out value="${list.delivery }"/></td>
+										<td><c:out value="${list.cdname_ko }"/></td>
+										<%-- <td>
+											<c:forEach items="${listCodeshippingfee}" var="listShippingfee" varStatus="statusShippingfee">
+												<c:if test="${list.shippingfee eq listShippingfee.seq}"><c:out value="${listShippingfee.cdname_ko }"/></c:if>
+											</c:forEach>
+										</td>
+										<td>
+											<c:forEach items="${listCodedeliverymethod}" var="listDeliverymethod" varStatus="statusDeliverymethod">
+												<c:if test="${list.deliverymethod eq listDeliverymethod.seq}"><c:out value="${listDeliverymethod.cdname_ko }"/></c:if>
+											</c:forEach>
+										</td> --%>
 										<td><c:out value="${list.stock }"/></td>
 										<td><c:out value="${list.modDate }"/></td>
 										<td>
