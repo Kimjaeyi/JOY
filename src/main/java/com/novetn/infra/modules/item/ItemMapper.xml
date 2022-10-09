@@ -10,17 +10,16 @@
 	
 	<sql id = "selectCommon">
 		FROM item a
+			inner join Code b ON a.deliverymethod = b.seq
 		WHERE 1=1
 		
 		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
 		<choose>
-			<when test="shOptionDate == 1">AND a.regDate BETWEEN #{shstartDate} AND #{shendDate}</when>
-			<when test="shOptionDate == 2">AND a.modDate BETWEEN #{shstartDate} AND #{shendDate}</when>
+			<when test="shOptionDate == 1">AND a.modDate BETWEEN #{shstartDate} AND #{shendDate}</when>
 		</choose>
 		
 		<choose>
 			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
-			<when test="shOption == 2">AND a.delivery LIKE CONCAT('%',#{shValue},'%')</when>
 		</choose>
 	</sql>
 	
@@ -32,10 +31,11 @@
 			, a.title
 			, a.discount
 			, a.price
-			, (SELECT b.cdname_ko FROM Code b WHERE 1=1 AND a.shippingfee = b.seq) AS fee
-			, (SELECT b.cdname_ko FROM Code b WHERE 1=1 AND a.deliverymethod = b.seq) AS delivery
+			, a.release
+			, a.deliverymethod
+			, a.shippingfee
+			, b.cdname_ko
 			, a.stock
-			, a.regDate
 			, a.modDate
 			, a.useNY
 			, a.delNY
@@ -54,20 +54,24 @@
 			, title
 			, discount
 			, price
-			, fee
-			, delivery
+			, release
+			, shippingfee
+			, deliverymethod
 			, stock
+			, modDate
 			, useNY
 			, delNY
 		)
 		VALUES (
-			seq
+			#{seq}
 			, #{title}
 			, #{discount}
 			, #{price}
-			, #{fee}
-			, #{delivery}
+			, #{release}
+			, #{shippingfee}
+			, #{deliverymethod}
 			, #{stock}
+			, now()
 			, 1
 			, 0
 		)
@@ -79,18 +83,22 @@
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			title
-			, discount
-			, price
-			, shippingfee
-			, deliverymethod
-			, stock
-			, regDate
-			, useNY
-			, delNY
-		FROM item
+			a.seq
+			, a.title
+			, a.discount
+			, a.price
+			, a.release
+			, a.deliverymethod
+			, a.shippingfee
+			, b.cdname_ko
+			, a.stock
+			, a.modDate
+			, a.useNY
+			, a.delNY
+		FROM item a
+			inner join Code b ON a.deliverymethod = b.seq
 		WHERE 1=1
-			AND seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 	
 	<update id="update">
@@ -99,10 +107,11 @@
 			title = #{title}
 			, discount = #{discount}
 			, price = #{price}
-			, fee = #{fee}
-			, delivery = #{delivery}
+			, release = #{release}
+			, shippingfee = #{shippingfee}
+			, deliverymethod = #{deliverymethod}
 			, stock = #{stock}
-			, modDate = #{modDate}
+			, modDate = now()			
 			, useNY = #{useNY}
 			, delNY = #{delNY}
 		WHERE
@@ -122,5 +131,5 @@
 		WHERE
 			seq = #{seq}
 	</delete>
-
+	
 </mapper>
