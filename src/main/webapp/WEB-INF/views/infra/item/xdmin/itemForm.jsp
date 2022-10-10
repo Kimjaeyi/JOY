@@ -256,7 +256,7 @@
 						<!-- <textarea class="form-control" rows="3"></textarea> -->
 					</div>
 				</div>
-				<button type="button" class="btn btn-success" onclick="uploadValidation()">
+				<!-- <button type="button" class="btn btn-success" onclick="uploadValidation()"> -->
 				
 				<div class="ccc">
 					<div class="ccc">
@@ -349,11 +349,6 @@
 		if (seq.val() == "0" || seq.val() == ""){
 	   		// insert
 	   		//if (validationInst() == false) return false;
-	   		
-	   		
-	   		
-	   		
-	   		return false;
 	   		form.attr("action", goUrlInst).submit();
 	   	} else {
 	   		// update
