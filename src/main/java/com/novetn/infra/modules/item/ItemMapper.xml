@@ -14,6 +14,7 @@
 		WHERE 1=1
 		
 		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
+
 		<choose>
 			<when test="shOptionDate == 1">AND a.modDate BETWEEN #{shstartDate} AND #{shendDate}</when>
 		</choose>
@@ -31,7 +32,7 @@
 			, a.title
 			, a.discount
 			, a.price
-			, a.release
+			, a.released
 			, a.deliverymethod
 			, a.shippingfee
 			, b.cdname_ko
@@ -50,11 +51,10 @@
 	
 	<insert id="insert">
 		INSERT INTO item (
-			seq
-			, title
+			title
 			, discount
 			, price
-			, release
+			, released
 			, shippingfee
 			, deliverymethod
 			, stock
@@ -63,11 +63,10 @@
 			, delNY
 		)
 		VALUES (
-			#{seq}
-			, #{title}
+			#{title}
 			, #{discount}
 			, #{price}
-			, #{release}
+			, #{released}
 			, #{shippingfee}
 			, #{deliverymethod}
 			, #{stock}
@@ -83,11 +82,10 @@
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.seq
-			, a.title
+			a.title
 			, a.discount
 			, a.price
-			, a.release
+			, a.released
 			, a.deliverymethod
 			, a.shippingfee
 			, b.cdname_ko
@@ -102,19 +100,19 @@
 	</select>
 	
 	<update id="update">
-		UPDATE item
+		UPDATE item 
 		SET
 			title = #{title}
 			, discount = #{discount}
 			, price = #{price}
-			, release = #{release}
+			, released = #{released}
 			, shippingfee = #{shippingfee}
 			, deliverymethod = #{deliverymethod}
 			, stock = #{stock}
-			, modDate = now()			
+			, modDate = now()
 			, useNY = #{useNY}
 			, delNY = #{delNY}
-		WHERE
+		WHERE 
 			seq = #{seq}
 	</update>
 	
