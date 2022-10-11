@@ -38,128 +38,129 @@
 	
 	<style type="text/css">
 
-	@font-face {
-	    font-family: 'GilbeotRainbow';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-	}
-	
-	h1 {
-		font-family: 'GilbeotRainbow';
-		margin: 30px 0 0 10%;
-		font-size: 40px;
-		color: #6900EF;
-	}
-	
-	h6 {
-		font-weight: bold;
-	}
-	
-	a:link {
-			color:black;
-			text-decoration: none;
-	}
-	a:visited {
-			color:black;
-			text-decoration: none;
-	}
-	a:hover {
-			color:mediumpurple;
-			text-decoration: none;
-	}
-	
-	input.form-control {
-		border: 1px solid #ced4da;
-		border-radius: 0.375rem;
-	}
-	
-	input, select {
-		height: 50px;
-	}
-	
-	.aaa {
-		margin: 2% 15%;
-	}
-	
-	.col {
-		margin: 1% 0;
-	}
-	
-	#myTab {
-		width: 215px;
-		margin-bottom: 4%;
-	}
+		@font-face {
+		    font-family: 'GilbeotRainbow';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
 		
-	#listtab button {
-		width: 65px;
-	}
-	
-	#regmodtab button {
-		width: 150px;
-	}
-	
-	.nav-tabs {
-		--bs-nav-tabs-link-active-color: #6900EF;
-		--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
-	}
-	
-	.nav {
-		--bs-nav-link-hover-color: #9154f3;
-		width: 333px;
-	}
-	
-	.nav-link {
-		color : gray;
-	}
-	
-	#findaddress {
-		border : none;
-		background-color : blueviolet;
-		color : white;
-		border-radius : 6px;
-		width : 150px;
-		height : 50px;
-		margin : 0 0 2px 0;
-	}
-	
-	#resetbtn {
-		border: none;
-		background-color : lightgray;
-		color : blueviolet;
-		border-radius : 6px;
-		width : 50px;
-		height : 50px;
-	}
-	
-	#zipcode, #findaddress, #resetbtn, #addr1, #addr2, #addr3 {
-		 display: inline;
-	}
-	
-	#listbtn, #savebtn, #clearbtn, #delbtn, #uelbtn {
-		width: 40px;
-		height: 40px;
-		display: inline;
-		margin: 0 5px;
-	}
-	
-	#realclearbtn, #realdelbtn, #realuelbtn {
-		background-color: #6900EF; 
-		color: white; 
-		border-radius: 0.375rem;
-	}
-	
-	.ccc {
-		display: inline;
-		margin-bottom: 5%;
-	}
-	
-	.form-check-input:checked {
-	    background-color: #6900EF;
-	    border-color: #6900EF;
-	}
-	
-</style>
+		h1 {
+			font-family: 'GilbeotRainbow';
+			margin: 30px 0 0 10%;
+			font-size: 40px;
+			color: #6900EF;
+		}
+		
+		h6 {
+			font-weight: bold;
+		}
+		
+		a:link {
+				color:black;
+				text-decoration: none;
+		}
+		a:visited {
+				color:black;
+				text-decoration: none;
+		}
+		a:hover {
+				color:mediumpurple;
+				text-decoration: none;
+		}
+		
+		input.form-control {
+			border: 1px solid #ced4da;
+			border-radius: 0.375rem;
+		}
+		
+		input, select {
+			height: 50px;
+		}
+		
+		.aaa {
+			margin: 2% 15%;
+		}
+		
+		.col {
+			margin: 1% 0;
+		}
+		
+		#myTab {
+			width: 215px;
+			margin-bottom: 4%;
+		}
+			
+		#listtab button {
+			width: 65px;
+		}
+		
+		#regmodtab button {
+			width: 150px;
+		}
+		
+		.nav-tabs {
+			--bs-nav-tabs-link-active-color: #6900EF;
+			--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
+		}
+		
+		.nav {
+			--bs-nav-link-hover-color: #9154f3;
+			width: 333px;
+		}
+		
+		.nav-link {
+			color : gray;
+		}
+		
+		#findaddress {
+			border : none;
+			background-color : blueviolet;
+			color : white;
+			border-radius : 6px;
+			width : 150px;
+			height : 50px;
+			margin : 0 0 2px 0;
+		}
+		
+		#resetbtn {
+			border: none;
+			background-color : lightgray;
+			color : blueviolet;
+			border-radius : 6px;
+			width : 50px;
+			height : 50px;
+		}
+		
+		#zipcode, #findaddress, #resetbtn, #addr1, #addr2, #addr3 {
+			 display: inline;
+		}
+		
+		#listbtn, #savebtn, #clearbtn, #delbtn, #uelbtn {
+			width: 40px;
+			height: 40px;
+			display: inline;
+			margin: 0 5px;
+		}
+		
+		#realclearbtn, #realdelbtn, #realuelbtn {
+			background-color: #6900EF; 
+			color: white; 
+			border-radius: 0.375rem;
+		}
+		
+		.ccc {
+			display: inline;
+			margin-bottom: 5%;
+		}
+		
+		.form-check-input:checked {
+		    background-color: #6900EF;
+		    border-color: #6900EF;
+		}
+		
+	</style>
+</head>
 
 <body>
 
