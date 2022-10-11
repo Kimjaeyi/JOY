@@ -9,7 +9,7 @@ public class Item {
 	private String cdname_ko;
 	private Integer shippingfee;
 	private Integer deliverymethod;
-	private Integer release;
+	private Integer released;
 	private Integer maximum;
 	private Integer possible;
 	private Integer exchangefee;
@@ -62,11 +62,11 @@ public class Item {
 	public void setDeliverymethod(Integer deliverymethod) {
 		this.deliverymethod = deliverymethod;
 	}
-	public Integer getRelease() {
-		return release;
+	public Integer getReleased() {
+		return released;
 	}
-	public void setRelease(Integer release) {
-		this.release = release;
+	public void setRelease(Integer released) {
+		this.released = released;
 	}
 	public Integer getMaximum() {
 		return maximum;
