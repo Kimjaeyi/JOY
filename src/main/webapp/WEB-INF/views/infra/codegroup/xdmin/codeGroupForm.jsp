@@ -131,6 +131,7 @@
 	}
 	
 </style>
+</head>
 
 <body>
 
@@ -154,30 +155,6 @@
 				</ul>
 				<div class="row">
 					<div class="col">
-						<h6>코드그룹 코드</h6>
-						<br>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="codegroupNum" name="codegroupNum" value="<c:out value="${item.codegroupNum }"/>">
-					</div>
-					<div class="col">
-						<h6>코드그룹 코드(Another)</h6>
-						<br>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" name="codeGroup_seq">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
-						<h6>코드그룹 이름(한글)</h6>
-						<br>
-						<input class="form-control" type="text" value="<c:out value="${item.name_ko }"/>" placeholder="한글, 숫자" id="name_ko" name="name_ko">
-					</div>
-					<div class="col">
-						<h6>코드그룹 이름(영문)</h6>
-						<br>
-						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="name_eng" name="name_eng" value="<c:out value="${item.name_eng }"/>">
-					</div>
-				</div>
-				<div class="row">
-					<div class="col">
 						<h6>사용여부</h6>
 						<br>
 						<select class="form-select" name="useNY">
@@ -198,9 +175,34 @@
 				</div>
 				<div class="row">
 					<div class="col">
+						<h6>코드그룹 코드</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="codegroupNum" name="codegroupNum" value="<c:out value="${item.codegroupNum }"/>">
+					</div>
+					<div class="col">
+						<h6>코드그룹 코드(Another)</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h6>코드그룹 이름(한글)</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="한글, 숫자" id="name_ko" name="name_ko" value="<c:out value="${item.name_ko }"/>">
+					</div>
+					<div class="col">
+						<h6>코드그룹 이름(영문)</h6>
+						<br>
+						<input class="form-control" type="text" placeholder="영문(대소문자), 숫자" id="name_eng" name="name_eng" value="<c:out value="${item.name_eng }"/>">
+					</div>
+				</div>
+<%-- 				
+				<div class="row">
+					<div class="col">
 						<h6>번호</h6>
 						<br>
-						<input class="form-control" type="text" id="seq" name="seq" value="<c:out value="${item.seq }"/>">
+						<input class="form-control" type="text" id="seq" name="seq" value="<c:out value="${item.seq }"/>" readonly>
 					</div>
 					<div class="col">
 						<h6>순서</h6>
@@ -208,6 +210,7 @@
 						<input class="form-control" type="text"  placeholder="숫자">
 					</div>
 				</div>
+ --%>				
 				<div class="row">
 					<div class="col">
 						<h6>예비1(varchar type)</h6>
