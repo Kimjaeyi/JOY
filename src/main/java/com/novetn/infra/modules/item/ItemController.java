@@ -50,7 +50,7 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "itemInst")
-	public String itemInst(Item vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
+	public String itemInst(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.insert(dto);
 		
@@ -61,7 +61,7 @@ public class ItemController {
 		return "redirect:/item/itemForm";
 	}
 	
-	@SuppressWarnings(value = { "all" })
+	/* @SuppressWarnings(value = { "all" }) */
 	@RequestMapping(value = "itemUpdt")
 	public String itemUpdt(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
