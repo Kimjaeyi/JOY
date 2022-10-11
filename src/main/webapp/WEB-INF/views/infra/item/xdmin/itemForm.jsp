@@ -26,119 +26,123 @@
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+	
 	<script>
+	$(document).ready(function() {
 		const myModal = document.getElementById('myModal')
 		const myInput = document.getElementById('myInput')
 		
 		myModal.addEventListener('shown.bs.modal', () => {
 			myInput.focus()
 		})
+	});
 	</script>
 	
 	<style type="text/css">
 
-	@font-face {
-	    font-family: 'GilbeotRainbow';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-	}
-	
-	h1 {
-		font-family: 'GilbeotRainbow';
-		margin: 30px 0 0 10%;
-		font-size: 40px;
-		color: #6900EF;
-	}
-	
-	h6 {
-		font-weight: bold;
-	}
-	
-	a:link {
-			color:black;
-			text-decoration: none;
-	}
-	a:visited {
-			color:black;
-			text-decoration: none;
-	}
-	a:hover {
-			color:mediumpurple;
-			text-decoration: none;
-	}
-	
-	input.form-control {
-		border: 1px solid #ced4da;
-		border-radius: 0.375rem;
-	}
-	
-	input, select {
-		height: 50px;
-	}
-	
-	.aaa {
-		margin: 2% 15%;
-	}
-	
-	.col {
-		margin: 1% 0;
-	}
-	
-	#myTab {
-		width: 215px;
-		margin-bottom: 4%;
-	}
+		@font-face {
+		    font-family: 'GilbeotRainbow';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
 		
-	#listtab button {
-		width: 65px;
-	}
-	
-	#regmodtab button {
-		width: 150px;
-	}
-	
-	.nav-tabs {
-		--bs-nav-tabs-link-active-color: #6900EF;
-		--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
-	}
-	
-	.nav {
-		--bs-nav-link-hover-color: #9154f3;
-		width: 255px;
-	}
-	
-	.nav-link {
-		color : gray;
-	}
-	
-	#listbtn, #savebtn, #clearbtn, #delbtn, #uelbtn {
-		width: 40px;
-		height: 40px;
-		display: inline;
-		margin: 0 5px;
-	}
-	
-	#realclearbtn, #realdelbtn, #realuelbtn {
-		background-color: #6900EF; 
-		color: white; 
-		border-radius: 0.375rem;
-	}
-	
-	.ccc {
-		display: inline;
-		margin: 0 0 5% 0;
-	}
-	
-	.addScroll{
-		overflow-y:auto;
-		height: 150px;
-		background-color:#E9ECEF;
-		padding-top:5px; 
-		padding-left:5px;
-	}
-	
-</style>
+		h1 {
+			font-family: 'GilbeotRainbow';
+			margin: 30px 0 0 10%;
+			font-size: 40px;
+			color: #6900EF;
+		}
+		
+		h6 {
+			font-weight: bold;
+		}
+		
+		a:link {
+				color:black;
+				text-decoration: none;
+		}
+		a:visited {
+				color:black;
+				text-decoration: none;
+		}
+		a:hover {
+				color:mediumpurple;
+				text-decoration: none;
+		}
+		
+		input.form-control {
+			border: 1px solid #ced4da;
+			border-radius: 0.375rem;
+		}
+		
+		input, select {
+			height: 50px;
+		}
+		
+		.aaa {
+			margin: 2% 15%;
+		}
+		
+		.col {
+			margin: 1% 0;
+		}
+		
+		#myTab {
+			width: 215px;
+			margin-bottom: 4%;
+		}
+			
+		#listtab button {
+			width: 65px;
+		}
+		
+		#regmodtab button {
+			width: 150px;
+		}
+		
+		.nav-tabs {
+			--bs-nav-tabs-link-active-color: #6900EF;
+			--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
+		}
+		
+		.nav {
+			--bs-nav-link-hover-color: #9154f3;
+			width: 255px;
+		}
+		
+		.nav-link {
+			color : gray;
+		}
+		
+		#listbtn, #savebtn, #clearbtn, #delbtn, #uelbtn {
+			width: 40px;
+			height: 40px;
+			display: inline;
+			margin: 0 5px;
+		}
+		
+		#realclearbtn, #realdelbtn, #realuelbtn {
+			background-color: #6900EF; 
+			color: white; 
+			border-radius: 0.375rem;
+		}
+		
+		.ccc {
+			display: inline;
+			margin: 0 0 5% 0;
+		}
+		
+		.addScroll{
+			overflow-y:auto;
+			height: 150px;
+			background-color:#E9ECEF;
+			padding-top:5px; 
+			padding-left:5px;
+		}
+		
+	</style>
+</head>
 
 <body>
 
@@ -148,7 +152,7 @@
 		<br><hr><br>
 		<div class="aaa">
 			<!-- <form method="post" name="form" action="/code/codeInst"> -->
-				<form id="form" name="form" method="post" enctype="multipart/form-data">
+				<form id="form" name="form" method="post"> <!-- enctype="multipart/form-data" -->
 				<!-- *Vo.jsp s -->
 				<%@include file="itemVo.jsp"%>		<!-- #-> -->
 				<!-- *Vo.jsp e -->
@@ -201,7 +205,14 @@
 					<div class="col">
 						<h6>출고일</h6>
 						<br>
-						<input class="form-control" type="text" name="release" value="<c:out value="${item.release }"/>">
+						<select class="form-select" name="released">
+							<option selected>::선택::</option>
+							<option value="22" <c:if test="${item.released eq 22}">selected</c:if>>즉시 발송</option>
+							<option value="23" <c:if test="${item.released eq 23}">selected</c:if>>당일출고(오후 12시 이전 주문 건까지)</option>
+							<option value="24" <c:if test="${item.released eq 24}">selected</c:if>>당일출고(오후 3시 이전 주문 건까지)</option>
+							<option value="25" <c:if test="${item.released eq 25}">selected</c:if>>2일 이내 출고</option>
+							<option value="26" <c:if test="${item.released eq 26}">selected</c:if>>3일 이내 출고</option>
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -331,49 +342,53 @@
 		</div>
 	</div>
 	
-	<script>
+	<script type="text/javascript">
 	
-	var goUrlList = "/item/itemList";
-	var goUrlInst = "/item/itemInst";
-	var goUrlUpdt = "/item/itemUpdt";
-	var goUrlUele = "/item/itemUele";
-	var goUrlDele = "/item/itemDele";
-	var goUrlForm = "/item/itemForm";
+		var goUrlList = "/item/itemList";
+		var goUrlInst = "/item/itemInst";
+		var goUrlUpdt = "/item/itemUpdt";
+		var goUrlUele = "/item/itemUele";
+		var goUrlDele = "/item/itemDele";
+		var goUrlForm = "/item/itemForm";
+		
+		var seq = $("input:hidden[name=seq]"); 
 	
-	var seq = $("input:hidden[name=seq]"); 
-
-	var form = $("form[name=form]");
-	var formVo = $("form[name=formVo]");
-
-	$("#savebtn").on("click", function(){
-		if (seq.val() == "0" || seq.val() == ""){
-	   		// insert
-	   		//if (validationInst() == false) return false;
-	   		form.attr("action", goUrlInst).submit();
-	   	} else {
-	   		// update
-	   		/* keyName.val(atob(keyName.val())); */
-	   		//if (validationUpdt() == false) return false;
-	   		form.attr("action", goUrlUpdt).submit();
-	   	}
-	}); 
-	$("#listbtn").on("click", function(){
-		formVo.attr("action", goUrlList).submit();
-	});
+		var form = $("form[name=form]");
+		var formVo = $("form[name=formVo]");
 	
-	$("#realclearbtn").on("click", function(){
-		formVo.attr("action", goUrlForm).submit();
-	});
+		$("#savebtn").on("click", function(){
+			if (seq.val() == "0" || seq.val() == ""){
+		   		// insert
+		   		//if (validationInst() == false) return false;
+		   		form.attr("action", goUrlInst).submit();
+		   	} else {
+		   		// update
+		   		/* keyName.val(atob(keyName.val())); */
+		   		//if (validationUpdt() == false) return false;
+		   		form.attr("action", goUrlUpdt).submit();
+		   	}
+		}); 
+		
+		$("#listbtn").on("click", function(){
+			formVo.attr("action", goUrlList).submit();
+		});
+		
+		$("#realclearbtn").on("click", function(){
+			formVo.attr("action", goUrlForm).submit();
+		});
+		
+		$("#realdelbtn").on("click", function(){
+			formVo.attr("action", goUrlDele).submit();
+		});
+		
+		$("#realuelbtn").on("click", function(){
+			formVo.attr("action", goUrlUele).submit();
+		});
 	
-	$("#realdelbtn").on("click", function(){
-		formVo.attr("action", goUrlDele).submit();
-	});
+	</script>
 	
-	$("#realuelbtn").on("click", function(){
-		formVo.attr("action", goUrlUele).submit();
-	});
-	
-/*	uploadValidation = function(){
+<!-- 	
+	uploadValidation = function(){
     	
     	var obj = document.getElementById("imgfile").files;
     	var fileNum = obj.length;
@@ -403,13 +418,11 @@
     	
     	alert(totalSize);
     }
-*/
-
-	</script>
+ -->
+	
 	<!-- end -->
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </body>
 </html>
