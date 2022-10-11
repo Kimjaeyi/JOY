@@ -87,7 +87,7 @@
 			, a.delNY
 		FROM CodeGroup a
 		WHERE 1=1
-			AND seq = #{seq}
+			AND a.seq = #{seq}
 	</select>
 
 	<update id="update">
