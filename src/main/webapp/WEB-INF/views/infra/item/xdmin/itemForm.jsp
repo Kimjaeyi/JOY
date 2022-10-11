@@ -188,7 +188,8 @@
 					<div class="col">
 						<h6>번호</h6>
 						<br>
-						<input class="form-control" type="text" name="seq" value="<c:out value="${item.seq }"/>" readonly/>
+						<c:out value="${item.seq }"/>
+						<!-- <input class="form-control" type="text" name="seq" readonly/> -->
 					</div>
 					<div class="col">
 						<h6>재고</h6>
@@ -242,7 +243,7 @@
 					<div class="col">
 						<h6>택배사</h6>
 						<br>
-						<select class="form-select" name="delivery">
+						<select class="form-select" name="deliverymethod">
 							<option selected>::선택::</option>
 							<option value="18" <c:if test="${item.deliverymethod eq 18}">selected</c:if>>CJ대한통운</option>
 							<option value="19" <c:if test="${item.deliverymethod eq 19}">selected</c:if>>우체국택배</option>

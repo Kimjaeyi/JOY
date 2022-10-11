@@ -19,7 +19,6 @@ public class Item {
 	private String modDate;
 	private Integer useNY;
 	private Integer delNY;
-	
 	public String getSeq() {
 		return seq;
 	}
@@ -65,7 +64,7 @@ public class Item {
 	public Integer getReleased() {
 		return released;
 	}
-	public void setRelease(Integer released) {
+	public void setReleased(Integer released) {
 		this.released = released;
 	}
 	public Integer getMaximum() {
