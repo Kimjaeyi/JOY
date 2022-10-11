@@ -299,9 +299,24 @@
 	var form = $("form[name=form]");
 	
 	$("#savebtn").on("click", function(){
+		
+		if (seq.val() == "0" || seq.val() == ""){
+	   		// insert
+	   		if (validationInst() == false) return false;
+	   		form.attr("action", goUrlInst).submit();
+	   	} else {
+	   		// update
+	   		/* keyName.val(atob(keyName.val())); */
+	   		// seq.remove();	html 에서 seq 보여지지 않으면 이 구문은 필요치 않다.
+	   		if (validationUpdt() == false) return false;
+	   		form.attr("action", goUrlUpdt).submit();
+	   	}
+	});
+/* 	
+	$("#savebtn").on("click", function(){
    		form.attr("action", goUrlInst).submit();
 	});
-
+ */
 	$("#findaddress").on("click", function() {
 		here();
 	});
@@ -381,7 +396,33 @@
 		$("#ccLat").val('');
 		$("#ccLng").val('');
 	});
-/* 	
+	
+	validationInst = function() {
+		if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
+		if(!checkPassword('pwd', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
+		if(!checkPasswordAndRe('pwd2', 2, "패스워드가 일치하지 않습니다")) return false;
+		if(validationUpdt() == false) return false;
+	}
+	
+	validationUpdt = function() {
+		if(!checkOnlyKoreanEnglishNumber('name', 2, 0, "이름을 입력해 주세요")) return false;
+		if(!checkSelectNull('gender', 2, "성별을 선택해 주세요.")) return false;
+		if(!checkNull('dob', 2, "생일을 선택해 주세요.")) return false;
+		if(!checkEmail('email', 2, 0, "이메일 주소를 입력해 주세요")) return false;
+		if(!checkSelectNull('telecom', 2, "통신사를 선택해 주세요")) return false;
+		if(!checkMobile('phone', 2, 0, "전화번호는 숫자만 입력해 주세요")) return false;
+	}
+/* 		
+	if ($("#ifmaZipcodeArray0").val() != "" && $("#ifmaAddress2Array0").val().trim() == "") {
+		$("#ifmaAddress2Array0").addClass('is-invalid');
+		$("#ifmaAddress2Array0Feedback").text("상세주소를 입력해 주세요");
+		return false;
+	} else {
+		$("#ifmaAddress2Array0").removeClass('is-invalid');
+	}
+		
+	
+ 	
 	checkNull = function (obj, value, message) {
 		if(value == "" || value == null) {
 			alert(message);
@@ -389,8 +430,8 @@
 			return false;
 		}
 	}
- */	
- /* 
+
+ 
 	$("#savebtn").on("click", function() {
 
 		if (!checkNull($("#name"), $("#name").val(), "이름은 필수 입력 사항입니다."))
@@ -427,7 +468,7 @@
 			return false;
 		
 	});
- */	
+*/	
 	$("#id").on("focusout", function(){
 		$.ajax({
 			async: true 
