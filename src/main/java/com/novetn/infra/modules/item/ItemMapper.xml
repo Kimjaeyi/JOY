@@ -130,4 +130,46 @@
 			seq = #{seq}
 	</delete>
 	
+	<select id="selectLastSeq" resultType="Integer">
+		SELECT
+			seq
+		FROM item
+	</select>
+	
+	<!-- uploaded s -->
+	<insert id="insertUploaded">
+		INSERT INTO itemUploaded (
+			type
+			,defaultNY
+			,sort
+			,path
+			,originalName
+			,uuidName
+			,ext
+			,size
+			,delNY
+			,pseq
+		) values (
+			2
+			,#{defaultNY}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,#{pseq}
+		)
+	</insert>
+	<!-- uploaded e -->
+	
+	<select id="imageUploaded" resultMap="resultMapObj">
+		SELECT
+			*
+		FROM itemUploaded
+		WHERE
+			pseq = #{pseq}
+	</select>
+	
 </mapper>
