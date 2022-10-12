@@ -1,6 +1,8 @@
 package com.novetn.infra.modules.item;
 
-public class Item {
+import com.novetn.infra.common.base.Base;
+
+public class Item extends Base {
 
 	private String seq;
 	private String title;
@@ -19,6 +21,7 @@ public class Item {
 	private String modDate;
 	private Integer useNY;
 	private Integer delNY;
+	
 	public String getSeq() {
 		return seq;
 	}
