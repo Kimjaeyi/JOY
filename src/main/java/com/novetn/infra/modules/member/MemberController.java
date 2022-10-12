@@ -157,6 +157,13 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value = "dminLogin")
+	public String dminlogin() throws Exception {
+		
+		return "infra/member/user/dminloginForm";
+		
+	}
+	
 	@RequestMapping(value = "findID")
 	public String findID() throws Exception {
 		

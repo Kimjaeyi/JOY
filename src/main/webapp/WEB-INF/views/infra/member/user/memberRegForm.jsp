@@ -32,10 +32,10 @@
 <style type="text/css">
 
 	@font-face {
-    font-family: 'GilbeotRainbow';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+	    font-family: 'GilbeotRainbow';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/GilbeotRainbow.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
 	}
 	
 	@font-face {
@@ -57,16 +57,16 @@
 	}
 	
 	a:link {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:visited {
-			color:black;
-			text-decoration: none;
+		color:black;
+		text-decoration: none;
 	}
 	a:hover {
-			color:blueviolet;
-			text-decoration: none;
+		color:blueviolet;
+		text-decoration: none;
 	}
 	
 	.backimage {
