@@ -28,8 +28,10 @@ public class ItemServiceImpl implements ItemService{
 		//여기부터 파일
         int seq = dao.selectLastSeq(); //seq 자동으로 부여되기때문
 
+        System.out.println("seq result : " + result);
+        
         int j = 0;
-        for(MultipartFile myFile : dto.getMultipartFile()) {
+        for(MultipartFile myFile : dto.getImagefile()) {
 
             if(!myFile.isEmpty()) {
                 // postServiceImpl
@@ -50,8 +52,27 @@ public class ItemServiceImpl implements ItemService{
 	}
 	
 	@Override
-	public int update(Item dto) throws Exception {
-		return dao.update(dto);
+	public void update(Item dto) throws Exception {
+		
+		dao.update(dto);
+		
+		int j = 0;
+        for(MultipartFile myFile : dto.getImagefile()) {
+
+            if(!myFile.isEmpty()) {
+                // postServiceImpl
+                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                UtilUpload.upload(myFile, pathModule, dto);
+                
+                dto.setType(1);
+                dto.setDefaultNY(j == 0 ? 1 : 0);
+                dto.setSort(j+1);
+                dto.setPseq(dto.getSeq()+"");
+
+                dao.insertUploaded(dto);
+                j++;
+            }
+        }
 	}
 	
 	@Override
@@ -74,6 +95,11 @@ public class ItemServiceImpl implements ItemService{
 	@Override
 	public int selectOneCount(ItemVo vo) throws Exception {
 		return dao.selectOneCount(vo);
+	}
+	
+	@Override
+	public Item imageUploaded(Item dto) throws Exception {
+		return dao.imageUploaded(dto);
 	}
 	
 }

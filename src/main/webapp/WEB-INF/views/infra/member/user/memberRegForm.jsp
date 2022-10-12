@@ -288,7 +288,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="/resources/js/validation.js"></script>
 
 <script type="text/javascript">
 	
@@ -309,7 +308,7 @@
 	   		/* keyName.val(atob(keyName.val())); */
 	   		// seq.remove();	html 에서 seq 보여지지 않으면 이 구문은 필요치 않다.
 	   		if (validationUpdt() == false) return false;
-	   		form.attr("action", goUrlUpdt).submit();
+	   		form.attr("action", goUrlInst).submit();
 	   	}
 	});
 /* 	
@@ -411,6 +410,62 @@
 		if(!checkEmail('email', 2, 0, "이메일 주소를 입력해 주세요")) return false;
 		if(!checkSelectNull('telecom', 2, "통신사를 선택해 주세요")) return false;
 		if(!checkMobile('phone', 2, 0, "전화번호는 숫자만 입력해 주세요")) return false;
+	}
+	
+	checkNull = function(obj, value, message) {
+		if(value == "" || value == null) {
+			alert(message);
+			obj.focus();
+			return false;
+		} else {
+			return true;
+		}
+	}
+	
+	checkId = function(obj, value, message) {
+	    var regExp = /^[A-Za-z0-9,_-]{2,20}$/;
+	    if(regExp.test(value)) {
+			return true;
+		} else {
+			alert(message);
+	        obj.focus();
+			return false;
+		}
+	}
+
+
+	checkPassword = function(obj, value, message) {
+		var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,20}$/;
+	    /*var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,20}$/;*/
+	    if(regExp.test(value)) {
+			return true;
+		} else {
+			alert(message);
+	        obj.focus();
+			return false;
+		}
+	}
+
+	checkEmail = function(obj, value, message) {
+	    var regExp = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    if(regExp.test(value)) {
+	    	return true;
+	    } else {
+			alert(message);
+			obj.focus();
+			return false;
+		}
+	}
+
+	checkMobile = function(obj, value, message) {
+	    var regExp = /^\d{3}-\d{3,4}-\d{4}$/;
+	    if(regExp.test(value)) {
+	    	return true;
+	    } else {
+			alert(message);
+			obj.focus();
+			return false;
+		}
 	}
 /* 		
 	if ($("#ifmaZipcodeArray0").val() != "" && $("#ifmaAddress2Array0").val().trim() == "") {
