@@ -133,12 +133,20 @@
 			margin: 0 0 5% 0;
 		}
 		
-		.addScroll{
+		.addScroll {
 			overflow-y:auto;
-			height: 150px;
+			height: 200px;
 			background-color:#E9ECEF;
 			padding-top:5px; 
 			padding-left:5px;
+		}
+	 	
+		.input-file-button {
+			padding: 4px 25px;
+			background-color:#FF6600;
+			border-radius: 4px;
+			color: white;
+			cursor: pointer;
 		}
 		
 	</style>
@@ -148,11 +156,11 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="/"><h1>coocha</h1></a>
+		<a href="/item/mainPage"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
 			<!-- <form method="post" name="form" action="/code/codeInst"> -->
-				<form id="form" name="form" method="post"> <!-- enctype="multipart/form-data" -->
+				<form id="form" name="form" method="post" enctype="multipart/form-data">
 				<!-- *Vo.jsp s -->
 				<%@include file="itemVo.jsp"%>		<!-- #-> -->
 				<!-- *Vo.jsp e -->
@@ -256,7 +264,7 @@
 					<div class="col">
 						<h6>이미지 첨부</h6>
 						<br>
-						<input type="file" multiple="multiple" name="imgfile" id="imgfile">
+						<input class="form-control" id="MultipartFile" name="MultipartFile" type="file" multiple="multiple">//이름만 중요
 					</div>
 					<div class="col">
 						<h6><!-- 설명 --></h6>
