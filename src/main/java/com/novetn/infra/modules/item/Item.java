@@ -1,5 +1,7 @@
 package com.novetn.infra.modules.item;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.novetn.infra.common.base.Base;
 
 public class Item extends Base {
@@ -21,6 +23,7 @@ public class Item extends Base {
 	private String modDate;
 	private Integer useNY;
 	private Integer delNY;
+	private MultipartFile[] imagefile;
 	
 	public String getSeq() {
 		return seq;
@@ -123,6 +126,12 @@ public class Item extends Base {
 	}
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
+	}
+	public MultipartFile[] getImagefile() {
+		return imagefile;
+	}
+	public void setImagefile(MultipartFile[] imagefile) {
+		this.imagefile = imagefile;
 	}
 	
 }
