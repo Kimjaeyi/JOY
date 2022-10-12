@@ -160,9 +160,11 @@
 */
 
 		$("#managerpage").on("click", function(){
-			
+			location.href = "/member/dminLogin";
+		});
+
 			/* if(validation() == false) return false; */
-			
+/* 			
 			$.ajax({
 				async: true 
 				,cache: false
@@ -183,8 +185,8 @@
 					}
 				}
 			});
-			
-		});
+ */			
+		
  
 	</script>
 		
