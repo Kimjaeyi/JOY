@@ -32,7 +32,7 @@ public class ItemDao {
 	public int update(Item dto) {
 		return sqlSession.update(namespace + ".update", dto);
 	}
-	
+	 
 	public int uelete(Item dto) {
 		return sqlSession.update(namespace + ".uelete", dto);
 	}
@@ -51,4 +51,12 @@ public class ItemDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	public int insertUploaded(Item dto) {
+		return sqlSession.update(namespace + ".insertUploaded", dto);
+	}
+	
+	public int selectLastSeq() {
+		return sqlSession.update(namespace + ".selectLastSeq");
+	}
+
 }
