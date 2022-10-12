@@ -2,8 +2,6 @@ package com.novetn.infra.common.base;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class Base {
 
 //	uploaded
@@ -20,8 +18,6 @@ public class Base {
 	private long size;
 	private Integer delNY;
 	private String pseq;
-	
-	private MultipartFile[] MultipartFile;
 	
 //	regmod
 	private String regIp;
@@ -180,12 +176,6 @@ public class Base {
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
-	}
-	public MultipartFile[] getMultipartFile() {
-		return MultipartFile;
-	}
-	public void setMultipartFile(MultipartFile[] multipartFile) {
-		MultipartFile = multipartFile;
 	}
 	
 }
