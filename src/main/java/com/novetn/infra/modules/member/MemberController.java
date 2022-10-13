@@ -160,7 +160,7 @@ public class MemberController {
 	@RequestMapping(value = "dminLogin")
 	public String dminlogin() throws Exception {
 		
-		return "infra/member/user/dminloginForm";
+		return "infra/member/xdmin/dminloginForm";
 		
 	}
 	
