@@ -590,7 +590,7 @@
 		<!-- 실시간 핫딜 TOP10 -->
 		<div class="section group-top10">
 			<div class="inner">
-				<div class="title">실시간 핫딜 TOP 10</div>
+				<div class="title">실시간 핫딜 TOP 5</div>
 				<div class="deal-tab">
 					<div class="tab-1depth">
 						<!-- top10 업체영역 -->
