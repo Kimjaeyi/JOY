@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
@@ -419,8 +420,6 @@
 	var goUrlForm = "/code/codeForm";
 	
 	var excelUri = "/code/excelDownload";
-	
-	var mainKey = $("input:hidden[name=mainKey]");
 	
 	var form = $("form[name=formList]");
 	
