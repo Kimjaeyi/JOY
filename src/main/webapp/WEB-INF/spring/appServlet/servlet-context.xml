@@ -41,6 +41,7 @@
 			<exclude-mapping path="/member/join" />
 			<exclude-mapping path="/member/memberJoin" />
 			<exclude-mapping path="/member/login" />
+			<exclude-mapping path="/member/dminLogin" />
 			<exclude-mapping path="/member/loginProc" />
 			<exclude-mapping path="/member/findID" />
 			<exclude-mapping path="/member/findPW" />
