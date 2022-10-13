@@ -147,7 +147,7 @@
 			<div class="aaa">
 				<div class="container">
 					<br><br>
-					<h2><b>LOGIN</b></h2>
+					<h2><b>ADMIN</b></h2>
 					<br>
 					<div class="row justify-content-center">
 						<div class="col-7">
@@ -164,7 +164,7 @@
 					</div>
 				</div>
 				<br>
-				<br><br><br>
+				<br><br><br><br><br><br><br><br><br><br><br><br>
 			</div>
 		</div>
 	</div>
@@ -172,16 +172,38 @@
 	<script type="text/javascript">
 	
 	$("#loginbtn").on("click", function(){
-		
-		/* if(validation() == false) return false; */
-		
 		$.ajax({
 			async: true 
 			,cache: false
 			,type: "post"
-			/* ,dataType:"json" */
 			,url: "/member/loginProc"
-			/* ,data : $("#formLogin").serialize() */
+			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					if ($("#id").val() == "kjy" && $("#pwd").val() == "123") {
+						location.href = "/member/memberList";
+					} else if ($("#id").val() != "kjy" && $("#pwd").val() != "123") {
+						alert("접근할 수 없습니다.")
+						location.href = "/item/mainPage";
+					}
+				} else {
+					alert("일치하는 회원정보가 없습니다.")
+				}
+			}
+		})
+	});
+	
+	</script>
+	
+		<!-- if(validation() == false) return false; -->
+<!--  		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			// ,dataType:"json"
+			,url: "/member/loginProc"
+			// ,data : $("#formLogin").serialize()
 			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
@@ -191,11 +213,7 @@
 				}
 			}
 		});
-	});
-	
-	
-	</script>
-
+ -->		
 
 <!-- end -->
 
