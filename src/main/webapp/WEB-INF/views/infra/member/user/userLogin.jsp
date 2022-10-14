@@ -1214,6 +1214,26 @@
 		});
 	});
 	
+	$(".logout").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
 	</script>
 <!-- 	
 	<script src="/static/js/lib/jquery.bxslider.js"></script>

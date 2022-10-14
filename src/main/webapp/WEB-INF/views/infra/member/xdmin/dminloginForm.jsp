@@ -44,7 +44,8 @@
 	
 	h1 {
 		font-family: 'GilbeotRainbow';
-		margin: 0 0 0 250px;
+		margin: 0 0 0 200px;
+		float: left;
 		color : white;
 	}
 	
@@ -71,9 +72,23 @@
 	}
 	
 	.backimage {
-		background-image: url("../resources/image/logbg.jpg");
-		background-repeat: no-repeat;
-		background-size : cover;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		position: relative;
+		z-index: 1;
+	}
+	
+	.backimage::after {
+		width: 100%;
+		height: 100%;
+		content: "";
+		background: url("../resources/image/logbg.jpg");
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		opacity: 0.5;
 	}
 
 	.container {
@@ -83,13 +98,13 @@
 	
 	.aaa {
 		text-align : center;
-		margin : 0 30%;
+		margin : 7% 30%;
 	}
-	
+/* 	
 	.abc {
 		background-color : rgba(255,255,255,0.5);
 	}
-	
+ */	
 	
 	h2 {
 		font-weight : bold;
@@ -148,7 +163,7 @@
 				<div class="container">
 					<br><br>
 					<h2><b>ADMIN</b></h2>
-					<br>
+					<br><br>
 					<div class="row justify-content-center">
 						<div class="col-7">
 							<input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="kjy">
@@ -156,15 +171,11 @@
 							<input type="password" class="form-control" placeholder="비밀번호" id="pwd" name="pwd" value="123">
 						</div>
 					</div>
-					<br><br>
-					sessSeq : <c:out value="${sessSeq }"/><br>
-					sessId : <c:out value="${sessId }"/><br>
+					<br><br><br>
 					<div class="row justify-content-center">
 						<button class="btn1" type="button" id="loginbtn"><b>로그인</b></button>
 					</div>
 				</div>
-				<br>
-				<br><br><br><br><br><br><br><br><br><br><br><br>
 			</div>
 		</div>
 	</div>
