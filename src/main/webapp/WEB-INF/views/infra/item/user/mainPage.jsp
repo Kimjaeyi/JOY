@@ -104,6 +104,7 @@
 	
 	.group-top5 .deal-list .deal .areas .prices {
 	    padding-top: 16px;
+	    padding-bottom: 30px;
 	}
 	
 	.group-top5 .deal-list .deal .areas .prices .left {
@@ -634,7 +635,7 @@
 			</div>
 		</div>
 		<!-- //실시간 핫딜 TOP5 -->
-
+		
 		<!-- 베스트 -->
 		<div class="section group-best">
 			<form name="bestDealForm" id="bestDealForm" action="/" class="blind">
@@ -1184,6 +1185,36 @@
 			</div>
 		</div>
 	</footer>
+<div class="bd-example">
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+      <p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+      <p>This is some placeholder content the <strong>Profile tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+      <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
+    </div>
+    <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
+      <p>This is some placeholder content the <strong>Disabled tab's</strong> associated content.</p>
+    </div>
+  </div>
+</div>
 	<!-- 탑으로 -->
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 	<!-- //탑으로 -->
@@ -1258,6 +1289,12 @@
 			}
 		});
 	});
+	
+	const tabEl = document.querySelector('button[data-bs-toggle="pill"]')
+	tabEl.addEventListener('hide.bs.tab', event => {
+	  event.target // newly activated tab
+	  event.relatedTarget // previous active tab
+	})
 	
 	</script>
 	
