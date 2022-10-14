@@ -432,12 +432,14 @@
 			else $("#allcheck").prop("checked", true); 
 		});
 		
+		//체크박스 삭제		
 		$('#delbtn').click(function(){
 	        if(confirm("삭제하시겠습니까?")){
 	            $("input[name=check]:checked").each(function(){
 	                var tr_value =$(this).val();
 	                var tr=$("tr[data-tr_value='"+tr_value+"']");
-	                tr.remove();
+	                form.attr("action", goUrlDele).submit();
+//	                tr.remove();
 	            });
 	        } else {
 	            return false;
