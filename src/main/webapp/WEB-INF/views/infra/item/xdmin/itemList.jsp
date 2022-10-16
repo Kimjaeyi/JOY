@@ -304,7 +304,7 @@
 									<select class="form-select" name="shOption" id="selectfield">
 										<option value="" <c:if test="${empty vo.shOption}">selected</c:if>>선택</option>
 										<option value="1" <c:if test="${vo.shOption eq 1}">selected</c:if>>상품 이름</option>
-										<%-- <option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>택배사</option> --%>
+										<option value="2" <c:if test="${vo.shOption eq 2}">selected</c:if>>쇼핑 사이트</option>
 									 </select>
 								</div>
 								<div class="col-3">
@@ -339,7 +339,7 @@
 								<th scope="col">번호</th>
 								<th scope="col">상품 이름</th>
 								<th scope="col">상품 가격</th>
-								<!-- <th scope="col">배송비</th> -->
+								<th scope="col">사이트</th>
 								<th scope="col">택배사</th>
 								<th scope="col">재고</th>
 								<th scope="col">최근수정일</th>
@@ -361,6 +361,7 @@
 										<td scope="row"><c:out value="${list.seq }"/></td>
 										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.title }"/></a></td>
 										<td><c:out value="${list.price }"/>원</td>
+										<td><c:out value="${list.site }"/></td>
 										<td><c:out value="${list.cdname_ko }"/></td>
 										<%-- <td>
 											<c:forEach items="${listCodeshippingfee}" var="listShippingfee" varStatus="statusShippingfee">

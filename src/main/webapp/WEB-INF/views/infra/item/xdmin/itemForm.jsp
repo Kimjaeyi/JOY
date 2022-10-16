@@ -199,10 +199,14 @@
 				</div>
 				<div class="row">
 					<div class="col">
-						<h6>번호</h6>
+						<h6>사이트</h6>
 						<br>
-						<c:out value="${item.seq }"/>
-						<!-- <input class="form-control" type="text" name="seq" readonly/> -->
+						<select class="form-select" name="shoppingsite">
+							<option selected>::선택::</option>
+							<option value="48" <c:if test="${item.shoppingsite eq 48}">selected</c:if>>위메프</option>
+							<option value="49" <c:if test="${item.shoppingsite eq 49}">selected</c:if>>티몬</option>
+							<option value="50" <c:if test="${item.shoppingsite eq 50}">selected</c:if>>11번가</option>
+						</select>
 					</div>
 					<div class="col">
 						<h6>재고</h6>
