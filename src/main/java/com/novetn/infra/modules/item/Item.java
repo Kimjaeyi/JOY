@@ -11,6 +11,8 @@ public class Item extends Base {
 	private Integer discount;
 	private Integer price;
 	private String cdname_ko;
+	private Integer shoppingsite;
+	private String site;
 	private Integer shippingfee;
 	private Integer deliverymethod;
 	private Integer released;
@@ -24,7 +26,6 @@ public class Item extends Base {
 	private Integer useNY;
 	private Integer delNY;
 	private MultipartFile[] imagefile;
-	
 	public String getSeq() {
 		return seq;
 	}
@@ -54,6 +55,18 @@ public class Item extends Base {
 	}
 	public void setCdname_ko(String cdname_ko) {
 		this.cdname_ko = cdname_ko;
+	}
+	public Integer getShoppingsite() {
+		return shoppingsite;
+	}
+	public void setShoppingsite(Integer shoppingsite) {
+		this.shoppingsite = shoppingsite;
+	}
+	public String getSite() {
+		return site;
+	}
+	public void setSite(String site) {
+		this.site = site;
 	}
 	public Integer getShippingfee() {
 		return shippingfee;

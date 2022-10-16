@@ -100,7 +100,10 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "mainPage")
-	public String mainPage() throws Exception {
+	public String mainPage(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
+		
+		List<Item> listHotdealwmp = service.selectListHotdealwmp(vo);
+		model.addAttribute("listHotdealwmp", listHotdealwmp);
 		
 		return "infra/item/user/mainPage";
 		

@@ -23,6 +23,10 @@ public class ItemDao {
 		return list; 
 	}
 	
+	public List<Item> selectListHotdealwmp(ItemVo vo) {
+		return sqlSession.selectList(namespace + ".selectListHotdealwmp", vo);
+	}
+	
 	public int insert(Item dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		System.out.println("dao result: " + result);
