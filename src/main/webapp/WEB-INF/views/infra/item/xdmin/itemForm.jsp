@@ -279,7 +279,7 @@
 						<h6><!-- 설명 --></h6>
 						<br>
 						<div id="UploadedImagePreview" class="addScroll">
-							<img src="${img.path }${img.uuidName}">
+							<img src="${listimg.path }${listimg.uuidName}">
 						</div>
 						<!-- <textarea class="form-control" rows="3"></textarea> -->
 					</div>
