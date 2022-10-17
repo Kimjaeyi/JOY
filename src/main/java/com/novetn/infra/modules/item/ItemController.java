@@ -43,17 +43,17 @@ public class ItemController {
 	public String itemForm(@ModelAttribute("vo") ItemVo vo, Item dto, Model model) throws Exception {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
-		Item result = service.selectOne(vo);
-		model.addAttribute("item", result);
+		Item item = service.selectOne(vo);
+		model.addAttribute("item", item);
 		
-		//이미지 파일 업로드
+		//이미지 가져오기
 		dto.setPseq(vo.getSeq());
-		Item imageUploaded = service.imageUploaded(dto);
-		model.addAttribute("img", imageUploaded);
+		/* Item imageUploaded = service.imageUploaded(dto); */
+		model.addAttribute("img", service.imageUploaded(vo));
 		
 		return "infra/item/xdmin/itemForm";
 	}
-	
+
 	@RequestMapping(value = "itemInst")
 	public String itemInst(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
@@ -70,7 +70,7 @@ public class ItemController {
 	@RequestMapping(value = "itemUpdt")
 	public String itemUpdt(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
-		System.out.println("파일 크기:"+dto.getImagefile().length);
+		System.out.println("파일 크기: "+dto.getImagefile().length);
 		
 		service.update(dto);
 		
