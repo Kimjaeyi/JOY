@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 </head>
 
 <style type="text/css">
@@ -288,111 +289,109 @@
 					<div class="col">
 						<!-- top5 업체영역 -->
 						<ul class="nav nav-pills" id="pills-tab" role="tablist">
-							<li class="nav-item" role="presentation"><button class="nav-link active" id="pills-wmp-tab" data-bs-toggle="pill" data-bs-target="#pills-wmp" type="button" role="tab" aria-controls="pills-wmp" aria-selected="true">위메프</button></li>
-							<li class="nav-item" role="presentation"><button class="nav-link" id="pills-tmon-tab" data-bs-toggle="pill" data-bs-target="#pills-tmon" type="button" role="tab" aria-controls="pills-tmon" aria-selected="false">티몬</button></li>
-							<li class="nav-item" role="presentation"><button class="nav-link" id="pills-11st-tab" data-bs-toggle="pill" data-bs-target="#pills-11st" type="button" role="tab" aria-controls="pills-11st" aria-selected="false">11번가</button></li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link active" id="wmp-tab" data-bs-toggle="pill" data-bs-target="#wmp" type="button" role="tab" aria-controls="wmp" aria-selected="true">위메프</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="tmon-tab" data-bs-toggle="pill" data-bs-target="#tmon" type="button" role="tab" aria-controls="tmon" aria-selected="false">티몬</button>
+							</li>
+							<li class="nav-item" role="presentation">
+								<button class="nav-link" id="11st-tab" data-bs-toggle="pill" data-bs-target="#11st" type="button" role="tab" aria-controls="11st" aria-selected="false">11번가</button>
+							</li>
 						</ul>
 						<!-- //top5 업체영역 -->
-					</div>
-				</div>
-				<div class="tab-content" id="pills-tabContent">
-					<div class="tab-pane fade show active" id="pills-wmp" role="tabpanel" aria-labelledby="pills-wmp-tab" tabindex="0">
-						<div class="contents">
-							<div class="slider">
-								<!-- top10 딜영역 -->
-								<div class="slide">
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade show active" id="wmp" role="tabpanel" aria-labelledby="wmp-tab" tabindex="0">
+								<div class="deal-list">
+									<!-- top10 딜영역 -->
 									<c:forEach items="${listHotdealwmp}" var="listHotdealwmp" varStatus="status">
-										<ul class="deal-list">
-											<li>
-												<div class="deal">
-													<a href="../item/itemView">
-														<div class="img">
-															<img src="${listHotdealwmp.path}${listHotdealwmp.uuidName}">
+											<div class="deal">
+												<a href="../item/itemView">
+													<div class="img">
+														<img src="${listHotdealwmp.path}${listHotdealwmp.uuidName}">
+													</div>
+													<div class="areas">
+														<div class="title"><c:out value="${listHotdealwmp.title}"/></div>
+														<div class="prices">
+															<span class="left"> 
+																<span class="num"><c:out value="${listHotdealwmp.discount}"/></span>
+																<span class="unit">%</span>
+															</span> 
+															<span class="right"> 
+																<span class="num"><c:out value="${listHotdealwmp.price}"/></span> 
+																<span class="unit">원</span>
+															</span>
 														</div>
-														<div class="areas">
-															<div class="title"><c:out value="${listHotdealwmp.title}"/></div>
-															<div class="prices">
-																<span class="left"> 
-																	<span class="num"><c:out value="${listHotdealwmp.discount}"/></span>
-																	<span class="unit">%</span>
-																</span> 
-																<span class="right"> 
-																	<span class="num"><c:out value="${listHotdealwmp.price}"/></span> 
-																	<span class="unit">원</span>
-																</span>
-															</div>
-														</div>
-													</a>
-												</div>
-											</li>
-										</ul>
+													</div>
+												</a>
+											</div>
 									</c:forEach>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="pills-tmon" role="tabpanel" aria-labelledby="pills-tmon-tab" tabindex="0">
-						<div class="contents">
-							<div class="slider">
-								<!-- top10 딜영역 -->
-								<div class="slide">
-									<ul class="deal-list">
-										<li>
-											<div class="deal">
-												<a href="../item/itemView">
-													<div class="img">
-														<img src="/resources/image/위메프1.png">
+							<div class="tab-pane fade" id="tmon" role="tabpanel" aria-labelledby="tmon-tab" tabindex="0">
+								<div class="contents">
+									<div class="slider">
+										<!-- top10 딜영역 -->
+										<div class="slide">
+											<ul class="deal-list">
+												<li>
+													<div class="deal">
+														<a href="../item/itemView">
+															<div class="img">
+																<img src="/resources/image/위메프1.png">
+															</div>
+															<div class="areas">
+																<div class="title">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml + 트릿 150ml + 샴푸 80 + 트릿 80 외</div>
+																<div class="prices">
+																	<span class="left"> 
+																		<span class="num">10</span>
+																		<span class="unit">%</span>
+																	</span> 
+																	<span class="right"> 
+																		<span class="num">37,700</span>
+																		<span class="unit">원</span>
+																	</span>
+																</div>
+															</div>
+														</a>
 													</div>
-													<div class="areas">
-														<div class="title">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml + 트릿 150ml + 샴푸 80 + 트릿 80 외</div>
-														<div class="prices">
-															<span class="left"> 
-																<span class="num">10</span>
-																<span class="unit">%</span>
-															</span> 
-															<span class="right"> 
-																<span class="num">37,700</span>
-																<span class="unit">원</span>
-															</span>
-														</div>
-													</div>
-												</a>
-											</div>
-										</li>
-									</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="tab-pane fade" id="pills-11st" role="tabpanel" aria-labelledby="pills-11st-tab" tabindex="0">
-						<div class="contents">
-							<div class="slider">
-								<!-- top10 딜영역 -->
-								<div class="slide">
-									<ul class="deal-list">
-										<li>
-											<div class="deal">
-												<a href="../item/itemView">
-													<div class="img">
-														<img src="/resources/image/위메프1.png">
+							<div class="tab-pane fade" id="11st" role="tabpanel" aria-labelledby="11st-tab" tabindex="0">
+								<div class="contents">
+									<div class="slider">
+										<!-- top10 딜영역 -->
+										<div class="slide">
+											<ul class="deal-list">
+												<li>
+													<div class="deal">
+														<a href="../item/itemView">
+															<div class="img">
+																<img src="/resources/image/위메프1.png">
+															</div>
+															<div class="areas">
+																<div class="title">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml + 트릿 150ml + 샴푸 80 + 트릿 80 외</div>
+																<div class="prices">
+																	<span class="left"> 
+																		<span class="num">10</span>
+																		<span class="unit">%</span>
+																	</span> 
+																	<span class="right"> 
+																		<span class="num">37,700</span>
+																		<span class="unit">원</span>
+																	</span>
+																</div>
+															</div>
+														</a>
 													</div>
-													<div class="areas">
-														<div class="title">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml + 트릿 150ml + 샴푸 80 + 트릿 80 외</div>
-														<div class="prices">
-															<span class="left"> 
-																<span class="num">10</span>
-																<span class="unit">%</span>
-															</span> 
-															<span class="right"> 
-																<span class="num">37,700</span>
-																<span class="unit">원</span>
-															</span>
-														</div>
-													</div>
-												</a>
-											</div>
-										</li>
-									</ul>
+												</li>
+											</ul>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -546,36 +545,7 @@
 			</div>
 		</div>
 	</footer>
-<div class="bd-example">
-  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Home</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Contact</button>
-    </li>
-    <li class="nav-item" role="presentation">
-      <button class="nav-link" id="pills-disabled-tab" data-bs-toggle="pill" data-bs-target="#pills-disabled" type="button" role="tab" aria-controls="pills-disabled" aria-selected="false" disabled>Disabled</button>
-    </li>
-  </ul>
-  <div class="tab-content" id="pills-tabContent">
-    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
-      <p>This is some placeholder content the <strong>Home tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-    </div>
-    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
-      <p>This is some placeholder content the <strong>Profile tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-    </div>
-    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-      <p>This is some placeholder content the <strong>Contact tab's</strong> associated content. Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the content visibility and styling. You can use it with tabs, pills, and any other <code>.nav</code>-powered navigation.</p>
-    </div>
-    <div class="tab-pane fade" id="pills-disabled" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
-      <p>This is some placeholder content the <strong>Disabled tab's</strong> associated content.</p>
-    </div>
-  </div>
-</div>
+	</form>
 	<!-- 탑으로 -->
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 	<!-- //탑으로 -->
@@ -650,12 +620,6 @@
 			}
 		});
 	});
-	
-	const tabEl = document.querySelector('button[data-bs-toggle="pill"]')
-	tabEl.addEventListener('hide.bs.tab', event => {
-	  event.target // newly activated tab
-	  event.relatedTarget // previous active tab
-	})
 	
 	</script>
 	
