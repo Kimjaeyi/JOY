@@ -59,8 +59,12 @@ public class ItemDao {
 		return sqlSession.update(namespace + ".insertUploaded", dto);
 	}
 	
-	public Item imageUploaded(Item dto) {
-		return sqlSession.selectOne(namespace + ".imageUploaded", dto);
+//	public Item imageUploaded(Item dto) {
+//		return sqlSession.selectOne(namespace + ".imageUploaded", dto);
+//	}
+	
+	public List<Item> imageUploaded(ItemVo vo){ 
+		return sqlSession.selectList(namespace + ".imageUploaded", vo); 
 	}
 	
 	public int selectLastSeq() {
