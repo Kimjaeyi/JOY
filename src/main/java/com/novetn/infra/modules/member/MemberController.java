@@ -136,12 +136,12 @@ public class MemberController {
 //		
 //	}
 	
-	@RequestMapping(value = "userLogin")
-	public String userLogin() throws Exception {
-		
-		return "infra/item/user/mainPage";
-		
-	}
+//	@RequestMapping(value = "userLogin")
+//	public String userLogin() throws Exception {
+//		
+//		return "infra/item/user/mainPage";
+//		
+//	}
 	
 //	@RequestMapping(value = "loginSuccess")
 //	public String loginSuccess() throws Exception {
