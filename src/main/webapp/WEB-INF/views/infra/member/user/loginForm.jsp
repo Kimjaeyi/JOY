@@ -212,7 +212,7 @@
 			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/member/userLogin";
+					location.href = "/item/mainPage";
 				} else {
 					alert("일치하는 회원정보가 없습니다");
 				}
