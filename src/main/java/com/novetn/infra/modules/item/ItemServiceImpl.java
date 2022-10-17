@@ -104,8 +104,13 @@ public class ItemServiceImpl implements ItemService{
 	}
 	
 	@Override
-	public Item imageUploaded(Item dto) throws Exception {
-		return dao.imageUploaded(dto);
+	public List<Item> imageUploaded(ItemVo vo) throws Exception {
+		return dao.imageUploaded(vo);
 	}
+	
+//	@Override
+//	public Item imageUploaded(Item dto) throws Exception {
+//		return dao.imageUploaded(dto);
+//	}
 	
 }
