@@ -23,8 +23,13 @@ public class ItemDao {
 		return list; 
 	}
 	
-	public List<Item> selectListHotdealwmp(ItemVo vo) {
-		return sqlSession.selectList(namespace + ".selectListHotdealwmp", vo);
+	public List<Item> selectHotdealwmp(ItemVo vo) {
+		return sqlSession.selectList(namespace + ".selectHotdealwmp", vo);
+	}
+	
+	public List<Item> selectUploadedimg(ItemVo vo) { 
+		List<Item> listimg = sqlSession.selectList("com.novetn.infra.modules.item.ItemMapper.selectUploadedimg", vo);
+		return listimg; 
 	}
 	
 	public int insert(Item dto) {
@@ -59,12 +64,12 @@ public class ItemDao {
 		return sqlSession.update(namespace + ".insertUploaded", dto);
 	}
 	
-//	public Item imageUploaded(Item dto) {
-//		return sqlSession.selectOne(namespace + ".imageUploaded", dto);
+//	public Item imageUploaded(ItemVo vo) {
+//		return sqlSession.selectOne(namespace + ".imageUploaded", vo);
 //	}
 	
-	public List<Item> imageUploaded(ItemVo vo){ 
-		return sqlSession.selectList(namespace + ".imageUploaded", vo); 
+	public Item selectItemimg(ItemVo vo){ 
+		return sqlSession.selectOne(namespace + ".selectItemimg", vo); 
 	}
 	
 	public int selectLastSeq() {

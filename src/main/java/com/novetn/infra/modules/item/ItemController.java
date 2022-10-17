@@ -48,8 +48,13 @@ public class ItemController {
 		
 		//이미지 가져오기
 		dto.setPseq(vo.getSeq());
-		/* Item imageUploaded = service.imageUploaded(dto); */
-		model.addAttribute("img", service.imageUploaded(vo));
+		
+		List<Item> listimg = service.selectUploadedimg(vo);
+		model.addAttribute("listimg", listimg);
+		
+//		Item imageUploaded = service.imageUploaded(dto); 
+//		Item img = service.imageUploaded(vo);
+//		model.addAttribute("img", img);
 		
 		return "infra/item/xdmin/itemForm";
 	}
@@ -58,6 +63,7 @@ public class ItemController {
 	public String itemInst(ItemVo vo, Item dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		service.insert(dto);
+		service.insertUploaded(dto);
 		
 		vo.setSeq(dto.getSeq());
 		
@@ -102,7 +108,7 @@ public class ItemController {
 	@RequestMapping(value = "mainPage")
 	public String mainPage(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
 		
-		List<Item> listHotdealwmp = service.selectListHotdealwmp(vo);
+		List<Item> listHotdealwmp = service.selectHotdealwmp(vo);
 		model.addAttribute("listHotdealwmp", listHotdealwmp);
 		
 		return "infra/item/user/mainPage";

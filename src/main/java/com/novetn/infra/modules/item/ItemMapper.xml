@@ -47,14 +47,13 @@
 	</select>
 	
 	<!-- 메인페이지 hotdeal div -->
-	<select id="selectListHotdealwmp" resultMap="resultMapObj">
+	<select id="selectHotdealwmp" resultMap="resultMapObj">
 		SELECT
 			a.*
 			, b.*
-		FROM Item a
-			LEFT JOIN imageUploaded b ON a.seq = b.pseq
+		FROM item a
+			LEFT JOIN itemUploaded b ON a.seq = b.pseq
 		WHERE 1=1
-		AND a.maindiv = 5
 		AND b.defaultNY = 1
 	</select>
 	
@@ -136,14 +135,6 @@
 			seq = #{seq}
 	</delete>
 	
-	<select id="selectLastSeq" resultType="Integer">
-		SELECT
-			seq
-		FROM item
-		ORDER BY seq DESC
-			LIMIT 1
-	</select>
-	
 	<!-- uploaded s -->
 	<insert id="insertUploaded">
 		INSERT INTO itemUploaded (
@@ -175,13 +166,31 @@
 	</insert>
 	<!-- uploaded e -->
 	
-	<select id="imageUploaded" resultMap="resultMapObj">
+	<select id="selectUploadedimg" resultMap="resultMapObj">
+		SELECT
+			a.*
+			,b.*
+			FROM item a
+			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			WHERE 1=1
+				AND a.seq = #{seq}
+			ORDER BY b.sort
+	</select>
+	
+	<select id="selectItemimg" resultMap="resultMapObj">
 		SELECT
 			*
 		FROM itemUploaded
 		WHERE 1=1
-			AND delNY = 0
 			AND pseq = #{pseq}
+	</select>
+	
+	<select id="selectLastSeq" resultType="Integer">
+		SELECT
+			seq
+		FROM item
+		ORDER BY seq DESC
+			LIMIT 1
 	</select>
 	
 </mapper>
