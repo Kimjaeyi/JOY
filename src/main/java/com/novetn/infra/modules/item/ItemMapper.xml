@@ -179,8 +179,9 @@
 		SELECT
 			*
 		FROM itemUploaded
-		WHERE
-			pseq = #{pseq}
+		WHERE 1=1
+			AND delNY = 0
+			AND pseq = #{pseq}
 	</select>
 	
 </mapper>
