@@ -330,69 +330,57 @@
 						</div>
 					</div>
 					<div class="tab-pane fade" id="tmon" role="tabpanel" aria-labelledby="tmon-tab" tabindex="0">
-						<div class="contents">
-							<div class="slider">
-								<!-- top10 딜영역 -->
-								<div class="slide">
-									<ul class="deal-list">
-										<c:forEach items="${listHotdealtmon}" var="listHotdealtmon" varStatus="status">
-										<li>
-											<div class="deal">
-												<div class="img">
-													<img src="${listHotdealtmon.path}${listHotdealtmon.uuidName}">
-												</div>
-												<div class="areas">
-													<div class="title"><c:out value="${listHotdealtmon.title}"/></div>
-													<div class="prices">
-														<span class="left"> 
-															<span class="num"><c:out value="${listHotdealtmon.discount}"/></span>
-															<span class="unit">%</span>
-														</span> 
-														<span class="right"> 
-															<span class="num"><c:out value="${listHotdealtmon.price}"/></span>
-															<span class="unit">원</span>
-														</span>
-													</div>
+						<div class="deal-list">
+							<!-- top10 딜영역 -->
+							<c:forEach items="${listHotdealtmon}" var="listHotdealtmon" varStatus="status">
+									<div class="deal">
+										<a href="../item/itemView">
+											<div class="img">
+												<img src="${listHotdealtmon.path}${listHotdealtmon.uuidName}">
+											</div>
+											<div class="areas">
+												<div class="title"><c:out value="${listHotdealtmon.title}"/></div>
+												<div class="prices">
+													<span class="left"> 
+														<span class="num"><c:out value="${listHotdealtmon.discount}"/></span>
+														<span class="unit">%</span>
+													</span> 
+													<span class="right"> 
+														<span class="num"><c:out value="${listHotdealtmon.price}"/></span> 
+														<span class="unit">원</span>
+													</span>
 												</div>
 											</div>
-										</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
+										</a>
+									</div>
+							</c:forEach>
 						</div>
 					</div>
 					<div class="tab-pane fade" id="11st" role="tabpanel" aria-labelledby="11st-tab" tabindex="0">
-						<div class="contents">
-							<div class="slider">
-								<!-- top10 딜영역 -->
-								<div class="slide">
-									<ul class="deal-list">
-										<c:forEach items="${listHotdeal11st}" var="listHotdealtmon" varStatus="status">
-										<li>
-											<div class="deal">
-												<div class="img">
-													<img src="${listHotdeal11st.path}${listHotdeal11st.uuidName}">
-												</div>
-												<div class="areas">
-													<div class="title"><c:out value="${listHotdeal11st.title}"/></div>
-													<div class="prices">
-														<span class="left"> 
-															<span class="num"><c:out value="${listHotdeal11st.discount}"/></span>
-															<span class="unit">%</span>
-														</span> 
-														<span class="right"> 
-															<span class="num"><c:out value="${listHotdeal11st.price}"/></span>
-															<span class="unit">원</span>
-														</span>
-													</div>
+						<div class="deal-list">
+							<!-- top10 딜영역 -->
+							<c:forEach items="${listHotdeal11st}" var="listHotdeal11st" varStatus="status">
+									<div class="deal">
+										<a href="../item/itemView">
+											<div class="img">
+												<img src="${listHotdeal11st.path}${listHotdeal11st.uuidName}">
+											</div>
+											<div class="areas">
+												<div class="title"><c:out value="${listHotdeal11st.title}"/></div>
+												<div class="prices">
+													<span class="left"> 
+														<span class="num"><c:out value="${listHotdeal11st.discount}"/></span>
+														<span class="unit">%</span>
+													</span> 
+													<span class="right"> 
+														<span class="num"><c:out value="${listHotdeal11st.price}"/></span> 
+														<span class="unit">원</span>
+													</span>
 												</div>
 											</div>
-										</li>
-										</c:forEach>
-									</ul>
-								</div>
-							</div>
+										</a>
+									</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>
@@ -413,21 +401,22 @@
 								<a href=" ">
 									<div class="deal-inner-wrap">
 										<div class="deal-inner">
-											<div class="labels">
+											<c:forEach items="${listBest}" var="listBest" varStatus="status">
+											<!-- <div class="labels">
 												<span class="ranking"><span class="blind">1</span></span>
-											</div>
+											</div> -->
 											<div class="img">
-												<img src="/resources/image/베스트1.jpg">
+												<img src="${listBest.path}${listBest.uuidName}">
 											</div>
 											<div class="areas">
-												<div class="title">[복날몸보신] [배스킨라빈스x굽네치킨] 최대 23% 할인 초복 프로모션</div>
+												<div class="title"><c:out value="${listBest.title}"/></div>
 												<div class="prices">
 													<span class="left"> 
-														<span class="num">23</span>
+														<span class="num"><c:out value="${listBest.discount}"/></span>
 														<span class="unit">%</span>
 													</span> 
 													<span class="right"> 
-														<span class="num">27,700</span>
+														<span class="num"><c:out value="${listBest.price}"/></span>
 														<span class="unit">원</span>
 													</span>
 												</div>
@@ -438,8 +427,9 @@
 														<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-13.png?20200604" alt="">
 													</span>
 												</span> 
-												<span class="shopping-mall">11번가 쇼킹딜</span>
+												<!-- <span class="shopping-mall">11번가 쇼킹딜</span> -->
 											</div>
+											</c:forEach>
 										</div>
 									</div>
 								</a>

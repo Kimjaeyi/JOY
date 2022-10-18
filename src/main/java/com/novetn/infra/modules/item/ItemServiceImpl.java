@@ -43,6 +43,11 @@ public class ItemServiceImpl implements ItemService{
 	}
 	
 	@Override
+	public List<Item> selectBestlist(ItemVo vo) throws Exception {
+		return dao.selectBestlist(vo);
+	}
+	
+	@Override
 	public int insert(Item dto) throws Exception {
 		int result = dao.insert(dto);
 		System.out.println("service result : " + result);
