@@ -108,8 +108,16 @@ public class ItemController {
 	@RequestMapping(value = "mainPage")
 	public String mainPage(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
 		
-		List<Item> listHotdealwmp = service.selectHotdealwmp(vo);
+		System.out.println("dd");
+		
+		List<Item> listHotdealwmp = service.selectHotdealwmp(vo); 
 		model.addAttribute("listHotdealwmp", listHotdealwmp);
+		
+//		List<Item> listHotdealtmon = service.selectHotdealtmon(vo);
+//		model.addAttribute("listHotdealtmon", listHotdealtmon);
+//		
+//		List<Item> listHotdeal11st = service.selectHotdeal11st(vo);
+//		model.addAttribute("listHotdeal11st", listHotdeal11st);
 		
 		return "infra/item/user/mainPage";
 		

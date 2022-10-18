@@ -25,7 +25,17 @@ public class Item extends Base {
 	private String modDate;
 	private Integer useNY;
 	private Integer delNY;
+	private Integer mainDiv;
 	private MultipartFile[] imagefile;
+	
+	
+	
+	public Integer getMainDiv() {
+		return mainDiv;
+	}
+	public void setMainDiv(Integer mainDiv) {
+		this.mainDiv = mainDiv;
+	}
 	public String getSeq() {
 		return seq;
 	}
