@@ -20,14 +20,26 @@ public class ItemServiceImpl implements ItemService{
 		return list;
 	}
 	
+//	이미지 업로드
 	@Override
 	public List<Item> selectUploadedimg(ItemVo vo) throws Exception {
 		return dao.selectUploadedimg(vo);
 	}
 	
+//	메인페이지
 	@Override
 	public List<Item> selectHotdealwmp(ItemVo vo) throws Exception {
-		return dao.selectHotdealwmp(vo);
+		return dao.selectHotdealwmp(vo); 
+	}
+	
+	@Override
+	public List<Item> selectHotdealtmon(ItemVo vo) throws Exception {
+		return dao.selectHotdealtmon(vo);
+	}
+	
+	@Override
+	public List<Item> selectHotdeal11st(ItemVo vo) throws Exception {
+		return dao.selectHotdeal11st(vo);
 	}
 	
 	@Override

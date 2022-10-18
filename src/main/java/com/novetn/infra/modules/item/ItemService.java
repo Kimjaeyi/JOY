@@ -5,7 +5,13 @@ import java.util.List;
 	public interface ItemService {
 
 	public List<Item> selectList(ItemVo vo) throws Exception;
+	
+//	메인페이지
 	public List<Item> selectHotdealwmp(ItemVo vo) throws Exception;
+	public List<Item> selectHotdealtmon(ItemVo vo) throws Exception;
+	public List<Item> selectHotdeal11st(ItemVo vo) throws Exception;
+	
+//	이미지 업로드
 	public List<Item> selectUploadedimg(ItemVo vo) throws Exception;
 	
 	public int insert(Item dto) throws Exception;

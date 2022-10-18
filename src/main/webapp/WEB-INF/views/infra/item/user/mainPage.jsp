@@ -7,26 +7,21 @@
 <%@ page session="true"%>
 <html>
 <head>
-<title>coocha</title>
-<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
-<!-- Bootstrap CSS -->
-<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Bootstrap extra CSS -->
-<link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
-<!-- jquery ui CSS -->
-<link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
-<!-- user css -->
-<link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
+	<title>coocha</title>
+	<script src="https://kit.fontawesome.com/15c84217dd.js" crossorigin="anonymous"></script>
+	<!-- Bootstrap CSS -->
+	<link href="/resources/common/bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap extra CSS -->
+	<link href="/resources/xdmin/css/bootstrap/sidebars.css" rel="stylesheet">
+	<!-- jquery ui CSS -->
+	<link href="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet">
+	<!-- user css -->
+	<link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
 </head>
 
 <style type="text/css">
@@ -57,7 +52,7 @@
 	    text-align: center;
 	}
 	
-	.group-top5 .row .col li > button {
+	.group-top5 .inner li > button {
 	    display: block;
 	    color: #616161;
 	    line-height: 1.57;
@@ -78,12 +73,22 @@
 	    background-color: white;
 	}
 	
-	.group-top5 .row .col li > button.nav-link.active {
+	.group-top5 .inner li > button.nav-link.active {
 		color: #6900EF;
 	    border: 1px solid #6900EF;
 	    margin: 0 3px;
 	    display: block;
-	    color: #6900EF;
+	    line-height: 1.57;
+	    padding: 8.5px 14px;
+	    -webkit-border-radius: 4px;
+	    border-radius: 4px;
+	}
+	
+	.group-top5 .inner li > button.nav-link {
+		color: #616161;
+	    border: 1px solid #e0e0e0;
+	    margin: 0 3px;
+	    display: block;
 	    line-height: 1.57;
 	    padding: 8.5px 14px;
 	    -webkit-border-radius: 4px;
@@ -183,8 +188,6 @@
 </style>
 
 <body>
-	<form method="post" name="formList" enctype="multipart/form-data">
-	<input type="hidden" name="seq">
 	<!-- 헤더 -->
 	<header class="main-header" id="top">
 		<!-- main에 붙는 경우 :: main-header 클래스 추가 -->
@@ -261,9 +264,8 @@
 		<!-- pagination e -->
 		
 	</header>
-	
 	<!-- //헤더 -->
-
+	
 	<!-- main contents -->
 	<div class="main-container">
 		<!-- 검색 -->
@@ -280,118 +282,115 @@
 			</div>
 		</div>
 		<!-- //검색 -->
-
+		<form method="post" name="formhotdeal">
+		<input type="hidden" name="seq">
 		<!-- 실시간 핫딜 TOP5 -->
 		<div class="section group-top5">
 			<div class="inner">
 				<div class="title">실시간 핫딜 TOP 5</div>
-				<div class="row">
-					<div class="col">
-						<!-- top5 업체영역 -->
-						<ul class="nav nav-pills" id="pills-tab" role="tablist">
-							<li class="nav-item" role="presentation">
-								<button class="nav-link active" id="wmp-tab" data-bs-toggle="pill" data-bs-target="#wmp" type="button" role="tab" aria-controls="wmp" aria-selected="true">위메프</button>
-							</li>
-							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="tmon-tab" data-bs-toggle="pill" data-bs-target="#tmon" type="button" role="tab" aria-controls="tmon" aria-selected="false">티몬</button>
-							</li>
-							<li class="nav-item" role="presentation">
-								<button class="nav-link" id="11st-tab" data-bs-toggle="pill" data-bs-target="#11st" type="button" role="tab" aria-controls="11st" aria-selected="false">11번가</button>
-							</li>
-						</ul>
-						<!-- //top5 업체영역 -->
-						<div class="tab-content" id="pills-tabContent">
-							<div class="tab-pane fade show active" id="wmp" role="tabpanel" aria-labelledby="wmp-tab" tabindex="0">
-								<div class="deal-list">
-									<!-- top10 딜영역 -->
-									<c:forEach items="${listHotdealwmp}" var="listHotdealwmp" varStatus="status">
-											<div class="deal">
-												<a href="../item/itemView">
-													<div class="img">
-														<img src="${listHotdealwmp.path}${listHotdealwmp.uuidName}">
-													</div>
-													<div class="areas">
-														<div class="title"><c:out value="${listHotdealwmp.title}"/></div>
-														<div class="prices">
-															<span class="left"> 
-																<span class="num"><c:out value="${listHotdealwmp.discount}"/></span>
-																<span class="unit">%</span>
-															</span> 
-															<span class="right"> 
-																<span class="num"><c:out value="${listHotdealwmp.price}"/></span> 
-																<span class="unit">원</span>
-															</span>
-														</div>
-													</div>
-												</a>
+				<!-- top5 업체영역 -->
+				<ul class="nav nav-pills" id="pills-tab" role="tablist">
+					<li class="nav-item" role="presentation">
+						<button class="nav-link active" id="wmp-tab" data-bs-toggle="pill" data-bs-target="#wmp" type="button" role="tab" aria-controls="wmp" aria-selected="true">위메프</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="tmon-tab" data-bs-toggle="pill" data-bs-target="#tmon" type="button" role="tab" aria-controls="tmon" aria-selected="false">티몬</button>
+					</li>
+					<li class="nav-item" role="presentation">
+						<button class="nav-link" id="11st-tab" data-bs-toggle="pill" data-bs-target="#11st" type="button" role="tab" aria-controls="11st" aria-selected="false">11번가</button>
+					</li>
+				</ul>
+				<!-- //top5 업체영역 -->
+				<div class="tab-content" id="pills-tabContent">
+					<div class="tab-pane fade show active" id="wmp" role="tabpanel" aria-labelledby="wmp-tab" tabindex="0">
+						<div class="deal-list">
+							<!-- top10 딜영역 -->
+							<c:forEach items="${listHotdealwmp}" var="listHotdealwmp" varStatus="status">
+									<div class="deal">
+										<a href="../item/itemView">
+											<div class="img">
+												<img src="${listHotdealwmp.path}${listHotdealwmp.uuidName}">
 											</div>
-									</c:forEach>
+											<div class="areas">
+												<div class="title"><c:out value="${listHotdealwmp.title}"/></div>
+												<div class="prices">
+													<span class="left"> 
+														<span class="num"><c:out value="${listHotdealwmp.discount}"/></span>
+														<span class="unit">%</span>
+													</span> 
+													<span class="right"> 
+														<span class="num"><c:out value="${listHotdealwmp.price}"/></span> 
+														<span class="unit">원</span>
+													</span>
+												</div>
+											</div>
+										</a>
+									</div>
+							</c:forEach>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="tmon" role="tabpanel" aria-labelledby="tmon-tab" tabindex="0">
+						<div class="contents">
+							<div class="slider">
+								<!-- top10 딜영역 -->
+								<div class="slide">
+									<ul class="deal-list">
+										<c:forEach items="${listHotdealtmon}" var="listHotdealtmon" varStatus="status">
+										<li>
+											<div class="deal">
+												<div class="img">
+													<img src="${listHotdealtmon.path}${listHotdealtmon.uuidName}">
+												</div>
+												<div class="areas">
+													<div class="title"><c:out value="${listHotdealtmon.title}"/></div>
+													<div class="prices">
+														<span class="left"> 
+															<span class="num"><c:out value="${listHotdealtmon.discount}"/></span>
+															<span class="unit">%</span>
+														</span> 
+														<span class="right"> 
+															<span class="num"><c:out value="${listHotdealtmon.price}"/></span>
+															<span class="unit">원</span>
+														</span>
+													</div>
+												</div>
+											</div>
+										</li>
+										</c:forEach>
+									</ul>
 								</div>
 							</div>
-							<div class="tab-pane fade" id="tmon" role="tabpanel" aria-labelledby="tmon-tab" tabindex="0">
-								<div class="contents">
-									<div class="slider">
-										<!-- top10 딜영역 -->
-										<div class="slide">
-											<ul class="deal-list">
-												<li>
-													<div class="deal">
-														<a href="../item/itemView">
-															<div class="img">
-																<img src="/resources/image/위메프1.png">
-															</div>
-															<div class="areas">
-																<div class="title">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml + 트릿 150ml + 샴푸 80 + 트릿 80 외</div>
-																<div class="prices">
-																	<span class="left"> 
-																		<span class="num">10</span>
-																		<span class="unit">%</span>
-																	</span> 
-																	<span class="right"> 
-																		<span class="num">37,700</span>
-																		<span class="unit">원</span>
-																	</span>
-																</div>
-															</div>
-														</a>
+						</div>
+					</div>
+					<div class="tab-pane fade" id="11st" role="tabpanel" aria-labelledby="11st-tab" tabindex="0">
+						<div class="contents">
+							<div class="slider">
+								<!-- top10 딜영역 -->
+								<div class="slide">
+									<ul class="deal-list">
+										<c:forEach items="${listHotdeal11st}" var="listHotdealtmon" varStatus="status">
+										<li>
+											<div class="deal">
+												<div class="img">
+													<img src="${listHotdeal11st.path}${listHotdeal11st.uuidName}">
+												</div>
+												<div class="areas">
+													<div class="title"><c:out value="${listHotdeal11st.title}"/></div>
+													<div class="prices">
+														<span class="left"> 
+															<span class="num"><c:out value="${listHotdeal11st.discount}"/></span>
+															<span class="unit">%</span>
+														</span> 
+														<span class="right"> 
+															<span class="num"><c:out value="${listHotdeal11st.price}"/></span>
+															<span class="unit">원</span>
+														</span>
 													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="tab-pane fade" id="11st" role="tabpanel" aria-labelledby="11st-tab" tabindex="0">
-								<div class="contents">
-									<div class="slider">
-										<!-- top10 딜영역 -->
-										<div class="slide">
-											<ul class="deal-list">
-												<li>
-													<div class="deal">
-														<a href="../item/itemView">
-															<div class="img">
-																<img src="/resources/image/위메프1.png">
-															</div>
-															<div class="areas">
-																<div class="title">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml + 트릿 150ml + 샴푸 80 + 트릿 80 외</div>
-																<div class="prices">
-																	<span class="left"> 
-																		<span class="num">10</span>
-																		<span class="unit">%</span>
-																	</span> 
-																	<span class="right"> 
-																		<span class="num">37,700</span>
-																		<span class="unit">원</span>
-																	</span>
-																</div>
-															</div>
-														</a>
-													</div>
-												</li>
-											</ul>
-										</div>
-									</div>
+												</div>
+											</div>
+										</li>
+										</c:forEach>
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -399,14 +398,11 @@
 				</div>
 			</div>
 		</div>
+		</form>
 		<!-- //실시간 핫딜 TOP5 -->
 		
 		<!-- 베스트 -->
 		<div class="section group-best">
-			<form name="bestDealForm" id="bestDealForm" action="/" class="blind">
-				<input type="hidden" name="tabKey" id="tabKey" value="TH_01" /> 
-				<input type="hidden" name="curPageNo" id="curPageNo" value="1">
-			</form>
 			<div class="inner">
 				<div class="title">베스트</div>
 				<div class="contents" style="overflow-anchor: none;">
@@ -449,9 +445,6 @@
 								</a>
 							</div>
 						</li>
-						<form name="bestDealListForm" id="bestDealListForm" action="/" class="blind">
-							<input type="hidden" name="bestDealResultCnt" id="bestDealResultCnt" value="208">
-						</form>
 					</ul>
 				</div>
 			</div>
@@ -545,12 +538,20 @@
 			</div>
 		</div>
 	</footer>
-	</form>
 	<!-- 탑으로 -->
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 	<!-- //탑으로 -->
 	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
+	
 	<script type="text/javascript">
+	
+	var form = $("form[name=formhotdeal]");
+	
+	var seq = $("input:hidden[name=seq]");
 	
 	 $('.hamburger, .btn-close').on('click', function(){
         if($('.group-menu').css('display') === 'none'){
