@@ -141,6 +141,19 @@
 	    position: relative;
 	}
 	
+	.group-best {
+		margin-top: 15rem;
+	}
+	
+	.group-best .deal-list .deal .deal-inner {
+	    position: relative;
+	}
+	
+	.group-best .deal-list > * {
+	    padding-left: 36px;
+	    margin-bottom: 75px;
+	}
+	
 /* 	
 	.main-header .after .btn-sc {
 	    background-image: url(../images/common/header/btn-sc-white.svg);
@@ -297,7 +310,7 @@
 						<button class="nav-link" id="tmon-tab" data-bs-toggle="pill" data-bs-target="#tmon" type="button" role="tab" aria-controls="tmon" aria-selected="false">티몬</button>
 					</li>
 					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="11st-tab" data-bs-toggle="pill" data-bs-target="#11st" type="button" role="tab" aria-controls="11st" aria-selected="false">11번가</button>
+						<button class="nav-link" id="11st-tab" data-bs-toggle="pill" data-bs-target="#eleven" type="button" role="tab" aria-controls="eleven" aria-selected="false">11번가</button>
 					</li>
 				</ul>
 				<!-- //top5 업체영역 -->
@@ -316,10 +329,13 @@
 												<div class="prices">
 													<span class="left"> 
 														<span class="num"><c:out value="${listHotdealwmp.discount}"/></span>
-														<span class="unit">%</span>
+														<c:choose>
+															<c:when test="${listHotdealwmp.discount eq null }"></c:when>
+															<c:otherwise><span class="unit">%</span></c:otherwise>
+														</c:choose>
 													</span> 
 													<span class="right"> 
-														<span class="num"><c:out value="${listHotdealwmp.price}"/></span> 
+														<span class="num"><fmt:formatNumber value="${listHotdealwmp.price}" pattern="#,###" /></span> 
 														<span class="unit">원</span>
 													</span>
 												</div>
@@ -343,10 +359,13 @@
 												<div class="prices">
 													<span class="left"> 
 														<span class="num"><c:out value="${listHotdealtmon.discount}"/></span>
-														<span class="unit">%</span>
+														<c:choose>
+															<c:when test="${listHotdealtmon.discount eq null }"></c:when>
+															<c:otherwise><span class="unit">%</span></c:otherwise>
+														</c:choose>
 													</span> 
 													<span class="right"> 
-														<span class="num"><c:out value="${listHotdealtmon.price}"/></span> 
+														<span class="num"><fmt:formatNumber value="${listHotdealtmon.price}" pattern="#,###" /></span> 
 														<span class="unit">원</span>
 													</span>
 												</div>
@@ -356,7 +375,7 @@
 							</c:forEach>
 						</div>
 					</div>
-					<div class="tab-pane fade" id="11st" role="tabpanel" aria-labelledby="11st-tab" tabindex="0">
+					<div class="tab-pane fade" id="eleven" role="tabpanel" aria-labelledby="11st-tab" tabindex="0">
 						<div class="deal-list">
 							<!-- top10 딜영역 -->
 							<c:forEach items="${listHotdeal11st}" var="listHotdeal11st" varStatus="status">
@@ -370,10 +389,13 @@
 												<div class="prices">
 													<span class="left"> 
 														<span class="num"><c:out value="${listHotdeal11st.discount}"/></span>
-														<span class="unit">%</span>
+														<c:choose>
+															<c:when test="${listHotdeal11st.discount eq null }"></c:when>
+															<c:otherwise><span class="unit">%</span></c:otherwise>
+														</c:choose>
 													</span> 
 													<span class="right"> 
-														<span class="num"><c:out value="${listHotdeal11st.price}"/></span> 
+														<span class="num"><fmt:formatNumber value="${listHotdeal11st.price}" pattern="#,###" /></span> 
 														<span class="unit">원</span>
 													</span>
 												</div>
@@ -402,9 +424,15 @@
 									<div class="deal-inner-wrap">
 										<div class="deal-inner">
 											<c:forEach items="${listBest}" var="listBest" varStatus="status">
-											<!-- <div class="labels">
-												<span class="ranking"><span class="blind">1</span></span>
-											</div> -->
+											<div class="labels">
+												<c:choose>
+													<c:when test="${listBest.seq eq 16 }"><span class="ranking"><span class="blind">1</span></span></c:when>
+													<c:when test="${listBest.seq eq 17 }"><span class="ranking"><span class="blind">2</span></span></c:when>
+													<c:when test="${listBest.seq eq 18 }"><span class="ranking"><span class="blind">3</span></span></c:when>
+													<c:otherwise></c:otherwise>
+												</c:choose>
+												
+											</div>
 											<div class="img">
 												<img src="${listBest.path}${listBest.uuidName}">
 											</div>
@@ -413,10 +441,13 @@
 												<div class="prices">
 													<span class="left"> 
 														<span class="num"><c:out value="${listBest.discount}"/></span>
-														<span class="unit">%</span>
+														<c:choose>
+															<c:when test="${listBest.discount eq null }"></c:when>
+															<c:otherwise><span class="unit">%</span></c:otherwise>
+														</c:choose>
 													</span> 
 													<span class="right"> 
-														<span class="num"><c:out value="${listBest.price}"/></span>
+														<span class="num"><fmt:formatNumber value="${listBest.price}" pattern="#,###" /></span>
 														<span class="unit">원</span>
 													</span>
 												</div>
