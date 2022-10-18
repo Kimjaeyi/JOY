@@ -113,11 +113,14 @@ public class ItemController {
 		List<Item> listHotdealwmp = service.selectHotdealwmp(vo); 
 		model.addAttribute("listHotdealwmp", listHotdealwmp);
 		
-//		List<Item> listHotdealtmon = service.selectHotdealtmon(vo);
-//		model.addAttribute("listHotdealtmon", listHotdealtmon);
-//		
-//		List<Item> listHotdeal11st = service.selectHotdeal11st(vo);
-//		model.addAttribute("listHotdeal11st", listHotdeal11st);
+		List<Item> listHotdealtmon = service.selectHotdealtmon(vo);
+		model.addAttribute("listHotdealtmon", listHotdealtmon);
+		
+		List<Item> listHotdeal11st = service.selectHotdeal11st(vo);
+		model.addAttribute("listHotdeal11st", listHotdeal11st);
+		
+		List<Item> listBest = service.selectBestlist(vo);
+		model.addAttribute("listBest", listBest);
 		
 		return "infra/item/user/mainPage";
 		

@@ -42,6 +42,10 @@ public class ItemDao {
 		return sqlSession.selectList(namespace + ".selectHotdeal11st", vo);
 	}
 	
+	public List<Item> selectBestlist(ItemVo vo) {
+		return sqlSession.selectList(namespace + ".selectBestlist", vo);
+	}
+	
 	public int insert(Item dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
 		System.out.println("dao result: " + result);
