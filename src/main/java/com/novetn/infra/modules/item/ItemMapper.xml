@@ -46,17 +46,6 @@
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
-	<!-- 메인페이지 hotdeal div -->
-	<select id="selectHotdealwmp" resultMap="resultMapObj">
-		SELECT
-			a.*
-			, b.*
-		FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
-		WHERE 1=1
-		AND b.defaultNY = 1
-	</select>
-	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
@@ -191,6 +180,40 @@
 		FROM item
 		ORDER BY seq DESC
 			LIMIT 1
+	</select>
+	
+	<!-- 메인페이지 hotdeal div -->
+	<select id="selectHotdealwmp" resultMap="resultMapObj">
+		SELECT
+			a.*
+			, b.*
+		FROM item a
+			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+		WHERE 1=1
+		AND b.defaultNY = 1 
+		AND a.mainDiv = 1
+	</select>
+	
+	<select id="selectHotdealtmon" resultMap="resultMapObj">
+		SELECT
+			a.*
+			, b.*
+		FROM item a
+			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+		WHERE 1=1
+		AND b.defaultNY = 1
+		AND a.mainDiv = 10
+	</select>
+	
+	<select id="selectHotdeal11st" resultMap="resultMapObj">
+		SELECT
+			a.*
+			, b.*
+		FROM item a
+			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+		WHERE 1=1
+		AND b.defaultNY = 1
+		AND a.mainDiv = 15
 	</select>
 	
 </mapper>

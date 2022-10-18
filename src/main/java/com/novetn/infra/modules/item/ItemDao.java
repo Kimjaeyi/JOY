@@ -23,13 +23,23 @@ public class ItemDao {
 		return list; 
 	}
 	
+//	이미지 업로드
+	public List<Item> selectUploadedimg(ItemVo vo) { 
+		List<Item> listimg = sqlSession.selectList("com.novetn.infra.modules.item.ItemMapper.selectUploadedimg", vo);
+		return listimg; 
+	}
+	
+//	메인페이지
 	public List<Item> selectHotdealwmp(ItemVo vo) {
 		return sqlSession.selectList(namespace + ".selectHotdealwmp", vo);
 	}
 	
-	public List<Item> selectUploadedimg(ItemVo vo) { 
-		List<Item> listimg = sqlSession.selectList("com.novetn.infra.modules.item.ItemMapper.selectUploadedimg", vo);
-		return listimg; 
+	public List<Item> selectHotdealtmon(ItemVo vo) {
+		return sqlSession.selectList(namespace + ".selectHotdealtmon", vo);
+	}
+	
+	public List<Item> selectHotdeal11st(ItemVo vo) {
+		return sqlSession.selectList(namespace + ".selectHotdeal11st", vo);
 	}
 	
 	public int insert(Item dto) {
