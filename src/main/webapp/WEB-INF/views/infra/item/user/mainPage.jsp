@@ -149,7 +149,7 @@
 	    position: relative;
 	}
 	
-	.group-best .deal-list > * {
+	.deal-list > * {
 	    padding-left: 36px;
 	    margin-bottom: 75px;
 	}
@@ -417,56 +417,85 @@
 				<div class="title">베스트</div>
 				<div class="contents" style="overflow-anchor: none;">
 					<!-- 베스트 딜리스트 -->
-					<ul class="deal-list" id="dealListDiv">
-						<li>
-							<div class="deal">
-								<a href=" ">
-									<div class="deal-inner-wrap">
-										<div class="deal-inner">
-											<c:forEach items="${listBest}" var="listBest" varStatus="status">
-											<div class="labels">
-												<c:choose>
-													<c:when test="${listBest.seq eq 16 }"><span class="ranking"><span class="blind">1</span></span></c:when>
-													<c:when test="${listBest.seq eq 17 }"><span class="ranking"><span class="blind">2</span></span></c:when>
-													<c:when test="${listBest.seq eq 18 }"><span class="ranking"><span class="blind">3</span></span></c:when>
-													<c:otherwise></c:otherwise>
-												</c:choose>
-												
-											</div>
-											<div class="img">
-												<img src="${listBest.path}${listBest.uuidName}">
-											</div>
-											<div class="areas">
-												<div class="title"><c:out value="${listBest.title}"/></div>
-												<div class="prices">
-													<span class="left"> 
-														<span class="num"><c:out value="${listBest.discount}"/></span>
-														<c:choose>
-															<c:when test="${listBest.discount eq null }"></c:when>
-															<c:otherwise><span class="unit">%</span></c:otherwise>
-														</c:choose>
-													</span> 
-													<span class="right"> 
-														<span class="num"><fmt:formatNumber value="${listBest.price}" pattern="#,###" /></span>
-														<span class="unit">원</span>
-													</span>
-												</div>
-											</div>
-											<div class="aside">
-												<span class="pay"> 
-													<span class="easy-pay">
-														<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-13.png?20200604" alt="">
-													</span>
-												</span> 
-												<!-- <span class="shopping-mall">11번가 쇼킹딜</span> -->
-											</div>
-											</c:forEach>
+					<div class="deal-list" id="dealListDiv">
+						<c:forEach items="${listBest}" var="listBest" varStatus="status">
+						<div class="deal">
+							<a href=" ">
+								<div class="deal-inner-wrap">
+									<div class="deal-inner">
+										<div class="labels">
+											<span class="ranking"><span class="blind">
+											<c:choose>
+												<c:when test="${listBest.seq eq 16 }">
+													<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-1.png?20200604" alt="">
+												</c:when>
+												<c:when test="${listBest.seq eq 17 }">
+													<img src="http://images.coocha.co.kr/static/images/deal/labels/ranking-best-02.svg" alt="">
+												</c:when>
+												<c:when test="${listBest.seq eq 18 }">
+													<img src="http://images.coocha.co.kr/static/images/deal/labels/ranking-best-03.svg" alt="">
+												</c:when>
+												<c:otherwise></c:otherwise>
+											</c:choose>
+											</span></span>
 										</div>
+										<div class="img">
+											<img src="${listBest.path}${listBest.uuidName}">
+										</div>
+										<div class="areas">
+											<div class="title"><c:out value="${listBest.title}"/></div>
+											<div class="prices">
+												<span class="left"> 
+													<span class="num"><c:out value="${listBest.discount}"/></span>
+													<c:choose>
+														<c:when test="${listBest.discount eq null }"></c:when>
+														<c:otherwise><span class="unit">%</span></c:otherwise>
+													</c:choose>
+												</span> 
+												<span class="right"> 
+													<span class="num"><fmt:formatNumber value="${listBest.price}" pattern="#,###" /></span>
+													<span class="unit">원</span>
+												</span>
+											</div>
+										</div>
+										<c:choose>
+											<c:when test="${listBest.shoppingsite eq 48 }">
+												<div class="aside">
+													<span class="pay"> 
+														<span class="easy-pay">
+															<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-1.png?20200604" alt="">
+														</span>
+													</span> 
+													<span class="shopping-mall">위메프</span>
+												</div>
+											</c:when>
+											<c:when test="${listBest.shoppingsite eq 49 }">
+												<div class="aside">
+													<span class="pay"> 
+														<span class="easy-pay">
+															<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-11.png?20200604" alt="">
+														</span>
+													</span> 
+													<span class="shopping-mall">티몬</span>
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div class="aside">
+													<span class="pay"> 
+														<span class="easy-pay">
+															<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-13.png?20200604" alt="">
+														</span>
+													</span>
+													<span class="shopping-mall">11번가 쇼킹딜</span>
+												</div>
+											</c:otherwise>
+										</c:choose>
 									</div>
-								</a>
-							</div>
-						</li>
-					</ul>
+								</div>
+							</a>
+						</div>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 		</div>
