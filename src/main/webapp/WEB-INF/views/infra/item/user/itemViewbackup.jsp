@@ -28,7 +28,7 @@
 	
 /* 	.abc {
 		margin: 7% 20%;
-	}
+	} 
 	
 	.cate li {
 		font-size : 16px;
