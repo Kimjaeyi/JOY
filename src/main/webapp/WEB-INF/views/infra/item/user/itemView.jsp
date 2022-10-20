@@ -126,6 +126,10 @@
 		font-size: 13px;
 	}
 	
+	.itemprice, .etcinfo, .itemtotalprice {
+		margin: 20px 0;
+	}
+	
 	.tabborder {
 		margin: 0 20%;
 	}
@@ -367,16 +371,20 @@
 					 <div class="card-body">
 					<h3 class="card-title"><c:out value="${card.title}"/></h3>
 					<hr style="color : gray">
-					<h4 style="font-weight:bold; display:inline; font-size: 24px"><c:out value="${card.price}"/></h4>
-					<h5 style="display:inline; font-size: 20px">원</h5>
+					<div class="itemprice">
+						<h4 style="font-weight:bold; display:inline; font-size: 24px"><fmt:formatNumber value="${card.price}" pattern="#,###" /></h4>
+						<h5 style="display:inline; font-size: 20px">원</h5>
+					</div>
 					<hr style="color : gray">
-					<p class="card-text">
+					<div class="etcinfo">
+						<p class="card-text">
 						<small><i class="fa-solid fa-truck"></i> &nbsp;&nbsp;<c:out value="${card.fee}"/> ｜ <c:out value="${card.delivery}"/> ｜ <c:out value="${card.outdate}"/>일 이내 출고</small>
-						<br>
-						<small>(주말, 공휴일 제외)</small>
 						<br><br>
+						<small>(주말, 공휴일 제외)</small>
+						<br><br><br>
 						<small><i class="fa-solid fa-cart-shopping"></i> &nbsp;&nbsp;최대 <c:out value="${card.maximum}"/>개까지 구매 가능</small>
-					</p>
+						</p>
+					</div>
 					<br><br>
 <!-- 					
 					<select class="form-select" aria-label="Default select example">
@@ -386,10 +394,12 @@
 					</select>
 					<br><br><br>
 -->					
-					<h4 style="display:inline; font-size: 18px"><b>총 상품 금액</b></h4>
-					<h5 style="display:inline; float:right; font-size: 18px"><b>원</b></h5>
-					<h4 style="display:inline; float:right; font-size: 24px" id="totalprice"><b><c:out value="${card.price}"/></b></h4>
-					<br><br><br><br>
+					<div class="itemtotalprice">
+						<h4 style="display:inline; font-size: 18px"><b>총 상품 금액</b></h4>
+						<h5 style="display:inline; float:right; font-size: 22px"><b>원</b></h5>
+						<h4 style="display:inline; float:right; font-size: 30px" id="totalprice"><b><fmt:formatNumber value="${card.price}" pattern="#,###" /></b></h4>
+					</div>
+					<br><br><br>
 					<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
 					</div>
 				</div>
