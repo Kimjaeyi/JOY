@@ -128,6 +128,8 @@ public class ItemController {
 	@RequestMapping(value = "itemView")
 	public String itemView(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
 		
+		System.out.println("vo.getSeq(): " + vo.getSeq());
+		
 		List<Item> card = service.selectView(vo); 
 		model.addAttribute("card", card);
 		
