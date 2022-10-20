@@ -26,6 +26,9 @@ public class Item extends Base {
 	private Integer useNY;
 	private Integer delNY;
 	private Integer mainDiv;
+	private String fee;
+	private String delivery;
+	private String outdate;
 	private MultipartFile[] imagefile;
 	
 	
@@ -155,6 +158,24 @@ public class Item extends Base {
 	}
 	public void setImagefile(MultipartFile[] imagefile) {
 		this.imagefile = imagefile;
+	}
+	public String getFee() {
+		return fee;
+	}
+	public void setFee(String fee) {
+		this.fee = fee;
+	}
+	public String getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(String delivery) {
+		this.delivery = delivery;
+	}
+	public String getOutdate() {
+		return outdate;
+	}
+	public void setOutdate(String outdate) {
+		this.outdate = outdate;
 	}
 	
 }

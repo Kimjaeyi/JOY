@@ -43,12 +43,13 @@ public class ItemController {
 	public String itemForm(@ModelAttribute("vo") ItemVo vo, Item dto, Model model) throws Exception {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
+
 		Item item = service.selectOne(vo);
 		model.addAttribute("item", item);
 		
 		//이미지 가져오기
 		dto.setPseq(vo.getSeq());
-		
+//		
 		List<Item> listimg = service.selectUploadedimg(vo);
 		model.addAttribute("listimg", listimg);
 		
@@ -108,8 +109,6 @@ public class ItemController {
 	@RequestMapping(value = "mainPage")
 	public String mainPage(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
 		
-		System.out.println("dd");
-		
 		List<Item> listHotdealwmp = service.selectHotdealwmp(vo); 
 		model.addAttribute("listHotdealwmp", listHotdealwmp);
 		
@@ -127,7 +126,13 @@ public class ItemController {
 	}
 	
 	@RequestMapping(value = "itemView")
-	public String itemView() throws Exception {
+	public String itemView(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
+		
+		List<Item> card = service.selectView(vo); 
+		model.addAttribute("card", card);
+		
+		List<Item> tab = service.selectSection(vo); 
+		model.addAttribute("tab", tab);
 		
 		return "infra/item/user/itemView";
 		
