@@ -235,16 +235,7 @@
 			, (SELECT c.cdname_ko FROM Code c WHERE a.deliverymethod = c.seq) AS delivery
 			, (SELECT c.cdname_ko FROM Code c WHERE a.released = c.seq) AS outdate
 			, a.maximum
-			, b.type
-			, b.defaultNY
-			, b.sort
-			, b.path
-			, b.originalName
-			, b.uuidName
-			, b.ext
-			, b.size
-			, b.delNY
-			, b.pseq
+			, b.*
 		FROM item a
 			LEFT JOIN itemUploaded b ON a.seq = b.pseq
 		WHERE 1=1
