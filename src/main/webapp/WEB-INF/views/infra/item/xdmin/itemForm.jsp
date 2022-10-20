@@ -279,7 +279,9 @@
 						<h6><!-- 설명 --></h6>
 						<br>
 						<div id="UploadedImagePreview" class="addScroll">
-							<img src="${listimg.path }${listimg.uuidName}">
+							<c:forEach items="${listimg }" var="listimg" varStatus="status">
+								<img src="${listimg.path }${listimg.uuidName }">
+							</c:forEach>
 						</div>
 						<!-- <textarea class="form-control" rows="3"></textarea> -->
 					</div>
