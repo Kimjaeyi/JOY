@@ -48,6 +48,16 @@ public class ItemServiceImpl implements ItemService{
 	}
 	
 	@Override
+	public List<Item> selectView(ItemVo vo) throws Exception {
+		return dao.selectView(vo);
+	}
+	
+	@Override
+	public List<Item> selectSection(ItemVo vo) throws Exception {
+		return dao.selectSection(vo);
+	}
+	
+	@Override
 	public int insert(Item dto) throws Exception {
 		int result = dao.insert(dto);
 		System.out.println("service result : " + result);

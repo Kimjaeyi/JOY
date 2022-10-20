@@ -113,6 +113,8 @@
 		font-weight: bold;
 		letter-spacing: 1.5px;
 		margin: 8px 0;
+		max-width: 470px;
+		min-width: 280px;
 	}
 	
 	.card-body {
@@ -124,67 +126,54 @@
 		font-size: 13px;
 	}
 	
+	.tabborder {
+		margin: 0 20%;
+	}
+	
 	.itemtab {
-		text-align: center;
-		margin: 0 10%;
 		padding: 50px;
-		background: white;
-	}
-	
-	#content1 {
-		margin: 0 15%;
-	}
-	
-	#content2, #content3, #content4 {
-		margin: 0 15%;
-		line-height: 1.5;
-		text-align: left;
-	}
-	
-	#content2, #content3, #content4 p {
-		margin: 5% 10%;
-		line-height: 1.5;
-		text-align: left;
-	}
-	
-	.ccc {
-		margin: 0 10%;
-	}
-	
-	#tab1, #tab2, #tab3, #tab4, section {
-		display : none;
+		margin: 0 auto;
 	}
 	
 	section {
-		padding : 20px 0 0;
-		border-top : 1px solid #ddd;
+		display: none;
+		padding: 20px 0;
+		border-top: 1px solid #ddd;
+	}
+	
+	input[type=radio] {
+		display: none;
 	}
 	
 	label {
-		width: 250px;
+		width: 200px;
 		display: inline-block;
 		margin: 0 0 -1px;
 		padding: 15px 25px;
-		font-weight: bold;
+		font-weight: 600;
 		text-align: center;
 		color: #bbb;
 		border: 1px solid transparent;
 	}
 	
 	label:hover {
-		color: #2e9cdf;
-		cursor: pointer;
+	    color: #2e9cdf;
+	    cursor: pointer;
 	}
 	
+	/*input 클릭시, label 스타일*/
 	input:checked + label {
 		color: #6900EF;
 		border: 2px solid #6900EF;
-		border-bottom: 1px solid white;
+		border-top: 2px solid #6900EF;
+		border-bottom: 1px solid #ffffff;
 	}
 	
-	#tab1:checked ~ #content1, #tab2:checked ~ #content2, 
-	#tab3:checked ~ #content3, #tab4:checked ~ #content4 {
-		display: block;
+	#tab1:checked ~ #content1,
+	#tab2:checked ~ #content2,
+	#tab3:checked ~ #content3,
+	#tab4:checked ~ #content4 {
+	    display: block;
 	}
 	
 	#purchase {
@@ -218,10 +207,12 @@
 		z-index: 900;
 		background-image: url(../images/common/common/go-top.svg); 
 	}
+	
 	.btn-go-top:hover {
 		background-image: url(../images/common/common/go-top-over.svg);
 		transition: background-image .2s ease; 
 	}
+	
 	.blind {
 		position: absolute;
 		clip: rect(0 0 0 0);
@@ -230,39 +221,8 @@
 		margin: -1px;
 		overflow: hidden; 
 	}
-	
-	.reviewtop {
-		text-align: center;
-	}
-	
-	.RatingStar {
-		text-align: center;
-		width: 30;
-		height: 30;
-	}
-	.inner-star::before {
-		color: #FF9600;
-	}
-	.outer-star {
-		position: relative;
-		display: inline-block;
-		color: #CCCCCC;
-	}
-	.inner-star {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 0%;
-		overflow: hidden;
-		white-space: nowrap;
-	}
-	.outer-star::before, .inner-star::before {
-		content: '\f005 \f005 \f005 \f005 \f005';
-		font-family: 'Font Awesome 5 free';
-		font-weight: 900;
-	}
-	
-	.accordion {
+
+/* 	.accordion {
 		--bs-accordion-btn-focus-border-color: mediumpurple;
 		--bs-accordion-active-color: mediumpurple;
     	--bs-accordion-active-bg: mediumpurple;
@@ -277,8 +237,12 @@
 	    color: #ED0000;
 	    background-color: #FFC6C6;
     }
-	
+*/	
 	li {
+		margin: 0 2%;
+	}
+	
+	.footer li {
 		margin: 0 2%;
 	}
 	
@@ -295,10 +259,6 @@
                 <a href="/item/mainPage"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
-
-            <div class="search">
-                <div class="search-input"><input type="search" class="input"></div>
-            </div>
 
             <div class="hamburger">
                 <div class="hamburger-box">
@@ -331,7 +291,7 @@
 					<div class="after">
 						<ul class="gnb">
 							<%-- <li><span class="userid"><c:out value="${sessId }"/>님 :) </span></li> --%>
-							<!-- <li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li> -->
+							<li><a href="/member/logoutProc" class="logoutbtn" id="logoutbtn">로그아웃</a></li>
 							<li><a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
 							<li><a class="btn-like"><span class="blind">좋아요</span></a></li>
 							<li><a class="btn-sc btn-layer-open"><span class="blind">더보기</span></a>
@@ -350,22 +310,11 @@
 				<!-- 로그인 후 -->
         </div>
     </div>
+<!--     
     <input type="hidden" id="rtCount" name="rtCount">
 	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">
-    <!-- <div class="abc">
-    	<hr style="color : gray">
-		<div class="cate">
-			<li>홈</li>
-			<li>특가</li>
-			<li>마트위크</li>
-			<li>베스트</li>
-			<li>베이비프로</li>
-			<li>디지털프로</li>
-			<li>마트프로</li>
-			<li>신규오픈</li>
-			<li>백화점·직구</li>
-		</div>
-		<br><br>
+-->	
+<!-- 		
 		<hr style="color : gray">
 		<br>
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
@@ -376,8 +325,9 @@
 				<li class="breadcrumb-item active" aria-current="page">샴푸/린스</li>
 			</ol>
 		</nav>
-		<hr style="color : gray">
-	</div> -->
+-->		
+	<hr style="color : gray">
+	</div>
 	<div class="bbb">
 		<hr style="color : gray">
 		<div class="cate">
@@ -393,7 +343,7 @@
 		</div>
 		<br><br>
 		<hr style="color : gray">
-		<div class="aaa">
+		<!-- <div class="aaa">
 			<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><i class="fa-solid fa-house-chimney"></i> 홈</li>
@@ -403,285 +353,330 @@
 				</ol>
 			</nav>
 		</div>
-		<hr style="color : gray">
+		<hr style="color : gray"> -->
 	</div>
-	<div class="card">
-		<div class="row">
-			<div class="col-5">
-			  <img src="../resources/image/위메프상세.jpg" class="img-fluid rounded-start" alt="...">
-			</div>
-			<div class="col-7">
-				 <div class="card-body">
-				<h3 class="card-title">22만개 판매돌파! 1+3 리엔 물들임</h3>
-				<h3 class="card-title">새치커버 샴푸 450ml</h3>
-				<hr style="color : gray">
-				<h4 style="font-weight:bold; display:inline; font-size: 24px">37,770</h4>
-				<h5 style="display:inline; font-size: 20px">원</h5>
-				<hr style="color : gray">
-				<p class="card-text">
-					<small><i class="fa-solid fa-truck"></i> &nbsp;&nbsp;무료배송 ｜ 택배배송 ｜ 3일 이내 출고</small>
-					<br>
-					<small>(주말, 공휴일 제외)</small>
+	<form method="post" name="formView">
+	<input type="hidden" name="seq">
+	<c:forEach items="${card}" var="card" varStatus="status">
+		<div class="card">
+			<div class="row">
+				<div class="col-5">
+					<img src="${card.path}${card.uuidName}">
+				</div>
+				<div class="col-7">
+					 <div class="card-body">
+					<h3 class="card-title"><c:out value="${card.title}"/></h3>
+					<hr style="color : gray">
+					<h4 style="font-weight:bold; display:inline; font-size: 24px"><c:out value="${card.price}"/></h4>
+					<h5 style="display:inline; font-size: 20px">원</h5>
+					<hr style="color : gray">
+					<p class="card-text">
+						<small><i class="fa-solid fa-truck"></i> &nbsp;&nbsp;<c:out value="${card.fee}"/> ｜ <c:out value="${card.delivery}"/> ｜ <c:out value="${card.outdate}"/>일 이내 출고</small>
+						<br>
+						<small>(주말, 공휴일 제외)</small>
+						<br><br>
+						<small><i class="fa-solid fa-cart-shopping"></i> &nbsp;&nbsp;최대 <c:out value="${card.maximum}"/>개까지 구매 가능</small>
+					</p>
 					<br><br>
-					<small><i class="fa-solid fa-cart-shopping"></i> &nbsp;&nbsp;최대 999개까지 구매 가능</small>
-				</p>
-				<br><br>
-				<select class="form-select" aria-label="Default select example">
-					<option selected>옵션을 선택하세요</option>
-					<option value="37700" id="option1">[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
-					<option value="37700" id="option2">[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
-				</select>
-				<br><br><br>
-				<h4 style="display:inline; font-size: 18px"><b>총 상품 금액</b></h4>
-				<h5 style="display:inline; float:right; font-size: 18px"><b>원</b></h5>
-				<h4 style="display:inline; float:right; font-size: 24px" id="totalprice"><b></b></h4>
-				<br><br><br><br>
-				<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
+<!-- 					
+					<select class="form-select" aria-label="Default select example">
+						<option selected>옵션을 선택하세요</option>
+						<option value="37700" id="option1">[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
+						<option value="37700" id="option2">[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개 ｜ 37,700원</option>
+					</select>
+					<br><br><br>
+-->					
+					<h4 style="display:inline; font-size: 18px"><b>총 상품 금액</b></h4>
+					<h5 style="display:inline; float:right; font-size: 18px"><b>원</b></h5>
+					<h4 style="display:inline; float:right; font-size: 24px" id="totalprice"><b><c:out value="${card.price}"/></b></h4>
+					<br><br><br><br>
+					<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</c:forEach>
 	<br><br>
-	<div class="itemtab">
-	    <input id="tab1" type="radio" name="tabs" checked>
-	    <label for="tab1">상세정보</label>
-	    <input id="tab2" type="radio" name="tabs">
-	    <label for="tab2">구매후기</label>
-	    <input id="tab3" type="radio" name="tabs">
-	    <label for="tab3">상품문의</label>
-	    <input id="tab4" type="radio" name="tabs">
-	    <label for="tab4">배송·교환·반품</label>
-	    <section id="content1">
-	        <img src="../resources/image/itemdetail.jpg">
-	    </section>
-	    <section id="content2">
-<!-- 	    
-	        <div class="reviewtop">
-	        	<br><br><br>
-		        <h6><b>총 3건의 후기가 있습니다.</b></h6>
-		        <br><br>
-		        <h4>평균별점</h4>
-		        <div class="RatingStar">
-					<div class="RatingScore">
-						<div class="outer-star">
-							<div class="inner-star"></div>
+	<div class="tabborder">
+		<div class="itemtab">
+		    <input id="tab1" type="radio" name="tabs" checked>
+		    <label for="tab1">상세정보</label>
+		    <input id="tab2" type="radio" name="tabs">
+		    <label for="tab2">구매후기</label>
+		    <input id="tab3" type="radio" name="tabs">
+		    <label for="tab3">상품문의</label>
+		    <input id="tab4" type="radio" name="tabs">
+		    <label for="tab4">배송·교환·반품</label>
+		    <section id="content1">
+		    	<c:forEach items="${tab}" var="tab" varStatus="status">
+		        	<img src="${tab.path}${tab.uuidName}">
+		        </c:forEach>
+		    </section>
+		    <section id="content2">
+	<!-- 	    
+		        <div class="reviewtop">
+		        	<br><br><br>
+			        <h6><b>총 3건의 후기가 있습니다.</b></h6>
+			        <br><br>
+			        <h4>평균별점</h4>
+			        <div class="RatingStar">
+						<div class="RatingScore">
+							<div class="outer-star">
+								<div class="inner-star"></div>
+							</div>
+						</div>
+					</div>
+					<br>
+					<h3><b>4.5</b></h3>
+				</div>
+				<br><br>
+				<hr>
+				<h6><b>전체후기 3개</b></h6>
+				<hr>
+	 -->			
+		    </section>
+		    <section id="content3">
+		        <h5><b>상품문의</b></h5>
+	<!-- 			
+				<div class="accordion" id="accordionPanelsStayOpenExample">
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingOne">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+							<b style="font-size: 13px">*기타문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+						  <b style="font-size: 13px">*배송문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+						  </button>
+						</h2>
+						<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingThree">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+							<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingFour">
+						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+						  <b style="font-size: 13px">*상품문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+						  </button>
+						</h2>
+						<div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingFive">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+							<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingSix">
+						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
+						  <b style="font-size: 13px">*배송문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+						  </button>
+						</h2>
+						<div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
+							<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingEight">
+						  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
+						  <b style="font-size: 13px">*상품문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+						  </button>
+						</h2>
+						<div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingNine">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">
+							<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
+						</div>
+					</div>
+					<div class="accordion-item">
+						<h2 class="accordion-header" id="panelsStayOpen-headingTen">
+							<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
+							<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
+							</button>
+						</h2>
+						<div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
+							<div class="accordion-body">
+								<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
+								<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
+								<br><br><br>
+								<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
+								<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
+								<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
+							</div>
 						</div>
 					</div>
 				</div>
-				<br>
-				<h3><b>4.5</b></h3>
-			</div>
-			<br><br>
-			<hr>
-			<h6><b>전체후기 3개</b></h6>
-			<hr>
- -->			
-	    </section>
-	    <section id="content3">
-	        <h5><b>상품문의</b></h5>
-	        <br>
-			<div class="accordion" id="accordionPanelsStayOpenExample">
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingOne">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
-						<b style="font-size: 13px">*기타문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-					  <b style="font-size: 13px">*배송문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingThree">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingFour">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-					  <b style="font-size: 13px">*상품문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingFive">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingSix">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false" aria-controls="panelsStayOpen-collapseSix">
-					  <b style="font-size: 13px">*배송문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingSeven">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false" aria-controls="panelsStayOpen-collapseSeven">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSeven">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingEight">
-					  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false" aria-controls="panelsStayOpen-collapseEight">
-					  <b style="font-size: 13px">*상품문의*</b>&nbsp;&nbsp;[자연갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-					  </button>
-					</h2>
-					<div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingEight">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingNine">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false" aria-controls="panelsStayOpen-collapseNine">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingNine">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-				<div class="accordion-item">
-					<h2 class="accordion-header" id="panelsStayOpen-headingTen">
-						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false" aria-controls="panelsStayOpen-collapseTen">
-						<b style="font-size: 13px">*환불문의*</b>&nbsp;&nbsp;[흑갈색] LG 리엔 물들임 새치커버 샴푸 450ml + 새치커버 트리트먼트 150ml + 새치커버 샴푸 80ml 2개
-						</button>
-					</h2>
-					<div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTen">
-						<div class="accordion-body">
-							<i class="fa-regular fa-q fa-2x"></i>&nbsp;&nbsp;<b style="font-size: 13px">증정품에 2개짜리가 트리트먼트가 아니라 샴푸인게 맞나요?</b>
-							<br><b style="font-size: 11px; color: gray">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2022-08-31</b>
-							<br><br><br>
-							<i class="fa-regular fa-a fa-2x"></i>&nbsp;&nbsp;
-							<normal style="font-size: 13px">안녕하세요 고객님, 엘지 생활건강입니다. 저희 제품을 찾아주셔서 감사합니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;문의주신 제품은 상품명 그대로 샴푸 450ML, 트리트먼트 150ML , 샴푸80ML*2개 로 구성되어 있습니다.
-							<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;많은 관심 바랍니다. 감사합니다.</normal>
-						</div>
-					</div>
-				</div>
-			</div>
-	    </section>
-	    <section id="content4">
-	        <h5 style="font-weight: bold; margin: 5% 10%">배송/교환/반품</h5>
-	        <p font-size=10px><b>배송 안내</b></p>
-	        <div class="ccc">
-				<table class="table table-striped-columns">
-					<thead>
+	-->			
+		    </section>
+		    <section id="content4">
+		        <h5 style="font-weight: bold; margin: 5% 10%">배송/교환/반품</h5>
+		        <p font-size=10px><b>배송 안내</b></p>
+		        <div class="ccc">
+					<table class="table table-striped-columns">
+						<thead>
+							<tr>
+								<td width="30%">배송비</td>
+								<td width="70%">무료배송</td>
+							</tr>
+						</thead>
 						<tr>
-							<td width="30%">배송비</td>
-							<td width="70%">무료배송</td>
+							<td>배송방법/상품 출고일</td>
+							<td>택배배송(CJ대한통운) ｜ 당일 출고(오후 12시 이전 결제 건까지)</td>
 						</tr>
-					</thead>
-					<tr>
-						<td>배송방법/상품 출고일</td>
-						<td>택배배송(CJ대한통운) ｜ 당일 출고(오후 12시 이전 결제 건까지)</td>
-					</tr>
-				</table>
-			</div>
-	    </section>
+					</table>
+				</div>
+		    </section>
+		</div>
 	</div>
+	<footer>
+		<div class="footer">
+			<div class="inner">
+				<ul class="area-link">
+					<li>앱다운로드</li>
+					<li>회사소개</li>
+					<li>고객센터</li>
+					<li>서비스이용약관</li>
+					<li>위치정보이용약관</a</li>
+					<li><b>개인정보처리방침</b></li>
+					<li>마케팅센터</li>
+					<li>입점 및 광고 안내</li>
+				</ul>
+				<div class="area-text">
+					<p>쿠차는 상품에 직접 관여하지 않으며 상품 주문, 배송 및 환불의 의무와 책임은 각 판매업체에 있습니다.</p>
+				</div>
+				<div class="area-bottom">
+					<div class="info">
+						<span>(주)제이와이케이</span> 
+						<span>대표 김재이</span> 
+						<span>사업자등록번호 123-45-67890</span>
+					</div>
+					<div class="address">
+						<span>서울특별시 서초구 서초대로 77길 55, 3층</span> 
+						<span>고객센터 cs_coocha@coocha.com</span> 
+						<span>입점 · 광고 business@coocha.com</span>
+					</div>
+					<div class="copyright">
+						<p>© 2022. SearchFy Inc. All Rights Reserved.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	</form>
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 <!-- 상세정보사진 이어붙이기
 https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%25EC%2597%2594%2520%25EB%25AC%25BC%25EB%2593%25A4%25EC%259E%2584%25EC%2583%25B4%25ED%2591%25B8&_service=5&_no=8
@@ -695,6 +690,30 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 
 <script type="text/javascript">
 
+	var form = $("form[name=formView]");
+	
+	var seq = $("input:hidden[name=seq]");
+	
+	$("#logoutbtn").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
 /* 
 	ratings = {RatingScore: 4.5} 
 	totalRating = 5;table = document.querySelector('.RatingStar');
@@ -708,13 +727,14 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 			}
 		}
 	rateIt()
- */
+*/
  
+/*  
  	var price = 37700;
 	var coochaCount = 1;
 	var totalprice = (price*coochaCount);
 	
-	/* 화면에 보여지는 부분 */
+//	화면에 보여지는 부분
 	$("#totalprice").text(totalprice.toLocaleString());
 	$("#optionprice").text("0");
 	
@@ -736,26 +756,7 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 	
 	$("#rtCount").val(coochaCount);
 	$("#rtOption").val(totalprice);
-	
-	$("#logoutbtn").on("click", function(){
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/member/logoutProc"
-			,data: {}
-			,success: function(response) {
-				if(response.rt == "success") {
-					location.href = "/";
-				} else {
-					// by pass
-				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-	});
+*/
  
 </script>
 
