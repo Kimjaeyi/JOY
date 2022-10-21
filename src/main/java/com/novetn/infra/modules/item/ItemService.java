@@ -27,5 +27,6 @@ import java.util.List;
 	
 	public Item selectItemimg(ItemVo vo) throws Exception;
 	public int insertUploaded(Item dto) throws Exception;
+	public int updateUploaded(Item dto) throws Exception;
 	
 }

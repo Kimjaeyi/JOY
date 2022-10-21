@@ -99,7 +99,7 @@
 			, discount = #{discount}
 			, price = #{price}
 			, released = #{released}
-			, site = #{site}
+			, shoppingsite = #{shoppingsite}
 			, shippingfee = #{shippingfee}
 			, deliverymethod = #{deliverymethod}
 			, stock = #{stock}
@@ -149,21 +149,35 @@
 			,0
 			,#{pseq}
 		)
-		<selectKey resultType="String" keyProperty="seq" order="AFTER">
-			SELECT last_insert_id()
-		</selectKey>
 	</insert>
+	
+	<update id="updateUploaded">
+		UPDATE itemUploaded
+		SET
+			type = 2
+			, defaultNY = #{defaultNY}
+			, sort = #{sort}
+			, path = #{path}
+			, originalName = #{originalName}
+			, uuidName = #{uuidName}
+			, ext = #{ext}
+			, size = #{size}
+			, pseq = #{pseq}
+			, delNY = #{delNY}
+		WHERE 
+			seq = #{seq}
+	</update>
 	<!-- uploaded e -->
 	
 	<select id="selectUploadedimg" resultMap="resultMapObj">
 		SELECT
 			a.*
-			,b.*
+			,c.*
 			FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 			WHERE 1=1
 				AND a.seq = #{seq}
-			ORDER BY b.sort
+			ORDER BY c.sort
 	</select>
 	
 	<select id="selectItemimg" resultMap="resultMapObj">
@@ -186,44 +200,44 @@
 	<select id="selectHotdealwmp" resultMap="resultMapObj">
 		SELECT
 			a.*
-			, b.*
+			, c.*
 		FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 		WHERE 1=1
-		AND b.defaultNY = 1 
+		AND c.defaultNY = 1 
 		AND a.mainDiv = 1
 	</select>
 	
 	<select id="selectHotdealtmon" resultMap="resultMapObj">
 		SELECT
 			a.*
-			, b.*
+			, c.*
 		FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 		WHERE 1=1
-		AND b.defaultNY = 1
+		AND c.defaultNY = 1
 		AND a.mainDiv = 2
 	</select>
 	
 	<select id="selectHotdeal11st" resultMap="resultMapObj">
 		SELECT
 			a.*
-			, b.*
+			, c.*
 		FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 		WHERE 1=1
-		AND b.defaultNY = 1
+		AND c.defaultNY = 1
 		AND a.mainDiv = 3
 	</select>
 	
 	<select id="selectBestlist" resultMap="resultMapObj">
 		SELECT
 			a.*
-			, b.*
+			, c.*
 		FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 		WHERE 1=1
-		AND b.defaultNY = 1
+		AND c.defaultNY = 1
 		AND a.mainDiv = 4
 	</select>
 	
@@ -235,21 +249,21 @@
 			, (SELECT c.cdname_ko FROM Code c WHERE a.deliverymethod = c.seq) AS delivery
 			, (SELECT c.cdname_ko FROM Code c WHERE a.released = c.seq) AS outdate
 			, a.maximum
-			, b.*
+			, c.*
 		FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 		WHERE 1=1
-		AND b.sort = 2
+		AND c.sort = 2
 	</select>
 	
 	<select id="selectSection" resultMap="resultMapObj">
 		SELECT
 			a.*
-			, b.*
+			, c.*
 		FROM item a
-			LEFT JOIN itemUploaded b ON a.seq = b.pseq
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 		WHERE 1=1
-		AND b.sort = 3
+		AND c.sort = 3
 	</select>
 	
 </mapper>

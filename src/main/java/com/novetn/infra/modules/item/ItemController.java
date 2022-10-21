@@ -79,7 +79,10 @@ public class ItemController {
 		
 		System.out.println("파일 크기: "+dto.getImagefile().length);
 		
+		dto.setPseq(vo.getSeq());
+		
 		service.update(dto);
+		service.updateUploaded(dto);
 		
 		redirectAttributes.addFlashAttribute("vo", vo);
 		

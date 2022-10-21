@@ -295,9 +295,9 @@
 			</div>
 		</div>
 		<!-- //검색 -->
-		<form method="post" name="formhotdeal">
-		<input type="hidden" name="seq">
 		<!-- 실시간 핫딜 TOP5 -->
+		<form method="get" name="formList">
+		<input type="hidden" name="seq" id="seq">
 		<div class="section group-top5">
 			<div class="inner">
 				<div class="title">실시간 핫딜 TOP 5</div>
@@ -320,22 +320,22 @@
 							<!-- top10 딜영역 -->
 							<c:forEach items="${listHotdealwmp}" var="listHotdealwmp" varStatus="status">
 								<div class="deal">
-									<a href="javascript:goView(<c:out value="${listHotdealwmp.seq }"/>)">
+									<a href="javascript:goView('${listHotdealwmp.seq }')">
 										<div class="img">
 											<img src="${listHotdealwmp.path}${listHotdealwmp.uuidName}">
 										</div>
 										<div class="areas">
 											<div class="title"><c:out value="${listHotdealwmp.title}"/></div>
-											<div class="prices">
-												<span class="left"> 
-													<span class="num"><c:out value="${listHotdealwmp.discount}"/></span>
-													<c:choose>
-														<c:when test="${listHotdealwmp.discount eq null }"></c:when>
-														<c:otherwise><span class="unit">%</span></c:otherwise>
-													</c:choose>
-												</span> 
-												<span class="right"> 
-													<span class="num"><fmt:formatNumber value="${listHotdealwmp.price}" pattern="#,###" /></span> 
+										<div class="prices">
+											<span class="left"> 
+												<span class="num"><c:out value="${listHotdealwmp.discount}"/></span>
+										<c:choose>
+										<c:when test="${listHotdealwmp.discount eq null }"></c:when>
+										<c:otherwise><span class="unit">%</span></c:otherwise>
+										</c:choose>
+										</span> 
+										<span class="right"> 
+											<span class="num"><fmt:formatNumber value="${listHotdealwmp.price}" pattern="#,###" /></span> 
 													<span class="unit">원</span>
 												</span>
 											</div>
@@ -350,7 +350,7 @@
 							<!-- top10 딜영역 -->
 							<c:forEach items="${listHotdealtmon}" var="listHotdealtmon" varStatus="status">
 									<div class="deal">
-										<a href="javascript:goView(<c:out value="${listHotdealtmon.seq }"/>)">
+										<a href="javascript:goView('${listHotdealtmon.seq }')">
 											<div class="img">
 												<img src="${listHotdealtmon.path}${listHotdealtmon.uuidName}">
 											</div>
@@ -380,7 +380,7 @@
 							<!-- top10 딜영역 -->
 							<c:forEach items="${listHotdeal11st}" var="listHotdeal11st" varStatus="status">
 									<div class="deal">
-										<a href="javascript:goView(<c:out value="${listHotdeal11st.seq }"/>)">
+										<a href="javascript:goView('${listHotdeal11st.seq }')">
 											<div class="img">
 												<img src="${listHotdeal11st.path}${listHotdeal11st.uuidName}">
 											</div>
@@ -601,14 +601,13 @@
 	
 	var goUrlView = "/item/itemView";
 	
-	var form = $("form[name=formhotdeal]");
-	
+	var form = $("form[name=formList]");
 	var seq = $("input:hidden[name=seq]");
 	
-	goView = function(keyValue) {
-		seq.val(keyValue);
+	goView = function(seq) {
+		/* itemseq.val(seq); */
 		form.attr("action", goUrlView).submit();
-	}
+	};
 	
 	 $('.hamburger, .btn-close').on('click', function(){
         if($('.group-menu').css('display') === 'none'){

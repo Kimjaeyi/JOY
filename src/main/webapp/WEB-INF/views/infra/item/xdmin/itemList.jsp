@@ -360,7 +360,7 @@
 										<td><input class="form-check-input" type="checkbox" name="check" value="<c:out value="${list.seq }"/>"></td>
 										<td scope="row"><c:out value="${list.seq }"/></td>
 										<td><a href="javascript:goForm(<c:out value="${list.seq }"/>)"><c:out value="${list.title }"/></a></td>
-										<td><c:out value="${list.price }"/>원</td>
+										<td><fmt:formatNumber value="${list.price}" pattern="#,###" />원</td>
 										<td><c:out value="${list.site }"/></td>
 										<td><c:out value="${list.cdname_ko }"/></td>
 										<%-- <td>
@@ -373,7 +373,7 @@
 												<c:if test="${list.deliverymethod eq listDeliverymethod.seq}"><c:out value="${listDeliverymethod.cdname_ko }"/></c:if>
 											</c:forEach>
 										</td> --%>
-										<td><c:out value="${list.stock }"/></td>
+										<td><fmt:formatNumber value="${list.stock}" pattern="#,###" /></td>
 										<td><c:out value="${list.modDate }"/></td>
 										<td>
 											<c:choose>

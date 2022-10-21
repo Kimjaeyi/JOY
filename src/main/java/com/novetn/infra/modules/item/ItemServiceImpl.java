@@ -63,8 +63,9 @@ public class ItemServiceImpl implements ItemService{
 		System.out.println("service result : " + result);
 		
 		//여기부터 파일
-        int seq = dao.selectLastSeq(); //seq 자동으로 부여되기때문
-
+		/*
+		 * int seq = dao.selectLastSeq(); //seq 자동으로 부여되기때문
+		 */
         System.out.println("seq result : " + result);
         
         int j = 0;
@@ -78,7 +79,7 @@ public class ItemServiceImpl implements ItemService{
                 dto.setType(1);
                 dto.setDefaultNY(j == 0 ? 1 : 0);
                 dto.setSort(j+1);
-                dto.setPseq(seq+"");
+                dto.setPseq(dto.getSeq()+"");
 
                 dao.insertUploaded(dto);
                 j++;
@@ -90,27 +91,7 @@ public class ItemServiceImpl implements ItemService{
 	
 	@Override
 	public void update(Item dto) throws Exception {
-		
 		dao.update(dto);
-		
-//		int j = 0;
-//        for(MultipartFile myFile : dto.getImagefile()) {
-//
-//            if(!myFile.isEmpty()) {
-//                // postServiceImpl
-//                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-//                UtilUpload.upload(myFile, pathModule, dto);
-//                
-//                dto.setType(1);
-//                dto.setDefaultNY(j == 0 ? 1 : 0);
-//                dto.setSort(j+1);
-//                dto.setPseq(dto.getSeq()+"");
-//
-//                dao.insertUploaded(dto);
-//                j++;
-//            }
-//        }
-        
 	}
 	
 	@Override
@@ -158,6 +139,30 @@ public class ItemServiceImpl implements ItemService{
                 dto.setPseq(dto.getSeq()+"");
 
                 dao.insertUploaded(dto);
+                j++;
+            }
+		}
+		return 0;
+	}
+	
+	@Override
+	public int updateUploaded(Item dto) throws Exception {
+//		String selectLastSeq = dto.getSeq();
+		
+		int j = 0;
+		for(MultipartFile myFile : dto.getImagefile()) {
+
+            if(!myFile.isEmpty()) {
+                // postServiceImpl
+                String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+                UtilUpload.upload(myFile, pathModule, dto);
+                
+                dto.setType(1);
+                dto.setDefaultNY(j == 0 ? 1 : 0);
+                dto.setSort(j+1);
+                dto.setPseq(dto.getSeq()+"");
+
+                dao.updateUploaded(dto);
                 j++;
             }
 		}
