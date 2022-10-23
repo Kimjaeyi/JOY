@@ -359,13 +359,13 @@
 		</div>
 		<hr style="color : gray"> -->
 	</div>
-	<form method="post" name="formView">
-	<input type="hidden" name="seq">
-	<c:forEach items="${card}" var="card" varStatus="status">
+	<form method="post" name="formView" enctype="multipart/form-data">
+	<input type="hidden" name="seq" value="${vo.seq}">
+	<%-- <c:forEach items="${card}" var="card" varStatus="status"> --%>
 		<div class="card">
 			<div class="row">
 				<div class="col-5">
-					<img src="${card.path}${card.uuidName}">
+					<img src="${card[1].path}${card[1].uuidName}">
 				</div>
 				<div class="col-7">
 					 <div class="card-body">
@@ -405,7 +405,7 @@
 				</div>
 			</div>
 		</div>
-	</c:forEach>
+	<%-- </c:forEach> --%>
 	<br><br>
 	<div class="tabborder">
 		<div class="itemtab">
@@ -418,9 +418,9 @@
 		    <input id="tab4" type="radio" name="tabs">
 		    <label for="tab4">배송·교환·반품</label>
 		    <section id="content1">
-		    	<c:forEach items="${tab}" var="tab" varStatus="status">
-		        	<img src="${tab.path}${tab.uuidName}">
-		        </c:forEach>
+		    	<%-- <c:forEach items="${tab}" var="tab" varStatus="status"> --%>
+		        	<img src="${card[2].path}${card[2].uuidName}">
+		        <%-- </c:forEach> --%>
 		    </section>
 		    <section id="content2">
 	<!-- 	    
@@ -652,6 +652,7 @@
 		    </section>
 		</div>
 	</div>
+	</form>
 	<footer>
 		<div class="footer">
 			<div class="inner">
@@ -686,7 +687,6 @@
 			</div>
 		</div>
 	</footer>
-	</form>
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 <!-- 상세정보사진 이어붙이기
 https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%25EC%2597%2594%2520%25EB%25AC%25BC%25EB%2593%25A4%25EC%259E%2584%25EC%2583%25B4%25ED%2591%25B8&_service=5&_no=8

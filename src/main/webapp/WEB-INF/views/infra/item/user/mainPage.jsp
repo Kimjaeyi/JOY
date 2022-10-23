@@ -296,8 +296,8 @@
 		</div>
 		<!-- //검색 -->
 		<!-- 실시간 핫딜 TOP5 -->
-		<form method="get" name="formList">
-		<input type="hidden" name="seq" id="seq">
+		<form method="post" name="formList">
+		<input type="hidden" name="seq">
 		<div class="section group-top5">
 			<div class="inner">
 				<div class="title">실시간 핫딜 TOP 5</div>
@@ -604,10 +604,10 @@
 	var form = $("form[name=formList]");
 	var seq = $("input:hidden[name=seq]");
 	
-	goView = function(seq) {
-		/* itemseq.val(seq); */
+	goView = function(pseq) {
+		seq.val(pseq);
 		form.attr("action", goUrlView).submit();
-	};
+	}
 	
 	 $('.hamburger, .btn-close').on('click', function(){
         if($('.group-menu').css('display') === 'none'){
