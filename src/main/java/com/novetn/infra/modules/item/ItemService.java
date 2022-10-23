@@ -12,7 +12,7 @@ import java.util.List;
 	public List<Item> selectHotdeal11st(ItemVo vo) throws Exception;
 	public List<Item> selectBestlist(ItemVo vo) throws Exception;
 	public List<Item> selectView(ItemVo vo) throws Exception;
-	public List<Item> selectSection(ItemVo vo) throws Exception;
+//	public List<Item> selectSection(ItemVo vo) throws Exception;
 	
 //	이미지 업로드
 	public List<Item> selectUploadedimg(ItemVo vo) throws Exception;

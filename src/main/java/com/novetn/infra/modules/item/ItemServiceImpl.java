@@ -52,10 +52,10 @@ public class ItemServiceImpl implements ItemService{
 		return dao.selectView(vo);
 	}
 	
-	@Override
-	public List<Item> selectSection(ItemVo vo) throws Exception {
-		return dao.selectSection(vo);
-	}
+//	@Override
+//	public List<Item> selectSection(ItemVo vo) throws Exception {
+//		return dao.selectSection(vo);
+//	}
 	
 	@Override
 	public int insert(Item dto) throws Exception {
