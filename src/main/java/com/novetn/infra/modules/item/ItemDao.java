@@ -25,7 +25,7 @@ public class ItemDao {
 	
 //	이미지 업로드
 	public List<Item> selectUploadedimg(ItemVo vo) { 
-		List<Item> listimg = sqlSession.selectList("com.novetn.infra.modules.item.ItemMapper.selectUploadedimg", vo);
+		List<Item> listimg = sqlSession.selectList(namespace + ".selectUploadedimg", vo);
 		return listimg; 
 	}
 	
@@ -50,9 +50,9 @@ public class ItemDao {
 		return sqlSession.selectList(namespace + ".selectView", vo);
 	}
 	
-//	public List<Item> selectSection(ItemVo vo) {
-//		return sqlSession.selectList(namespace + ".selectSection", vo);
-//	}
+	public List<Item> selectSection(ItemVo vo) {
+		return sqlSession.selectList(namespace + ".selectSection", vo);
+	}
 	
 	public int insert(Item dto) {
 		int result = sqlSession.insert(namespace + ".insert", dto);
@@ -101,5 +101,9 @@ public class ItemDao {
 	public int selectLastSeq() {
 		return sqlSession.update(namespace + ".selectLastSeq");
 	}
+	
+//	public Item selectItemView(ItemVo vo) {
+//		return sqlSession.selectOne(namespace + ".selectItemView", vo);
+//	}
 
 }

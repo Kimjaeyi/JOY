@@ -133,14 +133,14 @@ public class ItemController {
 		
 		System.out.println("vo.getSeq(): " + vo.getSeq());
 		
-		Item item = service.selectOne(vo);
-		model.addAttribute("item", item);
+//		Item detail = service.selectItemView(vo);
+//		model.addAttribute("detail", detail);
 		
 		List<Item> card = service.selectView(vo); 
 		model.addAttribute("card", card);
 		
-//		List<Item> tab = service.selectSection(vo); 
-//		model.addAttribute("tab", tab);
+		List<Item> tab = service.selectSection(vo); 
+		model.addAttribute("tab", tab);
 		
 		return "infra/item/user/itemView";
 		

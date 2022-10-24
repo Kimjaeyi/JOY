@@ -254,7 +254,18 @@
 			LEFT JOIN itemUploaded c ON a.seq = c.pseq
 		WHERE 1=1
 		AND a.seq = #{seq}
-		ORDER BY c.sort
+		AND c.sort = 2
+	</select>
+	
+	<select id="selectSection" resultMap="resultMapObj">
+		SELECT
+			a.*
+			, c.*
+		FROM item a
+			LEFT JOIN itemUploaded c ON a.seq = c.pseq
+		WHERE 1=1
+			AND a.seq = #{seq}
+			AND c.sort = 3
 	</select>
 	
 </mapper>
