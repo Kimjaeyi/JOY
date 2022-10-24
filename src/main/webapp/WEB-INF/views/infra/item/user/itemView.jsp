@@ -180,6 +180,23 @@
 	    display: block;
 	}
 	
+	#minusbtn, #plusbtn {
+		width: 30px;
+		height: 30px;
+		border: 1px solid gray;
+	}
+	
+	#countnum {
+		width: 40px;
+		height: 30px;
+		border: 1px solid gray;
+		text-align: center;
+	}
+	
+	#minusbtn, #countnum, #plusbtn {
+		display: inline;
+	}
+	
 	#purchase {
 		border: none;
 		border-radius: 4px;
@@ -190,6 +207,7 @@
 		float: right;
 		font-size: 22px;
 		letter-spacing: 1px;
+		display: inline;
 	}
 	
 	table {
@@ -361,11 +379,11 @@
 	</div>
 	<form method="post" name="formView" enctype="multipart/form-data">
 	<input type="hidden" name="seq" value="${vo.seq}">
-	<%-- <c:forEach items="${card}" var="card" varStatus="status"> --%>
+	<c:forEach items="${card}" var="card" varStatus="status">
 		<div class="card">
 			<div class="row">
 				<div class="col-5">
-					<img src="${card[1].path}${card[1].uuidName}">
+					<img src="${card.path}${card.uuidName}">
 				</div>
 				<div class="col-7">
 					 <div class="card-body">
@@ -400,12 +418,21 @@
 						<h4 style="display:inline; float:right; font-size: 30px" id="totalprice"><b><fmt:formatNumber value="${card.price}" pattern="#,###" /></b></h4>
 					</div>
 					<br><br><br>
+					<div class="itemcount" style="display: inline">
+						<a href="javascript:changecount('m')">
+							<button type="button" id="minusbtn"><i class="fa-solid fa-minus"></i></button>
+						</a>
+						<input type="text" name="countnum" id="countnum" value="1" readonly>
+						<a href="javascript:changecount('p')">
+							<button type="button" id="plusbtn"><i class="fa-solid fa-plus"></i></button>
+						</a>
+					</div>
 					<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
 					</div>
 				</div>
 			</div>
 		</div>
-	<%-- </c:forEach> --%>
+	</c:forEach>
 	<br><br>
 	<div class="tabborder">
 		<div class="itemtab">
@@ -418,9 +445,9 @@
 		    <input id="tab4" type="radio" name="tabs">
 		    <label for="tab4">배송·교환·반품</label>
 		    <section id="content1">
-		    	<%-- <c:forEach items="${tab}" var="tab" varStatus="status"> --%>
-		        	<img src="${card[2].path}${card[2].uuidName}">
-		        <%-- </c:forEach> --%>
+		    	<c:forEach items="${tab}" var="tab" varStatus="status">
+		        	<img src="${tab.path}${tab.uuidName}">
+		        </c:forEach>
 		    </section>
 		    <section id="content2">
 	<!-- 	    
@@ -703,6 +730,29 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 	var form = $("form[name=formView]");
 	
 	var seq = $("input:hidden[name=seq]");
+	
+	function changecount(b) {
+		var min = 1;
+		var pick = $("#countnum").val()*1;
+		var max = $("#stock").val();
+		
+		if(b=="m") {
+			pick -= 1;
+			if(pick < min) {
+				alert("수량은 1개 이상 선택해 주세요.");
+				return;
+			}
+		} else if(b=="p") {
+			pick += 1;
+			if(pick > max) {
+				alert("죄송합니다. 재고가 부족합니다.");
+				return;
+			} else if(pick > maximum) {
+				alert("죄송합니다. 최대 선택 수량을 초과하였습니다.");
+				return;
+			}
+		} 
+	}
 	
 	$("#logoutbtn").on("click", function(){
 		$.ajax({

@@ -67,6 +67,16 @@
 			color:mediumpurple;
 			text-decoration: none;
 	}
+	
+	.gnb .logout {
+	    display: inline-block;
+	    font-size: 14px;
+	    font-weight: bold;
+	    color: #999999;
+	    position: absolute;
+	    top: 39px;
+	    right: 235px;
+	}
 
 	.aaa {
 		margin : 5% 15%;
@@ -162,16 +172,16 @@
 <body>
 
 <!-- start -->
+	<form id="form" name="form" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="memberVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
                 <a href="/item/mainPage"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
-
-            <div class="search">
-                <div class="search-input"><input type="search" class="input"></div>
-            </div>
 
             <div class="hamburger">
                 <div class="hamburger-box">
@@ -180,18 +190,8 @@
             </div>
 
             <ul class="gnb login">
-				<li>
-					<a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
-					<div class="area-my-page area-gnb-layer">
-					    <div class="title">MY PAGE</div>
-					    <ul>
-					        <li><div id="likeTab">내가 좋아요 한 상품</div></li>
-					        <li><a href="javascript:void(0);" id="viewTab">내가 본 상품</a></li>
-					        <li><a href="https://member.coocha.co.kr/member/join/myinfo.do">내 정보 수정</a></li>
-					        <li class="logout"><a href="javascript:fn_logout('');">로그아웃</a></li>
-					    </ul>
-					</div>
-				</li>
+            	<li><span class="logout">로그아웃</span></li>
+				<li><a href="javascript:;" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
 				<li><div class="btn-like"><span class="blind">좋아요</span></div></li>
 				<li>
 				    <div class="btn-sc btn-layer-open"><span class="blind">더보기</span></div>
@@ -385,6 +385,11 @@
 			</div>
 		</div>
 	</div>
+	</form>
+	<form name="formVo" id="formVo" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="memberVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<br><br>
 	<footer>
 		<div class="footer">
@@ -440,6 +445,11 @@
 			}
 		}) 
 	});
+	
+	var seq = $("input:hidden[name=seq]");
+	var formVo = $("form[name=formVo]");
+	
+	var form = $("form[name=form]");
 	
 	var price1 = 37700;
 	var coochaCount = 1;
@@ -539,6 +549,26 @@
 	        }
 	    }).open();
 	}
+	
+	$(".logout").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
 	
 </script>
 

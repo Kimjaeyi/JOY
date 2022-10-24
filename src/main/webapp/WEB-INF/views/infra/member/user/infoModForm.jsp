@@ -75,6 +75,16 @@
 		margin: 3% 0;
 	}
 	
+	.gnb .logout {
+	    display: inline-block;
+	    font-size: 14px;
+	    font-weight: bold;
+	    color: #999999;
+	    position: absolute;
+	    top: 39px;
+	    right: 235px;
+	}
+	
 	#zipcode, #findaddress, #addr1, #resetbtn,
 	#addr2, #addr3, #ccLat, #ccLng {
 		margin-bottom: 1%;
@@ -166,18 +176,8 @@
             </div>
 
             <ul class="gnb login">
-				<li>
-					<a href="/member/mypage" class="btn-my btn-layer-open"><span class="blind">MY</span></a>
-					<div class="area-my-page area-gnb-layer">
-					    <div class="title">MY PAGE</div>
-					    <ul>
-					        <li><div id="likeTab">내가 좋아요 한 상품</div></li>
-					        <li><a href="javascript:void(0);" id="viewTab">내가 본 상품</a></li>
-					        <li><a href="https://member.coocha.co.kr/member/join/myinfo.do">내 정보 수정</a></li>
-					        <li class="logout"><a href="javascript:fn_logout('');">로그아웃</a></li>
-					    </ul>
-					</div>
-				</li>
+            	<li><span class="logout">로그아웃</span></li>
+				<li><a href="javascript:;" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
 				<li><div class="btn-like"><span class="blind">좋아요</span></div></li>
 				<li>
 				    <div class="btn-sc btn-layer-open"><span class="blind">더보기</span></div>
@@ -368,10 +368,10 @@
 		</div>
 	</footer>
 	
-	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	<script src="/resources/js/validation.js"></script>
-	
-	<script type="text/javascript">
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="/resources/js/validation.js"></script>
+
+<script type="text/javascript">
 	
 	var goUrlForm = "/member/infoModForm";
 	var goUrlUpdt = "/member/infochange";
@@ -454,7 +454,27 @@
 		$("#ccLng").val('');
 	});
 	
-	</script>
+	$(".logout").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/member/logoutProc"
+			,data: {}
+			,success: function(response) {
+				if(response.rt == "success") {
+					location.href = "/";
+				} else {
+					// by pass
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+	
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
