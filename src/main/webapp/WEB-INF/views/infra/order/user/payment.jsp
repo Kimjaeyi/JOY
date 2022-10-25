@@ -172,10 +172,6 @@
 <body>
 
 <!-- start -->
-	<form id="form" name="form" method="post">
-	<!-- *Vo.jsp s -->
-	<%@include file="memberVo.jsp"%>		<!-- #-> -->
-	<!-- *Vo.jsp e -->
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
@@ -385,11 +381,6 @@
 			</div>
 		</div>
 	</div>
-	</form>
-	<form name="formVo" id="formVo" method="post">
-	<!-- *Vo.jsp s -->
-	<%@include file="memberVo.jsp"%>		<!-- #-> -->
-	<!-- *Vo.jsp e -->
 	<br><br>
 	<footer>
 		<div class="footer">

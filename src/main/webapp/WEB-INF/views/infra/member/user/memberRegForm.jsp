@@ -307,7 +307,7 @@
 	   		// update
 	   		/* keyName.val(atob(keyName.val())); */
 	   		// seq.remove();	html 에서 seq 보여지지 않으면 이 구문은 필요치 않다.
-	   		if (validationUpdt() == false) return false;
+	   		//if (validationUpdt() == false) return false;
 	   		form.attr("action", goUrlInst).submit();
 	   	}
 	});
