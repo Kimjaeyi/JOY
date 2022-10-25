@@ -395,7 +395,7 @@
 		$("#ccLat").val('');
 		$("#ccLng").val('');
 	});
-	
+/* 	
 	validationInst = function() {
 		if(!checkId('id', 2, 0, "영대소문자,숫자,특수문자(-_.),4~20자리만 입력 가능합니다")) return false;
 		if(!checkPassword('pwd', 2, 0, "영대소문자,숫자,특수문자(!@#$%^&*),8~20자리 조합만 입력 가능합니다")) return false;
@@ -436,7 +436,7 @@
 
 	checkPassword = function(obj, value, message) {
 		var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*]).{8,20}$/;
-	    /*var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,20}$/;*/
+//	    var regExp = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,20}$/;
 	    if(regExp.test(value)) {
 			return true;
 		} else {
@@ -467,6 +467,7 @@
 			return false;
 		}
 	}
+ */	
 /* 		
 	if ($("#ifmaZipcodeArray0").val() != "" && $("#ifmaAddress2Array0").val().trim() == "") {
 		$("#ifmaAddress2Array0").addClass('is-invalid');
