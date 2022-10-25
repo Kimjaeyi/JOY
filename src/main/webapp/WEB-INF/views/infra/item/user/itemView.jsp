@@ -186,14 +186,14 @@
 		border: 1px solid gray;
 	}
 	
-	#countnum {
+	#countresult {
 		width: 40px;
 		height: 30px;
 		border: 1px solid gray;
 		text-align: center;
 	}
 	
-	#minusbtn, #countnum, #plusbtn {
+	#minusbtn, #countresult, #plusbtn {
 		display: inline;
 	}
 	
@@ -390,7 +390,8 @@
 					<h3 class="card-title"><c:out value="${card.title}"/></h3>
 					<hr style="color : gray">
 					<div class="itemprice">
-						<h4 style="font-weight:bold; display:inline; font-size: 24px"><fmt:formatNumber value="${card.price}" pattern="#,###" /></h4>
+						<input type="hidden" id="pricetmp" value="${card.price}">
+						<h4 id="orgprice" style="font-weight:bold; display:inline; font-size: 24px"><fmt:formatNumber value="${card.price}" pattern="#,###" /></h4>
 						<h5 style="display:inline; font-size: 20px">원</h5>
 					</div>
 					<hr style="color : gray">
@@ -400,6 +401,7 @@
 						<br><br>
 						<small>(주말, 공휴일 제외)</small>
 						<br><br><br>
+						<input type="hidden" id="maximum" value="${card.maximum}">
 						<small><i class="fa-solid fa-cart-shopping"></i> &nbsp;&nbsp;최대 <c:out value="${card.maximum}"/>개까지 구매 가능</small>
 						</p>
 					</div>
@@ -415,17 +417,13 @@
 					<div class="itemtotalprice">
 						<h4 style="display:inline; font-size: 18px"><b>총 상품 금액</b></h4>
 						<h5 style="display:inline; float:right; font-size: 22px"><b>원</b></h5>
-						<h4 style="display:inline; float:right; font-size: 30px" id="totalprice"><b><fmt:formatNumber value="${card.price}" pattern="#,###" /></b></h4>
+						<h4 id="totalprice" style="display:inline; float:right; font-size: 30px; font-weight:bold" pattern="#,###"></h4>
 					</div>
 					<br><br><br>
-					<div class="itemcount" style="display: inline">
-						<a href="javascript:changecount('m')">
-							<button type="button" id="minusbtn"><i class="fa-solid fa-minus"></i></button>
-						</a>
-						<input type="text" name="countnum" id="countnum" value="1" readonly>
-						<a href="javascript:changecount('p')">
-							<button type="button" id="plusbtn"><i class="fa-solid fa-plus"></i></button>
-						</a>
+					<div class="itemcount">
+						<button type="button" id="minusbtn" onclick='count("minus")'><i class="fa-solid fa-minus"></i></button>
+						<input type="text" name="countresult" id="countresult" value="1" readonly>
+						<button type="button" id="plusbtn" onclick='count("plus")'><i class="fa-solid fa-plus"></i></button>
 					</div>
 					<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
 					</div>
@@ -720,9 +718,9 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
  -->
 <!-- end -->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
@@ -731,6 +729,41 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 	
 	var seq = $("input:hidden[name=seq]");
 	
+	function count(type)  {
+		if(type === 'plus') {
+			var tmp = document.getElementById("countresult").value;
+			var max = document.getElementById("maximum").value;
+			tmp++;
+			document.getElementById("countresult").value = tmp;
+			if (tmp > max) {
+				alert("죄송합니다. 최대 선택 수량을 초과하였습니다.")
+			} 
+		} else if (type === 'minus')  {
+			var tmp = document.getElementById("countresult").value;
+				if(tmp < 2) {
+					alert("최소 수량은 1개입니다.");
+					return;
+				} else {
+					tmp--;
+				}
+			document.getElementById("countresult").value = tmp;
+		}
+		var itemCount = document.getElementById("countresult").value;
+		var price1 = $("#pricetmp").val();
+		var totalPrice = (price1*itemCount);
+
+		/* 화면에 보여지는 부분 */
+		$("#totalprice").text(totalPrice.toLocaleString());
+	}
+	
+	var itemCount = document.getElementById("countresult").value;
+	var price1 = $("#pricetmp").val();
+	var totalPrice = (price1*itemCount);
+
+	/* 화면에 보여지는 부분 */
+	$("#totalprice").text(totalPrice.toLocaleString());
+	
+/* 	
 	function changecount(b) {
 		var min = 1;
 		var pick = $("#countnum").val()*1;
@@ -753,7 +786,7 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 			}
 		} 
 	}
-	
+ */	
 	$("#logoutbtn").on("click", function(){
 		$.ajax({
 			async: true 
