@@ -157,8 +157,8 @@
 						</div>
 					</div>
 					<br><br>
-					sessSeq : <c:out value="${sessSeq }"/><br>
-					sessId : <c:out value="${sessId }"/><br>
+					<%-- sessSeq : <c:out value="${sessSeq }"/><br>
+					sessId : <c:out value="${sessId }"/><br> --%>
 					<div class="row justify-content-center">
 						<button class="btn1" type="button" id="loginbtn"><b>로그인</b></button>
 					</div>

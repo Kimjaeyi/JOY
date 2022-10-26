@@ -436,11 +436,11 @@
 		<div class="itemtab">
 		    <input id="tab1" type="radio" name="tabs" checked>
 		    <label for="tab1">상세정보</label>
-		    <input id="tab2" type="radio" name="tabs">
+		    <input id="tab2" type="radio" name="tabs" disabled>
 		    <label for="tab2">구매후기</label>
-		    <input id="tab3" type="radio" name="tabs">
+		    <input id="tab3" type="radio" name="tabs" disabled>
 		    <label for="tab3">상품문의</label>
-		    <input id="tab4" type="radio" name="tabs">
+		    <input id="tab4" type="radio" name="tabs" disabled>
 		    <label for="tab4">배송·교환·반품</label>
 		    <section id="content1">
 		    	<c:forEach items="${tab}" var="tab" varStatus="status">
@@ -756,6 +756,7 @@ https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%
 		$("#totalprice").text(totalPrice.toLocaleString());
 	}
 	
+	//기본 가격값으로 들어가게 하는 스크립트(이거 안 넣으면 최종 가격에 값이 안 들어감)
 	var itemCount = document.getElementById("countresult").value;
 	var price1 = $("#pricetmp").val();
 	var totalPrice = (price1*itemCount);
