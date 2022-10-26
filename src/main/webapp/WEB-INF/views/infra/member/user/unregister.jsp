@@ -89,11 +89,19 @@
 	li {
 		margin: 0 2%;
 	}
+	
+	#realdelbtn {
+		background-color: #6900EF; 
+		color: white; 
+		border-radius: 0.375rem;
+	}
 
 </style>
 
 <body>
 
+	<form method="post" name="form">
+	<input type="hidden" name="seq" value="<c:out value="${sessSeq}"/>">
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
@@ -180,11 +188,30 @@
 					</div>
 				</div>
 				<br>
-				<a href="/member/mypage"><button type="button" class="btn btn-light" style="background-color: #6900EF; color: white; font-weight: bold">변경</button></a>
+				<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteModal" style="background-color: #6900EF; color: white; font-weight: bold">탈퇴</button>
 				<a href="/member/mypage"><button type="button" class="btn btn-light" style="color: gray; font-weight: bold">취소</button></a>
+				
+				<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="deleteModalLabel"><b>COOCHA</b></h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body">
+							 정말로 탈퇴하시겠습니까? 탈퇴 시 30일 이후 재가입 하실 수 있습니다. 
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+								<button type="button" class="btn btn-dark" id="realdelbtn">탈퇴 </button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+	</form>
 	<br><br>
 	<footer>
 		<div class="footer">
@@ -223,6 +250,15 @@
 	
 	<script type="text/javascript">
 	
+	var goUrlDel = "/member/unregister";	
+	 
+	var seq = $("input:hidden[name=seq]");				/* #-> */
+	
+	var form = $("form[name=form]");
+ 
+	$("#realdelbtn").on("click", function() {
+		form.attr("action", goUrlDel).submit();
+	});
 	
 	</script>
 	
