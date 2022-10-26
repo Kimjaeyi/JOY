@@ -70,6 +70,10 @@ public class MemberDao {
 		return sqlSession.update(namespace + ".infochange", dto);
 	}
 	
+	public int unreg(Member dto) { 
+		return sqlSession.update(namespace + ".unreg", dto); 
+	}
+	
 	public static String getSessionSeqCore(HttpServletRequest httpServletRequest) {
 		HttpSession httpSession =  httpServletRequest.getSession();
 		String rtSeq = (String) httpSession.getAttribute("sessSeq");

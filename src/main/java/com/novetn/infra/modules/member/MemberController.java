@@ -201,8 +201,19 @@ public class MemberController {
 	
 	@RequestMapping(value = "unregister")
 	public String unregister() throws Exception {
+
 		
 		return "infra/member/user/unregister";
+	}
+	
+	@RequestMapping(value = "unregSuccess")
+	public String unregSuccess(MemberVo vo, Member dto, RedirectAttributes redirectAttributes, HttpSession httpSession) throws Exception {
+		
+		service.unreg(dto);
+		redirectAttributes.addFlashAttribute("vo", vo);
+		httpSession.invalidate();
+		
+		return "infra/member/user/unregSuccess";
 		
 	}
 	

@@ -237,5 +237,13 @@
 		</if>
 		AND delNY = 0
 	</select>
+	
+	<update id="unreg">
+		UPDATE member
+		SET 
+			delNY = 1
+		WHERE 
+			seq = #{seq}
+	</update>
 
 </mapper>

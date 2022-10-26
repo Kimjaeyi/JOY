@@ -75,6 +75,11 @@ public class MemberServiceImpl implements MemberService {
 	public int infochange(Member dto) throws Exception {
 		return dao.infochange(dto);
 	}
+
+	@Override
+	public int unreg(Member dto) throws Exception {
+		return dao.unreg(dto);
+	}
 	
 //	@Override
 //	public int changePW(Member dto) throws Exception {
