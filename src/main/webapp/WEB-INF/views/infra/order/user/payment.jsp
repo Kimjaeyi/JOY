@@ -422,6 +422,15 @@
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
 	
+	<script>
+	
+		$(function() {
+			alert("준비 중입니다.");
+			return false;
+		});
+	
+	</script>
+	
 	<script type="text/javascript">
 	
 	$(function(){

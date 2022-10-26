@@ -214,6 +214,15 @@
 		</div>
 	</footer>
 	
+	<script>
+	
+		$(function() {
+			alert("준비 중입니다.");
+			return false;
+		});
+	
+	</script>
+	
 	<script type="text/javascript">
 	
 	$('#newpwd2').focusout(function () {
