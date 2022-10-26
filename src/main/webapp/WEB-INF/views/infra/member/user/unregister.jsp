@@ -101,14 +101,14 @@
 <body>
 
 	<form method="post" name="form">
-	<input type="hidden" name="seq" value="<c:out value="${sessSeq}"/>">
+	<input type="hidden" name="seq" value="${sessSeq}"> 
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
                 <a href="/item/mainPage"><span class="blind">COOCHA</span></a>
                 <span class="title-category">카테고리</span>
             </h1>
-
+	
             <div class="hamburger">
                 <div class="hamburger-box">
                     <div class="hamburger-inner"></div>
@@ -180,7 +180,7 @@
 						<p>회원 탈퇴를 하시면 모든 정보가 삭제되며,</p>
 						<p>탈퇴하신 아이디는 다시 이용할 수 없습니다.</p>
 						<p>신중하게 결정하셔서 진행해주세요.</p>
-						<br><br>
+						<br><br><c:out value="${sessSeq }"/>
 						<p>회원 탈퇴 시 보유하셨던 회원정보 등은 모두 삭제되나, </p>
 						<p>탈퇴 후 부정 이용 방지를 목적으로 1개월 간</p>
 						<p>성명, 실명 인증번호, 아이디, 비밀번호, </p>
@@ -203,7 +203,7 @@
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-								<button type="button" class="btn btn-dark" id="realdelbtn">탈퇴 </button>
+								<button type="button" class="btn btn-dark" id="realdelbtn" >탈퇴 </button>
 							</div>
 						</div>
 					</div>
@@ -250,7 +250,7 @@
 	
 	<script type="text/javascript">
 	
-	var goUrlDel = "/member/unregister";	
+	var goUrlDel = "/member/unregSuccess";	
 	 
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
