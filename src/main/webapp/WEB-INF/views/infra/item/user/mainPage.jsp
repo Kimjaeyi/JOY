@@ -215,7 +215,6 @@
 					<div class="search-input">
 						<input type="search" class="input">
 					</div>
-					<!-- //검색어 미 입력 시 :: 인풋창에 마우스 클릭만 한 경우 -->
 				</div>
 
 				<div class="hamburger">

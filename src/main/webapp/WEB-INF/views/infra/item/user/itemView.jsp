@@ -150,7 +150,7 @@
 	}
 	
 	label {
-		width: 200px;
+		width: 250px;
 		display: inline-block;
 		margin: 0 0 -1px;
 		padding: 15px 25px;
