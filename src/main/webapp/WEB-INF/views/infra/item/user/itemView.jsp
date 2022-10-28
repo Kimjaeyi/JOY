@@ -713,9 +713,6 @@
 		</div>
 	</footer>
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
-<!-- 상세정보사진 이어붙이기
-https://front.wemakeprice.com/product/2196179307?search_keyword=%25EB%25A6%25AC%25EC%2597%2594%2520%25EB%25AC%25BC%25EB%2593%25A4%25EC%259E%2584%25EC%2583%25B4%25ED%2591%25B8&_service=5&_no=8
- -->
 <!-- end -->
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
