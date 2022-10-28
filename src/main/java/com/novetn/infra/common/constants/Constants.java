@@ -22,6 +22,12 @@ public final class Constants {
 	
 	public static final long PASSWOPRD_CHANGE_INTERVAL = 90;
 	
+	//이클립스 업로드용	
+//	public static final String UPLOAD_PATH_PREFIX_EXTERNAL = "D://factory/ws_sts_4151/joy/src/main/webapp/resources/image";
+	
+	//IP 업로드용
+	public static final String UPLOAD_PATH_PREFIX_EXTERNAL = "D://factory/ws_sts_4151/joy/src/main/webapp/resources/image";
+	
 	public static final String UPLOAD_PATH_PREFIX = "D://factory/ws_sts_4151/joy/src/main/webapp/resources/image";
 	public static final String UPLOAD_PATH_PREFIX_FOR_VIEW = "/resources/image";
 	
