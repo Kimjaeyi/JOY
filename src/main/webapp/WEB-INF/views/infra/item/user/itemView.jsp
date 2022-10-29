@@ -131,7 +131,7 @@
 	}
 	
 	.tabborder {
-		margin: 0 20%;
+		margin: 0 15%;
 	}
 	
 	.itemtab {
@@ -141,8 +141,9 @@
 	
 	section {
 		display: none;
-		padding: 20px 0;
+		padding: 20px 0 0;
 		border-top: 1px solid #ddd;
+		width: 1200px;
 	}
 	
 	input[type=radio] {
@@ -150,14 +151,14 @@
 	}
 	
 	label {
-		width: 250px;
+		width: 300px;
 		display: inline-block;
-		margin: 0 0 -1px;
-		padding: 15px 25px;
-		font-weight: 600;
+		/* margin: 0 0 -1px; */
+		padding: 20px 95px;
+		font-weight: bold;
 		text-align: center;
 		color: #bbb;
-		border: 1px solid transparent;
+		border: 2px solid transparent;
 	}
 	
 	label:hover {
@@ -178,6 +179,11 @@
 	#tab3:checked ~ #content3,
 	#tab4:checked ~ #content4 {
 	    display: block;
+	}
+	
+	#detailimg {
+		width: 700px;
+		margin-left: 20%;
 	}
 	
 	#minusbtn, #plusbtn {
@@ -444,7 +450,7 @@
 		    <label for="tab4">배송·교환·반품</label>
 		    <section id="content1">
 		    	<c:forEach items="${tab}" var="tab" varStatus="status">
-		        	<img src="${tab.path}${tab.uuidName}">
+		        	<img src="${tab.path}${tab.uuidName}" id="detailimg">
 		        </c:forEach>
 		    </section>
 		    <section id="content2">
