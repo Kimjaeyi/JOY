@@ -265,9 +265,9 @@
 			</div>
 		</div>
 		
-		<!-- mainHeadercate s -->
+		<!-- pagination s -->
 		<%@include file="../../../common/xdmin/includeV1/mainHeadercate.jsp"%>
-		<!-- mainHeadercate e -->
+		<!-- pagination e -->
 		
 	</header>
 	<!-- //헤더 -->
@@ -284,12 +284,8 @@
 						<a class="main-banner-link">‘밀키트’로 홈캉스 즐기기!</a>
 					</p>
 					<div class="search">
-						<input type="hidden" name="shOption" value="1">
-						<input type="search" class="input search-keyword" name="shValue" onkeyup="enterKey()" value="<c:out value="${vo.shValue }"/>">
+						<input type="search" class="input search-keyword">
 					</div>
-					<%-- <select name="shOption" id="shOption" style="display: none">
-						<option value="${vo.shOption eq 1}" selected>상품명</select>
-					</select> --%>
 				</div>
 			</div>
 		</div>
@@ -551,11 +547,11 @@
 		<!-- //주요쇼핑몰 -->
 	</div>
 	<!-- //main contents -->
-	
+
 	<!-- footer s -->
 	<%@include file="../../../common/xdmin/includeV1/footer.jsp"%>
 	<!-- footer e -->
-	
+
 	<!-- 탑으로 -->
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 	<!-- //탑으로 -->
@@ -567,23 +563,10 @@
 	
 	<script type="text/javascript">
 	
-	var goUrlSearch = "/item/mainPage";
 	var goUrlView = "/item/itemView";
 	
 	var form = $("form[name=formList]");
 	var seq = $("input:hidden[name=seq]");
-	
-	/* $("#shOption option:eq(1)").prop("selected", true); */
-	
-	enterKey = function() {
-		
-		var keycode = event.keyCode;
-		
-		if(keycode == 13) //Enter
-			goUrlSearch = function() {
-			form.attr("action", goUrlSearch).submit();
-		}
-	}
 	
 	goView = function(pseq) {
 		seq.val(pseq);
@@ -659,13 +642,6 @@
 		});
 	});
 	
-/* 	
-	$("#searchbtn").on("click", function(){
-		if(validationList() == false) return false;
-		form.attr("action", goUrlList).submit();
-	});
-*/
-
 	</script>
 	
 </body>

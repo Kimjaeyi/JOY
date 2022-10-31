@@ -112,6 +112,8 @@ public class ItemController {
 	@RequestMapping(value = "mainPage")
 	public String mainPage(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
 		
+		setSearchAndPaging(vo);
+		
 		List<Item> listHotdealwmp = service.selectHotdealwmp(vo); 
 		model.addAttribute("listHotdealwmp", listHotdealwmp);
 		
@@ -127,6 +129,29 @@ public class ItemController {
 		return "infra/item/user/mainPage";
 		
 	}
+	
+//	@RequestMapping(value = "itemSearch")
+//	public String itemSearch(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
+//		
+//		setSearchAndPaging(vo);
+//		
+//		List<Item> listHotdealwmp = service.selectHotdealwmp(vo); 
+//		model.addAttribute("listHotdealwmp", listHotdealwmp);
+//		
+//		List<Item> listHotdealtmon = service.selectHotdealtmon(vo);
+//		model.addAttribute("listHotdealtmon", listHotdealtmon);
+//		
+//		List<Item> listHotdeal11st = service.selectHotdeal11st(vo);
+//		model.addAttribute("listHotdeal11st", listHotdeal11st);
+//		
+//		List<Item> listBest = service.selectBestlist(vo);
+//		model.addAttribute("listBest", listBest);
+//		
+//		System.out.println("value:" +vo.getShOption());
+//		
+//		return "infra/item/user/mainSearch";
+//		
+//	}
 	
 	@RequestMapping(value = "itemView")
 	public String itemView(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
