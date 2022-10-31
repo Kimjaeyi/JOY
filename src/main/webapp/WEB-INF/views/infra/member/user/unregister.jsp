@@ -164,7 +164,7 @@
 								<h5>아이디</h5>
 							</div>
 							<div class="col-9">
-								<input class="form-control" type="text" id="id" name="id" value="<c:out value="${item.id}"/>" style="color: #6900EF" readonly>
+								<input class="form-control" type="text" id="id" name="id" value="<c:out value="${user.id}"/>" style="color: #6900EF" readonly>
 							</div>
 						</div>
 						<div class="row">
@@ -180,7 +180,7 @@
 						<p>회원 탈퇴를 하시면 모든 정보가 삭제되며,</p>
 						<p>탈퇴하신 아이디는 다시 이용할 수 없습니다.</p>
 						<p>신중하게 결정하셔서 진행해주세요.</p>
-						<br><br><c:out value="${sessSeq }"/>
+						<br><br>
 						<p>회원 탈퇴 시 보유하셨던 회원정보 등은 모두 삭제되나, </p>
 						<p>탈퇴 후 부정 이용 방지를 목적으로 1개월 간</p>
 						<p>성명, 실명 인증번호, 아이디, 비밀번호, </p>
@@ -188,7 +188,7 @@
 					</div>
 				</div>
 				<br>
-				<button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteModal" style="background-color: #6900EF; color: white; font-weight: bold">탈퇴</button>
+				<button type="button" id="delbtn" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#deleteModal" style="background-color: #6900EF; color: white; font-weight: bold">탈퇴</button>
 				<a href="/member/mypage"><button type="button" class="btn btn-light" style="color: gray; font-weight: bold">취소</button></a>
 				
 				<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -255,7 +255,29 @@
 	var seq = $("input:hidden[name=seq]");				/* #-> */
 	
 	var form = $("form[name=form]");
- 
+ 	
+	$("#delbtn").on("click", function(){
+		
+		/* if(validation() == false) return false; */
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/member/loginProc"
+			/* ,data : $("#formLogin").serialize() */
+			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
+			,success: function(response) {
+				if(response.rt == "success") {
+					$(#deleteModal);
+				} else {
+					alert("일치하는 회원정보가 없습니다");
+				}
+			}
+		});
+	});
+	
 	$("#realdelbtn").on("click", function() {
 		form.attr("action", goUrlDel).submit();
 	});
