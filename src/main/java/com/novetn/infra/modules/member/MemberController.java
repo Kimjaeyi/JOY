@@ -200,8 +200,13 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "unregister")
-	public String unregister() throws Exception {
-
+	public String unregister(@ModelAttribute("vo") MemberVo vo, Model model, HttpSession httpSession) throws Exception {
+		
+		String seq = (String) httpSession.getAttribute("sessSeq");
+		vo.setSeq(seq);
+		
+		Member result = service.selectOne(vo);
+		model.addAttribute("user", result);
 		
 		return "infra/member/user/unregister";
 	}

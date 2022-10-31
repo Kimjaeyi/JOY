@@ -224,19 +224,19 @@
 		<div class="aaa">
 			<h5>배송정보</h5>
 			<hr><br>
-			<input type="text" class="form-control" id="inputname" placeholder="이름" style="width: 25%">
+			<input type="text" class="form-control" id="inputname" value="<c:out value="${user.name}"/>" placeholder="이름" style="width: 25%">
 			<br>
 			<input type="text" class="form-control" id="inputphone" placeholder="휴대폰" style="width: 9%; margin: 0 3% 0 0">
 			<input type="text" class="form-control" id="inputphone" style="width: 15%; margin: 0 3% 0 0">
 			<input type="text" class="form-control" id="inputphone" style="width: 15%">
 			<br><br>
 			<button type="button" id="findzipcode" onclick="sample6_execDaumPostcode();" style="display: inline; margin: 0 3% 0 0">우편번호 찾기</button>
-			<input type="text" class="form-control" id="zipcode" style="width: 15%; display: inline" readonly>
+			<input type="text" class="form-control" id="zipcode" value="<c:out value="${user.zipcode}"/>" style="width: 15%; display: inline" readonly>
 			<br><br>
-			<input type="text" class="form-control" id="inputaddr" placeholder="도로명주소" style="width:63.5%">
+			<input type="text" class="form-control" id="inputaddr" value="<c:out value="${user.addr1}"/>" placeholder="도로명주소" style="width:63.5%">
 			<br>
-			<input type="text" class="form-control" id="inputdetailaddr" placeholder="상세주소" style="width: 50%; margin: 0 3% 0 0">
-			<input type="text" class="form-control" id="inputextraaddr"  placeholder="참고항목" style="width: 10%">
+			<input type="text" class="form-control" id="inputdetailaddr" value="<c:out value="${user.addr2}"/>" placeholder="상세주소" style="width: 50%; margin: 0 3% 0 0">
+			<input type="text" class="form-control" id="inputextraaddr"  value="<c:out value="${user.addr3}"/>" placeholder="참고항목" style="width: 10%">
 			<br><br>
 			<select class="form-select" id="selbox" style="width: 50%">
 				<option selected>배송메시지를 선택해주세요.</option>
