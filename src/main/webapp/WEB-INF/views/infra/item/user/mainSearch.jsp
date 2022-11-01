@@ -207,7 +207,7 @@
 		<div class="header">
 			<div class="inner">
 				<h1 class="logo">
-					<a href="/"><span class="blind">COOCHA</span></a>
+					<a href="/item/mainPage"><span class="blind">COOCHA</span></a>
 					<span class="title-category">카테고리</span>
 				</h1>
 
@@ -284,7 +284,8 @@
 						<a class="main-banner-link">‘밀키트’로 홈캉스 즐기기!</a>
 					</p>
 					<div class="search">
-						<input type="search" class="input search-keyword">
+						<input type="hidden" name="shOption" value="1">
+						<input type="search" class="input search-keyword" name="shValue" onkeyup="enterKey()" value="<c:out value="${vo.shValue }"/>">
 					</div>
 				</div>
 			</div>
@@ -294,19 +295,6 @@
 		<!-- 실시간 핫딜 TOP5 -->
 		<div class="section group-top5">
 			<div class="inner">
-				<div class="title">실시간 핫딜 TOP 5</div>
-				<!-- top5 업체영역 -->
-				<ul class="nav nav-pills" id="pills-tab" role="tablist">
-					<li class="nav-item" role="presentation">
-						<button class="nav-link active" id="wmp-tab" data-bs-toggle="pill" data-bs-target="#wmp" type="button" role="tab" aria-controls="wmp" aria-selected="true">위메프</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="tmon-tab" data-bs-toggle="pill" data-bs-target="#tmon" type="button" role="tab" aria-controls="tmon" aria-selected="false">티몬</button>
-					</li>
-					<li class="nav-item" role="presentation">
-						<button class="nav-link" id="11st-tab" data-bs-toggle="pill" data-bs-target="#eleven" type="button" role="tab" aria-controls="eleven" aria-selected="false">11번가</button>
-					</li>
-				</ul>
 				<!-- //top5 업체영역 -->
 				<div class="tab-content" id="pills-tabContent">
 					<div class="tab-pane fade show active" id="wmp" role="tabpanel" aria-labelledby="wmp-tab" tabindex="0">
@@ -407,7 +395,6 @@
 		<!-- 베스트 -->
 		<div class="section group-best">
 			<div class="inner">
-				<div class="title">베스트</div>
 				<div class="contents" style="overflow-anchor: none;">
 					<!-- 베스트 딜리스트 -->
 					<div class="deal-list" id="dealListDiv">
@@ -563,85 +550,112 @@
 	
 	<script type="text/javascript">
 	
-	var goUrlView = "/item/itemView";
+		var goUrlSearch = "/item/mainSearch";
+		var goUrlView = "/item/itemView";
+		
+		var form = $("form[name=formList]");
+		var seq = $("input:hidden[name=seq]");
+		
+		/* $("#shOption option:eq(1)").prop("selected", true); */
+		
+		enterKey = function() {
+			
+			var keycode = event.keyCode;
+			
+			if(keycode == 13) { //Enter
+				goSearch();
+			}
+		}
+		
+		goSearch = function() {
+			form.attr("action", goUrlSearch).submit();
+		}
+		
+		goView = function(pseq) {
+			seq.val(pseq);
+			form.attr("action", goUrlView).submit();
+		}
 	
-	var form = $("form[name=formList]");
-	var seq = $("input:hidden[name=seq]");
+	</script>
 	
-	goView = function(pseq) {
-		seq.val(pseq);
-		form.attr("action", goUrlView).submit();
-	}
+	<script type="text/javascript">
 	
-	 $('.hamburger, .btn-close').on('click', function(){
-        if($('.group-menu').css('display') === 'none'){
-            $('header').addClass('fix');
-            $('.hamburger').addClass('active');
-            $('.group-menu').show();
-            $('.main-container').addClass('fix');
-            $('.link-categoty-all').val('8');
-            mask();
-
-            $(window).on('scroll', function() {
-                $('.main-header').addClass('scroll fix');
-                if ($(window).scrollTop() > 520) {
-                    $('.main-header .header .search').hide();
-                }
-            });
-        } else{
-            hamburgerHide();
-        }
-    });
-	 
-	 function hamburgerHide(){
-	        $('header').removeClass('fix');
-	        $('.header').css('left', 0);
-	        $('.hamburger').removeClass('active');
-	        $('.group-menu').hide();
-	        $('.dim-bg').hide();
-	        $('.main-container').removeClass('fix');
-	        $('.title-category').hide();
-	        $('.menu-1depth > li > a').removeClass('on');
-	        $('.menu-1depth > li:first > a').addClass('on');
-	        $('.cate-con').removeClass('on');
-	        $('.cate-con:first').addClass('on');
-	 }
-	 
-	 $('.menu-1depth > li >a').on('click', function(){
-	        var activeTab = $(this).attr('data-tab');
-	        var activeTabText = $(this).text();
-	        console.log(activeTabText);
-	        $('.menu-1depth > li > a').removeClass('on');
-	        $('.cate-con').removeClass('on');
-	        $(this).addClass('on');
-	        $('.' + activeTab).addClass('on');
-	        $('.link-categoty-all .cate').html(activeTabText);
-
-	        var cateAll = $(this).attr('value');
-	        $('.link-categoty-all').attr('cid', cateAll);
-	        $('.link-categoty-all').attr('data-cid', cateAll);
+		 $('.hamburger, .btn-close').on('click', function(){
+	        if($('.group-menu').css('display') === 'none'){
+	            $('header').addClass('fix');
+	            $('.hamburger').addClass('active');
+	            $('.group-menu').show();
+	            $('.main-container').addClass('fix');
+	            $('.link-categoty-all').val('8');
+	            mask();
+	
+	            $(window).on('scroll', function() {
+	                $('.main-header').addClass('scroll fix');
+	                if ($(window).scrollTop() > 520) {
+	                    $('.main-header .header .search').hide();
+	                }
+	            });
+	        } else{
+	            hamburgerHide();
+	        }
 	    });
+		 
+		 function hamburgerHide(){
+		        $('header').removeClass('fix');
+		        $('.header').css('left', 0);
+		        $('.hamburger').removeClass('active');
+		        $('.group-menu').hide();
+		        $('.dim-bg').hide();
+		        $('.main-container').removeClass('fix');
+		        $('.title-category').hide();
+		        $('.menu-1depth > li > a').removeClass('on');
+		        $('.menu-1depth > li:first > a').addClass('on');
+		        $('.cate-con').removeClass('on');
+		        $('.cate-con:first').addClass('on');
+		 }
+		 
+		 $('.menu-1depth > li >a').on('click', function(){
+		        var activeTab = $(this).attr('data-tab');
+		        var activeTabText = $(this).text();
+		        console.log(activeTabText);
+		        $('.menu-1depth > li > a').removeClass('on');
+		        $('.cate-con').removeClass('on');
+		        $(this).addClass('on');
+		        $('.' + activeTab).addClass('on');
+		        $('.link-categoty-all .cate').html(activeTabText);
 	
-	$("#logoutbtn").on("click", function(){
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/member/logoutProc"
-			,data: {}
-			,success: function(response) {
-				if(response.rt == "success") {
-					location.href = "/";
-				} else {
-					// by pass
+		        var cateAll = $(this).attr('value');
+		        $('.link-categoty-all').attr('cid', cateAll);
+		        $('.link-categoty-all').attr('data-cid', cateAll);
+		    });
+		
+		$("#logoutbtn").on("click", function(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/";
+					} else {
+						// by pass
+					}
 				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
 		});
-	});
 	
+/* 	
+		$("#searchbtn").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlList).submit();
+		});
+*/
+
 	</script>
 	
 </body>

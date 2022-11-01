@@ -417,25 +417,9 @@
 					<div class="deal-list" id="dealListDiv">
 						<c:forEach items="${listBest}" var="listBest" varStatus="status">
 						<div class="deal">
-							<a href=" ">
+							<a href="javascript:goView('${listBest.seq }')">
 								<div class="deal-inner-wrap">
 									<div class="deal-inner">
-										<div class="labels">
-											<span class="ranking"><span class="blind">
-											<c:choose>
-												<c:when test="${listBest.seq eq 16 }">
-													<img src="http://images.coocha.co.kr/static/images/deal/easypay/spay-1.png?20200604" alt="">
-												</c:when>
-												<c:when test="${listBest.seq eq 17 }">
-													<img src="http://images.coocha.co.kr/static/images/deal/labels/ranking-best-02.svg" alt="">
-												</c:when>
-												<c:when test="${listBest.seq eq 18 }">
-													<img src="http://images.coocha.co.kr/static/images/deal/labels/ranking-best-03.svg" alt="">
-												</c:when>
-												<c:otherwise></c:otherwise>
-											</c:choose>
-											</span></span>
-										</div>
 										<div class="img">
 											<img src="${listBest.path}${listBest.uuidName}">
 										</div>
@@ -567,103 +551,110 @@
 	
 	<script type="text/javascript">
 	
-	var goUrlSearch = "/item/mainPage";
-	var goUrlView = "/item/itemView";
-	
-	var form = $("form[name=formList]");
-	var seq = $("input:hidden[name=seq]");
-	
-	/* $("#shOption option:eq(1)").prop("selected", true); */
-	
-	enterKey = function() {
+		var goUrlSearch = "/item/mainSearch";
+		var goUrlView = "/item/itemView";
 		
-		var keycode = event.keyCode;
+		var form = $("form[name=formList]");
+		var seq = $("input:hidden[name=seq]");
 		
-		if(keycode == 13) //Enter
-			goUrlSearch = function() {
+		/* $("#shOption option:eq(1)").prop("selected", true); */
+		
+		enterKey = function() {
+			
+			var keycode = event.keyCode;
+			
+			if(keycode == 13) { //Enter
+				goSearch();
+			}
+		}
+		
+		goSearch = function() {
 			form.attr("action", goUrlSearch).submit();
 		}
-	}
+		
+		goView = function(pseq) {
+			seq.val(pseq);
+			form.attr("action", goUrlView).submit();
+		}
 	
-	goView = function(pseq) {
-		seq.val(pseq);
-		form.attr("action", goUrlView).submit();
-	}
+	</script>
 	
-	 $('.hamburger, .btn-close').on('click', function(){
-        if($('.group-menu').css('display') === 'none'){
-            $('header').addClass('fix');
-            $('.hamburger').addClass('active');
-            $('.group-menu').show();
-            $('.main-container').addClass('fix');
-            $('.link-categoty-all').val('8');
-            mask();
-
-            $(window).on('scroll', function() {
-                $('.main-header').addClass('scroll fix');
-                if ($(window).scrollTop() > 520) {
-                    $('.main-header .header .search').hide();
-                }
-            });
-        } else{
-            hamburgerHide();
-        }
-    });
-	 
-	 function hamburgerHide(){
-	        $('header').removeClass('fix');
-	        $('.header').css('left', 0);
-	        $('.hamburger').removeClass('active');
-	        $('.group-menu').hide();
-	        $('.dim-bg').hide();
-	        $('.main-container').removeClass('fix');
-	        $('.title-category').hide();
-	        $('.menu-1depth > li > a').removeClass('on');
-	        $('.menu-1depth > li:first > a').addClass('on');
-	        $('.cate-con').removeClass('on');
-	        $('.cate-con:first').addClass('on');
-	 }
-	 
-	 $('.menu-1depth > li >a').on('click', function(){
-	        var activeTab = $(this).attr('data-tab');
-	        var activeTabText = $(this).text();
-	        console.log(activeTabText);
-	        $('.menu-1depth > li > a').removeClass('on');
-	        $('.cate-con').removeClass('on');
-	        $(this).addClass('on');
-	        $('.' + activeTab).addClass('on');
-	        $('.link-categoty-all .cate').html(activeTabText);
-
-	        var cateAll = $(this).attr('value');
-	        $('.link-categoty-all').attr('cid', cateAll);
-	        $('.link-categoty-all').attr('data-cid', cateAll);
+	<script type="text/javascript">
+	
+		 $('.hamburger, .btn-close').on('click', function(){
+	        if($('.group-menu').css('display') === 'none'){
+	            $('header').addClass('fix');
+	            $('.hamburger').addClass('active');
+	            $('.group-menu').show();
+	            $('.main-container').addClass('fix');
+	            $('.link-categoty-all').val('8');
+	            mask();
+	
+	            $(window).on('scroll', function() {
+	                $('.main-header').addClass('scroll fix');
+	                if ($(window).scrollTop() > 520) {
+	                    $('.main-header .header .search').hide();
+	                }
+	            });
+	        } else{
+	            hamburgerHide();
+	        }
 	    });
+		 
+		 function hamburgerHide(){
+		        $('header').removeClass('fix');
+		        $('.header').css('left', 0);
+		        $('.hamburger').removeClass('active');
+		        $('.group-menu').hide();
+		        $('.dim-bg').hide();
+		        $('.main-container').removeClass('fix');
+		        $('.title-category').hide();
+		        $('.menu-1depth > li > a').removeClass('on');
+		        $('.menu-1depth > li:first > a').addClass('on');
+		        $('.cate-con').removeClass('on');
+		        $('.cate-con:first').addClass('on');
+		 }
+		 
+		 $('.menu-1depth > li >a').on('click', function(){
+		        var activeTab = $(this).attr('data-tab');
+		        var activeTabText = $(this).text();
+		        console.log(activeTabText);
+		        $('.menu-1depth > li > a').removeClass('on');
+		        $('.cate-con').removeClass('on');
+		        $(this).addClass('on');
+		        $('.' + activeTab).addClass('on');
+		        $('.link-categoty-all .cate').html(activeTabText);
 	
-	$("#logoutbtn").on("click", function(){
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/member/logoutProc"
-			,data: {}
-			,success: function(response) {
-				if(response.rt == "success") {
-					location.href = "/";
-				} else {
-					// by pass
+		        var cateAll = $(this).attr('value');
+		        $('.link-categoty-all').attr('cid', cateAll);
+		        $('.link-categoty-all').attr('data-cid', cateAll);
+		    });
+		
+		$("#logoutbtn").on("click", function(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/";
+					} else {
+						// by pass
+					}
 				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
 		});
-	});
 	
 /* 	
-	$("#searchbtn").on("click", function(){
-		if(validationList() == false) return false;
-		form.attr("action", goUrlList).submit();
-	});
+		$("#searchbtn").on("click", function(){
+			if(validationList() == false) return false;
+			form.attr("action", goUrlList).submit();
+		});
 */
 
 	</script>
