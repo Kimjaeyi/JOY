@@ -130,28 +130,24 @@ public class ItemController {
 		
 	}
 	
-//	@RequestMapping(value = "itemSearch")
-//	public String itemSearch(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
-//		
-//		setSearchAndPaging(vo);
-//		
-//		List<Item> listHotdealwmp = service.selectHotdealwmp(vo); 
-//		model.addAttribute("listHotdealwmp", listHotdealwmp);
-//		
-//		List<Item> listHotdealtmon = service.selectHotdealtmon(vo);
-//		model.addAttribute("listHotdealtmon", listHotdealtmon);
-//		
-//		List<Item> listHotdeal11st = service.selectHotdeal11st(vo);
-//		model.addAttribute("listHotdeal11st", listHotdeal11st);
-//		
-//		List<Item> listBest = service.selectBestlist(vo);
-//		model.addAttribute("listBest", listBest);
-//		
-//		System.out.println("value:" +vo.getShOption());
-//		
-//		return "infra/item/user/mainSearch";
-//		
-//	}
+	@RequestMapping(value = "mainSearch")
+	public String itemSearch(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
+		
+		List<Item> listHotdealwmp = service.selectHotdealwmp(vo); 
+		model.addAttribute("listHotdealwmp", listHotdealwmp);
+		
+		List<Item> listHotdealtmon = service.selectHotdealtmon(vo);
+		model.addAttribute("listHotdealtmon", listHotdealtmon);
+		
+		List<Item> listHotdeal11st = service.selectHotdeal11st(vo);
+		model.addAttribute("listHotdeal11st", listHotdeal11st);
+		
+		List<Item> listBest = service.selectBestlist(vo);
+		model.addAttribute("listBest", listBest);
+		
+		return "infra/item/user/mainSearch";
+		
+	}
 	
 	@RequestMapping(value = "itemView")
 	public String itemView(@ModelAttribute("vo") ItemVo vo, Model model) throws Exception {
@@ -162,9 +158,11 @@ public class ItemController {
 //		model.addAttribute("detail", detail);
 		
 		List<Item> card = service.selectView(vo); 
+		//단일로(list 지우삼)
 		model.addAttribute("card", card);
 		
 		List<Item> tab = service.selectSection(vo); 
+		//단일로
 		model.addAttribute("tab", tab);
 		
 		return "infra/item/user/itemView";

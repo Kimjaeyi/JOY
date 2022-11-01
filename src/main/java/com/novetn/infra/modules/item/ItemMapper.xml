@@ -206,6 +206,10 @@
 		WHERE 1=1
 		AND c.defaultNY = 1 
 		AND a.mainDiv = 1
+		
+		<choose>
+			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
 	</select>
 	
 	<select id="selectHotdealtmon" resultMap="resultMapObj">
@@ -217,6 +221,10 @@
 		WHERE 1=1
 		AND c.defaultNY = 1
 		AND a.mainDiv = 2
+		
+		<choose>
+			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
 	</select>
 	
 	<select id="selectHotdeal11st" resultMap="resultMapObj">
@@ -228,6 +236,10 @@
 		WHERE 1=1
 		AND c.defaultNY = 1
 		AND a.mainDiv = 3
+		
+		<choose>
+			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
 	</select>
 	
 	<select id="selectBestlist" resultMap="resultMapObj">
@@ -239,8 +251,14 @@
 		WHERE 1=1
 		AND c.defaultNY = 1
 		AND a.mainDiv = 4
+		
+		<choose>
+			<when test="shOption == 1">AND a.title LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
 	</select>
+	<!--  -->
 	
+	<!-- 상품 상세 페이지 -->
 	<select id="selectView" resultMap="resultMapObj">
 		SELECT
 			a.title
@@ -251,10 +269,11 @@
 			, a.maximum
 			, c.*
 		FROM item a
-			LEFT JOIN itemUploaded c ON a.seq = c.pseq
+		LEFT JOIN itemUploaded c 
+		ON a.seq = c.pseq 
+		AND c.sort = 2
 		WHERE 1=1
 		AND a.seq = #{seq}
-		AND c.sort = 2
 	</select>
 	
 	<select id="selectSection" resultMap="resultMapObj">
@@ -267,5 +286,6 @@
 			AND a.seq = #{seq}
 			AND c.sort = 3
 	</select>
+	<!--  -->
 	
 </mapper>
