@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ 
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.novetn.infra.modules.order.OrderMapper">
+
+    <resultMap id="resultMapObj" type="com.novetn.infra.modules.order.Order"></resultMap>
+	
+	<sql id = "selectCommon">
+		FROM itemOrder a
+			LEFT JOIN coupon d ON d.seq = a.coupon_seq
+			LEFT JOIN member b ON b.seq = a.member_seq
+			LEFT JOIN item c ON c.seq = a.item_seq
+		WHERE 1=1
+		 
+		<if test="shDelNy != null and !shDelNy.equals('')">AND a.delNY = #{shDelNy}</if>
+		
+		<choose>
+			<when test="shOptionDate == 1">AND a.orderdate BETWEEN #{shstartDate} AND #{shendDate}</when>
+		</choose>
+		
+		<choose>
+			<when test="shOption == 1">AND b.name LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 2">AND b.id LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 3">AND b.addr1 LIKE CONCAT('%',#{shValue},'%')</when>
+			<when test="shOption == 4">AND c.title LIKE CONCAT('%',#{shValue},'%')</when>
+		</choose>
+	</sql>
+
+	<select id="selectList" resultMap="resultMapObj">
+		<include refid="Base.selectListUpperForMysql" />
+ 		SELECT
+			a.seq
+			, b.name
+			, b.id
+			, b.email
+			, b.zipcode
+			, b.addr1
+			, b.addr2
+			, b.addr3
+			, a.spmessage
+			, b.phone
+			, c.title
+			, c.price
+			, (SELECT e.cdname_ko FROM Code e WHERE c.shoppingsite = e.seq) AS site
+			, a.count
+			, d.cpnname
+			, d.cpndiscount
+			, d.cpnvalid
+			, a.finalPrice
+			, (SELECT e.cdname_ko FROM Code e WHERE a.shippingstate = e.seq) AS state
+			, a.orderdate
+			, a.delNY
+		<include refid="selectCommon" />
+		ORDER BY a.seq DESC
+		<include refid="Base.selectListLowerForMysql" />
+	</select>
+	
+	<select id="selectOneCount" resultType="Integer">
+		SELECT COUNT(*)
+		<include refid="selectCommon" />
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO itemOrder (
+			b.name
+			, b.email
+			, b.zipcode
+			, b.addr1
+			, b.addr2
+			, b.addr3
+			, a.spmessage
+			, b.phone
+			, c.title
+			, c.price
+			, a.count
+			, d.cpnname
+			, d.cpndiscount
+			, d.cpnvalid
+			, a.finalPrice
+			, state
+			, a.orderdate
+		)
+		VALUES (
+			#{name}
+			, #{email}
+			, #{zipcode}
+			, #{addr1}
+			, #{addr2}
+			, #{addr3}
+			, #{spmessage}
+			, #{phone}
+			, #{title}
+			, #{price}
+			, #{count}
+			, #{cpnname}
+			, #{cpndiscount}
+			, #{cpnvalid}
+			, #{finalPrice}
+			, 34
+			, now()
+		)
+		<include refid="selectCommon" />
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+		
+	</insert>
+
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.*
+			, b.*
+			, c.*
+			, d.*
+		FROM itemOrder a
+			LEFT JOIN coupon d ON d.seq = a.coupon_seq
+			LEFT JOIN member b ON b.seq = a.member_seq
+			LEFT JOIN item c ON c.seq = a.item_seq
+		WHERE 1=1
+			AND a.seq = #{seq}
+	</select>
+	
+	<update id="update">
+		UPDATE itemOrder 
+		SET
+			name = #{name}
+			, grade = #{grade}
+			, dob = #{dob}
+			, pwd = #{pwd}
+			, gender = #{gender}
+			, email = CONCAT(#{emailID},
+				<choose>
+					<when test="emailDomain eq 8">'@naver.com')</when>
+					<when test="emailDomain eq 9">'@gmail.com')</when>
+					<when test="emailDomain eq 10">'@hanmail.net')</when>
+					<when test="emailDomain eq 11">'@daum.com')</when>
+					<when test="emailDomain eq 12">'@nate.com')</when>
+					<when test="emailDomain eq 13">'@coocha.com')</when>
+				</choose>
+			, emailID = #{emailID}
+			, emailDomain = #{emailDomain}
+			, telecom = #{telecom}
+			, phone = #{phone}
+			, zipcode = #{zipcode}
+			, addr1 = #{addr1}
+			, addr2 = #{addr2}
+			, addr3 = #{addr3}
+			, validity = #{validity}
+			, delNY = #{delNY}
+		WHERE 1=1
+			AND seq = #{seq}
+	</update>
+	
+	<update id="uelete">
+		UPDATE member
+		SET
+			delNY = 1
+		WHERE 1=1
+			AND seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM member
+		WHERE 1=1
+			AND seq = #{seq}
+	</delete>
+	
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT
+			seq
+			, id
+		FROM member
+		WHERE 1=1
+		AND	id = #{id}
+	</select>
+	
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			seq
+			, id
+		FROM member
+		WHERE 1=1 
+		AND	id = #{id}
+		<if test="pwd != null and !pwd.equals('')">
+			AND pwd = #{pwd}
+		</if>
+		AND delNY = 0
+	</select>
+	
+	<update id="unreg">
+		UPDATE member
+		SET 
+			delNY = 1
+		WHERE 
+			seq = #{seq}
+	</update>
+
+</mapper>
