@@ -126,36 +126,13 @@
 	<update id="update">
 		UPDATE itemOrder 
 		SET
-			name = #{name}
-			, grade = #{grade}
-			, dob = #{dob}
-			, pwd = #{pwd}
-			, gender = #{gender}
-			, email = CONCAT(#{emailID},
-				<choose>
-					<when test="emailDomain eq 8">'@naver.com')</when>
-					<when test="emailDomain eq 9">'@gmail.com')</when>
-					<when test="emailDomain eq 10">'@hanmail.net')</when>
-					<when test="emailDomain eq 11">'@daum.com')</when>
-					<when test="emailDomain eq 12">'@nate.com')</when>
-					<when test="emailDomain eq 13">'@coocha.com')</when>
-				</choose>
-			, emailID = #{emailID}
-			, emailDomain = #{emailDomain}
-			, telecom = #{telecom}
-			, phone = #{phone}
-			, zipcode = #{zipcode}
-			, addr1 = #{addr1}
-			, addr2 = #{addr2}
-			, addr3 = #{addr3}
-			, validity = #{validity}
-			, delNY = #{delNY}
+			b.name
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
 	
 	<update id="uelete">
-		UPDATE member
+		UPDATE itemOrder
 		SET
 			delNY = 1
 		WHERE 1=1
@@ -163,39 +140,15 @@
 	</update>
 	
 	<delete id="delete">
-		DELETE FROM member
+		DELETE FROM itemOrder
 		WHERE 1=1
 			AND seq = #{seq}
 	</delete>
 	
-	<select id="selectOneId" resultMap="resultMapObj">
-		SELECT
-			seq
-			, id
-		FROM member
-		WHERE 1=1
-		AND	id = #{id}
+	<select id="couponList">
+		SELECT 
+		* 
+		FROM coupon
 	</select>
-	
-	<select id="selectOneLogin" resultMap="resultMapObj">
-		SELECT
-			seq
-			, id
-		FROM member
-		WHERE 1=1 
-		AND	id = #{id}
-		<if test="pwd != null and !pwd.equals('')">
-			AND pwd = #{pwd}
-		</if>
-		AND delNY = 0
-	</select>
-	
-	<update id="unreg">
-		UPDATE member
-		SET 
-			delNY = 1
-		WHERE 
-			seq = #{seq}
-	</update>
 
 </mapper>
