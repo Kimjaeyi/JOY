@@ -453,8 +453,7 @@
 	var goUrlUele = "/member/memberUele";				/* #-> */
 	var goUrlDele = "/member/memberDele";				/* #-> */
 	var goUrlForm = "/member/memberForm";
-	
-	var excelUri = "/member/excelDownload";
+	var excelUrl = "/member/excelDownload";
 	
 	var form = $("form[name=formList]");
 	
@@ -463,7 +462,7 @@
 	var checkboxSeqArray = [];
 	
 	$("#search_btn").on("click", function(){
-		if(validationList() == false) return false;
+//		if(validationList() == false) return false;
 		form.attr("action", goUrlList).submit();
 	});
 	
@@ -473,6 +472,10 @@
 	
 	$("#reset_btn").on("click", function(){
 		$(location).attr("href", goUrlList);
+	});
+	
+	$("#excelbtn").click(function() {
+		form.attr("action", excelUrl).submit();
 	});
 	
 	$(document).ready(function() {
