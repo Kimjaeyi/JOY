@@ -6,7 +6,9 @@ import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class OrderDao {
 
 	@Inject
@@ -21,9 +23,7 @@ public class OrderDao {
 	}
 	
 	public int insert(Order dto) {
-		int result = sqlSession.insert(namespace + ".insert", dto);
-		System.out.println("dao result: " + result);
-		return result;
+		return sqlSession.insert(namespace + ".insert", dto);
 	}
 	
 	public int update(Order dto) {
@@ -44,6 +44,10 @@ public class OrderDao {
 	
 	public int selectOneCount(OrderVo vo) {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
+	}
+	
+	public List<Order> couponList(OrderVo vo) {
+		return sqlSession.selectList(namespace + ".couponList", vo);
 	}
 	
 }

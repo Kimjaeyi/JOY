@@ -11,7 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping(value = "/order/")
-
 public class OrderController {
 
 	@Autowired
@@ -93,6 +92,33 @@ public class OrderController {
 		redirectAttributes.addFlashAttribute("vo", vo);
 		
 		return "redirect:/order/orderList";
+	}
+	
+	@RequestMapping(value = "orderpage")
+	public String payment(@ModelAttribute("vo") OrderVo vo, Model model) throws Exception {
+		
+		Order user = service.selectOne(vo);
+		model.addAttribute("user", user);
+		
+		List<Order> list = service.couponList(vo);
+		model.addAttribute("list", list);
+		
+		return "infra/order/user/orderpage";
+		
+	}
+	
+	@RequestMapping(value = "paysuccess")
+	public String paysuccess() throws Exception {
+		
+		return "infra/order/user/paysuccess";
+		
+	}
+	
+	@RequestMapping(value = "orderdetail")
+	public String orderdetail() throws Exception {
+		
+		return "infra/order/user/orderdetail";
+		
 	}
 	
 }

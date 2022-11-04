@@ -47,4 +47,9 @@ public class OrderServiceImpl implements OrderService {
 		return dao.selectOneCount(vo);
 	}
 	
+	@Override
+	public List<Order> couponList(OrderVo vo) throws Exception {
+		return dao.couponList(vo);
+	}
+	
 }

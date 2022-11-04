@@ -145,7 +145,7 @@
 			AND seq = #{seq}
 	</delete>
 	
-	<select id="couponList">
+	<select id="couponList" resultMap="resultMapObj">
 		SELECT 
 		* 
 		FROM coupon
