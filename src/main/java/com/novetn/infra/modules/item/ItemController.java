@@ -169,25 +169,4 @@ public class ItemController {
 		
 	}
 	
-	@RequestMapping(value = "payment")
-	public String payment() throws Exception {
-		
-		return "infra/order/user/payment";
-		
-	}
-	
-	@RequestMapping(value = "paysuccess")
-	public String paysuccess() throws Exception {
-		
-		return "infra/order/user/paysuccess";
-		
-	}
-	
-	@RequestMapping(value = "orderdetail")
-	public String orderdetail() throws Exception {
-		
-		return "infra/order/user/orderdetail";
-		
-	}
-	
 }
