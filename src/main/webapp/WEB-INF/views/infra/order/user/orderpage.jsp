@@ -172,6 +172,10 @@
 <body>
 
 <!-- start -->
+	<form id="form" name="form" method="post">
+	<!-- *Vo.jsp s -->
+	<%@include file="orderVo.jsp"%>		<!-- #-> -->
+	<!-- *Vo.jsp e -->
 	<div class="header" style="left: 0px;">
         <div class="inner">
             <h1 class="logo">
@@ -258,13 +262,9 @@
 					<table>
 						<tr>
 							<td style="border: none; width: 20%"><img src="../resources/image/위메프1.png" style="width: 150px; height:150px"></td>
-							<td style="text-align: left; width: 35%"><p style="font-size: 13px; font-weight: bold">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml</p>
-								<br>
-								<p style="font-size: 11px">옵션 : 흑갈색</p>
-								<p style="font-size: 12px">내일 7/22(금) 도착 예정</p>
-							</td>
-							<td width="10%"><p style="font-size: 13px">1개</p></td>
-							<td width="20%"><p style="font-size: 13px">37,700원</p></td>
+							<td style="text-align: left; width: 35%"><p style="font-size: 13px; font-weight: bold">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml</p></td>
+							<td width="10%"><p style="font-size: 13px"><c:out value="${user.count}"/>개</p></td>
+							<td width="20%"><p style="font-size: 13px"><c:out value="${user.price}"/>원</p></td>
 							<td width="15%"><p style="font-size: 13px">무료배송</p></td>
 						</tr>
 					</table>
@@ -284,22 +284,24 @@
 						<div class="col-2"></div>
 					</div>
 					<hr>
+					<c:forEach items="${list}" var="list" varStatus="status">
 					<div class="row justify-content-center">
 						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">카카오페이 3,000원 할인</p>
+							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0"><c:out value="${list.cpnname}"/></p>
 						</div>
 						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">3,000원</p>
+							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0"><c:out value="${list.cpndiscount}"/></p>
 						</div>
 						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">~ 2022.12.31</p>
+							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">~ <c:out value="${list.cpnvalid}"/></p>
 						</div>
 						<div class="col-2">
 							<button type="button" id="coupon1" value="3000">쿠폰적용</button>
 						</div>
 					</div>
+					</c:forEach>
 					<br>
-					<div class="row justify-content-center">
+					<!-- <div class="row justify-content-center">
 						<div class="col-3" style="text-align:center">
 							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">[장바구니] 쇼핑쿠폰</p>
 						</div>
@@ -312,7 +314,7 @@
 						<div class="col-2">
 							<button type="button" id="coupon2" value="2000">쿠폰적용</button>
 						</div>
-					</div>
+					</div> -->
 					<hr>
 					<br><br><br>
 					<h5>결제방법</h5>
@@ -328,7 +330,7 @@
 						<br><br>
 						<h6 style="display: inline">상품금액</h6>
 						<h6 style="display: inline; float: right; margin: 3px 0 0 0">원</h6>
-						<h5 id="totalprice" style="display: inline; float: right; font-weight: bold">37,700</h5>
+						<h5 id="totalprice" style="display: inline; float: right; font-weight: bold"><c:out value="${user.price}"/></h5>
 						<br><br>
 						<h6 style="display: inline">배송비</h6>
 						<h6 style="display: inline; float: right; margin: 3px 0 0 0">원</h6>
@@ -381,6 +383,7 @@
 			</div>
 		</div>
 	</div>
+	</form>
 	<br><br>
 	<footer>
 		<div class="footer">
@@ -421,7 +424,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
-	
+<!-- 	
 	<script>
 	
 		$(function() {
@@ -430,7 +433,7 @@
 		});
 	
 	</script>
-	
+-->	
 	<script type="text/javascript">
 	
 	$(function(){
