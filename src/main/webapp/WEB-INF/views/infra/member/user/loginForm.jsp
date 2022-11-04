@@ -25,7 +25,10 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/resources/demos/style.css">
 	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
-
+	<!-- 카카오 로그인 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	
+</head>
 <style type="text/css">
 	
 	@font-face {
@@ -139,6 +142,16 @@
 <body>
 
 <!-- start -->
+	<form name="form">
+		<input type="hidden" name="name"/>
+		<input type="hidden" name="snsID"/>
+		<input type="hidden" name="phone"/>
+		<input type="hidden" name="email"/>
+		<input type="hidden" name="gender"/>
+		<input type="hidden" name="dob"/>
+		<input type="hidden" name="snsImg"/>
+		<input type="hidden" name="token"/>
+	</form>
 	<div class="backimage">
 		<div class="abc">
 			<br><br>
@@ -169,12 +182,10 @@
 					<br>
 					<div class="row justify-content-center">
 						<div class="col-1">
-							<a href="https://nid.naver.com/nidlogin.login?oauth_token=fnc77UPYrVvzZmFqE6&consumer_key=LY2kzz66QOIl_rYOcwEE&logintp=oauth2&nurl=https%3A%2F%2Fnid.naver.com%2Foauth2.0%2Fauthorize%3Fresponse_type%3Dtoken%26state%3Dc2cf4fff-4b41-4c46-8978-38fad9d416c3%26client_id%3DLY2kzz66QOIl_rYOcwEE%26redirect_uri%3Dhttps%253A%252F%252Fmember.coocha.co.kr%252Fmember%252Flogin%252Fsnscallback.do%26locale%3Dko_KR%26inapp_view%3D%26oauth_os%3D&locale=ko_KR&inapp_view=&svctype=">
-							<img src="../resources/image/naver.png" style="width:40px;"></a>
+							<img src="../resources/image/naver.png" style="width:40px;">
 						</div>
 						<div class="col-1">
-							<a href="https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fproxy%3DeasyXDM_Kakao_1umprdwc0zu_provider%26ka%3Dsdk%252F1.43.0%2520os%252Fjavascript%2520sdk_type%252Fjavascript%2520lang%252Fko-KR%2520device%252FWin32%2520origin%252Fhttps%25253A%25252F%25252Fmember.coocha.co.kr%26origin%3Dhttps%253A%252F%252Fmember.coocha.co.kr%26response_type%3Dcode%26redirect_uri%3Dkakaojs%26state%3Dv9t01oe252pj5m55naeq%26client_id%3De080e5f8a171c5bd650ef6d2efe60fd3&talk_login=hidden">
-							<img src="../resources/image/kakao.png" style="width:40px;"></a>
+							<img src="../resources/image/kakao.png" id="kakaoLogin" style="width:40px;">
 						</div>
 						<div class="col-1">
 							<img src="../resources/image/google.png" style="width:40px;">
@@ -220,7 +231,87 @@
 		});
 	});
 	
+	</script>
 	
+	<script type="text/javascript">
+	
+	Kakao.init('fd23c44e522eb4a174fd81bfe4833f36'); // test 용
+	console.log(Kakao.isInitialized());
+/*     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
+	console.log(Kakao.isInitialized()); */
+	
+	$("#kakaoLogin").on("click", function() {
+		/* Kakao.Auth.authorize({
+		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+		    }); */
+		
+		Kakao.Auth.login({
+		      success: function (response) {
+		        Kakao.API.request({
+		          url: '/v2/user/me',
+		          success: function (response) {
+		        	  
+		        	  var accessToken = Kakao.Auth.getAccessToken();
+		        	  Kakao.Auth.setAccessToken(accessToken);
+
+		        	  var account = response.kakao_account;
+		        	  
+		        	  console.log(response)
+   		        	  console.log("email : " + account.email);
+   		        	  console.log("name : " + account.name);
+   		        	  console.log("nickname : " + account.profile.nickname);
+   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
+   		        	  console.log("picture : " + account.gender);
+					  console.log("picture : " + account.birthyear);
+   		        	  console.log("picture : " + account.birthday);
+   		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+	        	  
+		        	  $("input[name=snsID]").val("카카오");
+	  	        	  $("input[name=name]").val(account.profile.nickname);
+	  	        	  $("input[name=phone]").val(account.profile.phone_number);
+	  	        	  $("input[name=email]").val(account.email);
+	  	        	  $("input[name=dob]").val(account.birthyear + "-" + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+	  	        	  $("input[name=snsImg]").val(account.profile.thumbnail_image_url);
+	  	        	  $("input[name=token]").val(accessToken);
+  	        	  
+  	        	  if (account.gender === "male") {
+  	        		  $("input[name=gender]").val(43);
+          		  } else {
+          			  $("input[name=gender]").val(44);
+     			  } 
+  	        	  
+  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
+				
+  	        	  $.ajax({
+					async: true
+					,cache: false
+					,type:"POST"
+					,url: "/member/kakaoLoginProc"
+					,data: {"name": $("input[name=name]").val(), "snsID": $("input[name=snsID]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()}
+					,success : function(response) {
+						if (response.rt == "fail") {
+							alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+							return false;
+						} else {
+							window.location.href = "/item/mainPage";
+						}
+					},
+					error : function(jqXHR, status, error) {
+						alert("알 수 없는 에러 [ " + error + " ]");
+					}
+				});
+		          },
+		          fail: function (error) {
+		            console.log(error)
+		          },
+		        })
+		      },
+		      fail: function (error) {
+		        console.log(error)
+		      },
+		    })
+	});
+		
 	</script>
 
 

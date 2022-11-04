@@ -23,6 +23,9 @@ public class Member {
 	private Integer validity;
 	private String regDate;
 	private Integer delNY;
+	private String snsID;
+	private String snsImg;
+	private String token;
 	
 	public String getSeq() {
 		return seq;
@@ -150,6 +153,23 @@ public class Member {
 	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
-	
+	public String getSnsID() {
+		return snsID;
+	}
+	public void setSnsID(String snsID) {
+		this.snsID = snsID;
+	}
+	public String getSnsImg() {
+		return snsImg;
+	}
+	public void setSnsImg(String snsImg) {
+		this.snsImg = snsImg;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	
 }

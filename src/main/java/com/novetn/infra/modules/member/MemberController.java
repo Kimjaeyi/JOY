@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.novetn.infra.common.constants.Constants;
 import com.novetn.infra.common.util.UtilCookie;
 import com.novetn.infra.modules.code.CodeServiceImpl;
 
@@ -314,6 +315,40 @@ public class MemberController {
 		return returnMap;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "kakaoLoginProc")
+	public Map<String, Object> kakaoLoginProc(Member dto, HttpSession httpSession) throws Exception {
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		
+		Member kakaoLogin = service.snsLoginCheck(dto);
+		
+		 System.out.println("test : " + dto.getToken());
+		
+		if (kakaoLogin == null) {
+			service.kakaoInst(dto);
+			
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			// session(dto.getSeq(), dto.getId(), dto.getName(), dto.getEmail(), dto.getUser_div(), dto.getSnsImg(), dto.getSns_type(), httpSession);
+           session(dto, httpSession); 
+			returnMap.put("rt", "success");
+		} else {
+			httpSession.setMaxInactiveInterval(60 * Constants.SESSION_MINUTE);
+			
+			// session(kakaoLogin.getSeq(), kakaoLogin.getId(), kakaoLogin.getName(), kakaoLogin.getEmail(), kakaoLogin.getUser_div(), kakaoLogin.getSnsImg(), kakaoLogin.getSns_type(), httpSession);
+			session(kakaoLogin, httpSession);
+			returnMap.put("rt", "success");
+		}
+		return returnMap;
+	}
+
+	 public void session(Member dto, HttpSession httpSession) {
+	     httpSession.setAttribute("sessSeq", dto.getSeq());    
+	     httpSession.setAttribute("sessId", dto.getId());
+	     httpSession.setAttribute("sessName", dto.getName());
+	     httpSession.setAttribute("sessEmail", dto.getEmail());
+	     httpSession.setAttribute("sessImg", dto.getSnsImg());
+	 }
+	
 	@RequestMapping("excelDownload")
     public void excelDownload(MemberVo vo, HttpServletResponse httpServletResponse) throws Exception {
 		
@@ -418,6 +453,7 @@ public class MemberController {
 	        workbook.write(httpServletResponse.getOutputStream());
 	        workbook.close();
 		}
+		
     }
 	
 	

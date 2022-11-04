@@ -80,5 +80,13 @@ public class MemberDao {
 		return rtSeq;
 	}
 	
+	public Member snsLoginCheck(Member dto) {
+	    return sqlSession.selectOne(namespace + ".snsLoginCheck", dto);
+	}
+	
+	public int kakaoInst(Member dto) {
+		return sqlSession.insert(namespace + ".kakaoInst", dto);
+	}
+	
 }
 

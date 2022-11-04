@@ -81,6 +81,21 @@ public class MemberServiceImpl implements MemberService {
 		return dao.unreg(dto);
 	}
 	
+	@Override
+	public Member snsLoginCheck(Member dto) throws Exception {
+	    return dao.snsLoginCheck(dto);
+	}
+	
+	 @Override
+    public int kakaoInst(Member dto) throws Exception {
+    	try {
+    		dao.kakaoInst(dto);
+    		return 1;
+    	} catch (Exception e) {
+    		throw new Exception();
+		}
+    }
+	
 //	@Override
 //	public int changePW(Member dto) throws Exception {
 //		dto.setPwd(UtilSecurity.encryptSha256(dto.getPwd()));

@@ -245,5 +245,44 @@
 		WHERE 
 			seq = #{seq}
 	</update>
-
+	
+	<!-- 카카오 로그인 -->
+	<select id="snsLoginCheck" resultMap="resultMapObj">
+		SELECT 
+			u.seq
+			,u.id
+			,u.name
+			,u.email
+			,u.pwd
+			,u.snsImg
+		FROM member u
+		WHERE 1=1 
+			AND id = #{snsID} 
+			AND name = #{name}
+	</select>
+	
+	<insert id="kakaoInst">
+		INSERT INTO member (
+			id
+			,name
+			,email
+			,gender
+			,dob
+			,delNY
+			,snsImg
+		)
+		VALUES (
+			#{snsID}
+			,#{name}
+			,#{email}
+			,#{gender}
+			,#{dob}
+			,0
+			,#{snsImg}
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
+	
 </mapper>
