@@ -431,7 +431,7 @@
 						<input type="text" name="countresult" id="countresult" value="1" readonly>
 						<button type="button" id="plusbtn" onclick='count("plus")'><i class="fa-solid fa-plus"></i></button>
 					</div>
-					<a href="../item/payment"><button type="button" id="purchase">구매하기</button></a>
+					<a href="../order/orderpage"><button type="button" id="purchase">구매하기</button></a>
 					</div>
 				</div>
 			</div>
