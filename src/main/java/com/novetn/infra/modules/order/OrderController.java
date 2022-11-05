@@ -2,6 +2,8 @@ package com.novetn.infra.modules.order;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,10 +98,16 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "orderpage")
-	public String payment(@ModelAttribute("vo") OrderVo vo, Model model) throws Exception {
+	public String orderpage(@ModelAttribute("vo") OrderVo vo, Model model, HttpSession httpSession) throws Exception {
+		
+		String seq = (String) httpSession.getAttribute("sessSeq");
+		vo.setSeq(seq);
 		
 		Order user = service.selectOne(vo);
 		model.addAttribute("user", user);
+		
+		Order itemImg = service.selectItemImg(vo);
+		model.addAttribute("itemImg", itemImg);
 		
 		List<Order> list = service.couponList(vo);
 		model.addAttribute("list", list);
