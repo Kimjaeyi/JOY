@@ -58,6 +58,16 @@
 		<include refid="Base.selectListLowerForMysql" />
 	</select>
 	
+	<select id="selectItemImg" resultMap="resultMapObj">
+		SELECT
+		 	a.*
+         	,b.*
+		 FROM itemUploaded a
+         LEFT JOIN item b ON b.seq = a.pseq
+		 WHERE a.pseq = #{seq}
+		 AND a.sort = 1
+	</select>
+	
 	<select id="selectOneCount" resultType="Integer">
 		SELECT COUNT(*)
 		<include refid="selectCommon" />
