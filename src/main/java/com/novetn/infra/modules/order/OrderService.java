@@ -11,6 +11,7 @@ public interface OrderService {
 	public int delete(OrderVo vo) throws Exception;
 	public Order selectOne(OrderVo vo) throws Exception;
 	public int selectOneCount(OrderVo vo) throws Exception;
+	public Order selectItemImg(OrderVo vo) throws Exception;
 	public List<Order> couponList(OrderVo vo) throws Exception;
 	
 }

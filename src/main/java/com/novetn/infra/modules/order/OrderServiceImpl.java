@@ -48,6 +48,11 @@ public class OrderServiceImpl implements OrderService {
 	}
 	
 	@Override
+	public Order selectItemImg(OrderVo vo) throws Exception {
+		return dao.selectItemImg(vo);
+	}
+	
+	@Override
 	public List<Order> couponList(OrderVo vo) throws Exception {
 		return dao.couponList(vo);
 	}

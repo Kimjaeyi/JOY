@@ -46,6 +46,10 @@ public class OrderDao {
 		return sqlSession.selectOne(namespace + ".selectOneCount", vo);
 	}
 	
+	public Order selectItemImg(OrderVo vo) {
+		return sqlSession.selectOne(namespace + ".selectItemImg", vo);
+	}
+	
 	public List<Order> couponList(OrderVo vo) {
 		return sqlSession.selectList(namespace + ".couponList", vo);
 	}
