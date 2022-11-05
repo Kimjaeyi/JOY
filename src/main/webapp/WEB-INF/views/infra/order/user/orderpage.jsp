@@ -261,8 +261,8 @@
 					<br><br>
 					<table>
 						<tr>
-							<td style="border: none; width: 20%"><img src="../resources/image/위메프1.png" style="width: 150px; height:150px"></td>
-							<td style="text-align: left; width: 35%"><p style="font-size: 13px; font-weight: bold">22만개 판매돌파! 1+3 리엔 물들임 새치커버 샴푸 450ml</p></td>
+							<td style="border: none; width: 20%"><img src="${itemImg.path}${itemImg.uuidName}" style="width: 150px; height:150px"></td>
+							<td style="text-align: left; width: 35%"><p style="font-size: 13px; font-weight: bold"><c:out value="${itemImg.title}"/></p></td>
 							<td width="10%"><p style="font-size: 13px"><c:out value="${user.count}"/>개</p></td>
 							<td width="20%"><p style="font-size: 13px"><c:out value="${user.price}"/>원</p></td>
 							<td width="15%"><p style="font-size: 13px">무료배송</p></td>
