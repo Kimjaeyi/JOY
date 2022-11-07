@@ -1,6 +1,8 @@
 package com.novetn.infra.modules.order;
 
-public class Order {
+import com.novetn.infra.common.base.Base;
+
+public class Order extends Base {
 
 	private String seq;
 	private String name;
