@@ -32,6 +32,7 @@
 	
 	h3 {
 		font-size: 25px;
+		font-weight: bold;
 	}
 	
 	h4 {
@@ -41,17 +42,18 @@
 	
 	h5 {
 		font-size: 20px;
-	}
-	
-	h6 {
-		font-size: 16px;
-	}
-	
-	h3, h5 {
 		font-weight: bold;
 	}
 	
 	h6 {
+		font-size: 16px;
+		font-weight: bold;
+	}
+	
+	.process {
+		display: inline;
+		float: right;
+		font-size: 18px;
 		font-weight: bold;
 	}
 	
@@ -91,10 +93,6 @@
 		height: 50px;
 	}
 	
-	#inputphone {
-		display: inline;
-	}
-	
 	#findzipcode {
 		border : none;
 		background-color : #6900EF;
@@ -110,8 +108,28 @@
 		font-size: 15px;
 	}
 	
-	#inputdetailaddr, #inputextraaddr {
+	h5, h6, #inputphone, #inputdetailaddr, #inputextraaddr, .paytitle, input[type="checkbox"] {
 		display: inline;
+	}
+	
+	.ii {
+		font-size: 13px;
+	}
+	
+	#cpnlist {
+		margin-top: 5px;
+	}
+	
+	.couponHead {
+		color: gray; 
+		font-weight: bold; 
+		font-size: 14px;
+	}
+	
+	.couponInfo {
+		font-weight: bold; 
+		font-size: 13px; 
+		margin: 5px 0 0 0;
 	}
 	
 	#coupon1, #coupon2 {
@@ -123,6 +141,23 @@
 		height : 30px;
 		font-weight: bold;
 		font-size: 14px;
+	}
+	
+	.cpnlist {
+		text-align: center;	
+	}
+	
+	.detailPrice {
+		display: inline; 
+		float: right; 
+		margin: 3px 0 0 0;
+	}
+	
+	.displayPrice {
+		display: inline; 
+		float: right;
+		font-size: 20px;
+		font-weight: bold;
 	}
 	
 	table, tr {
@@ -161,13 +196,17 @@
 		height: 100%;
 	}
 	
+	.agree {
+		display:inline; 
+		font-weight: normal;
+	}
+	
 	li {
 		margin: 0 2%;
 	}
 	
 
 </style>
-	
 	
 <body>
 
@@ -208,6 +247,7 @@
         </div>
     </div>
     <br><br>
+	<input type="hidden" name="seq">
 	<input type="hidden" id="rtCount" name="rtCount">
 	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">
 	
@@ -220,9 +260,9 @@
 		<hr style="color: gray">
 		<br><br><br>
 		<h3 style="margin: 0 0 0 280px; display: inline">상품결제</h3>
-		<h6 style="float: right; margin: 0 300px 0 0; display: inline">>&nbsp;&nbsp;03 주문완료</h6>
-		<h6 style="float: right; display: inline; color: #6900EF">02 주문/결제&nbsp;&nbsp;</h6>
-		<h6 style="float: right; display: inline">01 장바구니&nbsp;&nbsp;>&nbsp;&nbsp;</h6>
+		<span class="process" style="margin: 0 300px 0 0">>&nbsp;&nbsp;03 주문완료</span>
+		<span class="process" style="color: #6900EF">02 주문/결제&nbsp;&nbsp;</span>
+		<span class="process">01 장바구니&nbsp;&nbsp;>&nbsp;&nbsp;</span>
 		<br>
 		<hr style="border: 2px solid black">
 		<div class="aaa">
@@ -242,17 +282,17 @@
 			<input type="text" class="form-control" id="inputdetailaddr" value="<c:out value="${user.addr2}"/>" placeholder="상세주소" style="width: 50%; margin: 0 3% 0 0">
 			<input type="text" class="form-control" id="inputextraaddr"  value="<c:out value="${user.addr3}"/>" placeholder="참고항목" style="width: 10%">
 			<br><br>
-			<select class="form-select" id="selbox" style="width: 50%">
+			<select class="form-select" id="selbox" name="spmessage" style="width: 50%">
 				<option selected>배송메시지를 선택해주세요.</option>
-				<option value="1">배송 전 연락바랍니다.</option>
-				<option value="2">부재시 문앞에 놓아주세요.</option>
-				<option value="3">부재시 경비실에 맡겨주세요.</option>
-				<option value="4">파손 위험이 있는 상품이니 배송 시 주의해주세요.</option>
-				<option value="5">택배함에 넣어주세요.</option>
-				<option value="direct">직접입력</option>
+				<option value="51" <c:if test="${item.message eq 51}">selected</c:if>>배송 전 연락바랍니다.</option>
+				<option value="52" <c:if test="${item.message eq 52}">selected</c:if>>부재시 문앞에 놓아주세요.</option>
+				<option value="53" <c:if test="${item.message eq 53}">selected</c:if>>부재시 경비실에 맡겨주세요.</option>
+				<option value="54" <c:if test="${item.message eq 54}">selected</c:if>>파손 위험이 있는 상품이니 배송 시 주의해주세요.</option>
+				<option value="55" <c:if test="${item.message eq 55}">selected</c:if>>택배함에 넣어주세요.</option>
+				<option value="56" <c:if test="${item.message eq 56}">selected</c:if>>직접입력</option>
 			</select>
 			<br>
-			<input type="text" class="form-control" id="selboxDirect" name="selboxDirect" placeholder="배송메시지" style="width: 50%">
+			<input type="text" class="form-control" id="selboxDirect" name="spmessage" placeholder="배송메시지" style="width: 50%">
 			<br><br><br>
 			<div class="row">
 				<div class="col-7" style="margin: 0 6% 0 0">
@@ -261,11 +301,21 @@
 					<br><br>
 					<table>
 						<tr>
-							<td style="border: none; width: 20%"><img src="${itemImg.path}${itemImg.uuidName}" style="width: 150px; height:150px"></td>
-							<td style="text-align: left; width: 35%"><p style="font-size: 13px; font-weight: bold"><c:out value="${itemImg.title}"/></p></td>
-							<td width="10%"><p style="font-size: 13px"><c:out value="${user.count}"/>개</p></td>
-							<td width="20%"><p style="font-size: 13px"><c:out value="${user.price}"/>원</p></td>
-							<td width="15%"><p style="font-size: 13px">무료배송</p></td>
+							<td style="border: none; width: 20%">
+								<img src="${itemImg.path}${itemImg.uuidName}" style="width: 150px; height:150px">
+							</td>
+							<td style="text-align: left; width: 35%">
+								<span class="ii" style="font-weight: bold"><c:out value="${itemImg.title}"/></span>
+							</td>
+							<td width="10%">
+								<span class="ii"><c:out value="${user.count}"/>개</span>
+							</td>
+							<td width="20%">
+								<span class="ii"><c:out value="${user.price}"/>원</span>
+							</td>
+							<td width="15%">
+								<span class="ii">무료배송</span>
+							</td>
 						</tr>
 					</table>
 					<br><br><br>
@@ -273,30 +323,30 @@
 					<hr>
 					<div class="row justify-content-center">
 						<div class="col-3" style="text-align:center">
-							<p style="color: gray; font-weight: bold; font-size: 14px">쿠폰명</p>
+							<span class="couponHead">쿠폰명</p>
 						</div>
 						<div class="col-3" style="text-align:center">
-							<p style="color: gray; font-weight: bold; font-size: 14px">쿠폰 할인금액</p>
+							<span class="couponHead">쿠폰 할인금액</p>
 						</div>
 						<div class="col-3" style="text-align:center">
-							<p style="color: gray; font-weight: bold; font-size: 14px">쿠폰 유효기간</p>
+							<span class="couponHead">쿠폰 유효기간</p>
 						</div>
 						<div class="col-2"></div>
 					</div>
 					<hr>
 					<c:forEach items="${list}" var="list" varStatus="status">
-					<div class="row justify-content-center">
-						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0"><c:out value="${list.cpnname}"/></p>
+					<div class="row justify-content-center" id="cpnlist">
+						<div class="col-3 cpnlist">
+							<span class="couponInfo"><c:out value="${list.cpnname}"/></span>
 						</div>
-						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0"><c:out value="${list.cpndiscount}"/></p>
+						<div class="col-3 cpnlist">
+							<span class="couponInfo"><fmt:formatNumber value="${list.cpndiscount}" pattern="#,###" /></span>
 						</div>
-						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">~ <c:out value="${list.cpnvalid}"/></p>
+						<div class="col-3 cpnlist">
+							<span class="couponInfo">~ <c:out value="${list.cpnvalid}"/></span>
 						</div>
 						<div class="col-2">
-							<button type="button" id="coupon1" value="3000">쿠폰적용</button>
+							<button type="button" id="coupon1" value="<fmt:formatNumber value="${list.cpndiscount}" pattern="#,###" />">쿠폰적용</button>
 						</div>
 					</div>
 					</c:forEach>
@@ -328,28 +378,29 @@
 					<div class="paycheck">
 						<h4>결제 예정금액</h4>
 						<br><br>
-						<h6 style="display: inline">상품금액</h6>
-						<h6 style="display: inline; float: right; margin: 3px 0 0 0">원</h6>
-						<h5 id="totalprice" style="display: inline; float: right; font-weight: bold"><c:out value="${user.price}"/></h5>
+						<span class="paytitle">상품금액</span>
+						<span class="detailPrice">원</span>
+						<span class="displayPrice" id="totalprice"><c:out value="${user.price}"/></span>
+						<input type="hidden" id="pricetmp" value="${user.price}">
 						<br><br>
-						<h6 style="display: inline">배송비</h6>
-						<h6 style="display: inline; float: right; margin: 3px 0 0 0">원</h6>
-						<h5 style="display: inline; float: right; font-weight: bold">0</h5>
+						<span class="paytitle">배송비</span>
+						<span class="detailPrice">원</span>
+						<span class="displayPrice">0</span>
 						<br><br>
-						<h6 style="display: inline">할인금액</h6>
-						<h6 style="display: inline; float: right; margin: 3px 0 0 0">원</h6>
-						<h5 id="couponprice" style="display: inline; float: right; font-weight: bold; color: #6900EF"></h5>
+						<span class="paytitle">할인금액</span>
+						<span class="detailPrice">원</span>
+						<span class="displayPrice" id="couponprice"></span>
 						<br><br><br>
-						<h6 style="display: inline; color: #6900EF">합계</h6>
-						<h6 style="display: inline; float: right; margin: 10px 0 0 0; color: #6900EF">원</h6>
-						<h3 id="realtotalprice" style="display: inline; float: right; color: #6900EF"></h3>
+						<span class="paytitle" style="color: #6900EF">합계</h6>
+						<span class="detailPrice" style="margin: 10px 0 0 0; color: #6900EF">원</span>
+						<span class="displayPrice" id="realtotalprice" style="font-size: 24px"></span>
 					</div>
 					<br><br><br>
 					<hr style="border: 1px dotted black">
 					<br>
 					<div class="paycheck">
 						<h6>하기 필수약관을 확인하였으며 결제에 동의합니다.</h6>
-						<br>
+						<br><br>
 						<a href="paysuccess">
 							<div class="d-grid">
 								<button type="button">결제하기</button>
@@ -361,21 +412,21 @@
 					<hr>
 					<div class="paycheck">
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" id="checkboxall" name="checkboxall" style="display:inline">
-							<h6 style="display:inline">전체 동의하기</h6>
+							<input class="form-check-input" type="checkbox" id="checkboxall" name="checkboxall">
+							<h6>전체 동의하기</h6>
 						</div>
 					</div>
 					<hr>
 					<div class="paycheck">
 						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="agreebox" style="display:inline">
-							<p style="display:inline; font-weight: normal">개인정보 제3자 제공에 동의합니다.</p>
+							<input class="form-check-input" type="checkbox" name="agreebox">
+							<span class="agree">개인정보 제3자 제공에 동의합니다.</span>
 							<br><br>
-							<input class="form-check-input" type="checkbox" name="agreebox" style="display:inline">
-							<p style="display:inline; font-weight: normal">결제대행서비스 이용약관에 동의합니다.</p>
+							<input class="form-check-input" type="checkbox" name="agreebox">
+							<span class="agree">결제대행서비스 이용약관에 동의합니다.</span>
 							<br><br>
-							<input class="form-check-input" type="checkbox" name="agreebox" style="display:inline">
-							<p style="display:inline; font-weight: normal">주문할 상품 설명에 명시된 내용과 사용조건을 확인하였으며, 취소 환불규정에 동의합니다.</p>
+							<input class="form-check-input" type="checkbox" name="agreebox">
+							<span class="agree">주문할 상품 설명에 명시된 내용과 사용조건을 확인하였으며, 취소 환불규정에 동의합니다.</span>
 						</div>
 					</div>
 					<hr>
@@ -441,7 +492,7 @@
 	$("#selboxDirect").hide();
 	$("#selbox").change(function() {
 	              //직접입력을 누를 때 나타남
-			if($("#selbox").val() == "direct") {
+			if($("#selbox").val() == "56") {
 				$("#selboxDirect").show();
 			} else {
 				$("#selboxDirect").hide();
@@ -451,6 +502,7 @@
 	
 	var seq = $("input:hidden[name=seq]");
 	var formVo = $("form[name=formVo]");
+	
 	
 	var form = $("form[name=form]");
 	
