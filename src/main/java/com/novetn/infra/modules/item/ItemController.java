@@ -157,12 +157,10 @@ public class ItemController {
 //		Item detail = service.selectItemView(vo);
 //		model.addAttribute("detail", detail);
 		
-		List<Item> card = service.selectView(vo); 
-		//단일로(list 지우삼)
+		Item card = service.selectView(vo); 
 		model.addAttribute("card", card);
 		
-		List<Item> tab = service.selectSection(vo); 
-		//단일로
+		Item tab = service.selectSection(vo); 
 		model.addAttribute("tab", tab);
 		
 		return "infra/item/user/itemView";

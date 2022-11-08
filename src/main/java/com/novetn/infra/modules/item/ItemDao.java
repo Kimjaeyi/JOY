@@ -46,12 +46,12 @@ public class ItemDao {
 		return sqlSession.selectList(namespace + ".selectBestlist", vo);
 	}
 	
-	public List<Item> selectView(ItemVo vo) {
-		return sqlSession.selectList(namespace + ".selectView", vo);
+	public Item selectView(ItemVo vo) {
+		return sqlSession.selectOne(namespace + ".selectView", vo);
 	}
 	
-	public List<Item> selectSection(ItemVo vo) {
-		return sqlSession.selectList(namespace + ".selectSection", vo);
+	public Item selectSection(ItemVo vo) {
+		return sqlSession.selectOne(namespace + ".selectSection", vo);
 	}
 	
 	public int insert(Item dto) {
