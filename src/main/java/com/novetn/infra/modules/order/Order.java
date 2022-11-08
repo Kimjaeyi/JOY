@@ -5,15 +5,13 @@ import com.novetn.infra.common.base.Base;
 public class Order extends Base {
 
 	private String seq;
-	private String name;
-	private String id;
-	private String email;
-	private Integer zipcode;
-	private String addr1;
-	private String addr2;
-	private String addr3;
+	private String recipient;
+	private String reciPhone;
+	private Integer reciZipcode;
+	private String reciAddr1;
+	private String reciAddr2;
+	private String reciAddr3;
 	private String spmessage;
-	private Integer phone;
 	private String title;
 	private Integer price;
 	private String site;
@@ -32,59 +30,47 @@ public class Order extends Base {
 	public void setSeq(String seq) {
 		this.seq = seq;
 	}
-	public String getName() {
-		return name;
+	public String getRecipient() {
+		return recipient;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setRecipient(String recipient) {
+		this.recipient = recipient;
 	}
-	public String getId() {
-		return id;
+	public String getReciPhone() {
+		return reciPhone;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setReciPhone(String reciPhone) {
+		this.reciPhone = reciPhone;
 	}
-	public String getEmail() {
-		return email;
+	public Integer getReciZipcode() {
+		return reciZipcode;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setReciZipcode(Integer reciZipcode) {
+		this.reciZipcode = reciZipcode;
 	}
-	public Integer getZipcode() {
-		return zipcode;
+	public String getReciAddr1() {
+		return reciAddr1;
 	}
-	public void setZipcode(Integer zipcode) {
-		this.zipcode = zipcode;
+	public void setReciAddr1(String reciAddr1) {
+		this.reciAddr1 = reciAddr1;
 	}
-	public String getAddr1() {
-		return addr1;
+	public String getReciAddr2() {
+		return reciAddr2;
 	}
-	public void setAddr1(String addr1) {
-		this.addr1 = addr1;
+	public void setReciAddr2(String reciAddr2) {
+		this.reciAddr2 = reciAddr2;
 	}
-	public String getAddr2() {
-		return addr2;
+	public String getReciAddr3() {
+		return reciAddr3;
 	}
-	public void setAddr2(String addr2) {
-		this.addr2 = addr2;
-	}
-	public String getAddr3() {
-		return addr3;
-	}
-	public void setAddr3(String addr3) {
-		this.addr3 = addr3;
+	public void setReciAddr3(String reciAddr3) {
+		this.reciAddr3 = reciAddr3;
 	}
 	public String getSpmessage() {
 		return spmessage;
 	}
 	public void setSpmessage(String spmessage) {
 		this.spmessage = spmessage;
-	}
-	public Integer getPhone() {
-		return phone;
-	}
-	public void setPhone(Integer phone) {
-		this.phone = phone;
 	}
 	public String getTitle() {
 		return title;
