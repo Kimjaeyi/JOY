@@ -75,14 +75,13 @@
 	
 	<insert id="insert">
 		INSERT INTO itemOrder (
-			b.name
-			, b.email
-			, b.zipcode
-			, b.addr1
-			, b.addr2
-			, b.addr3
+			a.recipient
+			, a.reciZipcode
+			, a.reciAddr1
+			, a.reciAddr2
+			, a.reciAddr3
 			, a.spmessage
-			, b.phone
+			, a.reciPhone
 			, c.title
 			, c.price
 			, a.count
@@ -90,7 +89,6 @@
 			, d.cpndiscount
 			, d.cpnvalid
 			, a.finalPrice
-			, state
 			, a.orderdate
 		)
 		VALUES (
@@ -109,7 +107,6 @@
 			, #{cpndiscount}
 			, #{cpnvalid}
 			, #{finalPrice}
-			, 34
 			, now()
 		)
 		<include refid="selectCommon" />
@@ -154,6 +151,13 @@
 		WHERE 1=1
 			AND seq = #{seq}
 	</delete>
+	
+	<!-- orderPage -->
+	<select id="shippingInfo" resultMap="resultMapObj">
+		SELECT
+			a*
+		FROM itemOrder
+	</select>
 	
 	<select id="couponList" resultMap="resultMapObj">
 		SELECT 
