@@ -431,7 +431,7 @@
 						<input type="text" name="countresult" id="countresult" value="1" readonly>
 						<button type="button" id="plusbtn" onclick='count("plus")'><i class="fa-solid fa-plus"></i></button>
 					</div>
-					<a href="../order/orderpage"><button type="button" id="purchase">구매하기</button></a>
+					<button type="button" id="purchase">구매하기</button>
 					</div>
 				</div>
 			</div>
@@ -727,10 +727,16 @@
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
 
 <script type="text/javascript">
-
+	
+	var goUrlForm = "/order/orderPage"
+	
 	var form = $("form[name=formView]");
 	
 	var seq = $("input:hidden[name=seq]");
+	
+	$("#purchase").on("click", function(){
+		form.attr("action", goUrlForm).submit();
+	});
 	
 	function count(type)  {
 		if(type === 'plus') {
