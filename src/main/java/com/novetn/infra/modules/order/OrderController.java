@@ -112,7 +112,7 @@ public class OrderController {
 		List<Order> list = service.couponList(vo);
 		model.addAttribute("list", list);
 		
-		return "infra/order/user/orderpage";
+		return "infra/order/user/orderPage";
 		
 	}
 	
