@@ -247,7 +247,8 @@
         </div>
     </div>
     <br><br>
-	<input type="hidden" name="seq">
+	<input type="hidden" name="seq" value="${vo.seq}"/>
+	<input type="hidden" name="member_seq" value="${sessSeq}"/>
 	<input type="hidden" id="rtCount" name="rtCount">
 	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">
 	
@@ -268,19 +269,17 @@
 		<div class="aaa">
 			<h5>배송정보</h5>
 			<hr><br>
-			<input type="text" class="form-control" id="inputname" value="<c:out value="${user.name}"/>" placeholder="이름" style="width: 25%">
+			<input type="text" class="form-control" id="inputname" value="<c:out value="${user.recipient}"/>" placeholder="이름" style="width: 25%">
 			<br>
-			<input type="text" class="form-control" id="inputphone" placeholder="휴대폰" style="width: 9%; margin: 0 3% 0 0">
-			<input type="text" class="form-control" id="inputphone" style="width: 15%; margin: 0 3% 0 0">
-			<input type="text" class="form-control" id="inputphone" style="width: 15%">
+			<input type="text" class="form-control" id="inputphone" placeholder="휴대폰" style="width: 25%">
 			<br><br>
 			<button type="button" id="findzipcode" onclick="sample6_execDaumPostcode();" style="display: inline; margin: 0 3% 0 0">우편번호 찾기</button>
-			<input type="text" class="form-control" id="zipcode" value="<c:out value="${user.zipcode}"/>" style="width: 15%; display: inline" readonly>
+			<input type="text" class="form-control" id="inputzipcode" value="<c:out value="${user.reciZipcode}"/>" style="width: 15%; display: inline" readonly>
 			<br><br>
-			<input type="text" class="form-control" id="inputaddr" value="<c:out value="${user.addr1}"/>" placeholder="도로명주소" style="width:63.5%">
+			<input type="text" class="form-control" id="inputaddr" value="<c:out value="${user.reciAddr1}"/>" placeholder="도로명주소" style="width:63.5%">
 			<br>
-			<input type="text" class="form-control" id="inputdetailaddr" value="<c:out value="${user.addr2}"/>" placeholder="상세주소" style="width: 50%; margin: 0 3% 0 0">
-			<input type="text" class="form-control" id="inputextraaddr"  value="<c:out value="${user.addr3}"/>" placeholder="참고항목" style="width: 10%">
+			<input type="text" class="form-control" id="inputdetailaddr" value="<c:out value="${user.reciAddr2}"/>" placeholder="상세주소" style="width: 50%; margin: 0 3% 0 0">
+			<input type="text" class="form-control" id="inputextraaddr"  value="<c:out value="${user.reciAddr3}"/>" placeholder="참고항목" style="width: 10%">
 			<br><br>
 			<select class="form-select" id="selbox" name="spmessage" style="width: 50%">
 				<option selected>배송메시지를 선택해주세요.</option>
@@ -292,7 +291,7 @@
 				<option value="56" <c:if test="${item.message eq 56}">selected</c:if>>직접입력</option>
 			</select>
 			<br>
-			<input type="text" class="form-control" id="selboxDirect" name="spmessage" placeholder="배송메시지" style="width: 50%">
+			<input type="text" class="form-control" id="selboxDirect" name="spmessage" placeholder="배송메시지" value="<c:out value="${user.spmessage}"/>"style="width: 50%">
 			<br><br><br>
 			<div class="row">
 				<div class="col-7" style="margin: 0 6% 0 0">
@@ -487,145 +486,148 @@
 -->	
 	<script type="text/javascript">
 	
-	$(function(){
-	    //직접입력 인풋박스 기존에는 숨어있다가
-	$("#selboxDirect").hide();
-	$("#selbox").change(function() {
-	              //직접입력을 누를 때 나타남
-			if($("#selbox").val() == "56") {
-				$("#selboxDirect").show();
-			} else {
-				$("#selboxDirect").hide();
-			}
-		}) 
-	});
-	
-	var seq = $("input:hidden[name=seq]");
-	var formVo = $("form[name=formVo]");
-	
-	
-	var form = $("form[name=form]");
-	
-	var price1 = 37700;
-	var coochaCount = 1;
-	var totalprice = (price1*coochaCount);
-	var finalPrice = totalprice;
-	
-	/* 화면에 보여지는 부분 */
-	$("#totalprice").text(totalprice.toLocaleString());
-	$("#couponprice").text("0");
-	$("#realtotalprice").text(finalPrice.toLocaleString()); 
-	
-	/* 쿠폰 할인 적용 */
-	$(document).ready(function() {
-		   $("#coupon1").click(function(){
-		      var coupon1Price = $(this).attr('value');   
-		      $("#couponprice").text((coupon1Price)/1000 + ",000");
-		      $("#realtotalprice").text((finalPrice-coupon1Price).toLocaleString());
-		      $('#rtFinalPrice').val(totalprice-coupon1Price);
-		      $('#rtCoupon').val(coupon1Price); 
-		      
-		   });
-		   $("#coupon2").click(function(){
-		      var coupon2Price = $(this).attr('value');      
-		      $("#couponprice").text((coupon2Price)/1000 + ",000");
-		      $("#realtotalprice").text((finalPrice-coupon2Price).toLocaleString());
-		      $('#rtFinalPrice').val(totalprice-coupon2Price);
-		      $('#rtCoupon').val(coupon2Price); 
-		   });
-		});
-	
-	$("#rtCount").val(coochaCount);
-	$("#rtFinalPrice").val(finalPrice);
-	
-	// 약관 전체선택
-	$('#checkboxall').click(function() {
-		if ($("#checkboxall").is(':checked'))
-			$("input[name=agreebox]").prop("checked", true);
-		else
-			$("input[name=agreebox]").prop("checked", false);
-	});
-	$("input[name=agreebox]").click(function() {
-	
-		var total = $("input[name=agreebox]").length;
-		var checked = $("input[name=agreebox]:checked").length;
-	
-		if (total != checked)
-			$("checkboxall").prop("checked", false);
-		else
-			$("checkboxall").prop("checked", true);
-	});
-
-	
-	function sample6_execDaumPostcode() {
-	    new daum.Postcode({
-	        oncomplete: function(data) {
-	            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-	
-	            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-	            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-	            var addr = ''; // 주소 변수
-	            var extraAddr = ''; // 참고항목 변수
-	
-	            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-	            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-	                addr = data.roadAddress;
-	            } else { // 사용자가 지번 주소를 선택했을 경우(J)
-	                addr = data.jibunAddress;
-	            }
-	
-	            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-	            if(data.userSelectedType === 'R'){
-	                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-	                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-	                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-	                    extraAddr += data.bname;
-	                }
-	                // 건물명이 있고, 공동주택일 경우 추가한다.
-	                if(data.buildingName !== '' && data.apartment === 'Y'){
-	                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-	                }
-	                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-	                if(extraAddr !== ''){
-	                    extraAddr = ' (' + extraAddr + ')';
-	                }
-	                // 조합된 참고항목을 해당 필드에 넣는다.
-	                document.getElementById("inputextraaddr").value = extraAddr;
-	            
-	            } else {
-	                document.getElementById("inputextraaddr").value = '';
-	            }
-	
-	            // 우편번호와 주소 정보를 해당 필드에 넣는다.
-	            document.getElementById('inputzipcode').value = data.zonecode;
-	            document.getElementById("inputaddr").value = addr;
-	            // 커서를 상세주소 필드로 이동한다.
-	            document.getElementById("inputdetailaddr").focus();
-	        }
-	    }).open();
-	}
-	
-	$(".logout").on("click", function(){
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/member/logoutProc"
-			,data: {}
-			,success: function(response) {
-				if(response.rt == "success") {
-					location.href = "/";
+		$(function(){
+		    //직접입력 인풋박스 기존에는 숨어있다가
+			$("#selboxDirect").hide();
+			$("#selbox").change(function() {
+		              //직접입력을 누를 때 나타남
+				if($("#selbox").val() == "56") {
+					$("#selboxDirect").show();
 				} else {
-					// by pass
+					$("#selboxDirect").hide();
 				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
+			}) 
 		});
-	});
+		
+		var seq = $("input:hidden[name=seq]");
+		var formVo = $("form[name=formVo]");
+		
+		
+		var form = $("form[name=form]");
+		
+		var price1 = $("#pricetmp").val();
+		var coochaCount = 1;
+		var totalprice = (price1*coochaCount);
+		var finalPrice = totalprice;
+		
+		/* 화면에 보여지는 부분 */
+		$("#totalprice").text(totalprice.toLocaleString());
+		$("#couponprice").text("0");
+		$("#realtotalprice").text(finalPrice.toLocaleString()); 
+		
+		/* 쿠폰 할인 적용 */
+		$(document).ready(function() {
+			   $("#coupon1").click(function(){
+			      var coupon1Price = $(this).attr('value');   
+			      $("#couponprice").text((coupon1Price)/1000 + ",000");
+			      $("#realtotalprice").text((finalPrice-coupon1Price).toLocaleString());
+			      $('#rtFinalPrice').val(totalprice-coupon1Price);
+			      $('#rtCoupon').val(coupon1Price); 
+			      
+			   });
+			   $("#coupon2").click(function(){
+			      var coupon2Price = $(this).attr('value');      
+			      $("#couponprice").text((coupon2Price)/1000 + ",000");
+			      $("#realtotalprice").text((finalPrice-coupon2Price).toLocaleString());
+			      $('#rtFinalPrice').val(totalprice-coupon2Price);
+			      $('#rtCoupon').val(coupon2Price); 
+			   });
+			});
+		
+		$("#rtCount").val(coochaCount);
+		$("#rtFinalPrice").val(finalPrice);
+		
+		// 약관 전체선택
+		$('#checkboxall').click(function() {
+			if ($("#checkboxall").is(':checked'))
+				$("input[name=agreebox]").prop("checked", true);
+			else
+				$("input[name=agreebox]").prop("checked", false);
+		});
+		$("input[name=agreebox]").click(function() {
+		
+			var total = $("input[name=agreebox]").length;
+			var checked = $("input[name=agreebox]:checked").length;
+		
+			if (total != checked)
+				$("checkboxall").prop("checked", false);
+			else
+				$("checkboxall").prop("checked", true);
+		});
 	
-</script>
+	</script>
+	
+	<script type="text/javascript">
+		
+		function sample6_execDaumPostcode() {
+		    new daum.Postcode({
+		        oncomplete: function(data) {
+		            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+		
+		            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+		            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+		            var addr = ''; // 주소 변수
+		            var extraAddr = ''; // 참고항목 변수
+		
+		            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+		            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+		                addr = data.roadAddress;
+		            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+		                addr = data.jibunAddress;
+		            }
+		
+		            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+		            if(data.userSelectedType === 'R'){
+		                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+		                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+		                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		                    extraAddr += data.bname;
+		                }
+		                // 건물명이 있고, 공동주택일 경우 추가한다.
+		                if(data.buildingName !== '' && data.apartment === 'Y'){
+		                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		                }
+		                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+		                if(extraAddr !== ''){
+		                    extraAddr = ' (' + extraAddr + ')';
+		                }
+		                // 조합된 참고항목을 해당 필드에 넣는다.
+		                document.getElementById("inputextraaddr").value = extraAddr;
+		            
+		            } else {
+		                document.getElementById("inputextraaddr").value = '';
+		            }
+		
+		            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+		            document.getElementById('inputzipcode').value = data.zonecode;
+		            document.getElementById("inputaddr").value = addr;
+		            // 커서를 상세주소 필드로 이동한다.
+		            document.getElementById("inputdetailaddr").focus();
+		        }
+		    }).open();
+		}
+		
+		$(".logout").on("click", function(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/logoutProc"
+				,data: {}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/";
+					} else {
+						// by pass
+					}
+				}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
+		
+	</script>
 
 <!-- end -->
 
