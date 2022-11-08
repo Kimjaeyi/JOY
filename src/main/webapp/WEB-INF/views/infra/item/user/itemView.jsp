@@ -385,7 +385,6 @@
 	</div>
 	<form method="post" name="formView" enctype="multipart/form-data">
 	<input type="hidden" name="seq" value="${vo.seq}">
-	<c:forEach items="${card}" var="card" varStatus="status">
 		<div class="card">
 			<div class="row">
 				<div class="col-5">
@@ -436,7 +435,6 @@
 				</div>
 			</div>
 		</div>
-	</c:forEach>
 	<br><br>
 	<div class="tabborder">
 		<div class="itemtab">
@@ -449,9 +447,7 @@
 		    <input id="tab4" type="radio" name="tabs" disabled>
 		    <label for="tab4">배송·교환·반품</label>
 		    <section id="content1">
-		    	<c:forEach items="${tab}" var="tab" varStatus="status">
-		        	<img src="${tab.path}${tab.uuidName}" id="detailimg">
-		        </c:forEach>
+	        	<img src="${tab.path}${tab.uuidName}" id="detailimg">
 		    </section>
 		    <section id="content2">
 	<!-- 	    
