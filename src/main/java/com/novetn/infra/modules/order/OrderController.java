@@ -97,7 +97,7 @@ public class OrderController {
 		return "redirect:/order/orderList";
 	}
 	
-	@RequestMapping(value = "orderpage")
+	@RequestMapping(value = "orderPage")
 	public String orderpage(@ModelAttribute("vo") OrderVo vo, Model model, HttpSession httpSession) throws Exception {
 		
 		String seq = (String) httpSession.getAttribute("sessSeq");
