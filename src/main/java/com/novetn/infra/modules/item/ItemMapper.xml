@@ -268,6 +268,7 @@
 			, (SELECT c.cdname_ko FROM Code c WHERE a.released = c.seq) AS outdate
 			, a.maximum
 			, c.*
+			, (SELECT b.count FROM itemOrder b) AS itemCount
 		FROM item a
 		LEFT JOIN itemUploaded c 
 		ON a.seq = c.pseq 
