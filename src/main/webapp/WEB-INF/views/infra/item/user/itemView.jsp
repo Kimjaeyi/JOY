@@ -427,7 +427,7 @@
 					<br><br><br>
 					<div class="itemcount">
 						<button type="button" id="minusbtn" onclick='count("minus")'><i class="fa-solid fa-minus"></i></button>
-						<input type="text" name="countresult" id="countresult" value="1" readonly>
+						<input type="text" id="countresult" value="1" readonly>
 						<button type="button" id="plusbtn" onclick='count("plus")'><i class="fa-solid fa-plus"></i></button>
 					</div>
 					<button type="button" id="purchase">구매하기</button>
