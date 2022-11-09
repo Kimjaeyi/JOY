@@ -33,15 +33,14 @@
 		<include refid="Base.selectListUpperForMysql" />
  		SELECT
 			a.seq
-			, b.name
-			, b.id
-			, b.email
-			, b.zipcode
-			, b.addr1
-			, b.addr2
-			, b.addr3
+			, a.recipient
+			, a.reciZipcode
+			, a.reciAddr1
+			, a.reciAddr2
+			, a.reciAddr3
 			, a.spmessage
-			, b.phone
+			, a.reciPhone
+			, a.spmessage
 			, c.title
 			, c.price
 			, (SELECT e.cdname_ko FROM Code e WHERE c.shoppingsite = e.seq) AS site
@@ -61,11 +60,12 @@
 	<select id="selectItemImg" resultMap="resultMapObj">
 		SELECT
 		 	a.*
-         	,b.*
+         	, b.*
 		 FROM itemUploaded a
          LEFT JOIN item b ON b.seq = a.pseq
-		 WHERE a.pseq = #{seq}
-		 AND a.sort = 1
+         AND a.sort = 1
+		 WHERE 1=1
+		 AND b.seq = #{seq}
 	</select>
 	
 	<select id="selectOneCount" resultType="Integer">
@@ -90,16 +90,16 @@
 			, d.cpnvalid
 			, a.finalPrice
 			, a.orderdate
+			, a.member_seq
 		)
 		VALUES (
-			#{name}
-			, #{email}
-			, #{zipcode}
-			, #{addr1}
-			, #{addr2}
-			, #{addr3}
+			#{recipient}
+			, #{reciZipcode}
+			, #{reciAddr1}
+			, #{reciAddr2}
+			, #{reciAddr3}
 			, #{spmessage}
-			, #{phone}
+			, #{reciPhone}
 			, #{title}
 			, #{price}
 			, #{count}
@@ -108,6 +108,7 @@
 			, #{cpnvalid}
 			, #{finalPrice}
 			, now()
+			, {seq}
 		)
 		<include refid="selectCommon" />
 		<selectKey resultType="String" keyProperty="seq" order="AFTER">
@@ -118,22 +119,22 @@
 
 	<select id="selectOne" resultMap="resultMapObj">
 		SELECT
-			a.*
-			, b.*
-			, c.*
-			, d.*
+			*
 		FROM itemOrder a
-			LEFT JOIN coupon d ON d.seq = a.coupon_seq
-			LEFT JOIN member b ON b.seq = a.member_seq
-			LEFT JOIN item c ON c.seq = a.item_seq
 		WHERE 1=1
-			AND a.seq = #{seq}
+			AND seq = #{seq}
 	</select>
 	
 	<update id="update">
 		UPDATE itemOrder 
 		SET
-			b.name
+			recipient = #{recipient}
+			, reciZipcode = #{reciZipcode}
+			, reciAddr1 = #{reciAddr1}
+			, reciAddr2 = #{reciAddr2}
+			, reciAddr3 = #{reciAddr3}
+			, spmessage = #{spmessage}
+			, reciPhone = #{reciPhone}
 		WHERE 1=1
 			AND seq = #{seq}
 	</update>
@@ -155,7 +156,7 @@
 	<!-- orderPage -->
 	<select id="shippingInfo" resultMap="resultMapObj">
 		SELECT
-			a*
+			*
 		FROM itemOrder
 	</select>
 	
