@@ -132,7 +132,7 @@
 		margin: 5px 0 0 0;
 	}
 	
-	#coupon1, #coupon2 {
+	#coupon {
 		border : none;
 		background-color : #6900EF;
 		color : white;
@@ -296,24 +296,40 @@
 			<div class="row">
 				<div class="col-7" style="margin: 0 6% 0 0">
 					<h5 style="display: inline">주문상품</h5>
-					<p style="display: inline; font-size: 11px; color: gray">상품수량 및 옵션 변경은 상품상세 또는 장바구니에서 가능합니다.</p>
 					<br><br>
 					<table>
 						<tr>
 							<td style="border: none; width: 20%">
-								<img src="${itemImg.path}${itemImg.uuidName}" style="width: 150px; height:150px">
+								<img src="${card.path}${card.uuidName}" style="width: 150px; height:150px">
 							</td>
 							<td style="text-align: left; width: 35%">
-								<span class="ii" style="font-weight: bold"><c:out value="${itemImg.title}"/></span>
+								<span class="ii" style="font-weight: bold"><c:out value="${card.title}"/></span>
 							</td>
 							<td width="10%">
 								<span class="ii"><c:out value="${user.count}"/>개</span>
 							</td>
 							<td width="20%">
-								<span class="ii"><c:out value="${user.price}"/>원</span>
+								<span class="ii"><fmt:formatNumber value="${card.price}" pattern="#,###" />원</span>
 							</td>
 							<td width="15%">
-								<span class="ii">무료배송</span>
+								<span class="ii">
+									<c:choose>
+										<c:when test="${card.shippingfee eq 14 }">0</c:when>
+										<c:when test="${card.shippingfee eq 15 }">
+											<c:choose>
+												<c:when test="${user.finalPrice ge 30000 }">0</c:when>
+												<c:otherwise>3000</c:otherwise>
+											</c:choose>
+										</c:when>
+										<c:when test="${card.shippingfee eq 16 }">
+											<c:choose>
+												<c:when test="${user.finalPrice ge 50000 }">0</c:when>
+												<c:otherwise>3000</c:otherwise>
+											</c:choose>
+										</c:when>
+										<c:otherwise>3000</c:otherwise>
+									</c:choose>
+								</span>
 							</td>
 						</tr>
 					</table>
@@ -345,7 +361,7 @@
 							<span class="couponInfo">~ <c:out value="${list.cpnvalid}"/></span>
 						</div>
 						<div class="col-2">
-							<button type="button" id="coupon1" value="<fmt:formatNumber value="${list.cpndiscount}" pattern="#,###" />">쿠폰적용</button>
+							<button type="button" id="coupon" value="<fmt:formatNumber value="${list.cpndiscount}" pattern="#,###" />">쿠폰적용</button>
 						</div>
 					</div>
 					</c:forEach>
@@ -379,12 +395,29 @@
 						<br><br>
 						<span class="paytitle">상품금액</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice" id="totalprice"><c:out value="${user.price}"/></span>
-						<input type="hidden" id="pricetmp" value="${user.price}">
+						<span class="displayPrice" name="price" id="firstPrice"><fmt:formatNumber value="${card.price}" pattern="#,###" /></span>
+						<input type="hidden" id="pricetmp" value="${card.price}">
 						<br><br>
 						<span class="paytitle">배송비</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice">0</span>
+						<span class="displayPrice" name="shipping">
+							<c:choose>
+								<c:when test="${card.shippingfee eq 14 }">0</c:when>
+								<c:when test="${card.shippingfee eq 15 }">
+									<c:choose>
+										<c:when test="${user.finalPrice ge 30000 }">0</c:when>
+										<c:otherwise>3000</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:when test="${card.shippingfee eq 16 }">
+									<c:choose>
+										<c:when test="${user.finalPrice ge 50000 }">0</c:when>
+										<c:otherwise>3000</c:otherwise>
+									</c:choose>
+								</c:when>
+								<c:otherwise>3000</c:otherwise>
+							</c:choose>
+						</span>
 						<br><br>
 						<span class="paytitle">할인금액</span>
 						<span class="detailPrice">원</span>
@@ -502,13 +535,12 @@
 		var seq = $("input:hidden[name=seq]");
 		var formVo = $("form[name=formVo]");
 		
-		
 		var form = $("form[name=form]");
 		
-		var price1 = $("#pricetmp").val();
-		var coochaCount = 1;
-		var totalprice = (price1*coochaCount);
-		var finalPrice = totalprice;
+		var itemPrice = $("#pricetmp").val();
+		var coochaCount = $("#pricetmp").val();
+		var firstPrice = (itemPrice*coochaCount);
+		var finalPrice = firstPrice;
 		
 		/* 화면에 보여지는 부분 */
 		$("#totalprice").text(totalprice.toLocaleString());
@@ -517,22 +549,15 @@
 		
 		/* 쿠폰 할인 적용 */
 		$(document).ready(function() {
-			   $("#coupon1").click(function(){
-			      var coupon1Price = $(this).attr('value');   
-			      $("#couponprice").text((coupon1Price)/1000 + ",000");
-			      $("#realtotalprice").text((finalPrice-coupon1Price).toLocaleString());
-			      $('#rtFinalPrice').val(totalprice-coupon1Price);
-			      $('#rtCoupon').val(coupon1Price); 
-			      
-			   });
-			   $("#coupon2").click(function(){
-			      var coupon2Price = $(this).attr('value');      
-			      $("#couponprice").text((coupon2Price)/1000 + ",000");
-			      $("#realtotalprice").text((finalPrice-coupon2Price).toLocaleString());
-			      $('#rtFinalPrice').val(totalprice-coupon2Price);
-			      $('#rtCoupon').val(coupon2Price); 
-			   });
-			});
+		   $("#coupon").click(function(){
+		      var coupon1Price = $(this).attr('value');   
+		      $("#couponprice").text((coupon1Price)/1000 + ",000");
+		      $("#realtotalprice").text((finalPrice-coupon1Price).toLocaleString());
+		      $('#rtFinalPrice').val(firstPrice-coupon1Price);
+		      $('#rtCoupon').val(coupon1Price); 
+		      
+		   });
+		});
 		
 		$("#rtCount").val(coochaCount);
 		$("#rtFinalPrice").val(finalPrice);
