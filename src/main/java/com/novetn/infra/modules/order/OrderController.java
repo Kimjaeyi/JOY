@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.novetn.infra.modules.item.Item;
+import com.novetn.infra.modules.item.ItemServiceImpl;
+import com.novetn.infra.modules.item.ItemVo;
+
 @Controller
 @RequestMapping(value = "/order/")
 
@@ -18,6 +22,9 @@ public class OrderController {
 
 	@Autowired
 	OrderServiceImpl service;
+	
+	@Autowired
+	ItemServiceImpl itemService;
 	
 	public void setSearchAndPaging(OrderVo vo) throws Exception {
 		vo.setParamsPaging(service.selectOneCount(vo));
@@ -98,13 +105,16 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "orderPage")
-	public String orderpage(@ModelAttribute("vo") OrderVo vo, Model model, HttpSession httpSession) throws Exception {
+	public String orderpage(@ModelAttribute("vo") OrderVo vo, ItemVo vo1, Model model, HttpSession httpSession) throws Exception {
 		
 		String seq = (String) httpSession.getAttribute("sessSeq");
 		vo.setSeq(seq);
 		
 		Order user = service.selectOne(vo);
 		model.addAttribute("user", user);
+		
+		Item card = itemService.selectView(vo1); 
+		model.addAttribute("card", card);
 		
 		Order itemImg = service.selectItemImg(vo);
 		model.addAttribute("itemImg", itemImg);
