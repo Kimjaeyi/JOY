@@ -13,6 +13,7 @@ public class Item extends Base {
 	private String cdname_ko;
 	private Integer shoppingsite;
 	private String site;
+	private Integer count;
 	private Integer shippingfee;
 	private Integer deliverymethod;
 	private Integer released;
@@ -30,8 +31,6 @@ public class Item extends Base {
 	private String delivery;
 	private String outdate;
 	private MultipartFile[] imagefile;
-	
-	
 	
 	public Integer getMainDiv() {
 		return mainDiv;
@@ -80,6 +79,12 @@ public class Item extends Base {
 	}
 	public void setSite(String site) {
 		this.site = site;
+	}
+	public Integer getCount() {
+		return count;
+	}
+	public void setCount(Integer count) {
+		this.count = count;
 	}
 	public Integer getShippingfee() {
 		return shippingfee;
