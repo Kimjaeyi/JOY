@@ -489,44 +489,44 @@
 				<div class="contents">
 					<ul class="mall-list">
 						<li>
-							<p><a href="http://www.11st.co.kr/html/main.html" target="_blank" data-sid="11st" data-scid="2214">11번가</a></p>
-							<p><a href="http://www.gmarket.co.kr/" target="_blank" data-sid="919" data-scid="2214">G마켓</a></p>
-							<p><a href="http://www.auction.co.kr/" target="_blank" data-sid="2681" data-scid="2214">옥션</a></p>
+							<p><a href="http://www.11st.co.kr/html/main.html">11번가</a></p>
+							<p><a href="http://www.gmarket.co.kr/">G마켓</a></p>
+							<p><a href="http://www.auction.co.kr/">옥션</a></p>
 						</li>
 						<li>
-							<p><a href="http://www.interpark.com/malls/index.html" target="_blank" data-sid="interpark1" data-scid="2214">인터파크</a></p>
-							<p><a href="http://display.cjonstyle.com/p/homeTab/main?hmtabMenuId=000002&rPIC=Oclock" target="_blank" data-sid="cjonstyle" data-scid="2214">CJ온스타일</a></p>
-							<p><a href="http://with.gsshop.com/jsp/jseis_withLGeshop.jsp?media=x4" target="_blank" data-sid="gsshop1" data-scid="2214">GS SHOP</a></p>
+							<p><a href="http://www.interpark.com/malls/index.html">인터파크</a></p>
+							<p><a href="http://display.cjonstyle.com/p/homeTab/main?hmtabMenuId=000002&rPIC=Oclock">CJ온스타일</a></p>
+							<p><a href="http://with.gsshop.com/jsp/jseis_withLGeshop.jsp?media=x4">GS SHOP</a></p>
 						</li>
 						<li>
-							<p><a href="http://shinsegaemall.ssg.com/?ckwhere=scoochacat" target="_blank" data-sid="happybuyrus" data-scid="2214">신세계몰</a></p>
-							<p><a href="http://emart.ssg.com/main.ssg?ckwhere=ecoochacat" target="_blank" data-sid="emart" data-scid="2214">이마트몰</a></p>
+							<p><a href="http://shinsegaemall.ssg.com/?ckwhere=scoochacat">신세계몰</a></p>
+							<p><a href="http://emart.ssg.com/main.ssg?ckwhere=ecoochacat">이마트몰</a></p>
 						</li>
 						<li>
-							<p><a href="http://www.wemakeprice.com/?utm_source=coocha&utm_medium=META_af&utm_content=logo_pc&utm_campaign=r_sa" target="_blank" data-sid="WEMAKEPRICE" data-scid="2214">위메프</a></p>
-							<p><a href="http://www.tmon.co.kr/entry/?jp=80002&ln=264113" target="_blank" data-sid="ticketmonster" data-scid="2214">티몬</a></p>
-							<p><a href="https://www.coupang.com/" target="_blank" data-sid="coupanglp" data-scid="2214">쿠팡</a></p>
+							<p><a href="http://www.wemakeprice.com/?utm_source=coocha&utm_medium=META_af&utm_content=logo_pc&utm_campaign=r_sa">위메프</a></p>
+							<p><a href="http://www.tmon.co.kr/entry/?jp=80002&ln=264113">티몬</a></p>
+							<p><a href="https://www.coupang.com/">쿠팡</a></p>
 						</li>
 						<li>
-							<p><a href="http://www.halfclub.com/Main/index.html" target="_blank" data-sid="halfclub" data-scid="2214">하프클럽</a></p>
-							<p><a href="http://www.boribori.co.kr/joins/coocha_logo.asp?/" target="_blank" data-sid="boribori" data-scid="2214">보리보리</a></p>
-							<p><a href="https://mustit.co.kr/" target="_blank" data-sid="mustitep" data-scid="2214">머스트잇</a></p>
-							<p><a href="https://www.wconcept.co.kr/" target="_blank" data-sid="wconcept" data-scid="2214">W컨셉</a></p>
+							<p><a href="http://www.halfclub.com/Main/index.html">하프클럽</a></p>
+							<p><a href="http://www.boribori.co.kr/joins/coocha_logo.asp?/">보리보리</a></p>
+							<p><a href="https://mustit.co.kr/">머스트잇</a></p>
+							<p><a href="https://www.wconcept.co.kr/">W컨셉</a></p>
 						</li>
 						<li>
-							<p><a href="http://tour.interpark.com/" target="_blank" data-sid="interparkthou" data-scid="2214">인터파크투어</a></p>
-							<p><a href="http://www.onlinetour.co.kr/" target="_blank" data-sid="onlinetour" data-scid="2214">온라인투어</a></p>
-							<p><a href="https://www.myrealtrip.com/" target="_blank" data-sid="myrealtrip" data-scid="2214">마이리얼트립</a></p>
-							<p><a href="https://www.kkday.com/ko/" target="_blank" data-sid="kkday" data-scid="2214">KKday</a></p>
+							<p><a href="http://tour.interpark.com/">인터파크투어</a></p>
+							<p><a href="http://www.onlinetour.co.kr/">온라인투어</a></p>
+							<p><a href="https://www.myrealtrip.com/">마이리얼트립</a></p>
+							<p><a href="https://www.kkday.com/ko/">KKday</a></p>
 						</li>
 						<li>
-							<p><a href="http://www.lotteimall.com/main/viewMain.lotte?dpml_no=1" target="_blank" data-sid="lotteimall" data-scid="2214">롯데홈쇼핑</a></p>
-							<p><a href="http://www.shinsegaetvshopping.com?inMediaCode=MC04&ckwhere=cc_xml_pc" target="_blank" data-sid="ssgtvshop" data-scid="2214">신세계라이브쇼핑</a></p>
-							<p><a href="http://www.hnsmall.com/" target="_blank" data-sid="hn_home2" data-scid="2214">홈앤쇼핑</a></p>
+							<p><a href="http://www.lotteimall.com/main/viewMain.lotte?dpml_no=1">롯데홈쇼핑</a></p>
+							<p><a href="http://www.shinsegaetvshopping.com?inMediaCode=MC04&ckwhere=cc_xml_pc">신세계라이브쇼핑</a></p>
+							<p><a href="http://www.hnsmall.com/">홈앤쇼핑</a></p>
 						</li>
 						<li>
-							<p><a href="http://www.1300k.com" target="_blank" data-sid="1300k" data-scid="2214">1300K</a></p>
-							<p><a href="http://www.e-himart.co.kr/" target="_blank" data-sid="himart" data-scid="2214">하이마트</a></p>
+							<p><a href="http://www.1300k.com">1300K</a></p>
+							<p><a href="http://www.e-himart.co.kr/">하이마트</a></p>
 						</li>
 					</ul>
 				</div>
