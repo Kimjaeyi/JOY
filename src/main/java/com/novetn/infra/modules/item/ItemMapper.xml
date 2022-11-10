@@ -263,12 +263,12 @@
 		SELECT
 			a.title
 			, a.price
+			, a.shippingfee
 			, (SELECT c.cdname_ko FROM Code c WHERE a.shippingfee = c.seq) AS fee
 			, (SELECT c.cdname_ko FROM Code c WHERE a.deliverymethod = c.seq) AS delivery
 			, (SELECT c.cdname_ko FROM Code c WHERE a.released = c.seq) AS outdate
 			, a.maximum
 			, c.*
-			, (SELECT b.count FROM itemOrder b) AS itemCount
 		FROM item a
 		LEFT JOIN itemUploaded c 
 		ON a.seq = c.pseq 
