@@ -24,7 +24,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-	<style type="text/css">
+<style type="text/css">
 
 	h2 {
 		text-align : center;
@@ -132,7 +132,7 @@
 		margin: 5px 0 0 0;
 	}
 	
-	#coupon {
+	#coupon1, #coupon2 {
 		border : none;
 		background-color : #6900EF;
 		color : white;
@@ -247,10 +247,13 @@
         </div>
     </div>
     <br><br>
-	<input type="hidden" name="seq" value="${vo.seq}"/>
-	<input type="hidden" name="member_seq" value="${sessSeq}"/>
-	<input type="hidden" id="rtCount" name="rtCount">
-	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">
+	<input type="hidden" name="seq" value="${card.seq}"/>  
+	<input type="hidden" name="sessSeq" value="${sessSeq}"/>  
+	<input type="hidden" name="title" value="${card.title}"/>  
+	<input type="hidden" name="discount" value="${card.discount}"/>  
+	<input type="hidden" name="price" id="price" value="${card.price}"/>
+	<input type="hidden" name="itemCount" id="itemCount" value="${dto.itemCount}"/>
+	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">  
 	
 	<div class="abc">
 		<br><br>
@@ -306,10 +309,10 @@
 								<span class="ii" style="font-weight: bold"><c:out value="${card.title}"/></span>
 							</td>
 							<td width="10%">
-								<span class="ii"><c:out value="${user.count}"/>개</span>
+								<span class="ii"><c:out value="${dto.itemCount}"/>개</span>
 							</td>
 							<td width="20%">
-								<span class="ii"><fmt:formatNumber value="${card.price}" pattern="#,###" />원</span>
+								<span class="ii"><fmt:formatNumber value="${(card.price)*(dto.itemCount)}" pattern="#,###" />원</span>
 							</td>
 							<td width="15%">
 								<span class="ii">
@@ -317,13 +320,13 @@
 										<c:when test="${card.shippingfee eq 14 }">0</c:when>
 										<c:when test="${card.shippingfee eq 15 }">
 											<c:choose>
-												<c:when test="${user.finalPrice ge 30000 }">0</c:when>
+												<c:when test="${(card.price)*(dto.itemCount) ge 30000 }">0</c:when>
 												<c:otherwise>3000</c:otherwise>
 											</c:choose>
 										</c:when>
 										<c:when test="${card.shippingfee eq 16 }">
 											<c:choose>
-												<c:when test="${user.finalPrice ge 50000 }">0</c:when>
+												<c:when test="${(card.price)*(dto.itemCount) ge 50000 }">0</c:when>
 												<c:otherwise>3000</c:otherwise>
 											</c:choose>
 										</c:when>
@@ -349,22 +352,35 @@
 						<div class="col-2"></div>
 					</div>
 					<hr>
-					<c:forEach items="${list}" var="list" varStatus="status">
 					<div class="row justify-content-center" id="cpnlist">
 						<div class="col-3 cpnlist">
-							<span class="couponInfo"><c:out value="${list.cpnname}"/></span>
+							<span class="couponInfo">카카오페이 3,000원 할인</span>
 						</div>
 						<div class="col-3 cpnlist">
-							<span class="couponInfo"><fmt:formatNumber value="${list.cpndiscount}" pattern="#,###" /></span>
+							<span class="couponInfo">3,000원</span>
 						</div>
 						<div class="col-3 cpnlist">
-							<span class="couponInfo">~ <c:out value="${list.cpnvalid}"/></span>
+							<span class="couponInfo">~ 2022.12.31</span>
 						</div>
 						<div class="col-2">
-							<button type="button" id="coupon" value="<fmt:formatNumber value="${list.cpndiscount}" pattern="#,###" />">쿠폰적용</button>
+							<button type="button" id="coupon1" value="3000">쿠폰적용</button>
 						</div>
 					</div>
-					</c:forEach>
+					<br>
+					<div class="row justify-content-center" id="cpnlist">
+						<div class="col-3 cpnlist">
+							<span class="couponInfo">[장바구니] 쇼핑쿠폰</span>
+						</div>
+						<div class="col-3 cpnlist">
+							<span class="couponInfo">2,000원</span>
+						</div>
+						<div class="col-3 cpnlist">
+							<span class="couponInfo">~ 2023.01.31</span>
+						</div>
+						<div class="col-2">
+							<button type="button" id="coupon2" value="2000">쿠폰적용</button>
+						</div>
+					</div>
 					<br>
 					<!-- <div class="row justify-content-center">
 						<div class="col-3" style="text-align:center">
@@ -395,23 +411,22 @@
 						<br><br>
 						<span class="paytitle">상품금액</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice" name="price" id="firstPrice"><fmt:formatNumber value="${card.price}" pattern="#,###" /></span>
-						<input type="hidden" id="pricetmp" value="${card.price}">
+						<span class="displayPrice" name="price" id="firstPrice"><fmt:formatNumber value="${(card.price)*(dto.itemCount)}" pattern="#,###" /></span>
 						<br><br>
 						<span class="paytitle">배송비</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice" name="shipping">
+						<span class="displayPrice" id="fee" pattern="#,###">
 							<c:choose>
 								<c:when test="${card.shippingfee eq 14 }">0</c:when>
 								<c:when test="${card.shippingfee eq 15 }">
 									<c:choose>
-										<c:when test="${user.finalPrice ge 30000 }">0</c:when>
+										<c:when test="${(card.price)*(dto.count) ge 30000 }">0</c:when>
 										<c:otherwise>3000</c:otherwise>
 									</c:choose>
 								</c:when>
 								<c:when test="${card.shippingfee eq 16 }">
 									<c:choose>
-										<c:when test="${user.finalPrice ge 50000 }">0</c:when>
+										<c:when test="${(card.price)*(dto.count) ge 50000 }">0</c:when>
 										<c:otherwise>3000</c:otherwise>
 									</c:choose>
 								</c:when>
@@ -425,7 +440,7 @@
 						<br><br><br>
 						<span class="paytitle" style="color: #6900EF">합계</h6>
 						<span class="detailPrice" style="margin: 10px 0 0 0; color: #6900EF">원</span>
-						<span class="displayPrice" id="realtotalprice" style="font-size: 24px"></span>
+						<span class="displayPrice" name="finalPrice" id="realtotalprice" style="font-size: 24px"></span>
 					</div>
 					<br><br><br>
 					<hr style="border: 1px dotted black">
@@ -507,18 +522,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/resources/common/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
-<!-- 	
-	<script>
 	
-		$(function() {
-			alert("준비 중입니다.");
-			return false;
-		});
-	
-	</script>
--->	
 	<script type="text/javascript">
 	
+		var seq = $("input:hidden[name=seq]");
+		var formVo = $("form[name=formVo]");
+		
+		var form = $("form[name=form]");
+	
+	/* 배송메시지 직접입력 선택 시 input 띄우기 */
 		$(function(){
 		    //직접입력 인풋박스 기존에는 숨어있다가
 			$("#selboxDirect").hide();
@@ -532,30 +544,33 @@
 			}) 
 		});
 		
-		var seq = $("input:hidden[name=seq]");
-		var formVo = $("form[name=formVo]");
-		
-		var form = $("form[name=form]");
-		
-		var itemPrice = $("#pricetmp").val();
-		var coochaCount = $("#pricetmp").val();
-		var firstPrice = (itemPrice*coochaCount);
-		var finalPrice = firstPrice;
+		var itemPrice = document.getElementById("price").value;
+		var coochaCount = document.getElementById("itemCount").value;
+		var shpFee = document.getElementById("fee").value();
+		var totalprice = (itemPrice*coochaCount);
+		var finalPrice = totalprice+shpFee;
 		
 		/* 화면에 보여지는 부분 */
 		$("#totalprice").text(totalprice.toLocaleString());
 		$("#couponprice").text("0");
+		$("#fee").text(shpFee.toLocaleString());
 		$("#realtotalprice").text(finalPrice.toLocaleString()); 
 		
 		/* 쿠폰 할인 적용 */
 		$(document).ready(function() {
-		   $("#coupon").click(function(){
+		   $("#coupon1").click(function(){
 		      var coupon1Price = $(this).attr('value');   
 		      $("#couponprice").text((coupon1Price)/1000 + ",000");
 		      $("#realtotalprice").text((finalPrice-coupon1Price).toLocaleString());
-		      $('#rtFinalPrice').val(firstPrice-coupon1Price);
+		      $('#rtFinalPrice').val(totalprice-coupon1Price);
 		      $('#rtCoupon').val(coupon1Price); 
-		      
+		   });
+		   $("#coupon2").click(function(){
+		      var coupon2Price = $(this).attr('value');      
+		      $("#couponprice").text((coupon2Price)/1000 + ",000");
+		      $("#realtotalprice").text((finalPrice-coupon2Price).toLocaleString());
+		      $('#rtFinalPrice').val(totalprice-coupon2Price);
+		      $('#rtCoupon').val(coupon2Price); 
 		   });
 		});
 		
