@@ -15,7 +15,7 @@ public class Order extends Base {
 	private String title;
 	private Integer price;
 	private String site;
-	private Integer count;
+	private Integer itemCount;
 	private String cpnname;
 	private Integer cpndiscount;
 	private String cpnvalid;
@@ -90,11 +90,11 @@ public class Order extends Base {
 	public void setSite(String site) {
 		this.site = site;
 	}
-	public Integer getCount() {
-		return count;
+	public Integer getItemCount() {
+		return itemCount;
 	}
-	public void setCount(Integer count) {
-		this.count = count;
+	public void setItemCount(Integer itemCount) {
+		this.itemCount = itemCount;
 	}
 	public String getCpnname() {
 		return cpnname;
