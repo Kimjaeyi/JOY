@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/resources/xdmin/css/commonXdmin.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022091023"/>
+	<link rel="stylesheet" href="http://images.coocha.co.kr/static/css/coocha.css?ver=2022082209" />
 	<link href="http://images.coocha.co.kr/static/dev/images/common/common/ico_favicon.ico" rel="icon" type="image/x-icon" />
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -387,9 +388,11 @@
 	<input type="hidden" name="seq" value="${vo.seq}">
 		<div class="card">
 			<div class="row">
+				<!-- 상품 사진 -->
 				<div class="col-5">
 					<img src="${card.path}${card.uuidName}">
 				</div>
+				<!-- 상품 가격 및 정보 -->
 				<div class="col-7">
 					 <div class="card-body">
 					<h3 class="card-title"><c:out value="${card.title}"/></h3>
@@ -425,11 +428,13 @@
 						<h4 id="totalprice" style="display:inline; float:right; font-size: 30px; font-weight:bold" pattern="#,###"></h4>
 					</div>
 					<br><br><br>
+					<!-- 수량 선택 s -->
 					<div class="itemcount">
 						<button type="button" id="minusbtn" onclick='count("minus")'><i class="fa-solid fa-minus"></i></button>
-						<input type="text" id="countresult" value="1" readonly>
+						<input type="text" id="countresult" name="itemCount" value="1" readonly>
 						<button type="button" id="plusbtn" onclick='count("plus")'><i class="fa-solid fa-plus"></i></button>
 					</div>
+					<!-- 수량 선택 e -->
 					<button type="button" id="purchase">구매하기</button>
 					</div>
 				</div>
@@ -446,9 +451,12 @@
 		    <label for="tab3">상품문의</label>
 		    <input id="tab4" type="radio" name="tabs" disabled>
 		    <label for="tab4">배송·교환·반품</label>
+		    <!-- 상세정보 탭 s -->
 		    <section id="content1">
 	        	<img src="${tab.path}${tab.uuidName}" id="detailimg">
 		    </section>
+		    <!-- 상세정보 탭 e -->
+		    <!-- 상품리뷰 탭 s -->
 		    <section id="content2">
 	<!-- 	    
 		        <div class="reviewtop">
@@ -472,6 +480,8 @@
 				<hr>
 	 -->			
 		    </section>
+		    <!-- 상품리뷰 탭 e -->
+		    <!-- 상품문의 탭 s -->
 		    <section id="content3">
 		        <h5><b>상품문의</b></h5>
 	<!-- 			
@@ -659,6 +669,8 @@
 				</div>
 	-->			
 		    </section>
+		    <!-- 상품문의 탭 e -->
+		    <!-- 배송정보 탭 s -->
 		    <section id="content4">
 		        <h5 style="font-weight: bold; margin: 5% 10%">배송/교환/반품</h5>
 		        <p font-size=10px><b>배송 안내</b></p>
@@ -677,43 +689,13 @@
 					</table>
 				</div>
 		    </section>
+		    <!-- 배송정보 탭 e -->
 		</div>
 	</div>
 	</form>
-	<footer>
-		<div class="footer">
-			<div class="inner">
-				<ul class="area-link">
-					<li>앱다운로드</li>
-					<li>회사소개</li>
-					<li>고객센터</li>
-					<li>서비스이용약관</li>
-					<li>위치정보이용약관</a</li>
-					<li><b>개인정보처리방침</b></li>
-					<li>마케팅센터</li>
-					<li>입점 및 광고 안내</li>
-				</ul>
-				<div class="area-text">
-					<p>쿠차는 상품에 직접 관여하지 않으며 상품 주문, 배송 및 환불의 의무와 책임은 각 판매업체에 있습니다.</p>
-				</div>
-				<div class="area-bottom">
-					<div class="info">
-						<span>(주)제이와이케이</span> 
-						<span>대표 김재이</span> 
-						<span>사업자등록번호 123-45-67890</span>
-					</div>
-					<div class="address">
-						<span>서울특별시 서초구 서초대로 77길 55, 3층</span> 
-						<span>고객센터 cs_coocha@coocha.com</span> 
-						<span>입점 · 광고 business@coocha.com</span>
-					</div>
-					<div class="copyright">
-						<p>© 2022. SearchFy Inc. All Rights Reserved.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+	
+	<%@include file="../../../common/xdmin/includeV1/footer.jsp"%>
+	
 	<a href="#top" class="btn-go-top" data-scid="2227"><span class="blind">탑으로</span></a>
 <!-- end -->
 
