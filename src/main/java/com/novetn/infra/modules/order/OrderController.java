@@ -105,7 +105,7 @@ public class OrderController {
 	}
 	
 	@RequestMapping(value = "orderPage")
-	public String orderpage(@ModelAttribute("vo") OrderVo vo, ItemVo vo1, Model model, HttpSession httpSession) throws Exception {
+	public String orderpage(@ModelAttribute("vo") OrderVo vo, @ModelAttribute("dto") Order dto, ItemVo vo1, Model model, HttpSession httpSession) throws Exception {
 		
 		String seq = (String) httpSession.getAttribute("sessSeq");
 		vo.setSeq(seq);
