@@ -411,11 +411,11 @@
 						<br><br>
 						<span class="paytitle">상품금액</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice" name="price" id="firstPrice"><fmt:formatNumber value="${(card.price)*(dto.itemCount)}" pattern="#,###" /></span>
+						<span class="displayPrice" name="price" id="firstPrice"><c:out value="${(card.price)*(dto.itemCount)}"/></span>
 						<br><br>
 						<span class="paytitle">배송비</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice" id="fee" pattern="#,###">
+						<span class="displayPrice" id="fee">
 							<c:choose>
 								<c:when test="${card.shippingfee eq 14 }">0</c:when>
 								<c:when test="${card.shippingfee eq 15 }">
@@ -483,40 +483,7 @@
 	</div>
 	</form>
 	<br><br>
-	<footer>
-		<div class="footer">
-			<div class="inner">
-				<ul class="area-link">
-					<li>앱다운로드</li>
-					<li>회사소개</li>
-					<li>고객센터</li>
-					<li>서비스이용약관</li>
-					<li>위치정보이용약관</a</li>
-					<li><b>개인정보처리방침</b></li>
-					<li>마케팅센터</li>
-					<li>입점 및 광고 안내</li>
-				</ul>
-				<div class="area-text">
-					<p>쿠차는 상품에 직접 관여하지 않으며 상품 주문, 배송 및 환불의 의무와 책임은 각 판매업체에 있습니다.</p>
-				</div>
-				<div class="area-bottom">
-					<div class="info">
-						<span>(주)제이와이케이</span> 
-						<span>대표 김재이</span> 
-						<span>사업자등록번호 123-45-67890</span>
-					</div>
-					<div class="address">
-						<span>서울특별시 서초구 서초대로 77길 55, 3층</span> 
-						<span>고객센터 cs_coocha@coocha.com</span> 
-						<span>입점 · 광고 business@coocha.com</span>
-					</div>
-					<div class="copyright">
-						<p>© 2022. SearchFy Inc. All Rights Reserved.</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<%@include file="../../../common/xdmin/includeV1/footer.jsp"%>
 	
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -544,38 +511,39 @@
 			}) 
 		});
 		
+	/* 쿠폰 적용 */
 		var itemPrice = document.getElementById("price").value;
 		var coochaCount = document.getElementById("itemCount").value;
-		var shpFee = document.getElementById("fee").value();
 		var totalprice = (itemPrice*coochaCount);
-		var finalPrice = totalprice+shpFee;
+		var shpFee = document.getElementById("fee").value();
+		var finalprice = totalprice+shpFee;
 		
 		/* 화면에 보여지는 부분 */
-		$("#totalprice").text(totalprice.toLocaleString());
+		$("#firstPrice").text(totalprice.toLocaleString());
 		$("#couponprice").text("0");
+		$("#realtotalprice").text(finalprice.toLocaleString());
 		$("#fee").text(shpFee.toLocaleString());
-		$("#realtotalprice").text(finalPrice.toLocaleString()); 
 		
 		/* 쿠폰 할인 적용 */
 		$(document).ready(function() {
 		   $("#coupon1").click(function(){
 		      var coupon1Price = $(this).attr('value');   
 		      $("#couponprice").text((coupon1Price)/1000 + ",000");
-		      $("#realtotalprice").text((finalPrice-coupon1Price).toLocaleString());
+		      $("#realtotalprice").text((finalprice-coupon1Price).toLocaleString());
 		      $('#rtFinalPrice').val(totalprice-coupon1Price);
 		      $('#rtCoupon').val(coupon1Price); 
 		   });
 		   $("#coupon2").click(function(){
 		      var coupon2Price = $(this).attr('value');      
 		      $("#couponprice").text((coupon2Price)/1000 + ",000");
-		      $("#realtotalprice").text((finalPrice-coupon2Price).toLocaleString());
+		      $("#realtotalprice").text((finalprice-coupon2Price).toLocaleString());
 		      $('#rtFinalPrice').val(totalprice-coupon2Price);
 		      $('#rtCoupon').val(coupon2Price); 
 		   });
 		});
 		
 		$("#rtCount").val(coochaCount);
-		$("#rtFinalPrice").val(finalPrice);
+		$("#rtFinalPrice").val(finalprice);
 		
 		// 약관 전체선택
 		$('#checkboxall').click(function() {
