@@ -49,6 +49,7 @@
 			<exclude-mapping path="/member/idCheck" />
 			<exclude-mapping path="/member/kakaoLoginProc" />
 			<exclude-mapping path="/item/itemView" />
+			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />
 <!-- 			
 			<exclude-mapping path="/test/**" />
