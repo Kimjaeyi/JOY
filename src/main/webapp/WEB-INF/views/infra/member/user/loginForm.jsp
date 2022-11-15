@@ -164,9 +164,9 @@
 					<br>
 					<div class="row justify-content-center">
 						<div class="col-7">
-							<input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="kjy">
+							<input type="text" class="form-control" placeholder="아이디" id="id" name="id" value="ysw">
 							<br>
-							<input type="password" class="form-control" placeholder="비밀번호" id="pwd" name="pwd" value="123">
+							<input type="password" class="form-control" placeholder="비밀번호" id="pwd" name="pwd" value="111">
 						</div>
 					</div>
 					<br><br>
@@ -209,27 +209,27 @@
 
 	<script type="text/javascript">
 	
-	$("#loginbtn").on("click", function(){
-		
-		/* if(validation() == false) return false; */
-		
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			/* ,dataType:"json" */
-			,url: "/member/loginProc"
-			/* ,data : $("#formLogin").serialize() */
-			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
-			,success: function(response) {
-				if(response.rt == "success") {
-					location.href = "/item/mainPage";
-				} else {
-					alert("일치하는 회원정보가 없습니다");
+		$("#loginbtn").on("click", function(){
+			
+			/* if(validation() == false) return false; */
+			
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				/* ,dataType:"json" */
+				,url: "/member/loginProc"
+				/* ,data : $("#formLogin").serialize() */
+				,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
+				,success: function(response) {
+					if(response.rt == "success") {
+						location.href = "/item/mainPage";
+					} else {
+						alert("일치하는 회원정보가 없습니다");
+					}
 				}
-			}
+			});
 		});
-	});
 	
 	</script>
 	

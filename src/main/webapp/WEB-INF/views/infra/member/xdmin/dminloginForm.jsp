@@ -182,27 +182,35 @@
 
 	<script type="text/javascript">
 	
-	$("#loginbtn").on("click", function(){
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/member/loginProc"
-			,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
-			,success: function(response) {
-				if(response.rt == "success") {
-					if ($("#id").val() == "kjy" && $("#pwd").val() == "123") {
-						location.href = "/member/memberList";
-					} else if ($("#id").val() != "kjy" && $("#pwd").val() != "123") {
-						alert("접근할 수 없습니다.")
-						location.href = "/item/mainPage";
+		enterKey = function() {
+			
+			var keycode = event.keyCode;
+			
+			if(keycode == 13) //Enter
+				submitform();  //여기가 이제 로그인 하는 함수로 연결되면 됩니다.
+		}
+	
+		$("#loginbtn").on("click", function(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/member/loginProc"
+				,data : { "id" : $("#id").val(), "pwd" : $("#pwd").val()}
+				,success: function(response) {
+					if(response.rt == "success") {
+						if ($("#id").val() == "kjy" && $("#pwd").val() == "123") {
+							location.href = "/member/memberList";
+						} else if ($("#id").val() != "kjy" && $("#pwd").val() != "123") {
+							alert("접근할 수 없습니다.")
+							location.href = "/item/mainPage";
+						}
+					} else {
+						alert("일치하는 회원정보가 없습니다.")
 					}
-				} else {
-					alert("일치하는 회원정보가 없습니다.")
 				}
-			}
-		})
-	});
+			})
+		});
 	
 	</script>
 	
