@@ -205,6 +205,10 @@
 		margin: 0 2%;
 	}
 	
+	#couponTable .col-3 {
+		text-align:center;
+	}
+	
 
 </style>
 	
@@ -339,14 +343,14 @@
 					<br><br><br>
 					<h5>할인쿠폰</h5>
 					<hr>
-					<div class="row justify-content-center">
-						<div class="col-3" style="text-align:center">
+					<div class="row justify-content-center" id="couponTable">
+						<div class="col-3">
 							<span class="couponHead">쿠폰명</p>
 						</div>
-						<div class="col-3" style="text-align:center">
+						<div class="col-3">
 							<span class="couponHead">쿠폰 할인금액</p>
 						</div>
-						<div class="col-3" style="text-align:center">
+						<div class="col-3">
 							<span class="couponHead">쿠폰 유효기간</p>
 						</div>
 						<div class="col-2"></div>
@@ -363,7 +367,7 @@
 							<span class="couponInfo">~ 2022.12.31</span>
 						</div>
 						<div class="col-2">
-							<button type="button" id="coupon1" value="3000">쿠폰적용</button>
+							<button type="button" id="coupon1" onclick="applyCoupon(3000)">쿠폰적용</button>
 						</div>
 					</div>
 					<br>
@@ -378,24 +382,10 @@
 							<span class="couponInfo">~ 2023.01.31</span>
 						</div>
 						<div class="col-2">
-							<button type="button" id="coupon2" value="2000">쿠폰적용</button>
+							<button type="button" id="coupon2" onclick="applyCoupon(2000)">쿠폰적용</button>
 						</div>
 					</div>
 					<br>
-					<!-- <div class="row justify-content-center">
-						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">[장바구니] 쇼핑쿠폰</p>
-						</div>
-						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">2,000원</p>
-						</div>
-						<div class="col-3" style="text-align:center">
-							<p style="font-weight: bold; font-size: 13px; margin: 5px 0 0 0">~ 2022.10.15</p>
-						</div>
-						<div class="col-2">
-							<button type="button" id="coupon2" value="2000">쿠폰적용</button>
-						</div>
-					</div> -->
 					<hr>
 					<br><br><br>
 					<h5>결제방법</h5>
@@ -510,6 +500,20 @@
 				}
 			}) 
 		});
+	
+		//쿠폰 계산
+		var totalprice = $("#firstPrice").text();
+		totalprice = totalprice.replace(',',''); // , 빼주기
+		totalprice = totalprice.trim(); // 공백지우기
+		
+		var fee;
+		$("#fee").html(fee);
+		
+		function applyCoupon(discount){  
+			var applyPrice = myPrice - discount + fee;			
+			$("#totalPrice2").html(applyPrice);
+		};
+		
 		
 	/* 쿠폰 적용 */
 		var itemPrice = document.getElementById("price").value;
