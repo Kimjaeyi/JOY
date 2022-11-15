@@ -137,6 +137,10 @@
 		color : gray;
 		font-weight : bold;
 	}
+	
+	.col-1 img {
+		width: 40px;
+	}
 </style>
 	
 <body>
@@ -182,16 +186,16 @@
 					<br>
 					<div class="row justify-content-center">
 						<div class="col-1">
-							<img src="../resources/image/naver.png" style="width:40px;">
+							<img src="../resources/image/naver.png" id="naverLogin">
 						</div>
 						<div class="col-1">
-							<img src="../resources/image/kakao.png" id="kakaoLogin" style="width:40px;">
+							<img src="../resources/image/kakao.png" id="kakaoLogin">
 						</div>
 						<div class="col-1">
-							<img src="../resources/image/google.png" style="width:40px;">
+							<img src="../resources/image/google.png">
 						</div>
 						<div class="col-1">
-							<img src="../resources/image/facebook.png" style="width:40px;">
+							<img src="../resources/image/facebook.png">
 						</div>
 					</div>
 				</div>
@@ -235,10 +239,8 @@
 	
 	<script type="text/javascript">
 	
-	Kakao.init('fd23c44e522eb4a174fd81bfe4833f36'); // test 용
+	Kakao.init('fd23c44e522eb4a174fd81bfe4833f36'); 
 	console.log(Kakao.isInitialized());
-/*     	Kakao.init('ec2655da82c3779d622f0aff959060e6');
-	console.log(Kakao.isInitialized()); */
 	
 	$("#kakaoLogin").on("click", function() {
 		/* Kakao.Auth.authorize({
@@ -309,8 +311,62 @@
 		      fail: function (error) {
 		        console.log(error)
 		      },
-		    })
+		 })
 	});
+	
+	/* naver login test s */
+	
+	$("#naverLogin").on("click", function() {
+//		버튼 클릭 이벤트 안에 아래 내용이 들어갑니다.
+//		그래야 [네이버 로그인] 버튼을 클릭할때마다 로그인 되어 있는지 체크하고
+//		아래 status가 true이면 ajax로, false이면 네이버 정보 권한체크 창이 나와요
+					
+		var naverLogin = new naver.LoginWithNaverId(
+			{
+				clientId: "WKp5nyYz4RsQ3rAosJAf",
+				callbackUrl: "http://localhost:8080/member/login",
+				isPopup: true
+			}
+		);
+		
+		naverLogin.init();
+		
+		naverLogin.getLoginStatus(function (status) {
+			
+			if(status)
+				setLoginStatus();  //ajax
+				
+		});
+		
+		function setLoginStatus() {
+			
+			if (naverLogin.user.gender == 'M'){
+				$("input[name=gender]").val(43);
+			} else {
+				$("input[name=gender]").val(44);
+			} 
+		
+			$.ajax({
+				async: true
+				,cache: false
+				,type:"POST"
+				,url: "/member/naverLoginProc"
+				,data: {"name": naverLogin.user.name, "snsID": "네이버", "phone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(), "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "snsImg": naverLogin.user.profile_image}
+				,success : function(response) {
+					if (response.rt == "fail") {
+						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+						return false;
+					} else {
+						window.location.href = "/item/mainPage";
+					}
+				},
+				error : function(jqXHR, status, error) {
+					alert("알 수 없는 에러 [ " + error + " ]");
+				}
+			});
+		}
+	});
+	/* naver login test e */
 		
 	</script>
 
@@ -319,5 +375,6 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/7d63ec3c0a.js" crossorigin="anonymous"></script>
+<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 </body>
 </html>

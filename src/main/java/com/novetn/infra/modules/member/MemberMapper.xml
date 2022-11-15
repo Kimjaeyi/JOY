@@ -246,7 +246,7 @@
 			seq = #{seq}
 	</update>
 	
-	<!-- 카카오 로그인 -->
+	<!-- sns 로그인 -->
 	<select id="snsLoginCheck" resultMap="resultMapObj">
 		SELECT 
 			u.seq
@@ -260,6 +260,32 @@
 			AND id = #{snsID} 
 			AND name = #{name}
 	</select>
+	
+	<insert id="naverInst">
+		INSERT INTO member (
+			name
+			,id
+			,phone
+			,email
+			,gender
+			,dob
+			,snsImg
+			,delNY
+		)
+		VALUES (
+			#{name}
+			,#{snsID}
+			,#{phone}
+			,#{email}
+			,#{gender}
+			,#{dob}
+			,#{snsImg}
+			,0
+		)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
+	</insert>
 	
 	<insert id="kakaoInst">
 		INSERT INTO member (

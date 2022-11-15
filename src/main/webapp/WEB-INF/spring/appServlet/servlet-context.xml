@@ -48,6 +48,7 @@
 			<exclude-mapping path="/member/findPW" />
 			<exclude-mapping path="/member/idCheck" />
 			<exclude-mapping path="/member/kakaoLoginProc" />
+			<exclude-mapping path="/member/naverLoginProc" />
 			<exclude-mapping path="/item/itemView" />
 			<exclude-mapping path="/test/**" />
 			<exclude-mapping path="/rest/**" />

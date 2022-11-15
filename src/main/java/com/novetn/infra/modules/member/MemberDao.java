@@ -84,6 +84,10 @@ public class MemberDao {
 	    return sqlSession.selectOne(namespace + ".snsLoginCheck", dto);
 	}
 	
+	public int naverInst(Member dto) {
+		return sqlSession.insert(namespace + ".naverInst", dto);
+	}
+	
 	public int kakaoInst(Member dto) {
 		return sqlSession.insert(namespace + ".kakaoInst", dto);
 	}
