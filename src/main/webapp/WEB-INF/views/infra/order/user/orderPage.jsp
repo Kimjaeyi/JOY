@@ -254,7 +254,8 @@
 	<input type="hidden" name="seq" value="${card.seq}"/>  
 	<input type="hidden" name="sessSeq" value="${sessSeq}"/>  
 	<input type="hidden" name="title" value="${card.title}"/>  
-	<input type="hidden" name="discount" value="${card.discount}"/>  
+	<input type="hidden" name="discount" id="discount" value="${card.discount}"/>
+	<input type="hidden" name="shippingfee" id="shippingfee" value="${card.shippingfee}"/>  
 	<input type="hidden" name="price" id="price" value="${card.price}"/>
 	<input type="hidden" name="itemCount" id="itemCount" value="${dto.itemCount}"/>
 	<input type="hidden" id="rtFinalPrice" name="rtFinalPrice">  
@@ -321,20 +322,20 @@
 							<td width="15%">
 								<span class="ii">
 									<c:choose>
-										<c:when test="${card.shippingfee eq 14 }">0</c:when>
+										<c:when test="${card.shippingfee eq 14 }">무료</c:when>
 										<c:when test="${card.shippingfee eq 15 }">
 											<c:choose>
-												<c:when test="${(card.price)*(dto.itemCount) ge 30000 }">0</c:when>
-												<c:otherwise>3000</c:otherwise>
+												<c:when test="${(card.price)*(dto.count) ge 30000 }">무료</c:when>
+												<c:otherwise>3,000</c:otherwise>
 											</c:choose>
 										</c:when>
 										<c:when test="${card.shippingfee eq 16 }">
 											<c:choose>
-												<c:when test="${(card.price)*(dto.itemCount) ge 50000 }">0</c:when>
-												<c:otherwise>3000</c:otherwise>
+												<c:when test="${(card.price)*(dto.count) ge 50000 }">무료</c:when>
+												<c:otherwise>3,000</c:otherwise>
 											</c:choose>
 										</c:when>
-										<c:otherwise>3000</c:otherwise>
+										<c:otherwise>3,000</c:otherwise>
 									</c:choose>
 								</span>
 							</td>
@@ -405,24 +406,7 @@
 						<br><br>
 						<span class="paytitle">배송비</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice" id="fee">
-							<c:choose>
-								<c:when test="${card.shippingfee eq 14 }">0</c:when>
-								<c:when test="${card.shippingfee eq 15 }">
-									<c:choose>
-										<c:when test="${(card.price)*(dto.count) ge 30000 }">0</c:when>
-										<c:otherwise>3000</c:otherwise>
-									</c:choose>
-								</c:when>
-								<c:when test="${card.shippingfee eq 16 }">
-									<c:choose>
-										<c:when test="${(card.price)*(dto.count) ge 50000 }">0</c:when>
-										<c:otherwise>3000</c:otherwise>
-									</c:choose>
-								</c:when>
-								<c:otherwise>3000</c:otherwise>
-							</c:choose>
-						</span>
+						<span class="displayPrice" id="fee"></span>
 						<br><br>
 						<span class="paytitle">할인금액</span>
 						<span class="detailPrice">원</span>
@@ -438,11 +422,9 @@
 					<div class="paycheck">
 						<h6>하기 필수약관을 확인하였으며 결제에 동의합니다.</h6>
 						<br><br>
-						<a href="paysuccess">
-							<div class="d-grid">
-								<button type="button">결제하기</button>
-							</div>
-						</a>
+						<div class="d-grid">
+							<button type="button" id="kkpay">결제하기</button>
+						</div>
 						<br><br><br>
 						<h5>약관동의</h5>
 					</div>
@@ -500,54 +482,55 @@
 				}
 			}) 
 		});
-	
-		//쿠폰 계산
-		var totalprice = $("#firstPrice").text();
-		totalprice = totalprice.replace(',',''); // , 빼주기
-		totalprice = totalprice.trim(); // 공백지우기
 		
+		//쿠폰 계산
+		window.onload = function(){
+			if(shfee == 14) {
+				fee = 0;
+			} else if(shfee == 15) {
+				if(totalprice >= 30000) {
+					fee = 0;
+				} else {
+					fee = 3000;
+				}
+			} else if(shfee == 16) {
+				if(totalprice >= 50000) {
+					fee = 0;
+				} else {
+					fee = 3000;
+				}
+			} else {
+				fee = 3000;
+			}
+				
+			$("#fee").html(fee.toLocaleString());
+			
+			Price = parseInt(totalprice);
+			delifee = parseInt(fee);
+			finalPrice = parseInt(Price + delifee);
+			$("#realtotalprice").html(finalPrice.toLocaleString());
+		}
+		
+		
+		var totalprice = $("#firstPrice").text();
+		/* $("#firstPrice").html(Price.toLocalString()); */
+		$("#discount").text('0');
+		
+		var shfee = document.getElementById("shippingfee").value;
 		var fee;
-		$("#fee").html(fee);
 		
 		function applyCoupon(discount){  
-			var applyPrice = myPrice - discount + fee;			
-			$("#totalPrice2").html(applyPrice);
+			var applyPrice = totalprice - discount + fee;			
+			$("#couponprice").html(discount.toLocaleString());
+			$("#realtotalprice").html(applyPrice.toLocaleString());
 		};
 		
+		/* var fee;
+		$("#fee").html(fee);
+		var totalprice = $("#firstPrice").text();
+		var applyPrice = totalprice - discount + fee;
+		$("#realtotalprice").text(applyPrice.toLocaleString()); */
 		
-	/* 쿠폰 적용 */
-		var itemPrice = document.getElementById("price").value;
-		var coochaCount = document.getElementById("itemCount").value;
-		var totalprice = (itemPrice*coochaCount);
-		var shpFee = document.getElementById("fee").value();
-		var finalprice = totalprice+shpFee;
-		
-		/* 화면에 보여지는 부분 */
-		$("#firstPrice").text(totalprice.toLocaleString());
-		$("#couponprice").text("0");
-		$("#realtotalprice").text(finalprice.toLocaleString());
-		$("#fee").text(shpFee.toLocaleString());
-		
-		/* 쿠폰 할인 적용 */
-		$(document).ready(function() {
-		   $("#coupon1").click(function(){
-		      var coupon1Price = $(this).attr('value');   
-		      $("#couponprice").text((coupon1Price)/1000 + ",000");
-		      $("#realtotalprice").text((finalprice-coupon1Price).toLocaleString());
-		      $('#rtFinalPrice').val(totalprice-coupon1Price);
-		      $('#rtCoupon').val(coupon1Price); 
-		   });
-		   $("#coupon2").click(function(){
-		      var coupon2Price = $(this).attr('value');      
-		      $("#couponprice").text((coupon2Price)/1000 + ",000");
-		      $("#realtotalprice").text((finalprice-coupon2Price).toLocaleString());
-		      $('#rtFinalPrice').val(totalprice-coupon2Price);
-		      $('#rtCoupon').val(coupon2Price); 
-		   });
-		});
-		
-		$("#rtCount").val(coochaCount);
-		$("#rtFinalPrice").val(finalprice);
 		
 		// 약관 전체선택
 		$('#checkboxall').click(function() {
