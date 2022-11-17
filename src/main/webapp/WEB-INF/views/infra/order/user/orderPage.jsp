@@ -325,13 +325,13 @@
 										<c:when test="${card.shippingfee eq 14 }">무료</c:when>
 										<c:when test="${card.shippingfee eq 15 }">
 											<c:choose>
-												<c:when test="${(card.price)*(dto.count) ge 30000 }">무료</c:when>
+												<c:when test="${(card.price)*(dto.itemCount) ge 30000 }">무료</c:when>
 												<c:otherwise>3,000</c:otherwise>
 											</c:choose>
 										</c:when>
 										<c:when test="${card.shippingfee eq 16 }">
 											<c:choose>
-												<c:when test="${(card.price)*(dto.count) ge 50000 }">무료</c:when>
+												<c:when test="${(card.price)*(dto.itemCount) ge 50000 }">무료</c:when>
 												<c:otherwise>3,000</c:otherwise>
 											</c:choose>
 										</c:when>
@@ -402,7 +402,7 @@
 						<br><br>
 						<span class="paytitle">상품금액</span>
 						<span class="detailPrice">원</span>
-						<span class="displayPrice" name="price" id="firstPrice"><c:out value="${(card.price)*(dto.itemCount)}"/></span>
+						<span class="displayPrice" id="firstPrice"><fmt:formatNumber pattern="#,###" value="${((card.price)*(dto.itemCount))}" /></span>
 						<br><br>
 						<span class="paytitle">배송비</span>
 						<span class="detailPrice">원</span>
@@ -484,6 +484,12 @@
 		});
 		
 		//쿠폰 계산
+		
+		var totalprice = $("#firstPrice").text();
+		totalprice = totalprice.replace(',',''); // , 빼주기
+		totalprice = totalprice.trim(); // 공백지우기 
+		$("#discount").text('0');
+		
 		window.onload = function(){
 			if(shfee == 14) {
 				fee = 0;
@@ -510,11 +516,6 @@
 			finalPrice = parseInt(Price + delifee);
 			$("#realtotalprice").html(finalPrice.toLocaleString());
 		}
-		
-		
-		var totalprice = $("#firstPrice").text();
-		/* $("#firstPrice").html(Price.toLocalString()); */
-		$("#discount").text('0');
 		
 		var shfee = document.getElementById("shippingfee").value;
 		var fee;
