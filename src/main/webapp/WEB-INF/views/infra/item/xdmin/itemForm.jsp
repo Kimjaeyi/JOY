@@ -161,7 +161,7 @@
 
 <!-- start -->
 	<div class="abc">
-		<a href="/item/mainPage"><h1>coocha</h1></a>
+		<a href="/"><h1>coocha</h1></a>
 		<br><hr><br>
 		<div class="aaa">
 			<!-- <form method="post" name="form" action="/code/codeInst"> -->
