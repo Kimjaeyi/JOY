@@ -488,7 +488,7 @@
 		var totalprice = $("#firstPrice").text();
 		totalprice = totalprice.replace(',',''); // , 빼주기
 		totalprice = totalprice.trim(); // 공백지우기 
-		$("#discount").text('0');
+		$("#couponprice").text('0');
 		
 		window.onload = function(){
 			if(shfee == 14) {
