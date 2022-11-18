@@ -27,175 +27,176 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
-<style type="text/css">
-
-	a:link {
-		color:black;
-		text-decoration: none;
-	}
-	a:visited {
-		color: none;
-		text-decoration: none;
-	}
-	a:hover {
-		color:mediumpurple;
-		text-decoration: none;
-	}
-
-	.gnb .logout {
-	    display: inline-block;
-	    font-size: 14px;
-	    font-weight: bold;
-	    color: #999999;
-	    position: absolute;
-	    top: 39px;
-	    right: 235px;
-	}
+	<style type="text/css">
 	
-	.searchhead {
-		padding: 15px;
-		margin: 10px 0 5% 0;
-		border-radius: 6px;
-		border: 1px solid mediumpurple;
-	}
+		a:link {
+			color:black;
+			text-decoration: none;
+		}
+		a:visited {
+			color: none;
+			text-decoration: none;
+		}
+		a:hover {
+			color:mediumpurple;
+			text-decoration: none;
+		}
 	
-	.col-2 {
-		max-width: 140px;
-	}
-	
-	.btn-outline-secondary {
-		width: 35px;
-		height: 35px;
-	}
-	
-	input {
-		font-size: small;
-	}
-	
-	table {
-		margin: 5% 0;
-	}
-	
-	th, td {
-		text-align : center;
-		vertical-align: middle;
-		height: 35px;
-	}
-	
-	th {
-		font-weight: bold;
-	}
-	
-	.row {
-		padding: 20px;
-	}
-	
-	.abc {
-		margin: 2% 15%;
-	}
-	
-	.form-check-input:checked {
-	    background-color: #6900EF;
-	    border-color: #6900EF;
-	}
-	
-	#viewsel {
-		width: 70px; 
-		height: 40px; 
-		float: right;
-	}
-	
-	#regbtn, #delbtn, #excelbtn {
-		display: inline;
-		width: 35px;
-		height: 33px;
-	}
-	
-	#regbtn, #delbtn {
-		float: right;
-	}
-	
-	#myTab {
-		width: 215px;
-	}
-	
-	#listtab button {
-		width: 65px;
-	}
-	
-	#regmodtab button {
-		width: 150px;
-	}
-	
-	.nav-tabs {
-		--bs-nav-tabs-link-active-color: #6900EF;
-		--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
-	}
-	
-	.nav {
-		--bs-nav-link-hover-color: #9154f3;
-		width: 255px;
-	}
-	
-	.nav-link {
-		color : gray;
-	}
-	
-	#lefttab.nav-link.active {
-		color: #6900EF;
-	}
-	
-	.count {
-		display: inline;
-		margin: 3% 0;
-	}
-	
-	.pagination {
-		justify-content: center;
-		--bs-pagination-color: mediumpurple;
-		--bs-pagination-hover-color: mediumpurple;
-		--bs-pagination-focus-color: #6900EF;
-		--bs-pagination-active-bg: #6900EF;
-    	--bs-pagination-active-border-color: #6900EF;
-    	margin: 3% 0;
-	}
-	
-	.page-link {
-		height: 30px;
-	}
-	
-	#modbtn {
-		display: block;
-		margin: auto;
-		background-color: #9154f3;
-		color: white;
-		border: none;
-		border-radius: 4px;
-		width: 140px;
-		height: 60px;
-		font-size: 20px;
-	}
-	
-	.flex-column {
-		width: 200px;
-		height: 100vh;
-		margin: 3% 0 0 0;
-	} 
-	
-	#lefttab {
-		height: 100px;
-		font-size: 1.4rem;
-		font-weight: bold;
-		vertical-align: middle;
-	}
-	
-	input[type='search'] {
-		display: block;
-		border: 1px solid #ced4da;
-		border-radius: 0.375rem;
-	}
-	
-</style>
+		.gnb .logout {
+		    display: inline-block;
+		    font-size: 14px;
+		    font-weight: bold;
+		    color: #999999;
+		    position: absolute;
+		    top: 39px;
+		    right: 80px;
+		}
+		
+		.searchhead {
+			padding: 15px;
+			margin: 10px 0 5% 0;
+			border-radius: 6px;
+			border: 1px solid mediumpurple;
+		}
+		
+		.col-2 {
+			max-width: 140px;
+		}
+		
+		.btn-outline-secondary {
+			width: 35px;
+			height: 35px;
+		}
+		
+		input {
+			font-size: small;
+		}
+		
+		table {
+			margin: 5% 0;
+		}
+		
+		th, td {
+			text-align : center;
+			vertical-align: middle;
+			height: 35px;
+		}
+		
+		th {
+			font-weight: bold;
+		}
+		
+		.row {
+			padding: 20px;
+		}
+		
+		.abc {
+			margin: 2% 15%;
+		}
+		
+		.form-check-input:checked {
+		    background-color: #6900EF;
+		    border-color: #6900EF;
+		}
+		
+		#viewsel {
+			width: 70px; 
+			height: 40px; 
+			float: right;
+		}
+		
+		#regbtn, #delbtn, #excelbtn {
+			display: inline;
+			width: 35px;
+			height: 33px;
+		}
+		
+		#regbtn, #delbtn {
+			float: right;
+		}
+		
+		#myTab {
+			width: 215px;
+		}
+		
+		#listtab button {
+			width: 65px;
+		}
+		
+		#regmodtab button {
+			width: 150px;
+		}
+		
+		.nav-tabs {
+			--bs-nav-tabs-link-active-color: #6900EF;
+			--bs-nav-tabs-link-active-border-color: #6900EF #6900EF #fff; 
+		}
+		
+		.nav {
+			--bs-nav-link-hover-color: #9154f3;
+			width: 255px;
+		}
+		
+		.nav-link {
+			color : gray;
+		}
+		
+		#lefttab.nav-link.active {
+			color: #6900EF;
+		}
+		
+		.count {
+			display: inline;
+			margin: 3% 0;
+		}
+		
+		.pagination {
+			justify-content: center;
+			--bs-pagination-color: mediumpurple;
+			--bs-pagination-hover-color: mediumpurple;
+			--bs-pagination-focus-color: #6900EF;
+			--bs-pagination-active-bg: #6900EF;
+	    	--bs-pagination-active-border-color: #6900EF;
+	    	margin: 3% 0;
+		}
+		
+		.page-link {
+			height: 30px;
+		}
+		
+		#modbtn {
+			display: block;
+			margin: auto;
+			background-color: #9154f3;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			width: 140px;
+			height: 60px;
+			font-size: 20px;
+		}
+		
+		.flex-column {
+			width: 200px;
+			height: 100vh;
+			margin: 3% 0 0 0;
+		} 
+		
+		#lefttab {
+			height: 100px;
+			font-size: 1.4rem;
+			font-weight: bold;
+			vertical-align: middle;
+		}
+		
+		input[type='search'] {
+			display: block;
+			border: 1px solid #ced4da;
+			border-radius: 0.375rem;
+		}
+		
+	</style>
+</head>
 	
 <body>
 
@@ -214,20 +215,8 @@
             </div>
 
             <ul class="gnb login">
-            	<li><span class="logout">로그아웃</span></li>
 				<li><a href="javascript:;" class="btn-my btn-layer-open"><span class="blind">MY</span></a></li>
-				<li><div class="btn-like"><span class="blind">좋아요</span></div></li>
-				<li>
-				    <div class="btn-sc btn-layer-open"><span class="blind">더보기</span></div>
-				    <div class="area-servic-center area-gnb-layer">
-				        <div class="title">고객센터</div>
-				        <ul>
-				            <li>공지사항</li>
-				            <li>FAQ</li>
-				            <li>1:1 문의</li>
-				        </ul>
-				    </div>
-				</li>
+				<li><span class="logout">로그아웃</span></li>
 			</ul>
         </div>
     </div>
