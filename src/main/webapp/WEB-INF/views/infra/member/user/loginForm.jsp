@@ -98,7 +98,7 @@
 		font-weight : bold;
 	}
 	
-	button {
+	#loginbtn {
 		margin : 5px;
 	}
 	
@@ -141,6 +141,13 @@
 	.col-1 img {
 		width: 40px;
 	}
+	
+	#kakaoLogin, #naverLogin {
+		border: none;
+		background-color: transparent;
+	}
+	
+	
 </style>
 	
 <body>
@@ -186,10 +193,17 @@
 					<br>
 					<div class="row justify-content-center">
 						<div class="col-1">
-							<img src="../resources/image/naver.png" id="naverLogin">
+							<div class="btn_login_wrap">
+								<div id="naverIdLogin"></div>
+		                    </div>
+							<button type="button" id="naverLogin">
+								<img src="../resources/image/naver.png">
+							</button>
 						</div>
 						<div class="col-1">
-							<img src="../resources/image/kakao.png" id="kakaoLogin">
+							<button type="button" id="kakaoLogin">
+								<img src="../resources/image/kakao.png">
+							</button>
 						</div>
 						<div class="col-1">
 							<img src="../resources/image/google.png">
@@ -239,119 +253,128 @@
 	
 	<script type="text/javascript">
 	
-	Kakao.init('fd23c44e522eb4a174fd81bfe4833f36'); 
-	console.log(Kakao.isInitialized());
-	
-	$("#kakaoLogin").on("click", function() {
-		/* Kakao.Auth.authorize({
-		      redirectUri: 'http://localhost:8080/member/kakaoCallback',
-		    }); */
+		Kakao.init('fd23c44e522eb4a174fd81bfe4833f36'); 
+		console.log(Kakao.isInitialized());
 		
-		Kakao.Auth.login({
-		      success: function (response) {
-		        Kakao.API.request({
-		          url: '/v2/user/me',
-		          success: function (response) {
-		        	  
-		        	  var accessToken = Kakao.Auth.getAccessToken();
-		        	  Kakao.Auth.setAccessToken(accessToken);
-
-		        	  var account = response.kakao_account;
-		        	  
-		        	  console.log(response)
-   		        	  console.log("email : " + account.email);
-   		        	  console.log("name : " + account.name);
-   		        	  console.log("nickname : " + account.profile.nickname);
-   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
-   		        	  console.log("picture : " + account.gender);
-					  console.log("picture : " + account.birthyear);
-   		        	  console.log("picture : " + account.birthday);
-   		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
-	        	  
-		        	  $("input[name=snsID]").val("카카오");
-	  	        	  $("input[name=name]").val(account.profile.nickname);
-	  	        	  $("input[name=phone]").val(account.profile.phone_number);
-	  	        	  $("input[name=email]").val(account.email);
-	  	        	  $("input[name=dob]").val(account.birthyear + "-" + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
-	  	        	  $("input[name=snsImg]").val(account.profile.thumbnail_image_url);
-	  	        	  $("input[name=token]").val(accessToken);
-  	        	  
-  	        	  if (account.gender === "male") {
-  	        		  $("input[name=gender]").val(43);
-          		  } else {
-          			  $("input[name=gender]").val(44);
-     			  } 
-  	        	  
-  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
-				
-  	        	  $.ajax({
-					async: true
-					,cache: false
-					,type:"POST"
-					,url: "/member/kakaoLoginProc"
-					,data: {"name": $("input[name=name]").val(), "snsID": $("input[name=snsID]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()}
-					,success : function(response) {
-						if (response.rt == "fail") {
-							alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
-							return false;
-						} else {
-							window.location.href = "/item/mainPage";
-						}
-					},
-					error : function(jqXHR, status, error) {
-						alert("알 수 없는 에러 [ " + error + " ]");
-					}
-				});
-		          },
-		          fail: function (error) {
-		            console.log(error)
-		          },
-		        })
-		      },
-		      fail: function (error) {
-		        console.log(error)
-		      },
-		 })
-	});
+		$("#kakaoLogin").on("click", function() {
+			/* Kakao.Auth.authorize({
+			      redirectUri: 'http://localhost:8080/member/kakaoCallback',
+			    }); */
+			
+			Kakao.Auth.login({
+			      success: function (response) {
+			        Kakao.API.request({
+			          url: '/v2/user/me',
+			          success: function (response) {
+			        	  
+			        	  var accessToken = Kakao.Auth.getAccessToken();
+			        	  Kakao.Auth.setAccessToken(accessToken);
 	
-	/* naver login test s */
-	
-	$("#naverLogin").on("click", function() {
-//		버튼 클릭 이벤트 안에 아래 내용이 들어갑니다.
-//		그래야 [네이버 로그인] 버튼을 클릭할때마다 로그인 되어 있는지 체크하고
-//		아래 status가 true이면 ajax로, false이면 네이버 정보 권한체크 창이 나와요
+			        	  var account = response.kakao_account;
+			        	  
+			        	  console.log(response)
+	   		        	  console.log("email : " + account.email);
+	   		        	  console.log("name : " + account.name);
+	   		        	  console.log("nickname : " + account.profile.nickname);
+	   		        	  console.log("picture : " + account.profile.thumbnail_image_url);
+	   		        	  console.log("picture : " + account.gender);
+						  console.log("picture : " + account.birthyear);
+	   		        	  console.log("picture : " + account.birthday);
+	   		        	  console.log("picture : " + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+		        	  
+			        	  $("input[name=snsID]").val("카카오");
+		  	        	  $("input[name=name]").val(account.profile.nickname);
+		  	        	  $("input[name=phone]").val(account.profile.phone_number);
+		  	        	  $("input[name=email]").val(account.email);
+		  	        	  $("input[name=dob]").val(account.birthyear + "-" + account.birthday.substring(0,2) + "-" + account.birthday.substring(2,account.birthday.length));
+		  	        	  $("input[name=snsImg]").val(account.profile.thumbnail_image_url);
+		  	        	  $("input[name=token]").val(accessToken);
+	  	        	  
+	  	        	  if (account.gender === "male") {
+	  	        		  $("input[name=gender]").val(43);
+	          		  } else {
+	          			  $("input[name=gender]").val(44);
+	     			  } 
+	  	        	  
+	  	        	 /*  $("form[name=form]").attr("action", "/member/kakaoLoginProc").submit(); */
 					
+	  	        	  $.ajax({
+						async: true
+						,cache: false
+						,type:"POST"
+						,url: "/member/kakaoLoginProc"
+						,data: {"name": $("input[name=name]").val(), "snsID": $("input[name=snsID]").val(), "phone": $("input[name=phone]").val(), "email": $("input[name=email]").val(), "gender": $("input[name=gender]").val(), "dob": $("input[name=dob]").val(), "snsImg": $("input[name=snsImg]").val(), "token": $("input[name=token]").val()}
+						,success : function(response) {
+							if (response.rt == "fail") {
+								alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
+								return false;
+							} else {
+								window.location.href = "/item/mainPage";
+							}
+						},
+						error : function(jqXHR, status, error) {
+							alert("알 수 없는 에러 [ " + error + " ]");
+						}
+					});
+			          },
+			          fail: function (error) {
+			            console.log(error)
+			          },
+			        })
+			      },
+			      fail: function (error) {
+			        console.log(error)
+			      },
+			 })
+		});
+		
+	</script>
+	
+	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	
 		var naverLogin = new naver.LoginWithNaverId(
 			{
 				clientId: "WKp5nyYz4RsQ3rAosJAf",
 				callbackUrl: "http://localhost:8080/member/login",
-				isPopup: true
+				isPopup: true,
 			}
-		);
+		); 
+   		naverLogin.init();
+   		
+   		$("#naverLogin").on("click", function() {
+   			naverLogin.getLoginStatus(function (status) {
+   				console.log(naverLogin)
+  				if (!status) {
+  					naverLogin.authorize();
+  				} else {
+					setLoginStatus();
+  				}
+  			});
+		})
+   		
+		window.addEventListener('load', function () {
+			if (naverLogin.accessToken != null) { 
+	  			naverLogin.getLoginStatus(function (status) {
+	  				if (status) {
+	  					setLoginStatus();
+	  				}
+  				});
+			}
+   		});
 		
-		naverLogin.init();
-		
-		naverLogin.getLoginStatus(function (status) {
-			
-			if(status)
-				setLoginStatus();  //ajax
-				
-		});
-		
-		function setLoginStatus() {
-			
+   		function setLoginStatus() {
 			if (naverLogin.user.gender == 'M'){
 				$("input[name=gender]").val(43);
 			} else {
 				$("input[name=gender]").val(44);
-			} 
-		
+			}
 			$.ajax({
 				async: true
 				,cache: false
 				,type:"POST"
 				,url: "/member/naverLoginProc"
-				,data: {"name": naverLogin.user.name, "snsID": "네이버", "phone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(), "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "snsImg": naverLogin.user.profile_image}
+				,data: {"name": naverLogin.user.name, "snsId": "네이버", "phone": naverLogin.user.mobile, "email": naverLogin.user.email, "gender": $("input[name=gender]").val(), "dob": naverLogin.user.birthyear+"-"+naverLogin.user.birthday, "snsImg": naverLogin.user.profile_image}
 				,success : function(response) {
 					if (response.rt == "fail") {
 						alert("아이디와 비밀번호를 다시 확인 후 시도해 주세요.");
@@ -365,9 +388,7 @@
 				}
 			});
 		}
-	});
-	/* naver login test e */
-		
+	
 	</script>
 
 
