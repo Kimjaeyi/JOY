@@ -270,6 +270,7 @@
 			,gender
 			,dob
 			,snsImg
+			,snsID
 			,delNY
 		)
 		VALUES (
@@ -279,6 +280,7 @@
 			,#{email}
 			,#{gender}
 			,#{dob}
+			,#{snsID}
 			,#{snsImg}
 			,0
 		)
