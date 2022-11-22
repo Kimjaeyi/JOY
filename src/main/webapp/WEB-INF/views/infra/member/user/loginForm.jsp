@@ -251,6 +251,7 @@
 	
 	</script>
 	
+	<!-- 카카오로그인 -->
 	<script type="text/javascript">
 	
 		Kakao.init('fd23c44e522eb4a174fd81bfe4833f36'); 
@@ -330,7 +331,9 @@
 		
 	</script>
 	
-	<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
+	<!-- 네이버로그인 -->
+	<!-- <script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script> -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
 	<script type="text/javascript">
 	
 		var naverLogin = new naver.LoginWithNaverId(
