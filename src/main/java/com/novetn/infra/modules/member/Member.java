@@ -23,6 +23,8 @@ public class Member {
 	private Integer validity;
 	private String regDate;
 	private Integer delNY;
+	
+//	sns 로그인	
 	private String snsID;
 	private String snsImg;
 	private String token;
