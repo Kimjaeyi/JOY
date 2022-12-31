@@ -2,6 +2,8 @@ package com.novetn.infra.modules.purchase;
 
 public class KakaoPayApproval {
 
+	//order dto안에 다 넣기(ready까지)
+	
 	//response
 	private String aid;
 	private String tid;
